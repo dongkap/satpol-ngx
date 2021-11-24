@@ -69,7 +69,8 @@
               "echarts",
               "lodash",
               "zrender/lib/svg/svg",
-              "zrender/lib/vml/vml"
+              "zrender/lib/vml/vml",
+              "crypto-js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -224,6 +225,37 @@
             "main": "@dongkap/do-theme/src/test.ts",
             "tsConfig": "@dongkap/do-theme/tsconfig.spec.json",
             "karmaConfig": "@dongkap/do-theme/karma.conf.js"
+          }
+        }
+      }
+    },
+    "@dongkap/do-shared": {
+      "projectType": "library",
+      "root": "@dongkap/do-shared",
+      "sourceRoot": "@dongkap/do-shared/src",
+      "prefix": "do",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "@dongkap/do-shared/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "@dongkap/do-shared/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "@dongkap/do-shared/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "@dongkap/do-shared/src/test.ts",
+            "tsConfig": "@dongkap/do-shared/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/do-shared/karma.conf.js"
           }
         }
       }

@@ -1,0 +1,42 @@
+<div class="header-datatable" *ngIf="header">
+    <div class="header-action" *ngIf="add">
+        <span class="action-add" (click)="doAdd()">
+            <i class="cil-plus"></i>
+        </span>
+    </div>
+    <div class="header-action" *ngIf="delete">
+        <span class="action-trash" (click)="doDelete()">
+            <i class="cil-trash"></i>
+        </span>
+    </div>
+    <div class="header-filter" *ngIf="filter">
+        <do-input-base-icon
+            [name]="'_filter.datatable'"
+            [placeholder]="'datatable.typesearch'"
+            [iconcursor]="true"
+            [buttontype]="'btn-light'"
+            [(ngModel)]="_search"
+            (clickIcon)="doSearch($event)"
+            (keydown)="onKeyDown($event)"
+            (focus)="onFocusSearch()">
+        </do-input-base-icon>
+    </div>
+    <div class="filter-funnel" *ngIf="filter && formGroupFilter">
+        <span class="filter-icon-funnel" (click)="doFilterFunnel()">
+            <i class="{{showFilter ? 'icon-arrow-down' : 'cil-filter'}}"></i>
+        </span>
+    </div>
+</div>
+<div *ngIf="filter && formGroupFilter" do-datatable-collapse #collapse>
+    <ng-content></ng-content>
+    <div class="form-group row">
+        <div class="offset-sm-3 col-sm-9">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="doFilter()">
+            {{ 'Search' | translate}}
+          </button>
+        </div>
+    </div>
+</div>

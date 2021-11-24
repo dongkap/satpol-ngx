@@ -1,0 +1,54 @@
+// Import variables
+@import '../../style';
+@import '../variables';
+
+.ng-select.bootstrap {
+  > .ng-select-container {
+    background: $input-bg;
+    color: $input-color;
+    border: $input-btn-border-width solid $input-border-color;
+  }
+  .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    background: $dropdown-bg;
+    color: $input-color;
+  }
+  .ng-dropdown-panel {
+    background-color: $input-bg;
+    border: 1px solid $input-border-color;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .06);
+
+    .ng-dropdown-panel-items {
+
+      .ng-option.ng-option-marked {
+        background-color: $dropdown-link-hover-bg;
+      }
+
+      .ng-option.ng-option-selected {
+        background-color: darken($input-bg, 10%);
+        color: $info;
+      }
+
+      .ng-option.ng-option-marked {
+        background-color: $dropdown-link-hover-bg;
+      }
+
+      .ng-option.ng-option-marked.ng-option-selected {
+        background-color: $dropdown-link-hover-bg;
+        color: $info;
+      }
+
+      .ng-option.ng-option-disabled {
+        cursor: default;
+        color: $dropdown-link-disabled-color;
+      }
+    }
+  }
+}
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container {
+  .ng-value {
+    background-color: $input-group-addon-bg;
+    .ng-value-icon:hover {
+      background-color: $body-bg;
+    }
+  }
+}

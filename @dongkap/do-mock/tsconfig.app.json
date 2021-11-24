@@ -15,6 +15,12 @@
       ],
       "@dongkap/do-theme/*": [
         "../../@dongkap/do-theme/src/*"
+      ],
+      "@dongkap/do-shared": [
+        "../../@dongkap/do-shared/src"
+      ],
+      "@dongkap/do-shared/*": [
+        "../../@dongkap/do-shared/src/*"
       ]
     }
   },

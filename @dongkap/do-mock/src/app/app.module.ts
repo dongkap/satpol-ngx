@@ -5,7 +5,7 @@
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,8 +20,12 @@ import {
 } from '@nebular/theme';
 
 import { MockModule } from './@mock/mock.module';
-import { DoCoreModule } from '@dongkap/do-core';
+import { API, DoCoreModule, ENVIRONMENT, OAUTH_INFO } from '@dongkap/do-core';
 import { DoThemeModule } from '@dongkap/do-theme';
+import { environment } from '../environments/environment';
+import { APP_BASE_HREF, HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { apiPath } from '../configs/api.config';
+import { oauthResource } from '../configs/security.config';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,6 +46,27 @@ import { DoThemeModule } from '@dongkap/do-theme';
     DoCoreModule.forRoot(),
     DoThemeModule.forRoot(),
     MockModule.forRoot(),
+  ],
+  providers: [
+    {
+      provide: LOCALE_ID, useValue: environment.locale,
+    },
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
+    {
+      provide: APP_BASE_HREF, useValue: environment.basePath,
+    },
+    {
+      provide: ENVIRONMENT, useValue: environment,
+    },
+    {
+      provide: API, useValue: apiPath,
+    },
+    {
+      provide: OAUTH_INFO, useValue: oauthResource,
+    },
   ],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-lg-{{width}}">
+    <nb-card>
+      <nb-card-header>
+        <nav class="navigation">
+            <a href="#" (click)="back()" class="link back-link" aria-label="Back" *ngIf="url">
+                <nb-icon icon="arrow-back"></nb-icon>
+            </a>
+            {{header | translate:param}}
+        </nav>
+        <nb-select *ngIf="dataSelect" [selected]="selected" (selectedChange)="onChangeSelect($event)">
+          <nb-option *ngFor="let data of dataSelect" [value]="data">{{ data }}</nb-option>
+        </nb-select>
+      </nb-card-header>
+      <nb-card-body>
+        <ng-content select="[pagecontent]"></ng-content>        
+      </nb-card-body>
+      <nb-card-footer *ngIf="!hidefooter">
+        <ng-content select="[pagefooter]"></ng-content>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>

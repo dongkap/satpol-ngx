@@ -19,6 +19,10 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
+      path: 'exercise',
+      loadChildren: () => import('./pages/exercise/exercise.module').then(m => m.ExerciseModule)
+    },
+    {
       path: 'layout',
       loadChildren: () => import('./pages/layout/layout.module')
         .then(m => m.LayoutModule),

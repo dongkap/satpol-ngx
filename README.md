@@ -57,6 +57,7 @@ $ ng new satpol-ngx --create-application=false --routing=false --style=scss --sk
 $ ng generate application do-mock --routing=true --prefix=ngx --style=scss
 $ ng generate library do-core --prefix=do
 $ ng generate library do-theme --prefix=do
+$ ng generate library do-shared --prefix=do
 ```
 
 ### 3.	Config Library @dongkap/do-core
