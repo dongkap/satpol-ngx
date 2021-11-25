@@ -123,7 +123,7 @@ $ ng generate library do-shared --prefix=do
 - copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/pages/pages.component.ts* to *@dongkap/do-mock/src/app/@mock/mock.component.ts*
 - copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/pages/pages.module.ts* to *@dongkap/do-mock/src/app/@mock/mock.module.ts*
 - delete *@dongkap/do-mock/src/app/@mock/data/users.ts*
-- rename *src/app/@mock/pages/editors/tiny-mce/tiny-mce.component.ts* to *src/app/@mock/pages/editors/tiny-mce/tiny-mce-page.component.ts*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@theme/components/tiny-mce/tiny-mce.component.ts* to *src/app/@mock/pages/editors/tiny-mce/tiny-mce.component.ts*
 - change `@dongkap/do-mock/src/lib/pages/dashboard/rooms/rooms.component.scss` `../../../../assets/images/square_pattern.svg';` to `/assets/images/square_pattern.svg`
 - change `@dongkap/do-mock/src/lib/pages/dashboard/rooms/rooms.component.scss` `../../../../assets/images/square_pattern_cosmic.svg';` to `/assets/images/square_pattern_cosmic.svg`
+- delete *src/app/@mock/pages/editors*
+- remove routing and menu editors

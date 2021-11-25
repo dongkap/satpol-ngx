@@ -7,28 +7,28 @@
   [skeleton]="skeleton">
   <div class="col-sm-{{colInput}}" *ngIf="!skeleton; else contentskeleton">
     <input
-      type="text"
       id="{{name}}"
-      [minLength]="minLength"
-      [maxLength]="maxLength"
+      [pattern]="pattern"
       [placeholder]="placeholder ? (placeholder | translate) : ''"
       [required]="required"
       [disabled]="disabled || skeleton"
       [ngClass]="{
         'status-danger': hasErrors,
-        'status-success': (hasSuccess && required)
+        'status-success': hasSuccess
       }"
-      (input)="onChange($event.target.toNumber)"
-      (change)="onChange($event.target.toNumber)"
-      (blur)="onTouched($event.target.toNumber)"
+      (input)="onChange($event.target.value)"
+      (change)="onChange($event.target.value)"
+      (blur)="onTouched($event.target.value)"
       [(ngModel)]="value"
-      doCurrency
-      [prefix]="prefix"
-      [decimal]="decimalSeparator"
-      [thousand]="thousandsSeparator"
-      [suffix]="suffix"
-      [padding]="padding"
+      [nbDatepicker]="ngxdatepicker"
       #input nbInput fullWidth>
+      <nb-datepicker
+        [format]="format"
+        [size]="size"
+        [min]="min"
+        [max]="max"
+        #ngxdatepicker>
+      </nb-datepicker>
   </div>
   <ng-template #contentskeleton>
     <div class="col-sm-{{colInput}}">

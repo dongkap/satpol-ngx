@@ -8,6 +8,11 @@ export { DoInputModule } from './lib/input/do-input.module';
 export { DoLabelModule } from './lib/label/do-label.module';
 export { DoSelectModule } from './lib/select/do-select.module';
 export { DoToastrModule } from './lib/toastr/do-toastr.module';
+export { DoButtonModule } from './lib/button/do-button.module';
+export { DoEditorModule } from './lib/editor/do-editor.module';
+export { DoCheckBoxModule } from './lib/checkbox/do-checkbox.module';
+export { DoRadioModule } from './lib/radio/do-radio.module';
+export { DoDatePickerModule } from './lib/datepicker/do-datepicker.module';
 
 export * from './lib/base/animations';
 export { BaseFilterComponent } from './lib/base/base-component/base-filter.component';
@@ -43,3 +48,16 @@ export { ContentSelectDirective } from './lib/select/directive/content-select.di
 export { SelectResponseModel } from './lib/select/models/select.model';
 
 export { DoToastrService } from './lib/toastr/services/do-toastr.service';
+
+export { DoButtonSubmitComponent } from './lib/button/submit/do-button-submit.component';
+
+export { DoTextEditorComponent } from './lib/editor/quill/do-text-editor.component';
+export { DoTextareaComponent } from './lib/editor/textarea/textarea.component';
+
+export { DoCheckboxComponent } from './lib/checkbox/checkbox/do-checkbox.component';
+export { CheckboxModel } from './lib/checkbox/models/checkbox.model';
+
+export { DoRadioComponent } from './lib/radio/radio/do-radio.component';
+export { RadioModel } from './lib/radio/models/radio.model';
+
+export { DoDatePickerComponent } from './lib/datepicker/do-datepicker.component';

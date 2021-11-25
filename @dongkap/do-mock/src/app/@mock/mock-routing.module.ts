@@ -58,11 +58,6 @@ const routes: Routes = [{
         .then(m => m.ChartsModule),
     },
     {
-      path: 'editors',
-      loadChildren: () => import('./pages/editors/editors.module')
-        .then(m => m.EditorsModule),
-    },
-    {
       path: 'tables',
       loadChildren: () => import('./pages/tables/tables.module')
         .then(m => m.TablesModule),

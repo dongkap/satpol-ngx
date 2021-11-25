@@ -6,35 +6,28 @@
   [warnMessage]="warnMessage"
   [skeleton]="skeleton">
   <div class="col-sm-{{colInput}}" *ngIf="!skeleton; else contentskeleton">
-    <input
-      type="text"
-      id="{{name}}"
+    <quill-editor
       [minLength]="minLength"
       [maxLength]="maxLength"
       [placeholder]="placeholder ? (placeholder | translate) : ''"
       [required]="required"
-      [disabled]="disabled || skeleton"
+      [disabled]="disabled"
+      [readOnly]="disabled"
       [ngClass]="{
-        'status-danger': hasErrors,
-        'status-success': (hasSuccess && required)
+        'hasErrors': hasErrors
       }"
-      (input)="onChange($event.target.toNumber)"
-      (change)="onChange($event.target.toNumber)"
-      (blur)="onTouched($event.target.toNumber)"
-      [(ngModel)]="value"
-      doCurrency
-      [prefix]="prefix"
-      [decimal]="decimalSeparator"
-      [thousand]="thousandsSeparator"
-      [suffix]="suffix"
-      [padding]="padding"
-      #input nbInput fullWidth>
+      [styles]="{height: height+'px'}"
+      (onContentChanged)="onChange(value)"
+      (onBlur)="onTouched(value)"
+      (onFocus)="onTouched(value)"
+      [(ngModel)]="value">
+    </quill-editor>
   </div>
   <ng-template #contentskeleton>
     <div class="col-sm-{{colInput}}">
       <div
         [ngClass]="{
-          'input-skeleton': true,
+          'texteditor-skeleton': true,
           'skeleton': skeleton
         }">
       </div>
