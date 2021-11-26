@@ -7,9 +7,11 @@ import { NbMomentDateModule } from '@nebular/moment';
 import { TranslateModule } from '@ngx-translate/core';
 import { DoBaseModule } from '../base/do-base.module';
 import { DoDatePickerComponent } from './do-datepicker.component';
+import { DoDatePickerRangeComponent } from './range/do-datepicker-range.component';
 
 export const DATEPICKER_COMPONENTS = [
   DoDatePickerComponent,
+  DoDatePickerRangeComponent,
 ];
 
 @NgModule({

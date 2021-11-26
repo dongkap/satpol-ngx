@@ -19,7 +19,10 @@ export class ExerciseDatePickerComponent {
           disabled: false,
         }],
         timesheet: [{
-          value: ['01/01/2020', '01/02/2021'],
+          value: {
+            start: '08/10/2021',
+            end: '10/11/2021',
+          },
           disabled: false,
         }],
         modifyDate: [{

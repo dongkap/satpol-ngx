@@ -6,23 +6,16 @@
   [warnMessage]="warnMessage"
   [skeleton]="skeleton">
   <div class="col-sm-{{colInput}}" *ngIf="!skeleton; else contentskeleton">
-    <div class="do-radio form-check"
-      *ngFor="let item of data">
-      <input
-            type="radio"
-            [ngClass]="{
-              'status-danger': hasErrors,
-              'status-success': (hasSuccess && required)
-            }"
-            [id]="item.name"
-            [name]="name"
-            [disabled]="item.disabled || disabled"
-            [checked]="item.selected"
-            [required]="required"
-            [value]="item.value"
-            [(ngModel)]="value"/>
-      <label class="form-check-label" for="{{item.name}}">{{item.name | translate}}</label>
-    </div>
+    <nb-radio-group
+      [(value)]="value"
+      [name]="name"
+      [disabled]="disabled"
+      #radiogroup>
+      <nb-radio *ngFor="let item of data"
+        [value]="item.value">
+        {{item.name | translate}}
+      </nb-radio>
+    </nb-radio-group>
   </div>
   <ng-template #contentskeleton>
     <div class="col-sm-{{colInput}}">

@@ -21,30 +21,49 @@ export class DoDatePickerComponent extends ValueAccessorDirective<Date> {
     constructor(
       @Optional() @Self() ngControl: NgControl,
       public dateService: NbDateService<Date>,
-      @Inject(LOCALE_ID) public locale: string,
-      private datePipe: DatePipe) {
+      @Inject(LOCALE_ID) public locale: string) {
       super(ngControl, locale);
       this.pattern = DatePattern.SLASH;
     }
 
+    get value(): Date { return this._value; }
+
+    set value(value: Date) {
+        if (this._value !== value) {
+            this._value = value;
+            this.onChange(formatDate(value, this.format, this.locale));
+            const control = this.ngControl.control;
+            if (control) {
+                control.updateValueAndValidity();
+                control.markAsTouched();
+                control.markAsDirty();
+            }
+        }
+    }
+
     public writeValue(value: any): void {
+      let date: Date = null;
       if (value) {
         if (String(value).match(this.pattern)) {
           const dateParse: string = this.parse(value);
           if (!isNaN(Date.parse(dateParse))) {
-            this._value = new Date(dateParse);
-            this.onChange(value);
+            date = new Date(dateParse);
           }
         }
-        const control = this.ngControl.control;
-        if (control) {
-          control.updateValueAndValidity();
-          control.markAsUntouched();
-          control.markAsPristine();
-        }
+      }
+      this._value = date;
+      this.onChange(date);
+      const control = this.ngControl.control;
+      if (control) {
+        control.updateValueAndValidity();
+        control.markAsUntouched();
+        control.markAsPristine();
       }
     }
 
+    /**
+     * Parsing from String to Date, not return format date
+     */
     private parse(value: any): string {
       const year: string = String(value).split('/')[2];
       const month: string = String(value).split('/')[1];

@@ -14,7 +14,6 @@
       [required]="required"
       [disabled]="disabled"
       [ngClass]="{
-        'skeleton': skeleton,
         'status-danger': hasErrors,
         'status-success': (hasSuccess && required)
       }"
@@ -24,7 +23,7 @@
       (focus)="onTouched($event.target.files)"
       [(ngModel)]="value"
       [multiple]="multiple"
-      #input fullWidth>
+      #input nbInput fullWidth>
   </div>
   <ng-template #contentskeleton>
     <div class="col-sm-{{colInput}}">

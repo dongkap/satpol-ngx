@@ -26,7 +26,7 @@ export class ExerciseCheckboxComponent {
       name: 'Three',
       id: 'three',
       selected: false,
-      disabled: false,
+      disabled: true,
     },
     {
       name: 'Four',
@@ -45,7 +45,6 @@ export class ExerciseCheckboxComponent {
 
   public disabledData = [{
       id: 'disabled',
-      disabled: true,
   }];
 
   constructor(
@@ -65,7 +64,7 @@ export class ExerciseCheckboxComponent {
             id: 'disabled',
             selected: true,
           }],
-          disabled: false,
+          disabled: true,
         }],
         skeletonCheckbox: [{
           value: null,

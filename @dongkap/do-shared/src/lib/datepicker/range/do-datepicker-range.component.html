@@ -6,18 +6,25 @@
   [warnMessage]="warnMessage"
   [skeleton]="skeleton">
   <div class="col-sm-{{colInput}}" *ngIf="!skeleton; else contentskeleton">
-    <nb-checkbox
+    <input
+      id="{{name}}"
+      [placeholder]="placeholder ? (placeholder | translate) : ''"
+      [required]="required"
+      [disabled]="disabled || skeleton"
       [ngClass]="{
-        'do-checkbox': true,
-        'status-danger': hasErrors
+        'status-danger': hasErrors,
+        'status-success': hasSuccess
       }"
-      *ngFor="let item of (value || data)"
-      [disabled]="item.disabled || disabled"
-      [checked]="item.selected"
-      [(ngModel)]="item.selected"
-      (change)="onCheckedChange()">
-      {{item.name | translate}}
-    </nb-checkbox>
+      (input)="onChange($event.target.value)"
+      (change)="onChange($event.target.value)"
+      [(ngModel)]="value"
+      [nbDatepicker]="rangepicker"
+      #input nbInput fullWidth>
+      <nb-rangepicker
+        [format]="format"
+        [size]="size"
+        #rangepicker>
+      </nb-rangepicker>
   </div>
   <ng-template #contentskeleton>
     <div class="col-sm-{{colInput}}">
