@@ -7,6 +7,8 @@
 	"Password": "Kata Sandi",
 	"Date": "Tanggal",
 	"Login": "Masuk",
+	"Force Login": "Paksa Masuk",
+	"Login Warning": "Peringatan Masuk",
 	"Register": "Daftar",
 	"Logout": "Keluar",
 	"Settings": "Pengaturan",
@@ -44,6 +46,9 @@
 	"Delete": "Hapus",
 	"Cancel": "Batal",
 	"Close": "Keluar",
+	"Role": "Peran",
+	"Roles": "Peran",
+	"Switch": "Ganti",
 	"Parameter Group": "Grup Parameter",
 	"Parameter Code": "Kode Parameter",
 	"Parameter Value": "Nilai Parameter",
@@ -69,6 +74,7 @@
 	"Agree": "Setuju",
 	"Description": "Deskripsi",
 	"Authority": "Wewenang",
+	"Authority Code": "Kode Wewenang",
 	"Title": "Judul",
 	"Group": "Grup",
 	"Root": "Akar",
@@ -80,6 +86,10 @@
 	"Total": "Total",
 	"Place of Birth": "Tempat Lahir",
 	"Date of Birth": "Tanggal Lahir",
+	"Permissions": "Izin",
+	"Click here": "Klik disini",
+	"Show More": "tampilkan lebih banyak",
+	"Show Less": "tampilkan lebih sedikit",
 	"message": {
 		"username-login": "Username atau email",
 		"username-login-placeholder": "Username / Email",
@@ -111,7 +121,9 @@
 			"username": "Pastikan username tidak memuat spesial karakter",
 			"email": "Silakan masukkan alamat email yang valid!",
 			"Password": "Pastikan setidaknya 8 karakter termasuk angka, huruf kecil, dan huruf besar",
+			"password": "Pastikan setidaknya 8 karakter termasuk angka, huruf kecil, dan huruf besar",
 			"newPassword": "Pastikan setidaknya 8 karakter termasuk angka, huruf kecil, dan huruf besar",
+			"name": "Silakan masukkan nama yang valid!",
 			"general": "Silakan masukkan data yang valid!",
 			"date": "Silakan masukkan tanggal yang valid!",
 			"phoneNumber": "Silakan masukkan format nomor telepon yang valid!",
@@ -164,6 +176,8 @@
 	"User is disabled": "Akun sudah dinonaktifkan",
 	"User account has expired": "Akun sudah kadaluwarsa",
 	"User credentials have expired": "Kredensial akun sudah kedaluwarsa",
+	"LDAP Server Error": "Terjadi Kesalahan di server LDAP",
+	"Invalid credentials.": "Username atau Kata Sandi salah",
 	"select": {
 		"notfound": "Data tidak ditemukan",
 		"typesearch": "Silakan masukkan {{value}} karakter atau lebih"
@@ -172,7 +186,9 @@
 		"typesearch": "Ketik untuk menelusuri"
 	},
 	"subtitle": {
-		"login" : "Halo! Masuk dengan username atau email Anda.",
+		"login" : "Masuk ke akun Anda",
+		"force" : "Your account is being used",
+		"force-footer" : "Masuk sebagai orang lain?",
 		"forgot-password" : "Masukkan email Anda, kami akan mengirimkan tautan untuk menyetel ulang kata sandi Anda",
 		"reset-password" : "Masukan kata sandi baru Anda"
 	},
@@ -187,6 +203,8 @@
 		"edit": "Apakah Anda ingin memperbarui data ini?"
 	},
 	"header": {
+		"cdc-monitoring": "Monitoring CDC",
+		"area-management": "Manajemen Area",
 		"parameter" : "Parameter {{value}}",
 		"function-control-list": "Kontrol Fungsi",
 		"function-control": "Kontrol Fungsi : {{value}}",
@@ -212,5 +230,8 @@
 	"tab": {
 		"main-menu": "Menu Utama",
 		"extra-menu": "Menu Tambahan"
+	},
+	"notification": {
+		"default": "Permintaan berhasil dilakukan"
 	}
 }

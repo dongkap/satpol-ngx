@@ -7,6 +7,8 @@
 	"Password": "Password",
 	"Date": "Date",
 	"Login": "Login",
+	"Force Login": "Force Login",
+	"Login Warning": "Login Warning",
 	"Register": "Register",
 	"Logout": "Logout",
 	"Settings": "Settings",
@@ -44,6 +46,9 @@
 	"Delete": "Delete",
 	"Cancel": "Cancel",
 	"Close": "Close",
+	"Role": "Role",
+	"Roles": "Roles",
+	"Switch": "Switch",
 	"Parameter Group": "Parameter Group",
 	"Parameter Code": "Parameter Code",
 	"Parameter Value": "Parameter Value",
@@ -69,6 +74,7 @@
 	"Agree": "Agree",
 	"Description": "Description",
 	"Authority": "Authority",
+	"Authority Code": "Authority Code",
 	"Title": "Title",
 	"Group": "Group",
 	"Root": "Root",
@@ -80,6 +86,10 @@
 	"Total": "Total",
 	"Place of Birth": "Place of Birth",
 	"Date of Birth": "Date of Birth",
+	"Permissions": "Permissions",
+	"Click here": "Click here",
+	"Show More": "show more",
+	"Show Less": "show less",
 	"message": {
 		"username-login": "Username or email",
 		"username-login-placeholder": "Username / Email",
@@ -111,7 +121,9 @@
 			"username": "Make sure the username doesn't contain special characters",
 			"email": "Please enter valid email address!",
 			"Password": "Make sure it's at least 8 characters including a number, a lowercase, and uppercase letter",
+			"password": "Make sure it's at least 8 characters including a number, a lowercase, and uppercase letter",
 			"newPassword": "Make sure it's at least 8 characters including a number, a lowercase, and uppercase letter",
+			"name": "Please enter valid name!",
 			"general": "Please enter valid data!",
 			"date": "Please enter valid date!",
 			"phoneNumber": "Please enter valid Telephone Number!",
@@ -164,6 +176,8 @@
 	"User is disabled": "Account has been deactivated",
 	"User account has expired": "Account has been expired",
 	"User credentials have expired": "Account credentials has been expired",
+	"LDAP Server Error": "LDAP Server Error",
+	"Invalid credentials.": "Incorrect Username or Password",
 	"select": {
 		"notfound": "No items found",
 		"typesearch": "Please enter {{value}} or more characters"
@@ -172,7 +186,9 @@
 		"typesearch": "Type to search"
 	},
 	"subtitle": {
-		"login" : "Hello! Login with your username or email.",
+		"login" : "Sign In to your account",
+		"force" : "Your account is being used",
+		"force-footer" : "Logged in as someone else?",
 		"forgot-password" : "Enter your email address and we’ll send a link to reset your password",
 		"reset-password" : "Enter your new password"
 	},
@@ -187,6 +203,8 @@
 		"edit": "Do you want to update this data?"
 	},
 	"header": {
+		"cdc-monitoring": "CDC Monitoring",
+		"area-management": "Area Management",
 		"parameter" : "Parameter {{value}}",
 		"function-control-list": "Function Control",
 		"function-control": "Function Control : {{value}}",
@@ -212,5 +230,8 @@
 	"tab": {
 		"main-menu": "Main Menu",
 		"extra-menu": "Extra Menu"
+	},
+	"notification": {
+		"default": "Request was successful"
 	}
 }
