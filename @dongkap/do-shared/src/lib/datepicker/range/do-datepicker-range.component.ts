@@ -49,6 +49,7 @@ export class DoDatePickerRangeComponent extends ValueAccessorDirective<any> {
           }
         }
       } else {
+        this.onChange(null);
         if (this.ngControl.control.hasError('daterange')) {
           this.disableError();
         }
@@ -56,8 +57,8 @@ export class DoDatePickerRangeComponent extends ValueAccessorDirective<any> {
     }
 
     public writeValue(value: any): void {
-      const dates: any = {};
       if (value) {
+        const dates: any = {};
         const dateStart: Date = new Date(this.parse(value?.start));
         const dateEnd: Date = new Date(this.parse(value?.end));
         if (dateStart.getTime() < dateEnd.getTime()) {
@@ -84,16 +85,14 @@ export class DoDatePickerRangeComponent extends ValueAccessorDirective<any> {
     public onTyped(value: string) {
       if (value) {
         if (value.includes(' - ')) {
-          let result: any = {};
           const arr: any[] = value.split(' - ');
           const dateStart: Date = new Date(this.parse(arr[0]));
           const dateEnd: Date = new Date(this.parse(arr[1]));
           if (dateStart.getTime() <= dateEnd.getTime()) {
-            result = {
+            this.onChange({
               start: formatDate(dateStart, this.format, this.locale),
               end: formatDate(dateEnd, this.format, this.locale),
-            };
-            this.onChange(result);
+            });
           } else{
             this.enableError();
           }
