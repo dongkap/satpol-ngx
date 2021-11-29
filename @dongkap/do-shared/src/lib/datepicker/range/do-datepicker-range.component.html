@@ -16,6 +16,9 @@
         'status-danger': hasErrors,
         'status-success': hasSuccess
       }"
+      (input)="onTyped($event.target.value)"
+      (change)="onTyped($event.target.value)"
+      (blur)="onTouched($event.target.value)"
       [(ngModel)]="value"
       [nbDatepicker]="rangepicker"
       #input nbInput fullWidth>

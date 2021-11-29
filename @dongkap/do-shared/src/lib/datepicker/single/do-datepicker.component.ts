@@ -24,7 +24,7 @@ export class DoDatePickerComponent extends ValueAccessorDirective<Date> {
       public dateService: NbDateService<Date>,
       @Inject(LOCALE_ID) public locale: string) {
       super(ngControl, locale);
-      this.pattern = DatePattern.SLASH;
+      this.pattern = DatePattern.SLASH_DDMMYYYY;
     }
 
     get value(): Date { return this._value; }

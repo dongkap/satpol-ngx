@@ -30,26 +30,32 @@ export class DoDatePickerRangeComponent extends ValueAccessorDirective<any> {
     get value(): any { return this._value; }
 
     set value(value: any) {
-      console.log(value);
-      if (this._value !== value) {
-        this._value = value;
-        if (value?.start && value?.end) {
-          this.onChange({
-            start: formatDate(value?.start, this.format, this.locale),
-            end: formatDate(value?.end, this.format, this.locale),
-          });
+      if (value) {
+        if (this._value !== value) {
+          if (value?.start && value?.end) {
+            this._value = value;
+            this.onChange({
+              start: formatDate(value?.start, this.format, this.locale),
+              end: formatDate(value?.end, this.format, this.locale),
+            });
+            const control = this.ngControl.control;
+            if (control) {
+              control.updateValueAndValidity();
+              control.markAsTouched();
+              control.markAsDirty();
+            }
+          } else{
+            this.enableError();
+          }
         }
-        const control = this.ngControl.control;
-        if (control) {
-          control.updateValueAndValidity();
-          control.markAsTouched();
-          control.markAsDirty();
+      } else {
+        if (this.ngControl.control.hasError('daterange')) {
+          this.disableError();
         }
       }
     }
 
     public writeValue(value: any): void {
-      console.log(value);
       const dates: any = {};
       if (value) {
         const dateStart: Date = new Date(this.parse(value?.start));
@@ -75,11 +81,39 @@ export class DoDatePickerRangeComponent extends ValueAccessorDirective<any> {
       }
     }
 
-    private toFormatDate(value: any): string {
-      const day: string = String(value).split('/')[0];
-      const month: string = String(value).split('/')[1];
-      const year: string = String(value).split('/')[2];
-      return month + '.' + day + '.' + year;
+    public onTyped(value: string) {
+      if (value) {
+        if (value.includes(' - ')) {
+          let result: any = {};
+          const arr: any[] = value.split(' - ');
+          const dateStart: Date = new Date(this.parse(arr[0]));
+          const dateEnd: Date = new Date(this.parse(arr[1]));
+          if (dateStart.getTime() <= dateEnd.getTime()) {
+            result = {
+              start: formatDate(dateStart, this.format, this.locale),
+              end: formatDate(dateEnd, this.format, this.locale),
+            };
+            this.onChange(result);
+          } else{
+            this.enableError();
+          }
+        } else{
+          this.enableError();
+        }
+      } else {
+        if (this.ngControl.control.hasError('daterange')) {
+          this.disableError();
+        }
+      }
+    }
+
+    private enableError() {
+      this.ngControl.control.setErrors({ daterange: true });
+    }
+
+    private disableError() {
+      this.ngControl.control.setErrors({ daterange: false });
+      this.ngControl.control.updateValueAndValidity();
     }
 
     /**
