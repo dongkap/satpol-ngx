@@ -14,6 +14,7 @@ import { EqualValidator } from './directive/equal-validator.directive';
 import { NotEqualValidator } from './directive/not-equal-validator.directive';
 import { DragDropDirective } from './directive/drag-drop.directive';
 import { DoCardCollapseComponent } from './card-collapse/do-card-collapse.component';
+import { MaskedInputDirective } from './directive/text-mask.directive';
 
 export const BASE_COMPONENTS = [
   DoWarnMessageComponent,
@@ -22,6 +23,7 @@ export const BASE_COMPONENTS = [
   DoPageOutletComponent,
   DoCollapseComponent,
   DoCardCollapseComponent,
+  MaskedInputDirective,
 ];
 
 export const BASE_DIRECTIVES = [

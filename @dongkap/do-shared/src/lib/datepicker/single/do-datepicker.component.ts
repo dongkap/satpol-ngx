@@ -3,7 +3,7 @@ import { NgControl } from '@angular/forms';
 import { DatePipe, formatDate } from '@angular/common';
 import { NbCalendarSize, NbDateService } from '@nebular/theme';
 import { DatePattern } from '@dongkap/do-core';
-import { ValueAccessorDirective } from '../base/value-accessor.component';
+import { ValueAccessorDirective } from '../../base/value-accessor.component';
 
 @Component({
   selector: 'do-datepicker',
@@ -17,6 +17,7 @@ export class DoDatePickerComponent extends ValueAccessorDirective<Date> {
     @Input() min: Date;
     @Input() max: Date;
     @Input() size: NbCalendarSize = NbCalendarSize.MEDIUM;
+    @Input() dateMask = [/[0-3]/, /\d/, '/', /[0-1]/, /\d/, '/', /[1-3]/, /\d/, /\d/, /\d/];
 
     constructor(
       @Optional() @Self() ngControl: NgControl,
@@ -29,16 +30,16 @@ export class DoDatePickerComponent extends ValueAccessorDirective<Date> {
     get value(): Date { return this._value; }
 
     set value(value: Date) {
-        if (this._value !== value) {
-            this._value = value;
-            this.onChange(formatDate(value, this.format, this.locale));
-            const control = this.ngControl.control;
-            if (control) {
-                control.updateValueAndValidity();
-                control.markAsTouched();
-                control.markAsDirty();
-            }
+      if (this._value !== value) {
+        this._value = value;
+        this.onChange(formatDate(value, this.format, this.locale));
+        const control = this.ngControl.control;
+        if (control) {
+          control.updateValueAndValidity();
+          control.markAsTouched();
+          control.markAsDirty();
         }
+      }
     }
 
     public writeValue(value: any): void {

@@ -9,6 +9,7 @@
     <input
       id="{{name}}"
       [pattern]="pattern"
+      [do-mask]="{mask: dateMask, guide: false}"
       [placeholder]="placeholder ? (placeholder | translate) : ''"
       [required]="required"
       [disabled]="disabled || skeleton"
@@ -20,14 +21,14 @@
       (change)="onChange($event.target.value)"
       (blur)="onTouched($event.target.value)"
       [(ngModel)]="value"
-      [nbDatepicker]="ngxdatepicker"
+      [nbDatepicker]="dodatepicker"
       #input nbInput fullWidth>
       <nb-datepicker
         [format]="format"
         [size]="size"
         [min]="min"
         [max]="max"
-        #ngxdatepicker>
+        #dodatepicker>
       </nb-datepicker>
   </div>
   <ng-template #contentskeleton>

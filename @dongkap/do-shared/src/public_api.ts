@@ -26,6 +26,7 @@ export { DoCollapseComponent } from './lib/base/collapse/do-collapse.component';
 export { EqualValidator } from './lib/base/directive/equal-validator.directive';
 export { NotEqualValidator } from './lib/base/directive/not-equal-validator.directive';
 export { DragDropDirective } from './lib/base/directive/drag-drop.directive';
+export { MaskedInputDirective } from './lib/base/directive/text-mask.directive';
 export { DoCardCollapseComponent } from './lib/base/card-collapse/do-card-collapse.component';
 
 export { DoDatatableComponent } from './lib/datatable/do-datatable.component';
@@ -60,4 +61,5 @@ export { CheckboxModel } from './lib/checkbox/models/checkbox.model';
 export { DoRadioComponent } from './lib/radio/radio/do-radio.component';
 export { RadioModel } from './lib/radio/models/radio.model';
 
-export { DoDatePickerComponent } from './lib/datepicker/do-datepicker.component';
+export { DoDatePickerComponent } from './lib/datepicker/single/do-datepicker.component';
+export { DoDatePickerRangeComponent } from './lib/datepicker/range/do-datepicker-range.component';

@@ -8,6 +8,7 @@
   <div class="col-sm-{{colInput}}" *ngIf="!skeleton; else contentskeleton">
     <input
       id="{{name}}"
+      [do-mask]="{mask: dateMask, guide: false}"
       [placeholder]="placeholder ? (placeholder | translate) : ''"
       [required]="required"
       [disabled]="disabled || skeleton"
@@ -15,8 +16,6 @@
         'status-danger': hasErrors,
         'status-success': hasSuccess
       }"
-      (input)="onChange($event.target.value)"
-      (change)="onChange($event.target.value)"
       [(ngModel)]="value"
       [nbDatepicker]="rangepicker"
       #input nbInput fullWidth>
