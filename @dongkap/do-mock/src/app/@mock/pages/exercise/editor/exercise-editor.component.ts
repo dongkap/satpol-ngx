@@ -19,7 +19,7 @@ export class ExerciseEditorComponent {
         }],
         address: [{
           value: null,
-          disabled: false,
+          disabled: true,
         }],
         skeletonEditor: [{
           value: null,
