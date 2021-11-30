@@ -3,16 +3,20 @@
     <nb-card>
       <nb-card-header>
         <nav class="navigation">
-            <a href="#" (click)="back()" class="link back-link" aria-label="Back" *ngIf="url">
-                <nb-icon icon="arrow-back"></nb-icon>
-            </a>
-            {{header | translate:param}}
+          <nb-icon icon="arrow-back" class="back-link" pack="eva" (click)="back()"></nb-icon>
+          {{header | translate:param}}
         </nav>
-        <nb-select *ngIf="dataSelect" [selected]="selected" (selectedChange)="onChangeSelect($event)">
-          <nb-option *ngFor="let data of dataSelect" [value]="data">{{ data }}</nb-option>
-        </nb-select>
+        <div class="row">
+          <nb-select *ngIf="dataSelect" [selected]="selected" (selectedChange)="onChangeSelect($event)">
+            <nb-option *ngFor="let data of dataSelect" [value]="data">{{ data }}</nb-option>
+          </nb-select>
+          <nb-icon icon="{{iconToggle}}" class="toggle-icon" pack="eva" (click)="toggleCollapse()"></nb-icon>
+        </div>
       </nb-card-header>
-      <nb-card-body>
+      <nb-card-body
+        (collapsed)="collapsed($event)"
+        (expanded)="expanded($event)"
+        [collapse]="isCollapsed">
         <ng-content select="[pagecontent]"></ng-content>        
       </nb-card-body>
       <nb-card-footer *ngIf="!hidefooter">

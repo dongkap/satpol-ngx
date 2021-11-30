@@ -15,7 +15,11 @@ export class DoPageOutletComponent {
   @Input() public selected: any;
   @Input() public param: any;
   @Input() public hidefooter: boolean = false;
+  @Input() public isCollapsed: boolean = false;
+  @Input() public iconToggle: string = 'arrow-ios-downward-outline';
   @Output() public selectChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onCollapsed: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public onExpanded: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private router: Router) {}
 
@@ -27,6 +31,19 @@ export class DoPageOutletComponent {
   public onChangeSelect(event: any) {
     this.selected = event;
     this.selectChange.emit(event);
+  }
+
+  public collapsed(event: any): void {
+    this.onCollapsed.emit(event);
+  }
+
+  public expanded(event: any): void {
+    this.onExpanded.emit(event);
+  }
+
+  toggleCollapse(): void {
+    this.isCollapsed = !this.isCollapsed;
+    this.iconToggle = this.isCollapsed ? 'arrow-ios-upward-outline' : 'arrow-ios-downward-outline';
   }
 
 }

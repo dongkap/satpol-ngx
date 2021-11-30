@@ -3,6 +3,37 @@
 @import '~@dongkap/do-theme/styles/themes';
 
 @include nb-install() {
+    nb-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: nb-theme(card-header-with-select-padding-top);
+        padding-bottom: nb-theme(card-header-with-select-padding-bottom);
+    }
+
+    .navigation {
+        display: inline-block;
+    }
+
+    .back-link {
+        font-size: 1.25rem;
+        margin: 0.625rem 0.25rem 0.625rem 0;
+        cursor: pointer;
+    }
+    .back-link:hover {
+        color: #3366ff;
+    }
+
+    .toggle-icon {
+        font-size: 1.25rem;
+        margin: 0.625rem 1rem 0.625rem 0.25rem;
+        cursor: pointer;
+        line-height: 1.5em;
+    }
+    .toggle-icon:hover {
+        color: #3366ff;
+    }
+
     .skeleton {
         animation: loading 1.7s infinite linear;
         border-radius: 0.25rem;
@@ -20,31 +51,6 @@
             background-position: 380px;
         }
     }
-}
-
-nb-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: nb-theme(card-header-with-select-padding-top);
-    padding-bottom: nb-theme(card-header-with-select-padding-bottom);
-}
-
-.navigation .link {
-    display: inline-block;
-  
-    nb-icon {
-      color: #3366ff;
-      font-size: 1.25rem;
-      vertical-align: middle;
-      margin-right: 0.25rem;
-    }
-  }
-  
-.back-link {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 0.25rem;
 }
 
 .label-skeleton {
