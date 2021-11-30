@@ -3,14 +3,14 @@
     <nb-card>
       <nb-card-header>
         <nav class="navigation">
-          <nb-icon icon="arrow-back" class="back-link" pack="eva" (click)="back()"></nb-icon>
+          <nb-icon icon="arrow-back" class="back-link" pack="eva" (click)="back()" *ngIf="url"></nb-icon>
           {{header | translate:param}}
         </nav>
         <div class="row">
           <nb-select *ngIf="dataSelect" [selected]="selected" (selectedChange)="onChangeSelect($event)">
             <nb-option *ngFor="let data of dataSelect" [value]="data">{{ data }}</nb-option>
           </nb-select>
-          <nb-icon icon="{{iconToggle}}" class="toggle-icon" pack="eva" (click)="toggleCollapse()"></nb-icon>
+          <nb-icon icon="{{iconToggle}}" class="toggle-icon" pack="eva" (click)="toggleCollapse()" *ngIf="showToggle"></nb-icon>
         </div>
       </nb-card-header>
       <nb-card-body

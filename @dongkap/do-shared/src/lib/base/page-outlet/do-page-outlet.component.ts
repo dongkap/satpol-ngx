@@ -15,6 +15,7 @@ export class DoPageOutletComponent {
   @Input() public selected: any;
   @Input() public param: any;
   @Input() public hidefooter: boolean = false;
+  @Input() public showToggle: boolean = true;
   @Input() public isCollapsed: boolean = false;
   @Input() public iconToggle: string = 'arrow-ios-downward-outline';
   @Output() public selectChange: EventEmitter<any> = new EventEmitter<any>();
