@@ -1,11 +1,10 @@
-import { Component, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'do-button-submit',
   styleUrls: ['./do-button-submit.component.scss'],
   templateUrl: './do-button-submit.component.html',
-  encapsulation: ViewEncapsulation.None,
 })
 export class DoButtonSubmitComponent {
     @Input() formGroupButton: FormGroup = new FormGroup({});

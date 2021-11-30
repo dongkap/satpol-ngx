@@ -1,6 +1,13 @@
-import { Component, Input, Optional, Self, Inject, LOCALE_ID, ViewEncapsulation, ChangeDetectionStrategy, forwardRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  Optional,
+  Self,
+  Inject,
+  LOCALE_ID
+} from '@angular/core';
 import { formatDate } from '@angular/common';
-import { AbstractControl, NgControl, NG_VALUE_ACCESSOR, ValidatorFn } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 import { NbCalendarSize } from '@nebular/theme';
 import { ValueAccessorDirective } from '../../base/value-accessor.component';
 

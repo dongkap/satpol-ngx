@@ -7,6 +7,25 @@
  @import '../../themes';
 
  @include nb-install() {
+  quill-editor[disabled="disabled"] {
+    .ql-toolbar .ql-stroke {
+      stroke: nb-theme(background-basic-color-4);
+      cursor: no-drop !important;
+    }
+    .ql-toolbar .ql-stroke-miter {
+      stroke: nb-theme(background-basic-color-4);
+      cursor: no-drop !important;
+    }
+    .ql-toolbar .ql-fill,
+    .ql-toolbar .ql-stroke.ql-fill {
+      fill: nb-theme(background-basic-color-4);
+      cursor: no-drop !important;
+    }
+    .ql-toolbar .ql-picker {
+      color: nb-theme(background-basic-color-4);
+      cursor: no-drop !important;
+    }
+  }
   .ql-container {
       box-sizing: border-box;
       font-family: Helvetica, Arial, sans-serif;
@@ -17,12 +36,6 @@
       background-color: nb-theme(background-basic-color-3);
     }
     .ql-container.ql-disabled {
-      p {
-        color: rgba(143, 155, 179, 0.48);
-        font-size: 0.9375rem;
-        font-weight: 600;
-        line-height: 1.5rem;
-      }
       .ql-tooltip {
         visibility: hidden;
       }

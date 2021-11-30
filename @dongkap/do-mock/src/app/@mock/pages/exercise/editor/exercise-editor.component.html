@@ -34,5 +34,16 @@
     </div>
   </div>
   <div pagefooter>
+    <do-button-submit
+      (onSubmit)="onSubmit()"
+      [formGroupButton]="formGroup"
+      [name]="'Submit'">
+    </do-button-submit>
+    <do-button-submit
+      (onSubmit)="onReset()"
+      [name]="'Reset'"
+      [status]="'danger'"
+      [type]="'reset'">
+    </do-button-submit>
   </div>
 </do-page-outlet>

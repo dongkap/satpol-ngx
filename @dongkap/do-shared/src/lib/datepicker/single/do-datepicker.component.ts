@@ -1,6 +1,6 @@
 import { Component, Input, Optional, Self, Inject, LOCALE_ID } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { DatePipe, formatDate } from '@angular/common';
+import { formatDate } from '@angular/common';
 import { NbCalendarSize, NbDateService } from '@nebular/theme';
 import { DatePattern } from '@dongkap/do-core';
 import { ValueAccessorDirective } from '../../base/value-accessor.component';

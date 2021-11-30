@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import {
   DoBaseModule,
+  DoButtonModule,
   DoCheckBoxModule,
   DoDatatableModule,
   DoEditorModule,
@@ -33,6 +34,7 @@ import { ExerciseRadioComponent } from './radio/exercise-radio.component';
     CollapseModule.forRoot(),
     ExerciseRoutingModule,
     DoBaseModule,
+    DoButtonModule,
     DoDatatableModule,
     DoInputModule,
     DoSelectModule,
