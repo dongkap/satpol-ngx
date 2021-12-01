@@ -4,18 +4,6 @@
     "outDir": "../../out-tsc/@dongkap/do-mock",
     "baseUrl": "./",
     "paths": {
-      "@dongkap/do-core": [
-        "../../@dongkap/do-core/src"
-      ],
-      "@dongkap/do-core/*": [
-        "../../@dongkap/do-core/src/*"
-      ],
-      "@dongkap/do-theme": [
-        "../../@dongkap/do-theme/src"
-      ],
-      "@dongkap/do-theme/*": [
-        "../../@dongkap/do-theme/src/*"
-      ],
       "@dongkap/do-shared": [
         "../../@dongkap/do-shared/src"
       ],

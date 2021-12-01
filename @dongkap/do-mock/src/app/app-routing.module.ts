@@ -12,8 +12,8 @@ import {
 export const routes: Routes = [
   {
     path: 'pages',
-    loadChildren: () => import('./@mock/mock.module')
-      .then(m => m.MockModule),
+    loadChildren: () => import('./pages/pages.module')
+      .then(m => m.PagesModule),
   },
   {
     path: 'auth',

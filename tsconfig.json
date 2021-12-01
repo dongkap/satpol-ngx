@@ -35,6 +35,9 @@
       ],
       "@dongkap/do-shared": [
         "@dongkap/do-shared/src"
+      ],
+      "@dongkap/do-auth": [
+        "@dongkap/do-auth/src"
       ]
     }
   },

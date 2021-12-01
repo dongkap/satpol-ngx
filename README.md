@@ -27,20 +27,19 @@ Make sure following software is installed on your PC.
 
   ```
   $ npm install
-  $ npm run start:do-ngx
+  $ npm run start:do-app
   ```
   or
   ```
   $ npm install
   $ npm run install:do-core
   $ npm run install:do-theme
-  $ npm run install:do-common
-  $ npm run install:do-storage
+  $ npm run install:do-shared
   $ npm run install:do-auth
   $ npm run install:do-extra
   $ npm run install:do-sys
-  $ npm run install:do-exercise
-  $ npm run start:do-ngx
+  $ npm run start:do-mock
+  $ npm run start:do-app
   ```
 
 ## Code Scaffolding
@@ -58,6 +57,8 @@ $ ng generate application do-mock --routing=true --prefix=ngx --style=scss
 $ ng generate library do-core --prefix=do
 $ ng generate library do-theme --prefix=do
 $ ng generate library do-shared --prefix=do
+$ ng generate library do-auth --prefix=do
+$ ng generate application do-app --routing=true --prefix=do --style=scss
 ```
 
 ### 3.	Config Library @dongkap/do-core

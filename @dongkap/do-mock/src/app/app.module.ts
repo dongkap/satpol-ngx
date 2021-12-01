@@ -6,7 +6,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LOCALE_ID, NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
@@ -19,13 +19,13 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 
-import { MockModule } from './@mock/mock.module';
-import { API, DoCoreModule, ENVIRONMENT, OAUTH_INFO } from '@dongkap/do-core';
-import { DoThemeModule } from '@dongkap/do-theme';
+import { API, ENVIRONMENT, OAUTH_INFO } from '@dongkap/do-core';
+import { ThemeModule } from './@theme/theme.module';
 import { environment } from '../environments/environment';
 import { APP_BASE_HREF, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { apiPath } from '../configs/api.config';
 import { oauthResource } from '../configs/security.config';
+import { CoreModule } from './@core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,29 +43,13 @@ import { oauthResource } from '../configs/security.config';
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
-    DoCoreModule.forRoot(),
-    DoThemeModule.forRoot(),
-    MockModule.forRoot(),
+    CoreModule.forRoot(),
+    ThemeModule.forRoot()
   ],
   providers: [
     {
-      provide: LOCALE_ID, useValue: environment.locale,
-    },
-    {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
-    },
-    {
-      provide: APP_BASE_HREF, useValue: environment.basePath,
-    },
-    {
-      provide: ENVIRONMENT, useValue: environment,
-    },
-    {
-      provide: API, useValue: apiPath,
-    },
-    {
-      provide: OAUTH_INFO, useValue: oauthResource,
     },
   ],
   bootstrap: [AppComponent],

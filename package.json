@@ -8,17 +8,21 @@
     }
   ],
   "scripts": {
+    "start:do-app": "ng serve @dongkap/do-app --port 4200",
     "start:do-mock": "ng serve @dongkap/do-mock --port 4300",
     "build:do-core": "ng build @dongkap/do-core",
     "build:do-theme": "ng build @dongkap/do-theme",
     "build:do-shared": "ng build @dongkap/do-shared",
+    "build:do-auth": "ng build @dongkap/do-auth",
     "copy:do-theme": "node node_modules/cpx/bin \"./@dongkap/do-theme/src/styles/**/*\" \"./dist/@dongkap/do-theme/styles\"",
     "p:do-core": "npm run build:do-core && cd dist/@dongkap/do-core && npm pack",
     "p:do-theme": "npm run build:do-theme && npm run copy:do-theme && cd dist/@dongkap/do-theme && npm pack",
     "p:do-shared": "npm run build:do-shared && cd dist/@dongkap/do-shared && npm pack",
+    "p:do-auth": "npm run build:do-auth && cd dist/@dongkap/do-auth && npm pack",
     "install:do-core": "npm run p:do-core && npm r @dongkap/do-core && npm i -O ./dist/@dongkap/do-core/dongkap-do-core-0.0.1.tgz",
     "install:do-theme": "npm run p:do-theme && npm r @dongkap/do-theme && npm i -O ./dist/@dongkap/do-theme/dongkap-do-theme-0.0.1.tgz",
     "install:do-shared": "npm run p:do-shared && npm r @dongkap/do-shared && npm i -O ./dist/@dongkap/do-shared/dongkap-do-shared-0.0.1.tgz",
+    "install:do-auth": "npm run p:do-auth && npm r @dongkap/do-auth && npm i -O ./dist/@dongkap/do-auth/dongkap-do-auth-0.0.1.tgz",
     "ng": "ng",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
@@ -73,7 +77,6 @@
     "leaflet": "1.2.0",
     "nebular-icons": "1.1.0",
     "ng-recaptcha": "^8.0.1",
-    "ng2-smart-table": "^1.6.0",
     "ngx-bootstrap": "^7.1.0",
     "ngx-echarts": "^4.2.2",
     "ngx-mask": "^12.0.0",
@@ -127,6 +130,7 @@
     "typescript": "^4.2.3"
   },
   "optionalDependencies": {
+    "@dongkap/do-auth": "file:dist/@dongkap/do-auth/dongkap-do-auth-0.0.1.tgz",
     "@dongkap/do-core": "file:dist/@dongkap/do-core/dongkap-do-core-0.0.1.tgz",
     "@dongkap/do-shared": "file:dist/@dongkap/do-shared/dongkap-do-shared-0.0.1.tgz",
     "@dongkap/do-theme": "file:dist/@dongkap/do-theme/dongkap-do-theme-0.0.1.tgz"
