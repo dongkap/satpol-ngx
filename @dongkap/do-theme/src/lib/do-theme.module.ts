@@ -15,24 +15,28 @@ import {
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { DefaultLayoutComponent } from './layouts/layout.component';
+import { LayoutService } from './services/layout.service';
+import { StateService } from './services/state.service';
+import { AnalyticsService } from './services/analytics.service';
+import { SeoService } from './services/seo.service';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { PluralPipe } from './pipes/plural.pipe';
 import { RoundPipe } from './pipes/round.pipe';
 import { TimingPipe } from './pipes/timing.pipe';
 import { NumberWithCommasPipe } from './pipes/number-with-commas.pipe';
-import { OneColumnLayoutComponent } from './layouts/one-column/one-column.layout';
-import { TwoColumnsLayoutComponent } from './layouts/two-columns/two-columns.layout';
-import { ThreeColumnsLayoutComponent } from './layouts/three-columns/three-columns.layout';
 import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
 import { DARK_THEME } from './styles/theme.dark';
 
 const NB_MODULES = [
+  TranslateModule,
   NbLayoutModule,
   NbMenuModule,
   NbUserModule,
@@ -50,9 +54,13 @@ const THEME_COMPONENTS = [
   HeaderComponent,
   FooterComponent,
   SearchInputComponent,
-  OneColumnLayoutComponent,
-  ThreeColumnsLayoutComponent,
-  TwoColumnsLayoutComponent,
+  DefaultLayoutComponent,
+];
+const THEME_PROVIDERS = [
+  LayoutService,
+  StateService,
+  AnalyticsService,
+  SeoService,
 ];
 const THEME_PIPES = [
   CapitalizePipe,
@@ -72,6 +80,7 @@ export class DoThemeModule {
     return {
       ngModule: DoThemeModule,
       providers: [
+        ...THEME_PROVIDERS,
         ...NbThemeModule.forRoot(
           {
             name: 'default',

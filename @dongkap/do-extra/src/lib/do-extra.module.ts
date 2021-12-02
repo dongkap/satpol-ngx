@@ -1,0 +1,59 @@
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NbCardModule, NbDialogModule, NbAlertModule, NbIconModule } from '@nebular/theme';
+import { DoThemeModule } from '@dongkap/do-theme';
+import {
+  DoInputModule,
+  DoButtonModule,
+  DoBaseModule,
+  DoCheckBoxModule,
+  DoEditorModule,
+  DoSelectModule,
+  DoDatePickerModule,
+} from '@dongkap/do-shared';
+import { ChangePasswordPageComponent } from './password/change-password-page.component';
+import { ExtraComponent } from './do-extra.component';
+import { DoExtraRoutingModule } from './do-extra-routing.module';
+import { SecurityPageComponent } from './security/security-page.component';
+import { DeactivatedPromptComponent } from './security/prompt/deactivated-prompt.component';
+import { HomePageComponent } from './home/home-page.component';
+import { TermsConditionsPageComponent } from './terms/terms-conditions-page.component';
+import { PrivacyPolicyPageComponent } from './privacy-policy/privacy-policy-page.component';
+import { DeactivatedProviderPromptComponent } from './security/prompt/deactivated-provider-prompt.component';
+import { TranslateModule } from '@ngx-translate/core';
+
+const EXTRA_COMPONENTS = [
+  ExtraComponent,
+  ChangePasswordPageComponent,
+  DeactivatedPromptComponent,
+  DeactivatedProviderPromptComponent,
+  SecurityPageComponent,
+  HomePageComponent,
+  TermsConditionsPageComponent,
+  PrivacyPolicyPageComponent,
+];
+
+@NgModule({
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    NbCardModule,
+    NbAlertModule,
+    NbIconModule,
+    NbDialogModule.forChild(),
+    DoThemeModule,
+    DoInputModule,
+    DoCheckBoxModule,
+    DoButtonModule,
+    DoBaseModule,
+    DoEditorModule,
+    DoSelectModule,
+    DoDatePickerModule,
+    DoExtraRoutingModule,
+  ],
+  declarations: [
+    ...EXTRA_COMPONENTS,
+  ],
+})
+export class DoExtraModule { }

@@ -38,6 +38,9 @@
       ],
       "@dongkap/do-auth": [
         "@dongkap/do-auth/src"
+      ],
+      "@dongkap/do-extra": [
+        "@dongkap/do-extra/src"
       ]
     }
   },

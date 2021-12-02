@@ -4,12 +4,16 @@ import { NbMenuModule } from '@nebular/theme';
 import { DoThemeModule } from '@dongkap/do-theme';
 import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
+import { DoExtraModule } from '@dongkap/do-extra';
+import { MiscellaneousModule } from '@dongkap/do-auth';
 
 @NgModule({
   imports: [
     PagesRoutingModule,
-    DoThemeModule,
     NbMenuModule,
+    DoThemeModule,
+    MiscellaneousModule,
+    DoExtraModule,
   ],
   declarations: [
     PagesComponent

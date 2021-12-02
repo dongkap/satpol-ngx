@@ -19,22 +19,12 @@ import { StorageMaskService } from './services/storage/storage-mask.service';
 import { HttpCommonService } from './services/utils/http-common.service';
 import { TranslationService } from './services/utils/translation.service';
 
-import { LayoutService } from './services/utils/layout.service';
-import { AnalyticsService } from './services/utils/analytics.service';
-import { StateService } from './services/utils/state.service';
-import { SeoService } from './services/utils/seo.service';
-
 export const CORE_PROVIDERS = [
   CustomPreloadingStrategy,
   EncryptionService,
   { provide: HTTP_SERVICE, useClass: HttpCommonService},
   { provide: ErrorHandler, useClass: ErrorHandlerService},
   { provide: STORAGE_SERVICE, useClass: StorageMaskService },
-
-  AnalyticsService,
-  LayoutService,
-  SeoService,
-  StateService,
 ];
 
 export function createTranslateLoader(http: HttpClient) {

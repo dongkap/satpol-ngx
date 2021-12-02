@@ -6,7 +6,8 @@
 import { Component, OnInit, LOCALE_ID, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NbThemeService } from '@nebular/theme';
-import { AnalyticsService, Pattern, SeoService } from '@dongkap/do-core';
+import { Pattern } from '@dongkap/do-core';
+import { AnalyticsService, SeoService } from '@dongkap/do-theme';
 import { SettingsIndexedDBService } from '@dongkap/do-auth';
 import { IndexedDBDistributionService } from './services/indexeddb-dist.service';
 

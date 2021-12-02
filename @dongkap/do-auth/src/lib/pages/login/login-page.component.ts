@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { NbAuthSocialLink } from '@nebular/auth';
 import { NbDialogService } from '@nebular/theme';
@@ -17,7 +18,6 @@ import { APIModel } from '@dongkap/do-core';
 import { HttpFactoryService } from '@dongkap/do-core';
 import { SecurityResourceModel } from '@dongkap/do-core';
 import { AuthTokenService } from '../../services/auth-token.service';
-import { takeUntil } from 'rxjs/operators';
 import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component';
 
 @Component({
@@ -29,10 +29,10 @@ export class LoginPageComponent implements OnDestroy {
 
   public responseError: any;
   public buttonLogin: boolean = false;
-  private progressBar: number = 25;
+  private progress: number = 25;
   protected destroy$: Subject<any> = new Subject<any>();
 
-  public form: FormGroup = new FormGroup({
+  public formGroup: FormGroup = new FormGroup({
     username: new FormControl(),
     password: new FormControl(),
   });
@@ -59,7 +59,6 @@ export class LoginPageComponent implements OnDestroy {
     @Inject(OAUTH_INFO)private oauthResource: SecurityResourceModel,
     route: ActivatedRoute) {
     if (route.snapshot.queryParams['error']) {
-      console.log(route.snapshot.queryParams['error']);
       this.responseError = 'error.' + route.snapshot.queryParams['error'];
     }
   }
@@ -71,100 +70,79 @@ export class LoginPageComponent implements OnDestroy {
   }
 
   public login() {
-    if (!this.form.invalid) {
-      document.querySelectorAll('.pace-done').forEach(pace => {
-        pace.className = pace.className.replace('pace-done pace-done', 'pace-running');
-        pace.className = pace.className.replace('pace-done', 'pace-running');
-      });
-      document.querySelectorAll('.pace-inactive').forEach(pace => {
-        pace.className = pace.className.replace('pace-inactive pace-inactive', 'pace-active');
-        pace.className = pace.className.replace('pace-inactive', 'pace-active');
-      });
-      const progressDOM = document.getElementsByClassName('pace-progress').item(0) as HTMLElement;
-      if (this.progressBar < 35) {
-        this.progressBar = 35;
-        progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-        progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-        progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
+    if (!this.formGroup.invalid) {
+      const progressDOM = this.initiateProgress();
+      if (this.progress < 35) {
+        this.progressBar(progressDOM, this.progress = 35);
       }
       this.buttonLogin = true;
       this.authTokenService.login(
-        this.form.get('username').value,
-        this.form.get('password').value)
+        this.formGroup.get('username').value,
+        this.formGroup.get('password').value)
         .then(() => {
+          this.progressBar(progressDOM, this.progress = 95);
+          this.progress = 0;
           this.responseError = null;
-          this.progressBar = 90;
-          progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-          progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-          progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-          this.progressBar = 0;
           this.router.navigate(['/app/home']);
         })
         .catch((error: any) => {
-          if (!(error instanceof HttpErrorResponse)) {
-            const response: ApiBaseResponse = (<ApiBaseResponse> error);
-            this.responseError = response.respStatusMessage[response.respStatusCode];
+          try {
+            if (error instanceof HttpErrorResponse) {
+              error = error['error'] as ApiBaseResponse;
+            }
+            const response: ApiBaseResponse = (error as ApiBaseResponse);
+            this.responseError = response?.respStatusMessage[response?.respStatusCode];
+          } catch (error) {
+            this.responseError = 'error.500';
           }
+          this.progress = 0;
           this.buttonLogin = false;
-          this.progressBar = 85;
-          progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-          progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-          progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-          document.querySelectorAll('.pace-running').forEach(pace => {
-            pace.className = pace.className.replace('pace-running', 'pace-done');
-          });
-          document.querySelectorAll('.pace-active').forEach(pace => {
-            pace.className = pace.className.replace('pace-active', 'pace-inactive');
-          });
-          this.progressBar = 0;
+          this.reinitProgress();
         });
-      if (this.progressBar >= 35 && this.progressBar < 65) {
-        this.progressBar = 65;
-        progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-        progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-        progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
+      if (this.progress >= 35 && this.progress < 65) {
+        this.progressBar(progressDOM, this.progress = 65);
       }
     }
   }
 
   get hasErrorUsername(): boolean {
     return (
-      this.form.controls['username'] &&
-      this.form.controls['username'].invalid &&
-      this.form.controls['username'].touched
+      this.formGroup.controls['username'] &&
+      this.formGroup.controls['username'].invalid &&
+      this.formGroup.controls['username'].touched
     );
   }
 
   get hasSuccessUsername(): boolean {
     return (
-      this.form.controls['username'] &&
-      this.form.controls['username'].valid &&
-      this.form.controls['username'].touched
+      this.formGroup.controls['username'] &&
+      this.formGroup.controls['username'].valid &&
+      this.formGroup.controls['username'].touched
     );
   }
 
   get hasErrorPassword(): boolean {
     return (
-      this.form.controls['password'] &&
-      this.form.controls['password'].invalid &&
-      this.form.controls['password'].touched
+      this.formGroup.controls['password'] &&
+      this.formGroup.controls['password'].invalid &&
+      this.formGroup.controls['password'].touched
     );
   }
 
   get hasSuccessPassword(): boolean {
     return (
-      this.form.controls['password'] &&
-      this.form.controls['password'].valid &&
-      this.form.controls['password'].touched
+      this.formGroup.controls['password'] &&
+      this.formGroup.controls['password'].valid &&
+      this.formGroup.controls['password'].touched
     );
   }
 
   public onClickTermsConditions() {
     const data: any = {
-      'parameterCode': 'TERMS_CONDITIONS.DONGKAP'
+      parameterCode: 'TERMS_CONDITIONS.DONGKAP'
     };
     const httpHeaders: HttpHeaders = new HttpHeaders({
-      'Authorization': 'Basic ' + btoa(this.oauthResource['client_id'] + ':' + this.oauthResource['client_secret']),
+      Authorization: 'Basic ' + btoa(this.oauthResource['client_id'] + ':' + this.oauthResource['client_secret']),
       'Content-Type': 'application/json',
       'Accept-Language': this.translate.currentLang,
     });
@@ -178,6 +156,33 @@ export class LoginPageComponent implements OnDestroy {
         },
         });
     });
+  }
+
+  private initiateProgress(): HTMLElement {
+    document.querySelectorAll('.pace-done').forEach(pace => {
+      pace.className = pace.className.replace('pace-done pace-done', 'pace-running');
+      pace.className = pace.className.replace('pace-done', 'pace-running');
+    });
+    document.querySelectorAll('.pace-inactive').forEach(pace => {
+      pace.className = pace.className.replace('pace-inactive pace-inactive', 'pace-active');
+      pace.className = pace.className.replace('pace-inactive', 'pace-active');
+    });
+    return document.getElementsByClassName('pace-progress').item(0) as HTMLElement;
+  }
+
+  private reinitProgress() {
+    document.querySelectorAll('.pace-running').forEach(pace => {
+      pace.className = pace.className.replace('pace-running', 'pace-done');
+    });
+    document.querySelectorAll('.pace-active').forEach(pace => {
+      pace.className = pace.className.replace('pace-active', 'pace-inactive');
+    });
+  }
+
+  private progressBar(progressDOM: HTMLElement, progress: number) {
+    progressDOM.style.transform = 'translate3d(' + progress + '%, 0px, 0px)';
+    progressDOM.getAttributeNode('data-progress-text').value = progress + '%';
+    progressDOM.getAttributeNode('data-progress').value = progress.toString();
   }
 
 }
