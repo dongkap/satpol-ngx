@@ -20,7 +20,7 @@ import { User } from '@dongkap/do-core';
       </nb-layout-column>
 
       <nb-layout-footer fixed>
-        <ngx-footer></ngx-footer>
+        <do-footer></do-footer>
       </nb-layout-footer>
     </nb-layout>
   `,

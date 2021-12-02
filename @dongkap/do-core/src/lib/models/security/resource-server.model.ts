@@ -65,8 +65,8 @@ export interface OauthInfoModel {
 
 export const signatureHeader = {
     authorization: 'Authorization',
-    signature: 'X-BCAFLITECORE-Signature',
-    timestamp: 'X-BCAFLITECORE-Timestamp',
-    key: 'X-BCAFLITECORE-Key',
-    mark: 'X-BCAFLITECORE-Mark',
+    signature: 'X-DONGKAP-Signature',
+    timestamp: 'X-DONGKAP-Timestamp',
+    key: 'X-DONGKAP-Key',
+    mark: 'X-DONGKAP-Mark',
 };

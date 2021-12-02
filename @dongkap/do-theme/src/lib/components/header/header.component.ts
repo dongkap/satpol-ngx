@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import {
@@ -27,7 +28,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private menuService: NbMenuService,
               private themeService: NbThemeService,
               private breakpointService: NbMediaBreakpointsService,
-              private layoutService: LayoutService) {
+              private layoutService: LayoutService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -52,7 +54,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   navigateHome() {
-    this.menuService.navigateHome();
+    this.router.navigate(['/app/home']);
     return false;
   }
 }

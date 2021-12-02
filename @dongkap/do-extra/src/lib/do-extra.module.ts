@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbCardModule, NbDialogModule, NbAlertModule, NbIconModule } from '@nebular/theme';
+import { NbCardModule, NbDialogModule, NbAlertModule, NbIconModule, NbButtonModule } from '@nebular/theme';
 import { DoThemeModule } from '@dongkap/do-theme';
 import {
   DoInputModule,
@@ -41,6 +41,7 @@ const EXTRA_COMPONENTS = [
     NbCardModule,
     NbAlertModule,
     NbIconModule,
+    NbButtonModule,
     NbDialogModule.forChild(),
     DoThemeModule,
     DoInputModule,

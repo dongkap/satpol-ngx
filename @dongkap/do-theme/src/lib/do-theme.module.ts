@@ -1,4 +1,5 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {
   NbActionsModule,
@@ -36,6 +37,7 @@ import { CORPORATE_THEME } from './styles/theme.corporate';
 import { DARK_THEME } from './styles/theme.dark';
 
 const NB_MODULES = [
+  RouterModule,
   TranslateModule,
   NbLayoutModule,
   NbMenuModule,
