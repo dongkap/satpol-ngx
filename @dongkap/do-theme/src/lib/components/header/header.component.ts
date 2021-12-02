@@ -5,7 +5,6 @@ import { Subject } from 'rxjs';
 import {
   NbMediaBreakpointsService,
   NbMenuItem,
-  NbMenuService,
   NbSidebarService,
   NbThemeService,
 } from '@nebular/theme';
@@ -25,7 +24,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
 
   constructor(private sidebarService: NbSidebarService,
-              private menuService: NbMenuService,
               private themeService: NbThemeService,
               private breakpointService: NbMediaBreakpointsService,
               private layoutService: LayoutService,

@@ -33,7 +33,10 @@
             "assets": [
               "@dongkap/do-app/src/assets",
               "@dongkap/do-app/src/favicon.ico",
-              "@dongkap/do-app/src/favicon.png"
+              "@dongkap/do-app/src/favicon.png",
+              "@dongkap/do-ngx/src/ngdo-sw.js",
+              "@dongkap/do-ngx/src/ngsw.json",
+              "@dongkap/do-ngx/src/manifest.webmanifest"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
@@ -90,7 +93,9 @@
                   "replace": "@dongkap/do-app/src/environments/environment.ts",
                   "with": "@dongkap/do-app/src/environments/environment.prod.ts"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "@dongkap/do-app/ngsw-config.json"
             }
           },
           "defaultConfiguration": ""

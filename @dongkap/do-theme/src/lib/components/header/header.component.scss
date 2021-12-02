@@ -54,6 +54,9 @@
   .icon-logo {
     display: none;
   }
+  .image-logo {
+    display: none;
+  }
 
   @include media-breakpoint-down(sm) {
     .control-item {
@@ -68,7 +71,14 @@
       display: none;
     }
     .icon-logo {
-      display: unset;
+      display: unset;;
+    }
+    .image-logo {
+      display: block;
+      background-image: url(/assets/images/logo.png);
+      background-size: 1em;
+      width: 1em;
+      height: 1em;
     }
   }
 

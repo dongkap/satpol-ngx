@@ -1,6 +1,6 @@
 {
-  "name": "@dongkap/do-ngx",
-  "short_name": "@dongkap/do-ngx",
+  "name": "@dongkap/do-app",
+  "short_name": "@dongkap/do-app",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

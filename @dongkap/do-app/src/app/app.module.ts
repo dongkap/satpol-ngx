@@ -57,7 +57,7 @@ import { IndexedDBDistributionService } from './services/indexeddb-dist.service'
     DoCoreModule.forRoot(),
     DoAuthModule.forRoot(),
     // ServiceWorkerModule.register(environment.basePath + 'ngdo-sw.js'),
-    // ServiceWorkerModule.register('/ngdo-sw.js', {enabled: environment.production && location.protocol !== 'http:'}),
+    ServiceWorkerModule.register(environment.basePath + 'ngdo-sw.js', {enabled: environment.production && location.protocol !== 'http:'}),
   ],
   bootstrap: [AppComponent],
   providers: [

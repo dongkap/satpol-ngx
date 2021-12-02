@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'do-footer',
   styleUrls: ['./footer.component.scss'],
   template: `
-  <span class="created-by">© {{year}} {{ 'Dongkap' | translate }}</span>
+  <span class="created-by">© {{year}} {{ 'SMART' | translate }}</span>
   <a [routerLink]="'/app/user/terms'">{{ 'message.terms-conditions' | translate }}</a>
   <a [routerLink]="'/app/user/privacy-policy'">{{ 'message.privacy-policy' | translate }}</a>
   `,
