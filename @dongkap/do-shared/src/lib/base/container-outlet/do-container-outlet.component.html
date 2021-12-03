@@ -4,7 +4,7 @@
     class="col-sm-{{colLabel}}">
     <label
       for="{{name}}"
-      class="col-form-label">
+      class="label col-form-label">
       {{label | translate}}{{ (!nolabel) ? ((required) ? ' *' : '') : '' }}
     </label>
     <label *ngIf="dividerlabel" class="divider-label col-form-label">:</label>
@@ -12,7 +12,7 @@
   <ng-template #labelskeleton>
     <div class="col-sm-{{colLabel}}">
       <label
-        class="col-form-label"
+        class="label col-form-label"
         [ngClass]="{
           'label-skeleton': true,
           'skeleton': skeleton

@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardChildService } from '@dongkap/do-auth';
 import { ParameterComponent } from './do-parameter.component';
-import { ParameterListGroupPageComponent } from './group/list-group/parameter-list-group-page.component';
-import { ParameterAddGroupPageComponent } from './group/add-group/parameter-add-group-page.component';
-import { ParameterListDetailPageComponent } from './detail/parameter-list-detail-page.component';
-import { ParameterDoDetailPageComponent } from './detail/do/parameter-do-detail-page.component';
+import { ParameterListGroupPageComponent } from './parameter-group/list/parameter-list-group-page.component';
+import { ParameterAddGroupPageComponent } from './parameter-group/add/parameter-add-group-page.component';
+import { ParameterListDetailPageComponent } from './parameter-detail/list/parameter-list-detail-page.component';
+import { ParameterAddEditDetailPageComponent } from './parameter-detail/add-edit/parameter-add-edit-detail-page.component';
 
 const routes: Routes = [{
   path: '',
@@ -42,7 +42,7 @@ const routes: Routes = [{
     },
     {
       path: 'detail/:action',
-      component: ParameterDoDetailPageComponent,
+      component: ParameterAddEditDetailPageComponent,
       data: {
         code: '#SYSCONF-PARAMETER-PAGE',
       },

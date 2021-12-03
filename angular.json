@@ -34,9 +34,9 @@
               "@dongkap/do-app/src/assets",
               "@dongkap/do-app/src/favicon.ico",
               "@dongkap/do-app/src/favicon.png",
-              "@dongkap/do-ngx/src/ngdo-sw.js",
-              "@dongkap/do-ngx/src/ngsw.json",
-              "@dongkap/do-ngx/src/manifest.webmanifest"
+              "@dongkap/do-app/src/ngdo-sw.js",
+              "@dongkap/do-app/src/ngsw.json",
+              "@dongkap/do-app/src/manifest.webmanifest"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",

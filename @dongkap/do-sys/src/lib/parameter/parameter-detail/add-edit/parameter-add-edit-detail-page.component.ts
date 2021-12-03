@@ -10,11 +10,11 @@ import { ParameterService } from '../../services/parameter.service';
 import { ParameterModel, ParameterI18nModel, ParameterGroupModel } from '../../models/parameter.model';
 
 @Component({
-  selector: 'do-parameter-do-detail-page',
-  styleUrls: ['./parameter-do-detail-page.component.scss'],
-  templateUrl: './parameter-do-detail-page.component.html',
+  selector: 'do-parameter-add-edit-detail-page',
+  styleUrls: ['./parameter-add-edit-detail-page.component.scss'],
+  templateUrl: './parameter-add-edit-detail-page.component.html',
 })
-export class ParameterDoDetailPageComponent extends BaseFormComponent<any> implements OnInit {
+export class ParameterAddEditDetailPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public action: 'Add' | 'Edit' = 'Add';
   public parameter: ParameterModel = new ParameterModel();

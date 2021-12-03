@@ -4,9 +4,8 @@ import { TableColumn, SelectionType } from '@swimlane/ngx-datatable';
 import { Router } from '@angular/router';
 import { HttpBaseModel } from '@dongkap/do-core';
 import { BaseFilterComponent } from '@dongkap/do-shared';
-import { ParameterService } from '../services/parameter.service';
-import { ParameterGroupModel } from '../models/parameter.model';
-import { ParameterEditGroupCollapseComponent } from '../group/edit-group/parameter-edit-group-collapse.component';
+import { ParameterService } from '../../services/parameter.service';
+import { ParameterGroupModel } from '../../models/parameter.model';
 
 @Component({
   selector: 'do-parameter-list-detail-page',
@@ -27,7 +26,6 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
   ];
   public parameterGroup: ParameterGroupModel = new ParameterGroupModel();
   public expanded: boolean = false;
-  @ViewChild('collapseparameter', {static: false}) collapse: ParameterEditGroupCollapseComponent;
 
   constructor(public injector: Injector, private router: Router, private parameterService: ParameterService) {
     super(injector, {
@@ -69,16 +67,6 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
 
   onReset(): void {
     this.router.navigate(['/app/sysconf/parameter']);
-  }
-
-  back(): boolean {
-    this.router.navigate(['/app/sysconf/parameter']);
-    return false;
-  }
-
-  doExpanded(): void {
-    this.collapse.toggle();
-    this.expanded = !this.expanded;
   }
 
   onSubmit(): void {

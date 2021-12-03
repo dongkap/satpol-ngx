@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbCardModule, NbAlertModule, NbIconModule, NbDialogModule } from '@nebular/theme';
+import { NbCardModule, NbAlertModule, NbIconModule, NbDialogModule, NbButtonModule } from '@nebular/theme';
+import { TranslateModule } from '@ngx-translate/core';
 import { DoThemeModule } from '@dongkap/do-theme';
 import {
   DoInputModule,
@@ -12,21 +13,18 @@ import {
 } from '@dongkap/do-shared';
 import { ParameterComponent } from './do-parameter.component';
 import { DoParameterRoutingModule } from './do-parameter-routing.module';
-import { ParameterListGroupPageComponent } from './group/list-group/parameter-list-group-page.component';
-import { ParameterAddGroupPageComponent } from './group/add-group/parameter-add-group-page.component';
-import { ParameterListDetailPageComponent } from './detail/parameter-list-detail-page.component';
 import { ParameterService } from './services/parameter.service';
-import { ParameterDoDetailPageComponent } from './detail/do/parameter-do-detail-page.component';
-import { ParameterEditGroupCollapseComponent } from './group/edit-group/parameter-edit-group-collapse.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { ParameterListGroupPageComponent } from './parameter-group/list/parameter-list-group-page.component';
+import { ParameterAddGroupPageComponent } from './parameter-group/add/parameter-add-group-page.component';
+import { ParameterListDetailPageComponent } from './parameter-detail/list/parameter-list-detail-page.component';
+import { ParameterAddEditDetailPageComponent } from './parameter-detail/add-edit/parameter-add-edit-detail-page.component';
 
 const components = [
   ParameterComponent,
   ParameterListGroupPageComponent,
   ParameterAddGroupPageComponent,
-  ParameterEditGroupCollapseComponent,
   ParameterListDetailPageComponent,
-  ParameterDoDetailPageComponent,
+  ParameterAddEditDetailPageComponent,
 ];
 
 const modules = [
@@ -36,6 +34,7 @@ const modules = [
   NbCardModule,
   NbAlertModule,
   NbIconModule,
+  NbButtonModule,
   NbDialogModule.forChild(),
   DoThemeModule,
   DoInputModule,
