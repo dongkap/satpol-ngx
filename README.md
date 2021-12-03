@@ -59,6 +59,7 @@ $ ng generate library do-theme --prefix=do
 $ ng generate library do-shared --prefix=do
 $ ng generate library do-auth --prefix=do
 $ ng generate library do-extra --prefix=do
+$ ng generate library do-sys --prefix=do
 $ ng generate application do-app --routing=true --prefix=do --style=scss
 ```
 

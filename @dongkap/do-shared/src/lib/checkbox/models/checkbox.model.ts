@@ -1,6 +1,6 @@
 export interface CheckboxModel {
     name?: string;
-    id: string;
+    id?: string;
     selected: boolean;
     disabled?: boolean;
 }

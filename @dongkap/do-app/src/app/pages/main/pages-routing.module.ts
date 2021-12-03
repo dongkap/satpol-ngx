@@ -13,6 +13,21 @@ const routes: Routes = [{
       component: HomePageComponent,
     },
     {
+      path: 'mgmt/menu',
+      loadChildren: () => import('../sys/sys-mgmt-menu-wrapper.module')
+        .then(m => m.SysMgmtMenuWrapperModule),
+    },
+    {
+      path: 'sysconf/parameter',
+      loadChildren: () => import('../sys/sys-parameter-wrapper.module')
+        .then(m => m.SysParameterWrapperModule),
+    },
+    {
+      path: 'sysconf/i18n',
+      loadChildren: () => import('../sys/sys-locale-wrapper.module')
+        .then(m => m.SysLocaleWrapperModule),
+    },
+    {
       path: 'user',
       loadChildren: () => import('../extra/extra-wrapper.module')
         .then(m => m.ExtraWrapperModule),

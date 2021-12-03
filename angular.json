@@ -457,6 +457,37 @@
           }
         }
       }
+    },
+    "@dongkap/do-sys": {
+      "projectType": "library",
+      "root": "@dongkap/do-sys",
+      "sourceRoot": "@dongkap/do-sys/src",
+      "prefix": "do",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "@dongkap/do-sys/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "@dongkap/do-sys/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "@dongkap/do-sys/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "@dongkap/do-sys/src/test.ts",
+            "tsConfig": "@dongkap/do-sys/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/do-sys/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "@dongkap/do-app"

@@ -33,6 +33,12 @@
       ],
       "@dongkap/do-extra/*": [
         "../../@dongkap/do-extra/src/*"
+      ],
+      "@dongkap/do-sys": [
+        "../../@dongkap/do-sys/src"
+      ],
+      "@dongkap/do-sys/*": [
+        "../../@dongkap/do-sys/src/*"
       ]
     }
   },
