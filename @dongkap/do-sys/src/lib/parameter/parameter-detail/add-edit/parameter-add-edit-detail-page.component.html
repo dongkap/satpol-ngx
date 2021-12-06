@@ -49,35 +49,13 @@
       </form>
     </div>
   </div>
-  <div class="form-group row" pagefooter>
-    <div class="offset-sm-3 col-sm-9" *ngIf="!loadingForm; else buttonskeleton">
-      <button
-        type="reset"
-        status="danger"
-        (click)="onReset()"
-        class="reset-left"
-        nbButton>
-        {{ 'Cancel' | translate}}
-      </button>
-      <button
-        type="submit"
-        status="primary"
-        (click)="onSubmit()"
-        [disabled]="formGroup.invalid || formGroup.pristine || disabled"
-        class="submit-right"
-        nbButton>
-        {{ action | translate}}
-      </button>
-    </div>
-    <ng-template #buttonskeleton>
-      <div class="offset-sm-3 col-sm-9">
-        <div
-          [ngClass]="{
-            'button-skeleton': true,
-            'skeleton': loadingForm
-          }">
-        </div>
-      </div>
-    </ng-template>
-  </div>
+  <do-button-submit
+    [submitTitle]="action"
+    [resetTitle]="'Cancel'"
+    [formGroupButton]="formGroup"
+    [disabledButton]="disabled"
+    (onReset)="onReset()"
+    (onSubmit)="onSubmit()"
+    pagefooter>
+  </do-button-submit>
 </do-page-outlet>

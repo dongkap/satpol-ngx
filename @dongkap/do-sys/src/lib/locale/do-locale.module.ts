@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NbCardModule, NbAlertModule, NbIconModule, NbDialogModule, NbButtonModule } from '@nebular/theme';
+import { NbCardModule, NbAlertModule, NbIconModule, NbDialogModule } from '@nebular/theme';
+import { TranslateModule } from '@ngx-translate/core';
 import { DoThemeModule } from '@dongkap/do-theme';
 import {
   DoInputModule,
@@ -16,7 +17,6 @@ import { DoLocaleRoutingModule } from './do-locale-routing.module';
 import { LocaleAddEditPageComponent } from './add-edit/locale-add-edit-page.component';
 import { LocaleService } from './services/locale.service';
 import { DialogFlagComponent } from './add-edit/dialog-flag/dialog-flag.component';
-import { TranslateModule } from '@ngx-translate/core';
 
 const components = [
   LocaleComponent,
@@ -32,7 +32,6 @@ const modules = [
   NbCardModule,
   NbAlertModule,
   NbIconModule,
-  NbButtonModule,
   NbDialogModule.forChild(),
   DoThemeModule,
   DoInputModule,

@@ -5,3 +5,4 @@
 export { DoLocaleModule } from './lib/locale/do-locale.module';
 export { DoParameterModule } from './lib/parameter/do-parameter.module';
 export { DoMgmtMenuModule } from './lib/menu/do-mgmt-menu.module';
+export { DoMgmtRoleModule } from './lib/role/do-mgmt-role.module';

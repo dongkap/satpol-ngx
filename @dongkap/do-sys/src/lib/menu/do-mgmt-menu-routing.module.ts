@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardChildService } from '@dongkap/do-auth';
 import { MgmtMenuComponent } from './do-mgmt-menu.component';
-import { MenuListPageComponent } from './list/menu-list-page.component';
+import { MenuPageComponent } from './page/menu-page.component';
 
 const routes: Routes = [{
   path: '',
@@ -11,7 +11,7 @@ const routes: Routes = [{
   children: [
     {
       path: '',
-      component: MenuListPageComponent,
+      component: MenuPageComponent,
       data: {
         code: '#MANAGEMENT-MENU-PAGE',
       },

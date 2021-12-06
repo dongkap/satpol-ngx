@@ -10,6 +10,7 @@ import {
   NbButtonModule,
 } from '@nebular/theme';
 import { TreeNgxModule } from 'tree-ngx';
+import { TranslateModule } from '@ngx-translate/core';
 import { DoThemeModule } from '@dongkap/do-theme';
 import {
   DoInputModule,
@@ -20,16 +21,15 @@ import {
   DoDatatableModule,
 } from '@dongkap/do-shared';
 import { MgmtMenuComponent } from './do-mgmt-menu.component';
-import { MenuListPageComponent } from './list/menu-list-page.component';
+import { MenuPageComponent } from './page/menu-page.component';
 import { DoMgmtMenuRoutingModule } from './do-mgmt-menu-routing.module';
 import { MainMenuPageComponent } from './main/main-menu-page.component';
 import { ExtraMenuPageComponent } from './extra/extra-menu-page.component';
 import { DialogIconComponent } from './dialog-icon/dialog-icon.component';
-import { TranslateModule } from '@ngx-translate/core';
 
 const components = [
   MgmtMenuComponent,
-  MenuListPageComponent,
+  MenuPageComponent,
   MainMenuPageComponent,
   ExtraMenuPageComponent,
   DialogIconComponent,

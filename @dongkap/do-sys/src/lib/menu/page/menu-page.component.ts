@@ -8,11 +8,11 @@ import { MainMenuPageComponent } from '../main/main-menu-page.component';
 import { ExtraMenuPageComponent } from '../extra/extra-menu-page.component';
 
 @Component({
-  selector: 'do-menu-list-page',
-  styleUrls: ['./menu-list-page.component.scss'],
-  templateUrl: './menu-list-page.component.html',
+  selector: 'do-menu-page',
+  styleUrls: ['./menu-page.component.scss'],
+  templateUrl: './menu-page.component.html',
 })
-export class MenuListPageComponent extends BaseComponent<any> implements OnInit, OnDestroy {
+export class MenuPageComponent extends BaseComponent<any> implements OnInit, OnDestroy {
 
   public loading: boolean = false;
   public tab: string = 'main';

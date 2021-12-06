@@ -1,4 +1,4 @@
-<do-page-outlet [header]="'header.menu-management'">
+<do-page-outlet [header]="'header.menu-management'" [hidefooter]="true">
   <nb-tabset fullWidth (changeTab)="toggleLoadingAnimation($event)" pagecontent>
     <nb-tab tabId="main" tabTitle="{{'tab.main-menu' | translate}}">
       <do-main-menu-page #mainMenu></do-main-menu-page>

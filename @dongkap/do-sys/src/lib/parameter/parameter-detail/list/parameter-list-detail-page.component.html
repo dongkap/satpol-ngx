@@ -14,27 +14,15 @@
       </form>
     </div>
   </div>
-  <div class="form-group row" pagefooter>
-    <div class="offset-sm-3 col-sm-9">
-      <button
-        type="reset"
-        status="danger"
-        (click)="onReset()"
-        class="reset-left"
-        nbButton>
-        {{ 'Cancel' | translate}}
-      </button>
-      <button
-        type="submit"
-        status="primary"
-        (click)="onSubmit()"
-        [disabled]="formGroup.invalid || formGroup.pristine || disabled"
-        class="submit-right"
-        nbButton>
-        {{ 'Edit' | translate}}
-      </button>
-    </div>
-  </div>
+  <do-button-submit
+    [submitTitle]="'Edit'"
+    [resetTitle]="'Cancel'"
+    [formGroupButton]="formGroup"
+    [disabledButton]="disabled"
+    (onReset)="onReset()"
+    (onSubmit)="onSubmit()"
+    pagefooter>
+  </do-button-submit>
 </do-page-outlet>
 
 <do-page-outlet [url]="'/app/sysconf/parameter'" [header]="'header.parameter'" [param]="{value: parameterGroup.parameterGroupName}" [hidefooter]="true">

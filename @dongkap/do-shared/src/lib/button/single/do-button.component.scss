@@ -2,9 +2,8 @@
 
 @include nb-install-component() {
 
-  nb-tab {
-    flex: 1;
-    padding: 1.5rem 0.25rem !important;
+  button[nbButton] {
+    margin: 0 0.25rem;
   }
 
 }

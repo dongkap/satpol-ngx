@@ -50,6 +50,7 @@ export { SelectResponseModel } from './lib/select/models/select.model';
 
 export { DoToastrService } from './lib/toastr/services/do-toastr.service';
 
+export { DoButtonComponent } from './lib/button/single/do-button.component';
 export { DoButtonSubmitComponent } from './lib/button/submit/do-button-submit.component';
 
 export { DoTextEditorComponent } from './lib/editor/quill/do-text-editor.component';
