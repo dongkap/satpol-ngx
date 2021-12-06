@@ -8,7 +8,7 @@ import { HttpMethod } from './utils/http-base.model';
 import { ApiBaseResponse } from './utils/http-base.model';
 import { LocaleModel } from './utils/locale.model';
 
-import { RoleModel, GroupModel } from './security/role.model';
+import { RoleModel, SystemAuthority } from './security/role.model';
 import { UserModel } from './security/user.model';
 import {
     SecurityResourceModel,
@@ -33,7 +33,7 @@ export {
     HttpMethod,
     LocaleModel,
     RoleModel,
-    GroupModel,
+    SystemAuthority,
 
     UserModel,
     SecurityResourceModel,

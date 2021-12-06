@@ -122,6 +122,16 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/security/001/trx/auth/role/v.1',
         },
+        'select-group': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/vw/auth/select/sys-auth/v.1',
+        },
+        'post-function-role': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/trx/auth/function-role/v.1',
+        },
         'get-profile-other': {
             server: environment.host.security,
             method: HttpMethod.POST,

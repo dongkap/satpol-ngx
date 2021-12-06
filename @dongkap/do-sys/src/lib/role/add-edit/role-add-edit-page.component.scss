@@ -1,7 +1,11 @@
-.reset-left {
-    margin-right: 0.25rem;
-}
+@import '~@dongkap/do-theme/styles/themes';
 
-.submit-right {
-    margin-left: 0.25rem;
+@include nb-install-component() {
+
+  nb-tab {
+    flex: 1;
+    padding-top: 1.5rem !important;
+    padding-left: 0.25rem !important;
+  }
+
 }

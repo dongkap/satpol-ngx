@@ -1,10 +1,10 @@
 export class RoleModel {
     authority: string;
     description?: string;
-    group?: GroupModel;
+    group?: SystemAuthority;
 }
 
-export class GroupModel {
+export class SystemAuthority {
     code: string;
     name: string;
 }
