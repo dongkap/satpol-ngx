@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardChildService } from '@dongkap/do-auth';
 import { ExtraComponent } from './do-extra.component';
 import { SecurityPageComponent } from './security/security-page.component';
+import { SettingsPageComponent } from './settings/settings-page.component';
 import { TermsConditionsPageComponent } from './terms/terms-conditions-page.component';
 import { PrivacyPolicyPageComponent } from './privacy-policy/privacy-policy-page.component';
 
@@ -16,6 +17,13 @@ const routes: Routes = [{
       component: SecurityPageComponent,
       data: {
         code: '#SECURITY-PAGE',
+      },
+    },
+    {
+      path: 'settings',
+      component: SettingsPageComponent,
+      data: {
+        code: '#SETTINGS-PAGE',
       },
     },
     {

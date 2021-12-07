@@ -132,16 +132,6 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/security/001/trx/auth/function-role/v.1',
         },
-        'get-profile-other': {
-            server: environment.host.security,
-            method: HttpMethod.POST,
-            path: '/api/security/001/vw/auth/profile-other/v.1',
-        },
-        'get-profile-system-other': {
-            server: environment.host.security,
-            method: HttpMethod.POST,
-            path: '/api/security/001/vw/auth/profile-system-other/v.1',
-        },
     },
     profile: {
         'change-profile': {
@@ -153,16 +143,6 @@ export const apiPath: APIModel = {
             server: environment.host.profile,
             method: HttpMethod.GET,
             path: '/api/security/002/vw/get/profile/v.1',
-        },
-        'change-profile-system': {
-            server: environment.host.profile,
-            method: HttpMethod.POST,
-            path: '/api/security/002/trx/auth/profile-system/v.1',
-        },
-        'get-profile-system': {
-            server: environment.host.profile,
-            method: HttpMethod.GET,
-            path: '/api/security/002/vw/auth/profile-system/v.1',
         },
     },
     master: {
