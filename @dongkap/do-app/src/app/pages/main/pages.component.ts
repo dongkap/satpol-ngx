@@ -45,11 +45,6 @@ export class PagesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.setExtraMenu();
-    this.translate.onTranslationChange.pipe(takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.setExtraMenu();
-    });
     Promise.all([
       this.profileIndexedDB.get('name'),
       this.profileIndexedDB.get('image-b64'),
@@ -61,8 +56,12 @@ export class PagesComponent implements OnInit, OnDestroy {
         };
       }
     });
-    this.userService.getUser()
-      .pipe(takeUntil(this.destroy$))
+    this.setExtraMenu();
+    this.translate.onTranslationChange.pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.setExtraMenu();
+    });
+    this.userService.onUserChange.pipe(takeUntil(this.destroy$))
       .subscribe((user: User) => this.user = user);
 
   }

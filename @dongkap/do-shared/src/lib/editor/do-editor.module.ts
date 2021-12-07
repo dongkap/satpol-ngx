@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NbInputModule } from '@nebular/theme';
 import { TranslateModule } from '@ngx-translate/core';
 import { QuillModule } from 'ngx-quill';
 import { DoBaseModule } from '../base/do-base.module';
@@ -19,6 +20,7 @@ export const EDITOR_COMPONENTS = [
     ReactiveFormsModule,
     TranslateModule,
     QuillModule.forRoot(),
+    NbInputModule,
     DoBaseModule,
   ],
   declarations: [

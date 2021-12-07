@@ -33,7 +33,7 @@ export class AuthUserService extends UserService {
             });
     }
 
-    public updateNameUser(name: string): Observable<UserModel> {
+    public updateName(name: string): Observable<UserModel> {
         this.profileIndexedDB.put('name', name).then();
         Promise.all([
             this.profileIndexedDB.get('image-b64'),
@@ -54,7 +54,7 @@ export class AuthUserService extends UserService {
         return this.loaderUserSubject$.asObservable();
     }
 
-    public getUser(): Observable<UserModel> {
+    public get onUserChange(): Observable<UserModel> {
         return this.loaderUserSubject$.asObservable();
     }
 

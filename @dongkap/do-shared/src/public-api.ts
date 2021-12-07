@@ -46,7 +46,7 @@ export { DoLabelTextComponent } from './lib/label/do-label-text.component';
 
 export { DoSelectComponent } from './lib/select/do-select.component';
 export { ContentSelectDirective } from './lib/select/directive/content-select.directive';
-export { SelectResponseModel } from './lib/select/models/select.model';
+export { SelectResponseModel, SelectParamModel } from './lib/select/models/select.model';
 
 export { DoToastrService } from './lib/toastr/services/do-toastr.service';
 

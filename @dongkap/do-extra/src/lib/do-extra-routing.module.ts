@@ -4,6 +4,7 @@ import { AuthGuardChildService } from '@dongkap/do-auth';
 import { ExtraComponent } from './do-extra.component';
 import { SecurityPageComponent } from './security/security-page.component';
 import { SettingsPageComponent } from './settings/settings-page.component';
+import { ProfilePageComponent } from './profile/profile-page.component';
 import { TermsConditionsPageComponent } from './terms/terms-conditions-page.component';
 import { PrivacyPolicyPageComponent } from './privacy-policy/privacy-policy-page.component';
 
@@ -12,6 +13,14 @@ const routes: Routes = [{
   component: ExtraComponent,
   canActivateChild: [AuthGuardChildService],
   children: [
+    {
+      path: 'profile',
+      component: ProfilePageComponent,
+      data: {
+        code: '#PROFILE-PAGE',
+        title: 'Profile',
+      },
+    },
     {
       path: 'security',
       component: SecurityPageComponent,

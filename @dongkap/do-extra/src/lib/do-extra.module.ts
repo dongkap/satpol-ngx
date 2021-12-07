@@ -18,6 +18,7 @@ import { DoExtraRoutingModule } from './do-extra-routing.module';
 import { SecurityPageComponent } from './security/security-page.component';
 import { DeactivatedPromptComponent } from './security/prompt/deactivated-prompt.component';
 import { SettingsPageComponent } from './settings/settings-page.component';
+import { ProfilePageComponent } from './profile/profile-page.component';
 import { HomePageComponent } from './home/home-page.component';
 import { TermsConditionsPageComponent } from './terms/terms-conditions-page.component';
 import { PrivacyPolicyPageComponent } from './privacy-policy/privacy-policy-page.component';
@@ -30,6 +31,7 @@ const EXTRA_COMPONENTS = [
   DeactivatedProviderPromptComponent,
   SecurityPageComponent,
   SettingsPageComponent,
+  ProfilePageComponent,
   HomePageComponent,
   TermsConditionsPageComponent,
   PrivacyPolicyPageComponent,

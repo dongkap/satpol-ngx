@@ -90,7 +90,7 @@ export class SettingsPageComponent extends BaseFormComponent<any> implements OnI
       this.localeIdentifier = this.formGroup.get('locale')?.value['label'];
       this.localeIcon = this.formGroup.get('locale')?.value['icon'];
     }
-    let theme: 'dark' | 'default' = 'default';
+    let theme: 'dark' | 'default' | 'cosmic' | 'corporate' = 'default';
     if (this.formGroup.get('theme')?.value) {
       theme = this.formGroup.get('theme')?.value[0].selected ? 'dark' : 'default';
     }
