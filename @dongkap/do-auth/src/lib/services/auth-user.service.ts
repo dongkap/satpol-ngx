@@ -35,19 +35,10 @@ export class AuthUserService extends UserService {
 
     public updateName(name: string): Observable<UserModel> {
         this.profileIndexedDB.put('name', name).then();
-        Promise.all([
-            this.profileIndexedDB.get('image-b64'),
-            this.profileIndexedDB.get('image'),
-        ]).then((value: any[]) => {
-            let picture: string;
-            if (value[0]) {
-                picture = value[0];
-            } else {
-                picture = value[1];
-            }
+        this.profileIndexedDB.get('image').then((image: any) => {
             const user: UserModel = {
                 name,
-                image: picture,
+                image,
             };
             this.loaderUserSubject$.next(user);
         });

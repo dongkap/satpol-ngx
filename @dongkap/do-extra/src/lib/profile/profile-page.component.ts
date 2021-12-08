@@ -24,7 +24,6 @@ import { AuthIndexedDBService } from '@dongkap/do-auth';
 })
 export class ProfilePageComponent extends BaseFormComponent<any> implements OnInit {
 
-  public image: string;
   public formGroupImage: FormGroup;
   public uploadFinished: boolean;
   public patternEmail: string = Pattern.EMAIL;
@@ -94,15 +93,9 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
 
   ngOnInit(): void {
     this.onInit('profile', 'get-profile');
-    Promise.all([
-      this.profileIndexedDB.get('image-b64'),
-      this.profileIndexedDB.get('image'),
-    ]).then((value: any[]) => {
-      if (value[0]) {
-        this.image = value[0];
-      } else {
-        this.image = value[1];
-      }
+    this.profileIndexedDB.get('image').then((image: any) => {
+      this.formGroupImage.get('image').setValue(image);
+      this.formGroupImage.markAsPending();
     });
     this.paramSelectGender = [{
       key: 'parameterGroupCode',
@@ -293,7 +286,8 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
     });
   }
 
-  uploadImage(file: any) {
+  uploadImage() {
+    const file: any = this.formGroupImage.get('image').value;
     const data: FormData = new FormData();
     data.append('photo', file);
     this.formGroupImage.get('image').disable();

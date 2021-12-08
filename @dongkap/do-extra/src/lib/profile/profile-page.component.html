@@ -2,6 +2,22 @@
   <div class="row" pagecontent>
     <div class="col-md-4 col-lg-4 col-xxxl-6">
       <form [formGroup]="formGroupImage">
+        <do-image-upload
+          [radius]="50"
+          [skeleton]="loadingForm"
+          [required]="true"
+          [uploadFn]="uploadFinished"
+          formControlName="image">
+        </do-image-upload>
+        <do-button
+          class="upload-bg"
+          (onSubmit)="uploadImage()"
+          [name]="'Upload'"
+          [formGroupButton]="formGroupImage"
+          [disabledButton]="formGroupImage.pristine"
+          [skeleton]="loadingForm">
+          <nb-icon class="upload-icon" icon="cloud-upload-outline" pack="eva" buttonicon></nb-icon>
+        </do-button>
       </form>
     </div>
     <div class="col-md-8 col-lg-8 col-xxxl-6">
@@ -132,14 +148,16 @@
             formControlName="subDistrict">
           </do-select>
         </div>
-        <do-button
-          (onSubmit)="onSubmit()"
-          [name]="'Update Profile'"
-          [disabledButton]="disabled"
-          [formGroupButton]="formGroup"
-          [skeleton]="loadingForm">
-        </do-button>
       </form>
     </div>
+  </div>
+  <div class="offset-sm-6 col-sm-6" pagefooter>
+    <do-button
+      (onSubmit)="onSubmit()"
+      [name]="'Update Profile'"
+      [disabledButton]="disabled"
+      [formGroupButton]="formGroup"
+      [skeleton]="loadingForm">
+    </do-button>
   </div>
 </do-page-outlet>

@@ -2,6 +2,12 @@
 
 @include nb-install-component() {
 
+  .upload-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .font-row {
     margin-top: 2rem;
 

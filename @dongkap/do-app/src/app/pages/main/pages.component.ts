@@ -47,7 +47,7 @@ export class PagesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     Promise.all([
       this.profileIndexedDB.get('name'),
-      this.profileIndexedDB.get('image-b64'),
+      this.profileIndexedDB.get('image'),
     ]).then((value: any[]) => {
       if (!this.user) {
         this.user = {

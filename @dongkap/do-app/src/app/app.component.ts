@@ -18,7 +18,7 @@ import { IndexedDBDistributionService } from './services/indexeddb-dist.service'
 export class AppComponent implements OnInit {
 
   constructor(
-    public indexedDBDistribution: IndexedDBDistributionService, 
+    public indexedDBDistribution: IndexedDBDistributionService,
     private analytics: AnalyticsService,
     private seoService: SeoService,
     private translate: TranslateService,

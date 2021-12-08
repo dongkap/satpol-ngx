@@ -11,6 +11,7 @@ import {
   DoEditorModule,
   DoSelectModule,
   DoDatePickerModule,
+  DoImageModule,
 } from '@dongkap/do-shared';
 import { ChangePasswordPageComponent } from './password/change-password-page.component';
 import { ExtraComponent } from './do-extra.component';
@@ -55,6 +56,7 @@ const EXTRA_COMPONENTS = [
     DoEditorModule,
     DoSelectModule,
     DoDatePickerModule,
+    DoImageModule,
     DoExtraRoutingModule,
   ],
   declarations: [

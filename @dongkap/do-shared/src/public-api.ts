@@ -13,6 +13,7 @@ export { DoEditorModule } from './lib/editor/do-editor.module';
 export { DoCheckBoxModule } from './lib/checkbox/do-checkbox.module';
 export { DoRadioModule } from './lib/radio/do-radio.module';
 export { DoDatePickerModule } from './lib/datepicker/do-datepicker.module';
+export { DoImageModule } from './lib/image/do-image.module';
 
 export * from './lib/base/animations';
 export { BaseFilterComponent } from './lib/base/base-component/base-filter.component';
@@ -64,3 +65,5 @@ export { RadioModel } from './lib/radio/models/radio.model';
 
 export { DoDatePickerComponent } from './lib/datepicker/single/do-datepicker.component';
 export { DoDatePickerRangeComponent } from './lib/datepicker/range/do-datepicker-range.component';
+
+export { ImageUploadComponent } from './lib/image/upload/image-upload.component';

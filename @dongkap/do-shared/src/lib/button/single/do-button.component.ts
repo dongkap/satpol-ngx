@@ -12,6 +12,7 @@ export class DoButtonComponent {
     @Input() disabledButton: boolean = false;
     @Input() type: 'button' | 'submit' | 'reset' = 'submit';
     @Input() status: 'primary' | 'danger' | 'warning' | 'info' = 'primary';
+    @Input() size: 'tiny' | 'small' | 'medium' | 'large' | 'giant' = 'medium';
     @Input() skeleton: boolean = false;
     @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
 
