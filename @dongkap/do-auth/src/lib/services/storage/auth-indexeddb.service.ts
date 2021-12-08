@@ -2,6 +2,7 @@ import { Injectable, Injector } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { StoreKey } from 'idb';
 import {
+  additionalInfoModels,
   IndexedDBEncFactoryService,
   IndexedDBService,
   oauthInfo,
@@ -58,7 +59,7 @@ export class AuthIndexedDBService extends IndexedDBService<AuthIDB> implements I
   public loginStorage(response: any): void {
     oauthInfoModels.forEach(data => {
       if (response[data.key]) {
-        if (data.type === TypeDataOauth.OAUTH) {
+        if (data.type === TypeDataOauth.OAUTH && data.persist) {
           if (data.enc) {
             this.putEnc(data.key, data.string ? response[data.key] : JSON.stringify(response[data.key])).then();
           } else {
@@ -71,6 +72,13 @@ export class AuthIndexedDBService extends IndexedDBService<AuthIDB> implements I
 
   public logout(): void {
     oauthInfoModels.forEach(data => {
+      if (data.enc) {
+        if (data.type === TypeDataOauth.OAUTH) {
+          this.removeEnc(data.key).then();
+        }
+      }
+    });
+    additionalInfoModels.forEach(data => {
       if (data.enc) {
         if (data.type === TypeDataOauth.OAUTH) {
           this.removeEnc(data.key).then();

@@ -1,16 +1,14 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { NbMenuItem, NbThemeService } from '@nebular/theme';
+import { NbMenuItem } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 import {
   AUTH_INDEXED_DB,
-  PROFILE_INDEXED_DB,
   USER_SERVICE,
-  IndexedDBFactoryService,
   IndexedDBEncFactoryService,
   UserService,
-  User,
+  UserModel,
 } from '@dongkap/do-core';
 
 @Component({
@@ -29,14 +27,13 @@ export class PagesComponent implements OnInit, OnDestroy {
 
   public menus: NbMenuItem[] = [];
   public extraMenu: NbMenuItem[] = [];
-  public user: User;
+  public user: any;
   private destroy$: Subject<any> = new Subject<any>();
 
   constructor(
     private translate: TranslateService,
     @Inject(USER_SERVICE) private userService: UserService,
-    @Inject(AUTH_INDEXED_DB) private authIndexedDB: IndexedDBEncFactoryService,
-    @Inject(PROFILE_INDEXED_DB) private profileIndexedDB: IndexedDBFactoryService) {
+    @Inject(AUTH_INDEXED_DB) private authIndexedDB: IndexedDBEncFactoryService) {
       this.setMenus();
       this.translate.onTranslationChange.pipe(takeUntil(this.destroy$))
         .subscribe(() => {
@@ -45,24 +42,13 @@ export class PagesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    Promise.all([
-      this.profileIndexedDB.get('name'),
-      this.profileIndexedDB.get('image'),
-    ]).then((value: any[]) => {
-      if (!this.user) {
-        this.user = {
-          name: value[0],
-          picture: value[1],
-        };
-      }
-    });
     this.setExtraMenu();
     this.translate.onTranslationChange.pipe(takeUntil(this.destroy$))
       .subscribe(() => {
         this.setExtraMenu();
     });
     this.userService.onUserChange.pipe(takeUntil(this.destroy$))
-      .subscribe((user: User) => this.user = user);
+      .subscribe((user: UserModel) => this.user = user);
 
   }
 

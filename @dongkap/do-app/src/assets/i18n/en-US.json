@@ -90,6 +90,9 @@
 	"Click here": "Click here",
 	"Show More": "show more",
 	"Show Less": "show less",
+	"placeholder": {
+		"image-upload": "Click or drag it here."
+	},
 	"message": {
 		"username-login": "Email Address",
 		"username-login-placeholder": "Email Address",

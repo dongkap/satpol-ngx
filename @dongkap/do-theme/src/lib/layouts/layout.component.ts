@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
-import { User } from '@dongkap/do-core';
 
 @Component({
   selector: 'do-layout',
@@ -27,7 +26,7 @@ import { User } from '@dongkap/do-core';
 })
 export class DefaultLayoutComponent {
 
-  @Input('user') public user: User;
-  @Input('extraMenu') public extraMenu: NbMenuItem[] = [];
+  @Input() public user: {name: any; image: any};
+  @Input() public extraMenu: NbMenuItem[] = [];
 
 }

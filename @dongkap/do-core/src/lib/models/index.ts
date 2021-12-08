@@ -15,6 +15,8 @@ import {
     OauthInfoModel,
     oauthInfo,
     oauthInfoModels,
+    additionalInfo,
+    additionalInfoModels,
     TypeDataOauth,
     signatureHeader,
 } from './security/resource-server.model';
@@ -40,6 +42,8 @@ export {
     OauthInfoModel,
     oauthInfo,
     oauthInfoModels,
+    additionalInfo,
+    additionalInfoModels,
     TypeDataOauth,
     signatureHeader,
 

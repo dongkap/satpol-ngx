@@ -8,7 +8,6 @@ import {
   NbSidebarService,
   NbThemeService,
 } from '@nebular/theme';
-import { User } from '@dongkap/do-core';
 import { LayoutService } from '../../services/layout.service';
 
 @Component({
@@ -18,8 +17,8 @@ import { LayoutService } from '../../services/layout.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  @Input('user') public user: User;
-  @Input('extraMenu') public extraMenu: NbMenuItem[] = [];
+  @Input() public user: {name: any; image: any};
+  @Input() public extraMenu: NbMenuItem[] = [];
   public userPictureOnly: boolean = false;
   private destroy$: Subject<void> = new Subject<void>();
 

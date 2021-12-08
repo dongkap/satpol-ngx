@@ -6,8 +6,7 @@
     "umdModuleIds": {
       "@nebular/theme": "@nebular/theme",
       "@nebular/eva-icons": "@nebular/eva-icons",
-      "@nebular/security": "@nebular/security",
-      "@dongkap/do-core": "@dongkap/do-core"
+      "@nebular/security": "@nebular/security"
     }
   }
 }

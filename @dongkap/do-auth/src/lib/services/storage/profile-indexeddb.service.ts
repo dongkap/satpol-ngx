@@ -1,5 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import {
+  additionalInfoModels,
   IndexedDBFactoryService,
   IndexedDBService,
   oauthInfoModels,
@@ -17,7 +18,7 @@ export class ProfileIndexedDBService extends IndexedDBService<ProfileIDB> implem
   public loginStorage(response: any): void {
     oauthInfoModels.forEach(data => {
         if (response[data.key]) {
-          if (data.type === TypeDataOauth.PROFILE) {
+          if (data.type === TypeDataOauth.PROFILE && data.persist) {
             this.put(data.key, data.string ? response[data.key] : JSON.stringify(response[data.key])).then();
           }
         }
@@ -26,6 +27,11 @@ export class ProfileIndexedDBService extends IndexedDBService<ProfileIDB> implem
 
   public logout(): void {
     oauthInfoModels.forEach(data => {
+      if (data.type === TypeDataOauth.PROFILE) {
+        this.remove(data.key);
+      }
+    });
+    additionalInfoModels.forEach(data => {
       if (data.type === TypeDataOauth.PROFILE) {
         this.remove(data.key);
       }

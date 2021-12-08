@@ -4,8 +4,6 @@
 
 export * from './lib/do-core.module';
 
-export * from './lib/models/utils/users';
-
 export * from './lib/models';
 
 export { TranslationService } from './lib/services/utils/translation.service';

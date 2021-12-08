@@ -90,6 +90,9 @@
 	"Click here": "Klik disini",
 	"Show More": "tampilkan lebih banyak",
 	"Show Less": "tampilkan lebih sedikit",
+	"placeholder": {
+		"image-upload": "Klik atau seret kesini."
+	},
 	"message": {
 		"username-login": "Alamat Email",
 		"username-login-placeholder": "Alamat Email",

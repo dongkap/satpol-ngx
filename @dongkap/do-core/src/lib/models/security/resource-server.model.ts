@@ -30,6 +30,10 @@ export const oauthInfo = {
     name: 'name',
 };
 
+export const additionalInfo = {
+    imageBase64: 'image-base64',
+};
+
 export enum TypeDataOauth {
     OAUTH = 'oauth',
     PROFILE = 'profile',
@@ -38,22 +42,26 @@ export enum TypeDataOauth {
 }
 
 export const oauthInfoModels: OauthInfoModel[] = [
-    { key: oauthInfo.access_token, enc: true, type: TypeDataOauth.OAUTH, string: true },
-    { key: oauthInfo.refresh_token, enc: true, type: TypeDataOauth.OAUTH, string: true },
-    { key: oauthInfo.token_type, enc: true, type: TypeDataOauth.OAUTH, string: true },
-    { key: oauthInfo.public_key, enc: true, type: TypeDataOauth.OAUTH, string: true },
-    { key: oauthInfo.expires_in, enc: true, type: TypeDataOauth.OAUTH, string: false },
-    { key: oauthInfo.authority, enc: true, type: TypeDataOauth.OAUTH, string: true },
-    { key: oauthInfo.provider, enc: true, type: TypeDataOauth.OAUTH, string: true },
-    { key: oauthInfo.menus, enc: true, type: TypeDataOauth.OAUTH, string: false },
-    { key: oauthInfo.extras, enc: true, type: TypeDataOauth.OAUTH, string: false },
-    { key: oauthInfo.username, enc: false, type: TypeDataOauth.OAUTH, string: true },
-    { key: oauthInfo.name, enc: false, type: TypeDataOauth.PROFILE, string: true },
-    { key: oauthInfo.email, enc: false, type: TypeDataOauth.PROFILE, string: true },
-    { key: oauthInfo.image, enc: false, type: TypeDataOauth.PROFILE, string: true },
-    { key: oauthInfo.locale, enc: false, type: TypeDataOauth.SETTINGS, string: true },
-    { key: oauthInfo.theme, enc: false, type: TypeDataOauth.SETTINGS, string: true },
-    { key: oauthInfo.server_date, enc: false, type: TypeDataOauth.SETTINGS, string: true },
+    { key: oauthInfo.access_token, enc: true, type: TypeDataOauth.OAUTH, string: true, persist: true },
+    { key: oauthInfo.refresh_token, enc: true, type: TypeDataOauth.OAUTH, string: true, persist: true },
+    { key: oauthInfo.token_type, enc: true, type: TypeDataOauth.OAUTH, string: true, persist: true },
+    { key: oauthInfo.public_key, enc: true, type: TypeDataOauth.OAUTH, string: true, persist: true },
+    { key: oauthInfo.expires_in, enc: true, type: TypeDataOauth.OAUTH, string: false, persist: true },
+    { key: oauthInfo.authority, enc: true, type: TypeDataOauth.OAUTH, string: true, persist: true },
+    { key: oauthInfo.provider, enc: true, type: TypeDataOauth.OAUTH, string: true, persist: true },
+    { key: oauthInfo.menus, enc: true, type: TypeDataOauth.OAUTH, string: false, persist: true },
+    { key: oauthInfo.extras, enc: true, type: TypeDataOauth.OAUTH, string: false, persist: true },
+    { key: oauthInfo.username, enc: false, type: TypeDataOauth.OAUTH, string: true, persist: true },
+    { key: oauthInfo.name, enc: false, type: TypeDataOauth.PROFILE, string: true, persist: true },
+    { key: oauthInfo.email, enc: false, type: TypeDataOauth.PROFILE, string: true, persist: true },
+    { key: oauthInfo.image, enc: false, type: TypeDataOauth.PROFILE, string: true, persist: true },
+    { key: oauthInfo.locale, enc: false, type: TypeDataOauth.SETTINGS, string: true, persist: true },
+    { key: oauthInfo.theme, enc: false, type: TypeDataOauth.SETTINGS, string: true, persist: true },
+    { key: oauthInfo.server_date, enc: false, type: TypeDataOauth.SETTINGS, string: true, persist: true },
+];
+
+export const additionalInfoModels: OauthInfoModel[] = [
+    { key: additionalInfo.imageBase64, enc: false, type: TypeDataOauth.PROFILE, string: true, persist: true },
 ];
 
 export interface OauthInfoModel {
@@ -61,6 +69,7 @@ export interface OauthInfoModel {
     enc: boolean;
     type: TypeDataOauth;
     string: boolean;
+    persist: boolean;
 }
 
 export const signatureHeader = {

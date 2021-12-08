@@ -144,6 +144,16 @@ export const apiPath: APIModel = {
             method: HttpMethod.GET,
             path: '/api/security/002/vw/get/profile/v.1',
         },
+        'upload-photo-profile': {
+            server: environment.host.profile,
+            method: HttpMethod.POST,
+            path: '/api/security/002/trx/post/photo-profile/v.1',
+        },
+        'get-photo-profile': {
+            server: environment.host.profile,
+            method: HttpMethod.GET,
+            path: '/api/security/002/vw/get/photo-profile/v.1',
+        },
     },
     master: {
         'select-country': {

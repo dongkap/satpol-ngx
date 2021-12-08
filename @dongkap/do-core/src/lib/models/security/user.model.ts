@@ -12,7 +12,7 @@ export class UserModel {
     district?: string;
     subDistrict?: string;
     zipcode?: string;
-    image?: string;
+    image?: any;
     description?: string;
     authorityDefault?: string;
     roles?: RoleModel[];

@@ -21,7 +21,7 @@ export class SettingsIndexedDBService extends IndexedDBService<SettingsIDB> impl
   public loginStorage(response: any): void {
     oauthInfoModels.forEach(data => {
       if (response[data.key]) {
-        if (data.type === TypeDataOauth.SETTINGS) {
+        if (data.type === TypeDataOauth.SETTINGS && data.persist) {
           this.put(data.key, data.string ? response[data.key] : JSON.stringify(response[data.key])).then();
           if (data.key === 'locale') {
             this.translate.getTranslation(response[data.key]).subscribe((lang: any) => {
