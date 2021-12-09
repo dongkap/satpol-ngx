@@ -229,7 +229,8 @@
 		"language": "Language",
 		"dark-mode": "Dark Mode",
 		"contact-person": "Contact Person",
-		"personal-info": "Personal Info"
+		"personal-info": "Personal Info",
+		"account": "Account"
 	},
 	"tab": {
 		"main-menu": "Main Menu",
