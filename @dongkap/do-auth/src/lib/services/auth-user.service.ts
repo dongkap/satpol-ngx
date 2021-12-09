@@ -1,6 +1,6 @@
 import { Injectable, Inject, OnDestroy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import {
     API,
     APIModel,
@@ -18,7 +18,7 @@ export class AuthUserService extends UserService implements OnDestroy {
         private profileIndexedDB: ProfileIndexedDBService,
         @Inject(API)private apiPath: APIModel,
         @Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService) {
-            super();
+        super();
     }
 
     private loaderUserSubject$ = new Subject<UserModel>();
@@ -32,37 +32,40 @@ export class AuthUserService extends UserService implements OnDestroy {
 
     public loadUser(): void {
         this.profileIndexedDB.get('image').then((checksum: string) => {
-            this.putImage(checksum).subscribe();
+            this.putImageBase64(checksum);
         });
         this.httpBaseService.HTTP_AUTH(
             this.apiPath['profile']['get-profile'])
+            .pipe(takeUntil(this.destroy$))
             .subscribe((response: any) => {
                 Promise.all([
                     this.profileIndexedDB.put('name', response['name']),
                     this.profileIndexedDB.put('email', response['email']),
+                    this.profileIndexedDB.put('image', response['image']),
                 ]).then();
             });
     }
 
     public updateName(name: string): Observable<UserModel> {
         this.profileIndexedDB.put('name', name).then(() => {
-            this.subscribeUser();
+            this.awaitUser();
         });
         return this.loaderUserSubject$.asObservable();
     }
 
     public updatePhoto(checksum: string): Observable<UserModel> {
-        this.putImage(checksum).subscribe(() => {
-            this.subscribeUser();
+        this.profileIndexedDB.put('image', checksum).then(() => {
+            this.putImageBase64(checksum);
         });
         return this.loaderUserSubject$.asObservable();
     }
 
     public get onUserChange(): Observable<UserModel> {
+        this.awaitUser();
         return this.loaderUserSubject$.asObservable();
     }
 
-    private subscribeUser(): void {
+    private awaitUser(): void {
         Promise.all([
           this.profileIndexedDB.get('name'),
           this.profileIndexedDB.get('image-base64'),
@@ -75,7 +78,7 @@ export class AuthUserService extends UserService implements OnDestroy {
         });
     }
 
-    private putImage(checksum: any): Observable<UserModel> {
+    private putImageBase64(checksum: any): void {
         if (checksum) {
             this.httpBaseService.HTTP_AUTH(
             this.apiPath['profile']['get-photo-profile'], null, null, null,
@@ -89,11 +92,12 @@ export class AuthUserService extends UserService implements OnDestroy {
                 reader.readAsDataURL(imageBlob);
                 reader.onloadend = () => {
                     const imageBase64: string = reader.result.toString();
-                    this.profileIndexedDB.put('image-base64', imageBase64).then(() => this.subscribeUser());
+                    this.profileIndexedDB.put('image-base64', imageBase64).then(() => {
+                        this.awaitUser();
+                    });
                 };
             });
         }
-        return this.loaderUserSubject$.asObservable();
     }
 
 }

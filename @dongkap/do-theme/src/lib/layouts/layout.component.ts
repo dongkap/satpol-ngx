@@ -7,7 +7,7 @@ import { NbMenuItem } from '@nebular/theme';
   template: `
     <nb-layout windowMode>
       <nb-layout-header fixed>
-        <do-header [user]="user" [extraMenu]="extraMenu"></do-header>
+        <do-header [name]="name" [image]="image" [extraMenu]="extraMenu"></do-header>
       </nb-layout-header>
 
       <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive>
@@ -26,7 +26,8 @@ import { NbMenuItem } from '@nebular/theme';
 })
 export class DefaultLayoutComponent {
 
-  @Input() public user: {name: any; image: any};
+  @Input() public name: string;
+  @Input() public image: string;
   @Input() public extraMenu: NbMenuItem[] = [];
 
 }

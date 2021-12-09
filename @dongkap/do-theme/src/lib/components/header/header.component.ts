@@ -17,7 +17,8 @@ import { LayoutService } from '../../services/layout.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  @Input() public user: {name: any; image: any};
+  @Input() public name: string;
+  @Input() public image: string;
   @Input() public extraMenu: NbMenuItem[] = [];
   public userPictureOnly: boolean = false;
   private destroy$: Subject<void> = new Subject<void>();

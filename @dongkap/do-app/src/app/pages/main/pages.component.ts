@@ -16,7 +16,8 @@ import {
   styleUrls: ['pages.component.scss'],
   template: `
     <do-layout
-      [user]="user"
+      [name]="name"
+      [image]="image"
       [extraMenu]="extraMenu">
       <nb-menu [items]="menus"></nb-menu>
       <router-outlet></router-outlet>
@@ -27,7 +28,8 @@ export class PagesComponent implements OnInit, OnDestroy {
 
   public menus: NbMenuItem[] = [];
   public extraMenu: NbMenuItem[] = [];
-  public user: any;
+  public name: string;
+  public image: string;
   private destroy$: Subject<any> = new Subject<any>();
 
   constructor(
@@ -48,7 +50,10 @@ export class PagesComponent implements OnInit, OnDestroy {
         this.setExtraMenu();
     });
     this.userService.onUserChange.pipe(takeUntil(this.destroy$))
-      .subscribe((user: UserModel) => this.user = user);
+      .subscribe((user: UserModel) => {
+        this.name = user.name;
+        this.image = user.image;
+    });
 
   }
 

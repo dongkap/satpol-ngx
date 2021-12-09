@@ -93,7 +93,7 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
 
   ngOnInit(): void {
     this.onInit('profile', 'get-profile');
-    this.profileIndexedDB.get('image').then((image: any) => {
+    this.profileIndexedDB.get('image-base64').then((image: any) => {
       this.formGroupImage.get('image').setValue(image);
       this.formGroupImage.markAsPending();
     });
