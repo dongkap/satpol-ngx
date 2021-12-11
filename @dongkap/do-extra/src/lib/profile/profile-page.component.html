@@ -58,36 +58,36 @@
             </nb-accordion-item-header>
             <nb-accordion-item-body>
               <do-input-text
-              [name]="'idNumber'"
-              [label]="'ID Number'"
-              [required]="true"
-              [skeleton]="loadingForm"
-              formControlName="idNumber">
-            </do-input-text>
-            <do-select
-              [name]="'gender'"
-              [label]="'Gender'"
-              [required]="true"
-              [api]="apiSelectGender"
-              [queryParam]="paramSelectGender"
-              [searchable]="false"
-              [skeleton]="loadingForm"
-              formControlName="gender">
-            </do-select>
-            <do-input-text
-              [name]="'placeOfBirth'"
-              [label]="'Place of Birth'"
-              [required]="true"
-              [skeleton]="loadingForm"
-              formControlName="placeOfBirth">
-            </do-input-text>
-            <do-datepicker
-              [name]="'dateOfBirth'"
-              [label]="'Date of Birth'"
-              [required]="true"
-              [skeleton]="loadingForm"
-              formControlName="dateOfBirth">
-            </do-datepicker>
+                [name]="'idNumber'"
+                [label]="'ID Number'"
+                [required]="true"
+                [skeleton]="loadingForm"
+                formControlName="idNumber">
+              </do-input-text>
+              <do-select
+                [name]="'gender'"
+                [label]="'Gender'"
+                [required]="true"
+                [api]="apiSelectGender"
+                [queryParam]="paramSelectGender"
+                [searchable]="false"
+                [skeleton]="loadingForm"
+                formControlName="gender">
+              </do-select>
+              <do-input-text
+                [name]="'placeOfBirth'"
+                [label]="'Place of Birth'"
+                [required]="true"
+                [skeleton]="loadingForm"
+                formControlName="placeOfBirth">
+              </do-input-text>
+              <do-datepicker
+                [name]="'dateOfBirth'"
+                [label]="'Date of Birth'"
+                [required]="true"
+                [skeleton]="loadingForm"
+                formControlName="dateOfBirth">
+              </do-datepicker>
             </nb-accordion-item-body>
           </nb-accordion-item>
           <nb-accordion-item [expanded]="true">

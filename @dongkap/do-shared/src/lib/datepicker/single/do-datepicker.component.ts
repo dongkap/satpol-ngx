@@ -51,14 +51,14 @@ export class DoDatePickerComponent extends ValueAccessorDirective<Date> {
             date = new Date(dateParse);
           }
         }
-      }
-      this._value = date;
-      this.onChange(date);
-      const control = this.ngControl.control;
-      if (control) {
-        control.updateValueAndValidity();
-        control.markAsUntouched();
-        control.markAsPristine();
+        this._value = date;
+        this.onChange(value);
+        const control = this.ngControl.control;
+        if (control) {
+          control.updateValueAndValidity();
+          control.markAsUntouched();
+          control.markAsPristine();
+        }
       }
     }
 

@@ -16,6 +16,7 @@ import { ApiBaseResponse } from '@dongkap/do-core';
 import { IndexedDBFactoryService } from '@dongkap/do-core';
 import { BaseFormComponent, SelectParamModel } from '@dongkap/do-shared';
 import { AuthIndexedDBService } from '@dongkap/do-auth';
+import { ContactUserModel, PersonalInfoModel, ProfileModel } from './profile.model';
 
 @Component({
   selector: 'do-profile-page',
@@ -123,84 +124,85 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
     this.loadingForm = true;
     this.exec(serviceName, apiName)
       .subscribe(
-        (success: any) => {
+        (success: ProfileModel) => {
           this.loadingForm = false;
-          this.formGroup.controls['name'].setValue(success['name']);
-          this.formGroup.controls['username'].setValue(success['username']);
-          this.formGroup.controls['idNumber'].setValue(success['idNumber']);
-          if (success['gender']) {
-            this.formGroup.controls['gender'].setValue({
-              label: success['gender'],
-              value: success['genderCode']
-            });
+          this.formGroup.controls['name'].setValue(success.name);
+          this.formGroup.controls['username'].setValue(success.username);
+          this.formGroup.controls['email'].setValue(success.email);
+          if (success?.personalInfo) {
+            this.formGroup.controls['idNumber'].setValue(success?.personalInfo?.idNumber);
+            if (success?.personalInfo?.genderCode) {
+              this.formGroup.controls['gender'].setValue({
+                label: success?.personalInfo.genderCode,
+                value: success?.personalInfo.genderValue
+              });
+            }
+            this.formGroup.controls['placeOfBirth'].setValue(success?.personalInfo?.placeOfBirth);
+            if (success?.personalInfo?.dateOfBirth) {
+              this.formGroup.controls['dateOfBirth'].setValue(success?.personalInfo?.dateOfBirth);
+            }
           }
-          this.formGroup.controls['placeOfBirth'].setValue(success['placeOfBirth']);
-          if (success['dateOfBirth']) {
-            this.formGroup.get('dateOfBirth').setValue(success['dateOfBirth']);
-          }
-          this.formGroup.controls['email'].setValue(success['email']);
-          if (success['address']) {
-            this.formGroup.controls['address'].setValue(success['address']);
-          }
-          if (success['country']) {
-            this.formGroup.controls['country'].setValue({
-              label: success['country'],
-              value: success['countryCode']
-            });
-            this.paramSelectProvince = [
-              {
-                key: 'country',
-                value: success['countryCode'],
-              },
-            ];
-          }
-          if (success['province']) {
-            this.formGroup.controls['province'].setValue({
-              label: success['province'],
-              value: success['provinceCode']
-            });
-            this.paramSelectCity = [
-              {
-                key: 'province',
-                value: success['provinceCode'],
-              },
-            ];
-          }
-          if (success['city']) {
-            this.formGroup.controls['city'].setValue({
-              label: success['city'],
-              value: success['cityCode']
-            });
-            this.paramSelectDistrict = [
-              {
-                key: 'city',
-                value: success['cityCode'],
-              },
-            ];
-          }
-          if (success['district']) {
-            this.formGroup.controls['district'].setValue({
-              label: success['district'],
-              value: success['districtCode']
-            });
-            this.paramSelectSubDistrict = [
-              {
-                key: 'district',
-                value: success['districtCode'],
-              },
-            ];
-          }
-          if (success['subDistrict']) {
-            this.formGroup.controls['subDistrict'].setValue({
-              label: success['subDistrict'],
-              value: success['subDistrictCode']
-            });
-          }
-          if (success['phoneNumber']) {
-            this.formGroup.controls['phoneNumber'].setValue(success['phoneNumber']);
-          }
-          if (success['mobileNumber']) {
-            this.formGroup.controls['mobileNumber'].setValue(success['mobileNumber']);
+          if (success?.contact) {
+            if (success?.contact?.address) {
+              this.formGroup.controls['address'].setValue(success?.contact?.address);
+            }
+            if (success?.contact?.phoneNumber) {
+              this.formGroup.controls['phoneNumber'].setValue(success?.contact?.phoneNumber);
+            }
+            if (success?.contact?.country) {
+              this.formGroup.controls['country'].setValue({
+                label: success?.contact?.country,
+                value: success?.contact?.countryCode
+              });
+              this.paramSelectProvince = [
+                {
+                  key: 'country',
+                  value: success?.contact?.countryCode,
+                },
+              ];
+            }
+            if (success?.contact?.province) {
+              this.formGroup.controls['province'].setValue({
+                label: success?.contact?.province,
+                value: success?.contact?.provinceCode
+              });
+              this.paramSelectCity = [
+                {
+                  key: 'province',
+                  value: success?.contact?.provinceCode,
+                },
+              ];
+            }
+            if (success?.contact?.city) {
+              this.formGroup.controls['city'].setValue({
+                label: success?.contact?.city,
+                value: success?.contact?.cityCode
+              });
+              this.paramSelectDistrict = [
+                {
+                  key: 'city',
+                  value: success?.contact?.cityCode,
+                },
+              ];
+            }
+            if (success?.contact?.district) {
+              this.formGroup.controls['district'].setValue({
+                label: success?.contact?.district,
+                value: success?.contact?.districtCode
+              });
+              this.paramSelectSubDistrict = [
+                {
+                  key: 'district',
+                  value: success?.contact?.districtCode,
+                },
+              ];
+            }
+            if (success?.contact?.subDistrict) {
+              this.formGroup.controls['subDistrict'].setValue({
+                label: success?.contact?.subDistrict,
+                value: success?.contact?.subDistrictCode
+              });
+            }
           }
           this.authIndexedDB.getEnc('provider').then((value: string) => {
             if (value !== 'local') {
@@ -330,13 +332,7 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
   }
 
   onSubmit() {
-    const data: any = {
-      name: this.formGroup.get('name').value,
-      idNumber: this.formGroup.get('idNumber').value,
-      placeOfBirth: this.formGroup.get('placeOfBirth').value,
-      dateOfBirth: this.formGroup.get('dateOfBirth').value,
-      gender: this.valueSelect('gender'),
-      genderCode: this.valueSelectNonLabel('gender'),
+    const contact: ContactUserModel = {
       phoneNumber: this.formGroup.get('phoneNumber').value,
       address: this.formGroup.get('address').value,
       country: this.valueSelect('country'),
@@ -349,6 +345,18 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
       districtCode: this.valueSelectNonLabel('district'),
       subDistrict: this.valueSelect('subDistrict'),
       subDistrictCode: this.valueSelectNonLabel('subDistrict'),
+    };
+    const personalInfo: PersonalInfoModel = {
+      idNumber: this.formGroup.get('idNumber').value,
+      placeOfBirth: this.formGroup.get('placeOfBirth').value,
+      dateOfBirth: this.formGroup.get('dateOfBirth').value,
+      genderCode: this.valueSelect('gender'),
+      genderValue: this.valueSelectNonLabel('gender'),
+    };
+    const data: any = {
+      name: this.formGroup.get('name').value,
+      contact,
+      personalInfo,
     };
     if (this.provider === 'local') {
       data['email'] = this.formGroup.get('email').value;

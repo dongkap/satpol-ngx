@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,17 +7,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./exercise-datepicker.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class ExerciseDatePickerComponent {
+export class ExerciseDatePickerComponent implements OnInit {
 
   formGroup: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder) {
       this.formGroup = this.formBuilder.group({
-        dateOfBirth: [{
-          value: '01/01/2021',
-          disabled: false,
-        }],
+        dateOfBirth: [],
         timesheet: [{
           value: {
             start: '08/10/2021',
@@ -35,6 +32,10 @@ export class ExerciseDatePickerComponent {
         }],
       });
     }
+
+  ngOnInit(): void {
+    this.formGroup.controls['dateOfBirth'].setValue('27/12/1990');
+  }
 
   onSubmit(){
     console.log(this.formGroup.value);

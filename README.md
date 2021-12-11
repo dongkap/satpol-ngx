@@ -63,35 +63,34 @@ $ ng generate library do-sys --prefix=do
 $ ng generate application do-app --routing=true --prefix=do --style=scss
 ```
 
-### 3.	Config Library @dongkap/do-core
-- change name angular.json `projects.do-core` to `@dongkap/do-core`
-- rename file *@dongkap/do-core/src/public-api.ts* to *index.ts*
-- change name *@dongkap/do-core/ng-package.json* `src/public-api.ts` to `src/index.ts`
-- change name *@dongkap/do-core/ng-package.json* `/dist/do-core` to `/dist/@dongkap/do-core`
-- change name *@dongkap/do-core/package.json* at `"name": "do-core "` to `"name": "@dongkap/do-core"`
+### 3.	Config Library @dongkap/do-core, do-shared, do-auth, do-extra, do-sys
+- change name angular.json `projects.do-xxx` to `@dongkap/do-xxx`
+- create file *@dongkap/do-xxx/src/index.ts* `export * from './public-api';`
+- change name *@dongkap/do-xxx/ng-package.json* `/dist/do-xxx` to `/dist/@dongkap/do-xxx`
+- change name *@dongkap/do-xxx/package.json* at `"name": "do-xxx "` to `"name": "@dongkap/do-xxx"`
+- adjust *tsconfig.json*
 - adjust *tsconfig.lib.json*
+- adjust *tsconfig.lib.prod.json*
 - adjust *tsconfig.spec.json*
-- create new file *@dongkap/do-core/src/lib/core.module.ts*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/analytics.service.ts* to *@dongkap/do-core/src/lib/services/utils*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/layout.service.ts* to *@dongkap/do-core/src/lib/services/utils*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/seo.service.ts* to *@dongkap/do-core/src/lib/services/utils*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/state.service.ts* to *@dongkap/do-core/src/lib/services/utils*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/module-import-guard.ts* to *@dongkap/do-core/src/lib*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/data/users.ts* to *@dongkap/do-core/src/lib/models/utils*
 
 ### 4.	Config Library @dongkap/do-theme
 - change name angular.json `projects.do-theme` to `@dongkap/do-theme`
-- rename file *@dongkap/do-theme/src/public-api.ts* to *index.ts*
-- change name *@dongkap/do-theme/ng-package.json* `src/public-api.ts` to `src/index.ts`
+- create file *@dongkap/do-theme/src/index.ts* `export * from './public-api';`
 - change name *@dongkap/do-theme/ng-package.json* `/dist/do-theme` to `/dist/@dongkap/do-theme`
 - change name *@dongkap/do-theme/package.json* at `"name": "do-theme "` to `"name": "@dongkap/do-theme"`
+- adjust *tsconfig.json*
 - adjust *tsconfig.lib.json*
+- adjust *tsconfig.lib.prod.json*
 - adjust *tsconfig.spec.json*
 - copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/components* to *@dongkap/do-theme/src/lib*
 - copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/directives* to *@dongkap/do-theme/src/lib*
 - copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/layouts* to *@dongkap/do-theme/src/lib*
 - copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/pipes* to *@dongkap/do-theme/src/lib*
 - copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/styles* to *@dongkap/do-theme/src/lib*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/analytics.service.ts* to *@dongkap/do-theme/src/lib/services*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/layout.service.ts* to *@dongkap/do-theme/src/lib/services*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/seo.service.ts* to *@dongkap/do-theme/src/lib/services*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/state.service.ts* to *@dongkap/do-theme/src/lib/services*
 - `mkdir @dongkap/do-theme/src/styles`
 - copy `@dongkap/do-theme/src/lib/styles/*.scss` to `@dongkap/do-theme/src/styles`
 - copy `opensans.css`, `fonts/*` from [master](https://github.com/ridlafadilah/do-ngx/tree/master/%40dongkap/do-theme/src/styles)
@@ -115,18 +114,13 @@ $ ng generate application do-app --routing=true --prefix=do --style=scss
 - change name angular.json `projects.do-mock` to `@dongkap/do-mock`
 - adjust *tsconfig.app.json*
 - adjust *tsconfig.spec.json*
-- `mkdir src/app/@mock`
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/data* to *@dongkap/do-mock/src/app/@mock/data*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/mock* to *@dongkap/do-mock/src/app/@mock/mock*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils* to *@dongkap/do-mock/src/app/@mock/utils*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/pages* to *@dongkap/do-mock/src/app/@mock/pages*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/pages/pages-menu.ts* to *@dongkap/do-mock/src/app/@mock/pages-menu.ts*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/pages/pages-routing.module.ts* to *@dongkap/do-mock/src/app/@mock/mock-routing.module.ts*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/pages/pages.component.scss* to *@dongkap/do-mock/src/app/@mock/mock.component.scss*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/pages/pages.component.ts* to *@dongkap/do-mock/src/app/@mock/mock.component.ts*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/pages/pages.module.ts* to *@dongkap/do-mock/src/app/@mock/mock.module.ts*
-- delete *@dongkap/do-mock/src/app/@mock/data/users.ts*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app* to *@dongkap/do-mock/src/app*
 - change `@dongkap/do-mock/src/lib/pages/dashboard/rooms/rooms.component.scss` `../../../../assets/images/square_pattern.svg';` to `/assets/images/square_pattern.svg`
 - change `@dongkap/do-mock/src/lib/pages/dashboard/rooms/rooms.component.scss` `../../../../assets/images/square_pattern_cosmic.svg';` to `/assets/images/square_pattern_cosmic.svg`
 - delete *src/app/@mock/pages/editors*
 - remove routing and menu editors
+
+### 6.	Restructure Template @dongkap/do-app
+- change name angular.json `projects.do-app` to `@dongkap/do-app`
+- adjust *tsconfig.app.json*
+- adjust *tsconfig.spec.json*
