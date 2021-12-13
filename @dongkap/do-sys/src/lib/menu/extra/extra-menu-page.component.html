@@ -112,25 +112,15 @@
     <nb-card-header>{{ 'Warning' | translate}}</nb-card-header>
     <nb-card-body>{{ data | translate}}</nb-card-body>
     <nb-card-footer>
-      <div class="row">
-        <button
-          type="reset"
-          status="danger"
-          (click)="ref.close()"
-          class="reset-left-dialog"
-          nbButton>
-          {{ 'Cancel' | translate}}
-        </button>
-        <button
-          type="submit"
-          status="primary"
-          (click)="onSubmitDialog(ref)"
-          [disabled]="disabled"
-          class="submit-right-dialog"
-          nbButton>
-          {{ dialogAction | translate}}
-        </button>
-      </div>
+      <do-button-submit
+        [colLabel]="0"
+        [colButton]="12"
+        [submitTitle]="dialogAction"
+        [resetTitle]="'Cancel'"
+        [disabledButton]="disabled"
+        (onReset)="ref.close()"
+        (onSubmit)="onSubmitDialog(ref)">
+      </do-button-submit>
     </nb-card-footer>
   </nb-card>
 </ng-template>

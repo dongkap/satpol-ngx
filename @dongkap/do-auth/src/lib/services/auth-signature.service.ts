@@ -23,6 +23,8 @@ export class AuthSignatureService {
         @Inject(OAUTH_INFO) private oauthResource: SecurityResourceModel,
         private authStorage: AuthIndexedDBService) {}
 
+    private timeStamp: any;
+
     public signHeaders(req: HttpRequest<any>): Observable<HttpRequest<any>> {
         return combineLatest([
             this.key(),
@@ -44,7 +46,7 @@ export class AuthSignatureService {
                     }
                 });
                 httpHeaders = httpHeaders.set(signatureHeader.key, value[0]);
-                httpHeaders = httpHeaders.set(signatureHeader.timestamp, this.timestamp());
+                httpHeaders = httpHeaders.set(signatureHeader.timestamp, this.timeStamp);
                 httpHeaders = httpHeaders.set(signatureHeader.signature, value[1]);
                 return of(req.clone({ headers: httpHeaders }));
             }
@@ -57,7 +59,8 @@ export class AuthSignatureService {
     }
 
     public timestamp(): string {
-        return Math.floor(new Date().getTime() / 1000).toString();
+        this.timeStamp = Math.floor(new Date().getTime() / 1000).toString();
+        return this.timeStamp;
     }
 
     public date(): string {
@@ -72,7 +75,7 @@ export class AuthSignatureService {
             take(1),
             switchMap((value: string[]) => {
             const key = value[0] + ':' +
-                        this.timestamp() + ':' +
+                         this.timestamp() + ':' +
                         // this.date() + ':' +
                         url + ':' +
                         value[1];

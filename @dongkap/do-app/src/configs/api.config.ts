@@ -132,6 +132,26 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/security/001/trx/auth/function-role/v.1',
         },
+        'datatable-corporate': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/vw/auth/datatable/corporate/v.1',
+        },
+        'post-corporate': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/trx/auth/corporate/v.1',
+        },
+        'select-corporate': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/vw/auth/select/corporate/v.1',
+        },
+        'delete-corporate': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/trx/auth/delete/corporate/v.1',
+        },
     },
     profile: {
         'change-profile': {

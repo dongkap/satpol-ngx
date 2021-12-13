@@ -220,6 +220,8 @@
 		"role-management": "Management Role",
 		"Edit-role": "Edit Role",
 		"Add-role": "Add Role",
+		"Edit-corporate": "Edit Corporate",
+		"Add-corporate": "Add Corporate",
 		"menu-management": "Menu Management",
 		"menu-role": "Choose Menu",
 		"Edit-i18n": "Edit i18n",

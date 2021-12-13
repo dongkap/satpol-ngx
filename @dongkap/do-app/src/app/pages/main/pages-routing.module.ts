@@ -13,6 +13,11 @@ const routes: Routes = [{
       component: HomePageComponent,
     },
     {
+      path: 'mgmt/corporate',
+      loadChildren: () => import('../sys/sys-mgmt-corporate-wrapper.module')
+        .then(m => m.SysMgmtCoporateWrapperModule),
+    },
+    {
       path: 'mgmt/role',
       loadChildren: () => import('../sys/sys-mgmt-role-wrapper.module')
         .then(m => m.SysMgmtRoleWrapperModule),

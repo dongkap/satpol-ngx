@@ -1,4 +1,4 @@
-<do-page-outlet [header]="'Parameter Group'" [hidefooter]="true">
+<do-page-outlet [header]="'header.corporate-management'" [hidefooter]="true">
   <div class="row" pagecontent>
     <div class="col-md-12 col-lg-12 col-xxxl-6">
       <do-datatable
@@ -12,14 +12,14 @@
         [columns]="columns">
         <form [formGroup]="formGroupFilter">
           <do-input-text
-            [name]="'parameterGroupCode'"
-            [label]="'Parameter Group Code'"
-            formControlName="parameterGroupCode">
+            [name]="'corporateCode'"
+            [label]="'Corporate Code'"
+            formControlName="corporateCode">
           </do-input-text>
           <do-input-text
-            [name]="'parameterGroupName'"
-            [label]="'Parameter Group Name'"
-            formControlName="parameterGroupName">
+            [name]="'corporateName'"
+            [label]="'Corporate Name'"
+            formControlName="corporateName">
           </do-input-text>
         </form>
       </do-datatable>

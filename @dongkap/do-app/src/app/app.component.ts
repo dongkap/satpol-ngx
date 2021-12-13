@@ -51,8 +51,10 @@ export class AppComponent implements OnInit {
 
   defaultTheme() {
     this.settingsIndexedDB.get('theme').then((theme: any) => {
-      if (theme.match(new RegExp('^default$|^dark$|^cosmic$|^corporate$', 'g'))) {
-        this.themeService.changeTheme(theme);
+      if (theme) {
+        if (theme.match(new RegExp('^default$|^dark$|^cosmic$|^corporate$', 'g'))) {
+          this.themeService.changeTheme(theme);
+        }
       }
     });
   }
