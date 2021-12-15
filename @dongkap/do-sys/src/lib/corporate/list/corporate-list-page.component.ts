@@ -17,7 +17,7 @@ export class CorporateListPageComponent extends BaseFilterComponent<any> impleme
   public apiPath: HttpBaseModel;
   public apiPathDelete: HttpBaseModel;
   public columns: DatatableColumn[] = [
-    { name: 'Code', prop: 'corporateCode', width: 50, frozenLeft: true },
+    { name: 'Code', prop: 'corporateCode', width: 75, frozenLeft: true },
     { name: 'Name', prop: 'corporateName', width: 275, frozenLeft: true },
     { name: 'Telp', prop: 'telpNumber', width: 100, frozenLeft: true },
     { name: 'Fax', prop: 'faxNumber', width: 100, frozenLeft: true },
@@ -64,7 +64,7 @@ export class CorporateListPageComponent extends BaseFilterComponent<any> impleme
   onDeleteGroup(data, dialog: TemplateRef<any>): void {
     this.corporateCodes = [];
     data.forEach(value => {
-      this.corporateCodes.push(value.parameterGroupCode);
+      this.corporateCodes.push(value.corporateCode);
     });
     this.dialogService.open(
       dialog,
