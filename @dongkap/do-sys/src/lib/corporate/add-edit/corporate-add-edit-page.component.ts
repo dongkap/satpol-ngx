@@ -3,7 +3,7 @@ import { OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ApiBaseResponse, ResponseCode, HttpBaseModel, Pattern } from '@dongkap/do-core';
+import { ApiBaseResponse, ResponseCode, Pattern } from '@dongkap/do-core';
 import { BaseFormComponent, CheckboxModel } from '@dongkap/do-shared';
 import { CorporateService } from '../services/corporate.service';
 import { CorporateModel } from '../models/corporate.model';
@@ -18,7 +18,6 @@ export class CorporateAddEditPageComponent extends BaseFormComponent<any> implem
   public action: 'Add' | 'Edit' = 'Add';
   public patternEmail: string = Pattern.EMAIL;
   public patternPhoneNumber: string = Pattern.PHONE_NUMBER;
-  public apiSelectLanguage: HttpBaseModel;
   public dataDefault: CheckboxModel[] = [
     {
       selected: true,
