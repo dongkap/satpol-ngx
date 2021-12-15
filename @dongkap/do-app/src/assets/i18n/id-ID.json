@@ -130,6 +130,8 @@
 			"general": "Silakan masukkan data yang valid!",
 			"date": "Silakan masukkan tanggal yang valid!",
 			"phoneNumber": "Silakan masukkan format nomor telepon yang valid!",
+			"telpNumber": "Silakan masukkan format nomor telepon yang valid!",
+			"faxNumber": "Silakan masukkan format nomor fax yang valid!",
 			"mobileNumber": "Silakan masukkan format nomor telepon genggam yang valid!",
 			"dateOfBirth": "Silakan masukkan tanggal yang valid!"
 		},

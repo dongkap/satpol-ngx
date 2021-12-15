@@ -1,5 +1,5 @@
 export class CorporateModel {
-    id: string;
+    id?: string;
     corporateCode: string;
     corporateName: string;
     corporateNonExpired: boolean;

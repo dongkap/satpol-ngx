@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { ApiBaseResponse, ResponseCode, HttpBaseModel, Pattern } from '@dongkap/do-core';
 import { BaseFormComponent, CheckboxModel } from '@dongkap/do-shared';
 import { CorporateService } from '../services/corporate.service';
+import { CorporateModel } from '../models/corporate.model';
 
 @Component({
   selector: 'do-corporate-add-edit-page',
@@ -38,8 +39,8 @@ export class CorporateAddEditPageComponent extends BaseFormComponent<any> implem
         telpNumber: [],
         faxNumber: [],
       });
-    if ((this.route.snapshot.params['action'] === 'edit') || (this.route.snapshot.params['action'] === 'add')) {
-      if (this.corporateService.getCorporate()) {
+    if (this.corporateService.getCorporate() || (this.route.snapshot.params['action'] === 'add')) {
+      if ((this.route.snapshot.params['action'] === 'edit')) {
         this.action = 'Edit';
         this.formGroup.get('corporateCode').setValue(this.corporateService.getCorporate().corporateCode);
         this.formGroup.get('corporateName').setValue(this.corporateService.getCorporate().corporateName);
@@ -64,6 +65,23 @@ export class CorporateAddEditPageComponent extends BaseFormComponent<any> implem
   }
 
   onSubmit(): void {
+    const corporateNonExpired: CheckboxModel[] = this.formGroup.get('corporateNonExpired').value;
+    const data: CorporateModel = {
+      corporateCode: this.formGroup.get('corporateCode').value,
+      corporateName: this.formGroup.get('corporateName').value,
+      corporateNonExpired: (corporateNonExpired ? true : false),
+      email: this.formGroup.get('email').value,
+      address: this.formGroup.get('address').value,
+      telpNumber: this.formGroup.get('telpNumber').value,
+      faxNumber: this.formGroup.get('faxNumber').value
+    };
+    (super.onSubmit(data, 'security', 'post-corporate')  as Observable<ApiBaseResponse>)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(response => {
+        if (response.respStatusCode === ResponseCode.OK_DEFAULT.toString()) {
+          this.router.navigate(['/app/mgmt/corporate']);
+        }
+      });
   }
 
 }

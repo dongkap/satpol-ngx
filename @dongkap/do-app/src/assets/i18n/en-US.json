@@ -130,6 +130,8 @@
 			"general": "Please enter valid data!",
 			"date": "Please enter valid date!",
 			"phoneNumber": "Please enter valid Telephone Number!",
+			"telpNumber": "Please enter valid Telephone Number!",
+			"faxNumber": "Please enter valid Fax. Number!",
 			"mobileNumber": "Please enter valid Mobile Phone Number!",
 			"dateOfBirth": "Please enter valid date!"
 		},
