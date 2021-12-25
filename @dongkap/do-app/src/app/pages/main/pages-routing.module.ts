@@ -23,6 +23,11 @@ const routes: Routes = [{
         .then(m => m.SysMgmtCoporateWrapperModule),
     },
     {
+      path: 'mgmt/occupation',
+      loadChildren: () => import('../sys/sys-mgmt-occupation-wrapper.module')
+        .then(m => m.SysMgmtOccupationWrapperModule),
+    },
+    {
       path: 'mgmt/role',
       loadChildren: () => import('../sys/sys-mgmt-role-wrapper.module')
         .then(m => m.SysMgmtRoleWrapperModule),

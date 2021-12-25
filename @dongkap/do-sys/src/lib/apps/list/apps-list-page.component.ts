@@ -59,6 +59,7 @@ export class AppsListPageComponent extends BaseFilterComponent<any> implements O
   }
 
   onDeleteGroup(data, dialog: TemplateRef<any>): void {
+    this.reload = false;
     this.appCodes = [];
     data.forEach(value => {
       this.appCodes.push(value.appCode);

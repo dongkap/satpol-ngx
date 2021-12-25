@@ -72,6 +72,7 @@
 	"Reset Password": "Reset Password",
 	"Send": "Send",
 	"Agree": "Agree",
+	"Search": "Search",
 	"Description": "Description",
 	"Authority": "Authority",
 	"Authority Code": "Authority Code",
@@ -90,6 +91,10 @@
 	"Click here": "Click here",
 	"Show More": "show more",
 	"Show Less": "show less",
+	"Corporate Code": "Corporate Code",
+	"Corporate Name": "Corporate Name",
+	"Occupation Code": "Occupation Code",
+	"Occupation Name": "Occupation Name",
 	"placeholder": {
 		"image-upload": "Click or drag it here."
 	},
@@ -194,7 +199,7 @@
 		"login" : "Sign In to your account",
 		"force" : "Your account is being used",
 		"force-footer" : "Logged in as someone else?",
-		"forgot-password" : "Enter your email address and we’ll send a link to reset your password",
+		"forgot-password" : "Enter your email address and we will send a link to reset your password",
 		"reset-password" : "Enter your new password"
 	},
 	"alert": {
@@ -225,6 +230,9 @@
 		"corporate-management": "Corporate Management",
 		"Edit-corporate": "Edit Corporate",
 		"Add-corporate": "Add Corporate",
+		"occupation-management": "Occupation Management",
+		"Edit-occupation": "Edit Occupation",
+		"Add-occupation": "Add Occupation",
 		"apps-management": "Apps Management",
 		"Edit-apps": "Edit Apps",
 		"Add-apps": "Add Apps",

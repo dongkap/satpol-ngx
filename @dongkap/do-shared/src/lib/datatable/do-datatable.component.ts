@@ -83,6 +83,7 @@ export class DoDatatableComponent implements OnInit, OnDestroy {
   }
   @Input() set reloadFn(reload: boolean) {
     if (reload) {
+      this.selected = [];
       this.count = 0;
       this.offset = 0;
       this.fetch();

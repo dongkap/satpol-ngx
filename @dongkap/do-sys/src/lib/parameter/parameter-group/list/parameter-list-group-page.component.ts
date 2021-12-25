@@ -67,6 +67,7 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
   }
 
   onDeleteGroup(data, dialog: TemplateRef<any>): void {
+    this.reload = false;
     this.parameterGroupCodes = [];
     data.forEach(value => {
       this.parameterGroupCodes.push(value.parameterGroupCode);

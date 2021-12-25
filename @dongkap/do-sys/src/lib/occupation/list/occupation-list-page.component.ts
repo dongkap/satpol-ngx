@@ -5,24 +5,20 @@ import { takeUntil } from 'rxjs/operators';
 import { NbDialogRef, NbDialogService } from '@nebular/theme';
 import { ApiBaseResponse, HttpBaseModel } from '@dongkap/do-core';
 import { BaseFilterComponent, DatatableColumn } from '@dongkap/do-shared';
-import { CorporateService } from '../services/corporate.service';
+import { OccupationService } from '../services/occupation.service';
 
 @Component({
-  selector: 'do-corporate-list-page',
-  styleUrls: ['./corporate-list-page.component.scss'],
-  templateUrl: './corporate-list-page.component.html',
+  selector: 'do-occupation-list-page',
+  styleUrls: ['./occupation-list-page.component.scss'],
+  templateUrl: './occupation-list-page.component.html',
 })
-export class CorporateListPageComponent extends BaseFilterComponent<any> implements OnInit {
+export class OccupationListPageComponent extends BaseFilterComponent<any> implements OnInit {
 
   public apiPath: HttpBaseModel;
   public apiPathDelete: HttpBaseModel;
   public columns: DatatableColumn[] = [
-    { name: 'Code', prop: 'corporateCode', width: 75, frozenLeft: true },
-    { name: 'Name', prop: 'corporateName', width: 275, frozenLeft: true },
-    { name: 'Telp', prop: 'telpNumber', width: 100, frozenLeft: true },
-    { name: 'Fax', prop: 'faxNumber', width: 100, frozenLeft: true },
-    { name: 'Email', prop: 'email', width: 175 },
-    { name: 'Address', prop: 'address' },
+    { name: 'Code', prop: 'code', width: 225, frozenLeft: true },
+    { name: 'Name', prop: 'name', width: 225, frozenLeft: true },
     { name: 'Created', prop: 'createdBy' },
     { name: 'Created Date', prop: 'createdDate' },
     { name: 'Modified', prop: 'modifiedBy' },
@@ -31,41 +27,41 @@ export class CorporateListPageComponent extends BaseFilterComponent<any> impleme
   ];
   public reload: boolean = false;
   public expanded: boolean = false;
-  private corporateCodes: any[];
+  private occupationCodes: any[];
 
   constructor(
     public injector: Injector,
     private router: Router,
-    private corporateService: CorporateService,
+    private occupationService: OccupationService,
     private dialogService: NbDialogService) {
     super(injector, {
-      corporateCode: [],
-      corporateName: [],
+      code: [],
+      name: [],
     });
-    this.apiPath = this.api['security']['datatable-corporate'];
-    this.apiPathDelete = this.api['security']['delete-corporate'];
+    this.apiPath = this.api['security']['datatable-occupation'];
+    this.apiPathDelete = this.api['security']['delete-occupation'];
     this.filters = [
-      { controlName: 'corporateCode', type: 'input' },
-      { controlName: 'corporateName', type: 'input' }];
+      { controlName: 'code', type: 'input' },
+      { controlName: 'name', type: 'input' }];
   }
 
   ngOnInit(): void {
   }
 
   onAddGroup(): void {
-    this.router.navigate(['/app/mgmt/corporate', 'add']);
+    this.router.navigate(['/app/mgmt/occupation', 'add']);
   }
 
   onViewDetail(data): void {
-    this.corporateService.setCorporate(data);
-    this.router.navigate(['/app/mgmt/corporate', 'edit']);
+    this.occupationService.setOccupation(data);
+    this.router.navigate(['/app/mgmt/occupation', 'edit']);
   }
 
   onDeleteGroup(data, dialog: TemplateRef<any>): void {
     this.reload = false;
-    this.corporateCodes = [];
+    this.occupationCodes = [];
     data.forEach(value => {
-      this.corporateCodes.push(value.corporateCode);
+      this.occupationCodes.push(value.code);
     });
     this.dialogService.open(
       dialog,
@@ -74,7 +70,7 @@ export class CorporateListPageComponent extends BaseFilterComponent<any> impleme
 
   onDelete(ref: NbDialogRef<any>): void {
     this.disabled = true;
-    this.http.HTTP_AUTH(this.apiPathDelete, this.corporateCodes)
+    this.http.HTTP_AUTH(this.apiPathDelete, this.occupationCodes)
       .pipe(takeUntil(this.destroy$))
       .subscribe(
         (success: ApiBaseResponse) => {
@@ -91,7 +87,7 @@ export class CorporateListPageComponent extends BaseFilterComponent<any> impleme
   }
 
   onReset(): void {
-    this.router.navigate(['/app/mgmt/corporate']);
+    this.router.navigate(['/app/mgmt/occupation']);
   }
 
 }

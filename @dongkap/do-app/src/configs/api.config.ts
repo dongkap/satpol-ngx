@@ -172,6 +172,26 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/security/001/trx/auth/delete/app/v.1',
         },
+        'datatable-occupation': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/vw/auth/datatable/occupation/v.1',
+        },
+        'post-occupation': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/trx/auth/occupation/v.1',
+        },
+        'select-occupation': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/vw/auth/select/occupation/v.1',
+        },
+        'delete-occupation': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/trx/auth/delete/occupation/v.1',
+        },
     },
     profile: {
         'change-profile': {
