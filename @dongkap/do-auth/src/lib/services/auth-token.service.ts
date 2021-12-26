@@ -158,6 +158,7 @@ export class AuthTokenService implements OnDestroy {
         body.append('grant_type', this.oauthResource['grant_type']);
         body.append('username', username);
         body.append('password', password);
+        body.append('platform', 'web');
         return body;
     }
 
