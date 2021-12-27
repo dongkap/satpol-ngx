@@ -311,6 +311,21 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/master/003/trx/auth/delete/parameter-group/v.1',
         },
+        'datatable-business-partner': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/api/master/003/vw/auth/datatable/business-partner/v.1',
+        },
+        'post-business-partner': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/api/master/003/trx/auth/business-partner/v.1',
+        },
+        'select-business-partner': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/api/master/003/vw/auth/select/business-partner/v.1',
+        },
     },
     notification: {
         'send-broadcast': {

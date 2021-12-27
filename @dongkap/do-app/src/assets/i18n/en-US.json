@@ -95,6 +95,8 @@
 	"Corporate Name": "Corporate Name",
 	"Occupation Code": "Occupation Code",
 	"Occupation Name": "Occupation Name",
+	"Business Partner": "Business Partner",
+	"Business Partner Name": "Business Partner Name",
 	"placeholder": {
 		"image-upload": "Click or drag it here."
 	},
@@ -233,6 +235,9 @@
 		"occupation-management": "Occupation Management",
 		"Edit-occupation": "Edit Occupation",
 		"Add-occupation": "Add Occupation",
+		"business-partner-management": "Business Partner Management",
+		"Edit-business-partner": "Edit Business Partner",
+		"Add-business-partner": "Add Business Partner",
 		"apps-management": "Apps Management",
 		"Edit-apps": "Edit Apps",
 		"Add-apps": "Add Apps",

@@ -95,6 +95,8 @@
 	"Corporate Name": "Nama Perusahaan",
 	"Occupation Code": "Kode Jabatan",
 	"Occupation Name": "Nama Jabatan",
+	"Business Partner": "Mitra Bisnis",
+	"Business Partner Name": "Nama Mitra Bisnis",
 	"placeholder": {
 		"image-upload": "Klik atau seret kesini."
 	},
@@ -233,6 +235,9 @@
 		"occupation-management": "Kelola Jabatan",
 		"Edit-occupation": "Ubah Jabatan",
 		"Add-occupation": "Tambah Jabatan",
+		"business-partner-management": "Kelola Mitra Bisnis",
+		"Edit-business-partner": "Ubah Mitra Bisnis",
+		"Add-business-partner": "Tambah Mitra Bisnis",
 		"apps-management": "Kelola Apps",
 		"Edit-apps": "Ubah Apps",
 		"Add-apps": "Tambah Apps",
