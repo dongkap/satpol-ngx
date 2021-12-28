@@ -13,10 +13,11 @@
           [name]="'b2bNonExpired'"
           [label]="'Non Expired'"
           [data]="dataDefault"
+          (onChecked)="onCheckB2bNonExpired($event)"
           formControlName="b2bNonExpired">
         </do-checkbox>
         <do-datepicker
-          *ngIf="!isB2bNonExpired"
+          [show]="!isB2bNonExpired"
           [name]="'expiredTime'"
           [label]="'Expired Date'"
           formControlName="expiredTime">

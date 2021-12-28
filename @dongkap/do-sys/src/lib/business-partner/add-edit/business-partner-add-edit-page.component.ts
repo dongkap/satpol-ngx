@@ -49,9 +49,11 @@ export class BusinessPartnerAddEditPageComponent extends BaseFormComponent<any> 
         this.formGroup.get('telpNumber').setValue(this.businessPartnerService.getB2B().businessPartner.telpNumber);
         this.formGroup.get('faxNumber').setValue(this.businessPartnerService.getB2B().businessPartner.faxNumber);
         this.formGroup.get('b2bNonExpired').setValue([{
+          id: 'b2bNonExpired',
           selected: this.businessPartnerService.getB2B().b2bNonExpired ? true : false,
         }]);
         this.formGroup.get('expiredTime').setValue(this.businessPartnerService.getB2B().expiredTime);
+        this.isB2bNonExpired = this.businessPartnerService.getB2B().b2bNonExpired;
       }
     } else {
       this.router.navigate(['/app/mgmt/business-partner']);
@@ -73,7 +75,7 @@ export class BusinessPartnerAddEditPageComponent extends BaseFormComponent<any> 
     const data: B2BModel = {
       id: this.businessPartnerService.getB2B()?.id,
       b2bNonExpired: (b2bNonExpired ? true : false),
-      expiredTime: this.formGroup.get('expiredTime').value,
+      expiredTime: !this.isB2bNonExpired ? this.formGroup.get('expiredTime').value : null,
       businessPartner: {
         bpName: this.formGroup.get('bpName').value,
         email: this.formGroup.get('email').value,

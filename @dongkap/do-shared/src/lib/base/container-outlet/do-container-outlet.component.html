@@ -1,4 +1,4 @@
-<div class="form-group row">
+<div class="form-group row" *ngIf="show">
   <div
     *ngIf="(!skeleton || nolabel);else labelskeleton"
     class="col-sm-{{colLabel}}">

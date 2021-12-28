@@ -19,4 +19,5 @@ export class DoContainerOutletComponent {
     @Input() warnMessage: string;
     @Input() paramError: any;
     @Input() skeleton: boolean = false;
+    @Input() show: boolean = true;
 }

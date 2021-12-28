@@ -4,7 +4,7 @@
   [required]="required" [hasErrors]="hasErrors"
   [errorMessages]="errorMessages" [paramError]="paramError"
   [warnMessage]="warnMessage"
-  [skeleton]="skeleton">
+  [skeleton]="skeleton" [show]="show">
   <div class="col-sm-{{colInput}}" *ngIf="!skeleton; else contentskeleton">
     <ng-select
       [placeholder]="placeholder ? (placeholder | translate) : ''"

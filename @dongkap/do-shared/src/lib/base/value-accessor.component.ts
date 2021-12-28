@@ -8,6 +8,7 @@ export abstract class ValueAccessorDirective<T> extends ValidatorAccessorDirecti
 
     @Input() format: string = DateFormat.DATE;
     @Input() skeleton: boolean = false;
+    @Input() show: boolean = true;
     protected _value: any;
     public defaultValue: any;
 

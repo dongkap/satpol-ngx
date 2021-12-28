@@ -20,6 +20,7 @@ export class CorporateAddEditPageComponent extends BaseFormComponent<any> implem
   public patternPhoneNumber: string = Pattern.PHONE_NUMBER;
   public dataDefault: CheckboxModel[] = [
     {
+      id: 'corporateNonExpired',
       selected: true,
     },
   ];
@@ -48,6 +49,7 @@ export class CorporateAddEditPageComponent extends BaseFormComponent<any> implem
         this.formGroup.get('telpNumber').setValue(this.corporateService.getCorporate().telpNumber);
         this.formGroup.get('faxNumber').setValue(this.corporateService.getCorporate().faxNumber);
         this.formGroup.get('corporateNonExpired').setValue([{
+          id: 'corporateNonExpired',
           selected: this.corporateService.getCorporate().corporateNonExpired ? true : false,
         }]);
         this.formGroup.get('corporateCode').disable();

@@ -20,7 +20,7 @@ export class DoCheckboxComponent extends ValueAccessorDirective<CheckboxModel[]>
       super(ngControl, locale);
     }
 
-    onCheckedChange() {
+    onCheckedChange(item: CheckboxModel) {
       if (!this.value) {
         this.value = this.data;
       }
@@ -47,5 +47,19 @@ export class DoCheckboxComponent extends ValueAccessorDirective<CheckboxModel[]>
         this.ngControl.control.markAsDirty();
       }
       this.onChecked.emit(this.value);
+    }
+
+    public writeValue(value: CheckboxModel[]): void {
+      if (value) {
+        this.data = value;
+      }
+      this._value = value;
+      this.onChange(this.value);
+      const control = this.ngControl.control;
+      if (control) {
+          control.updateValueAndValidity();
+          control.markAsUntouched();
+          control.markAsPristine();
+      }
     }
 }

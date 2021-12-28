@@ -20,6 +20,7 @@ export class LocaleAddEditPageComponent extends BaseFormComponent<any> implement
   public apiSelectLanguage: HttpBaseModel;
   public dataDefault: CheckboxModel[] = [
     {
+      id: 'default',
       selected: false,
     },
   ];
@@ -43,11 +44,13 @@ export class LocaleAddEditPageComponent extends BaseFormComponent<any> implement
       if (this.localeService.getLocale() && (this.route.snapshot.params['action'] === 'edit')) {
         if (this.localeService.getLocale().localeDefault) {
           this.formGroup.get('default').setValue([{
+            id: 'default',
             selected: true,
           }]);
           this.formGroup.get('default').disable();
         } else {
           this.formGroup.get('default').setValue([{
+            id: 'default',
             selected: false,
           }]);
         }

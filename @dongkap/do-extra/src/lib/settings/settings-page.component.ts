@@ -26,6 +26,7 @@ export class SettingsPageComponent extends BaseFormComponent<any> implements OnI
   private localeIdentifier: any;
   public dataTheme: CheckboxModel[] = [
     {
+      id: 'theme',
       selected: false,
     },
   ];
