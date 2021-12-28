@@ -54,6 +54,8 @@ export class BusinessPartnerAddEditPageComponent extends BaseFormComponent<any> 
         }]);
         this.formGroup.get('expiredTime').setValue(this.businessPartnerService.getB2B().expiredTime);
         this.isB2bNonExpired = this.businessPartnerService.getB2B().b2bNonExpired;
+      } else {
+        this.formGroup.get('b2bNonExpired').setValue(this.dataDefault);
       }
     } else {
       this.router.navigate(['/app/mgmt/business-partner']);

@@ -6,9 +6,9 @@
         [formGroupFilter]="formGroupFilter"
         [filters]="filters"
         [reloadFn]="reload"
-        (onAdd)="onAddGroup()"
+        (onAdd)="onAdd()"
         (onEdit)="onViewDetail($event)"
-        (onDelete)="onDeleteGroup($event, dialogdelete)"
+        (onDelete)="onDeleteDialog($event, dialogdelete)"
         [columns]="columns">
         <form [formGroup]="formGroupFilter">
           <do-input-text

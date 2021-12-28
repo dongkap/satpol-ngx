@@ -44,7 +44,8 @@ export class BusinessPartnerListPageComponent extends BaseFilterComponent<any> i
   ngOnInit(): void {
   }
 
-  onAddGroup(): void {
+  onAdd(): void {
+    this.businessPartnerService.setB2B(null);
     this.router.navigate(['/app/mgmt/business-partner', 'add']);
   }
 

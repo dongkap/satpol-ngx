@@ -52,7 +52,8 @@ export class CorporateListPageComponent extends BaseFilterComponent<any> impleme
   ngOnInit(): void {
   }
 
-  onAddGroup(): void {
+  onAdd(): void {
+    this.corporateService.setCorporate(null);
     this.router.navigate(['/app/mgmt/corporate', 'add']);
   }
 
@@ -61,7 +62,7 @@ export class CorporateListPageComponent extends BaseFilterComponent<any> impleme
     this.router.navigate(['/app/mgmt/corporate', 'edit']);
   }
 
-  onDeleteGroup(data, dialog: TemplateRef<any>): void {
+  onDeleteDialog(data, dialog: TemplateRef<any>): void {
     this.reload = false;
     this.corporateCodes = [];
     data.forEach(value => {

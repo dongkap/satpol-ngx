@@ -1,11 +1,11 @@
 import { Component, Injector, TemplateRef } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
 import { NbDialogRef, NbDialogService } from '@nebular/theme';
 import { ApiBaseResponse, HttpBaseModel } from '@dongkap/do-core';
 import { BaseFilterComponent, DatatableColumn } from '@dongkap/do-shared';
 import { AppsService } from '../services/apps.service';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'do-apps-list-page',
@@ -49,7 +49,8 @@ export class AppsListPageComponent extends BaseFilterComponent<any> implements O
   ngOnInit(): void {
   }
 
-  onAddGroup(): void {
+  onAdd(): void {
+    this.appsService.setApps(null);
     this.router.navigate(['/app/mgmt/apps', 'add']);
   }
 
@@ -58,7 +59,7 @@ export class AppsListPageComponent extends BaseFilterComponent<any> implements O
     this.router.navigate(['/app/mgmt/apps', 'edit']);
   }
 
-  onDeleteGroup(data, dialog: TemplateRef<any>): void {
+  onDeleteDialog(data, dialog: TemplateRef<any>): void {
     this.reload = false;
     this.appCodes = [];
     data.forEach(value => {

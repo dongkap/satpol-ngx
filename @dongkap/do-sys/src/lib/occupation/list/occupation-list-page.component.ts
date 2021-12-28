@@ -48,7 +48,8 @@ export class OccupationListPageComponent extends BaseFilterComponent<any> implem
   ngOnInit(): void {
   }
 
-  onAddGroup(): void {
+  onAdd(): void {
+    this.occupationService.setOccupation(null);
     this.router.navigate(['/app/mgmt/occupation', 'add']);
   }
 
@@ -57,7 +58,7 @@ export class OccupationListPageComponent extends BaseFilterComponent<any> implem
     this.router.navigate(['/app/mgmt/occupation', 'edit']);
   }
 
-  onDeleteGroup(data, dialog: TemplateRef<any>): void {
+  onDeleteDialog(data, dialog: TemplateRef<any>): void {
     this.reload = false;
     this.occupationCodes = [];
     data.forEach(value => {
