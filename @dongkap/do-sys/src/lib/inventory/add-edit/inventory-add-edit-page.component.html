@@ -1,0 +1,60 @@
+<do-page-outlet [header]="'header.'+action+'-inventory'" [url]="'/app/mgmt/inventory'">
+  <div class="row" pagecontent>
+    <div class="col-md-12 col-lg-12 col-xxxl-6">
+      <form [formGroup]="formGroup">
+        <do-input-text
+          [name]="'assetName'"
+          [label]="'Asset Name'"
+          [required]="true"
+          [skeleton]="loadingForm"
+          formControlName="assetName">
+        </do-input-text>
+        <do-input-text
+          [name]="'assetCondition'"
+          [label]="'Condition'"
+          [required]="true"
+          [skeleton]="loadingForm"
+          formControlName="assetCondition">
+        </do-input-text>
+        <do-input-text
+          [name]="'quantity'"
+          [label]="'Quantity'"
+          [type]="'number'"
+          [required]="true"
+          [skeleton]="loadingForm"
+          formControlName="quantity">
+        </do-input-text>
+        <do-checkbox
+          [name]="'atOffice'"
+          [label]="'Location'"
+          [data]="dataDefault"
+          (onChecked)="onCheckAtOffice($event)"
+          formControlName="atOffice">
+        </do-checkbox>
+        <do-select
+          [show]="!isAtOffice"
+          [name]="'businessPartner'"
+          [nolabel]="true"
+          [required]="!isAtOffice"
+          [api]="apiSelectBusinessPartner"
+          formControlName="businessPartner">
+        </do-select>
+        <do-textarea
+          [name]="'description'"
+          [label]="'Description'"
+          [skeleton]="loadingForm"
+          formControlName="description">
+        </do-textarea>
+      </form>
+    </div>
+  </div>
+  <do-button-submit
+    [submitTitle]="action"
+    [resetTitle]="'Cancel'"
+    [formGroupButton]="formGroup"
+    [disabledButton]="disabled"
+    (onReset)="onReset()"
+    (onSubmit)="onSubmit()"
+    pagefooter>
+  </do-button-submit>
+</do-page-outlet>

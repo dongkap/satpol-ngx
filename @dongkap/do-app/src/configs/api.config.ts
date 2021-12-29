@@ -326,6 +326,26 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/master/003/vw/auth/select/business-partner/v.1',
         },
+        'datatable-inventory': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/api/master/003/vw/auth/datatable/asset/v.1',
+        },
+        'post-inventory': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/api/master/003/trx/auth/asset/v.1',
+        },
+        'select-inventory': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/api/master/003/vw/auth/select/asset/v.1',
+        },
+        'delete-inventory': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/api/master/003/trx/auth/delete/asset/v.1',
+        },
     },
     notification: {
         'send-broadcast': {

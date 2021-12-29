@@ -97,6 +97,11 @@
 	"Occupation Name": "Occupation Name",
 	"Business Partner": "Business Partner",
 	"Business Partner Name": "Business Partner Name",
+	"Asset Name": "Asset Name",
+	"Condition": "Condition",
+	"Quantity": "Quantity",
+	"At Office": "At Office",
+	"Location": "Location",
 	"placeholder": {
 		"image-upload": "Click or drag it here."
 	},
@@ -239,6 +244,9 @@
 		"Edit-business-partner": "Edit Business Partner",
 		"Add-business-partner": "Add Business Partner",
 		"apps-management": "Apps Management",
+		"inventory-management": "Inventory Management",
+		"Edit-inventory": "Edit Inventory",
+		"Add-inventory": "Add Inventory",
 		"Edit-apps": "Edit Apps",
 		"Add-apps": "Add Apps",
 		"menu-management": "Menu Management",

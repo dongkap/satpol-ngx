@@ -97,6 +97,11 @@
 	"Occupation Name": "Nama Jabatan",
 	"Business Partner": "Mitra Bisnis",
 	"Business Partner Name": "Nama Mitra Bisnis",
+	"Asset Name": "Name Aset",
+	"Condition": "Kondisi",
+	"Quantity": "Jumlah",
+	"At Office": "Ada di Kantor",
+	"Location": "Lokasi",
 	"placeholder": {
 		"image-upload": "Klik atau seret kesini."
 	},
@@ -241,6 +246,9 @@
 		"apps-management": "Kelola Apps",
 		"Edit-apps": "Ubah Apps",
 		"Add-apps": "Tambah Apps",
+		"inventory-management": "Kelola Inventaris",
+		"Edit-inventory": "Ubah Inventaris",
+		"Add-inventory": "Tambah Inventaris",
 		"menu-management": "Kelola Menu",
 		"menu-role": "Pilih Menu",
 		"Edit-i18n": "Ubah i18n",

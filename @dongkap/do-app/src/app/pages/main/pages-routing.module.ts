@@ -28,6 +28,11 @@ const routes: Routes = [{
         .then(m => m.SysMgmtBusinessPartnerWrapperModule),
     },
     {
+      path: 'mgmt/inventory',
+      loadChildren: () => import('../sys/sys-mgmt-inventory-wrapper.module')
+        .then(m => m.SysMgmtInventoryWrapperModule),
+    },
+    {
       path: 'mgmt/occupation',
       loadChildren: () => import('../sys/sys-mgmt-occupation-wrapper.module')
         .then(m => m.SysMgmtOccupationWrapperModule),

@@ -20,7 +20,7 @@
           [show]="!isB2bNonExpired"
           [name]="'expiredTime'"
           [label]="'Expired Date'"
-          [required]="true"
+          [required]="!isB2bNonExpired"
           formControlName="expiredTime">
         </do-datepicker>
         <do-input-text
