@@ -3,7 +3,7 @@
   [url]="'/app/sysconf/parameter'"
   [isCollapsed]="true">
   <div class="row" pagecontent>
-    <div class="col-md-12 col-lg-12 col-xxxl-6">
+    <div class="col-md-12 col-lg-12">
       <form [formGroup]="formGroup">
         <do-input-text
           [name]="'parameterGroupName'"
@@ -27,7 +27,7 @@
 
 <do-page-outlet [url]="'/app/sysconf/parameter'" [header]="'header.parameter'" [param]="{value: parameterGroup.parameterGroupName}" [hidefooter]="true">
   <div class="row" pagecontent>
-    <div class="col-md-12 col-lg-12 col-xxxl-6">
+    <div class="col-md-12 col-lg-12">
       <do-datatable
         [api]="apiPath"
         [formGroupFilter]="formGroupFilter"

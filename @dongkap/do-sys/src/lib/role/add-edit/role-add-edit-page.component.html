@@ -1,6 +1,6 @@
 <do-page-outlet [header]="'header.'+action+'-role'" [url]="'/app/mgmt/role'">
   <div class="row" pagecontent>
-    <div class="col-md-12 col-lg-12 col-xxxl-6">
+    <div class="col-md-12 col-lg-12">
       <form [formGroup]="formGroup">
         <do-input-text
           [name]="'authority'"
@@ -24,7 +24,7 @@
         </do-select>
       </form>
     </div>
-    <div class="col-md-12 col-lg-12 col-xxxl-6">
+    <div class="col-md-12 col-lg-12">
       <nb-tabset fullWidth (changeTab)="toggleLoadingAnimation($event)">
         <nb-tab tabId="main" tabTitle="{{'tab.main-menu' | translate}}" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
           <do-role-main-page (onSelect)="onSelectMain($event)" #mainRole></do-role-main-page>

@@ -1,6 +1,6 @@
 <do-page-outlet [header]="'Profile'">
   <div class="row" pagecontent>
-    <div class="col-md-4 col-lg-4 col-xxxl-6">
+    <div class="col-md-4 col-lg-4">
       <form [formGroup]="formGroupImage">
         <do-image-upload
           [radius]="50"
@@ -20,7 +20,7 @@
         </do-button>
       </form>
     </div>
-    <div class="accordion-container col-md-8 col-lg-8 col-xxxl-6">
+    <div class="accordion-container col-md-8 col-lg-8">
       <form [formGroup]="formGroup">
         <nb-accordion multi>
           <nb-accordion-item [expanded]="true">
