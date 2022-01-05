@@ -9,13 +9,16 @@
           [skeleton]="loadingForm"
           formControlName="assetName">
         </do-input-text>
-        <do-input-text
+        <do-select
           [name]="'assetCondition'"
           [label]="'Condition'"
           [required]="true"
+          [api]="apiSelectCondition"
+          [queryParam]="paramSelectCondition"
+          [searchable]="false"
           [skeleton]="loadingForm"
           formControlName="assetCondition">
-        </do-input-text>
+        </do-select>
         <do-input-text
           [name]="'quantity'"
           [label]="'Quantity'"
@@ -29,6 +32,7 @@
           [label]="'Location'"
           [data]="dataDefault"
           (onChecked)="onCheckAtOffice($event)"
+          [skeleton]="loadingForm"
           formControlName="atOffice">
         </do-checkbox>
         <do-select
@@ -37,6 +41,7 @@
           [nolabel]="true"
           [required]="!isAtOffice"
           [api]="apiSelectBusinessPartner"
+          [skeleton]="loadingForm"
           formControlName="businessPartner">
         </do-select>
         <do-textarea

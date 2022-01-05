@@ -18,9 +18,9 @@ export class InventoryListPageComponent extends BaseFilterComponent<any> impleme
   public apiPathDelete: HttpBaseModel;
   public columns: DatatableColumn[] = [
     { name: 'Asset Name', prop: 'assetName', width: 175, frozenLeft: true },
-    { name: 'Condition', prop: 'assetCondition', width: 100, frozenLeft: true },
+    { name: 'Condition', prop: 'assetConditionValue', width: 100, frozenLeft: true },
     { name: 'Quantity', prop: 'quantity', width: 75, frozenLeft: true },
-    { name: 'Location', prop: 'businessPartner.bpName', width: 225, frozenLeft: true },
+    { name: 'Location', prop: 'location', width: 225, frozenLeft: true },
     { name: 'Created', prop: 'createdBy' },
     { name: 'Created Date', prop: 'createdDate' },
     { name: 'Modified', prop: 'modifiedBy' },
