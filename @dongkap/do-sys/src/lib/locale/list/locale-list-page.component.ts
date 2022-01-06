@@ -24,7 +24,6 @@ export class LocaleListPageComponent extends BaseFilterComponent<any> implements
     { name: 'Created Date', prop: 'createdDate' },
     { name: 'Modified', prop: 'modifiedBy' },
     { name: 'Modified Date', prop: 'modifiedDate' },
-    { name: 'Active', prop: 'active' },
   ];
   public expanded: boolean = false;
 

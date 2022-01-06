@@ -22,7 +22,6 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
     { name: 'Created Date', prop: 'createdDate' },
     { name: 'Modified', prop: 'modifiedBy' },
     { name: 'Modified Date', prop: 'modifiedDate' },
-    { name: 'Active', prop: 'active' },
   ];
   public parameterGroup: ParameterGroupModel = new ParameterGroupModel();
   public expanded: boolean = false;

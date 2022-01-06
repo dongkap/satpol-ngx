@@ -22,11 +22,6 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
   public columns: TableColumn[] = [
     { name: 'Parameter Group Code', prop: 'parameterGroupCode', width: 220, frozenLeft: true },
     { name: 'Parameter Group Name', prop: 'parameterGroupName', width: 200, frozenLeft: true },
-    { name: 'Created', prop: 'createdBy' },
-    { name: 'Created Date', prop: 'createdDate' },
-    { name: 'Modified', prop: 'modifiedBy' },
-    { name: 'Modified Date', prop: 'modifiedDate' },
-    { name: 'Active', prop: 'active' },
   ];
   public reload: boolean = false;
   private parameterGroupCodes: any[];

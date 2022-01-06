@@ -27,7 +27,6 @@ export class CorporateListPageComponent extends BaseFilterComponent<any> impleme
     { name: 'Created Date', prop: 'createdDate' },
     { name: 'Modified', prop: 'modifiedBy' },
     { name: 'Modified Date', prop: 'modifiedDate' },
-    { name: 'Active', prop: 'active' },
   ];
   public reload: boolean = false;
   public expanded: boolean = false;

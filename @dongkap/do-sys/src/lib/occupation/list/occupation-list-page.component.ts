@@ -23,7 +23,6 @@ export class OccupationListPageComponent extends BaseFilterComponent<any> implem
     { name: 'Created Date', prop: 'createdDate' },
     { name: 'Modified', prop: 'modifiedBy' },
     { name: 'Modified Date', prop: 'modifiedDate' },
-    { name: 'Active', prop: 'active' },
   ];
   public reload: boolean = false;
   public expanded: boolean = false;

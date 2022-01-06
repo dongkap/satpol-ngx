@@ -22,7 +22,6 @@ export class RoleListPageComponent extends BaseFilterComponent<any> implements O
     { name: 'Created Date', prop: 'createdDate' },
     { name: 'Modified', prop: 'modifiedBy' },
     { name: 'Modified Date', prop: 'modifiedDate' },
-    { name: 'Active', prop: 'active' },
   ];
   public expanded: boolean = false;
 
