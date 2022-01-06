@@ -31,6 +31,9 @@ export class RoleListPageComponent extends BaseFilterComponent<any> implements O
       description: [],
     });
     this.apiPath = this.api['security']['datatable-role'];
+    this.sort = {
+      asc: ['authority']
+    };
     this.filters = [
       { controlName: 'authority', type: 'input' },
       { controlName: 'description', type: 'input' }];

@@ -35,6 +35,9 @@ export class BusinessPartnerListPageComponent extends BaseFilterComponent<any> i
     super(injector, {
       bpName: [],
     });
+    this.sort = {
+      asc: ['businessPartner.bpName']
+    };
     this.apiPath = this.api['master']['datatable-business-partner'];
     this.filters = [
       { controlName: 'bpName', type: 'input' }];

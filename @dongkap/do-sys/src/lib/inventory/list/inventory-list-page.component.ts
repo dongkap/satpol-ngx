@@ -41,6 +41,9 @@ export class InventoryListPageComponent extends BaseFilterComponent<any> impleme
     });
     this.apiPath = this.api['master']['datatable-inventory'];
     this.apiPathDelete = this.api['master']['delete-inventory'];
+    this.sort = {
+      asc: ['businessPartner.bpName']
+    };
     this.filters = [
       { controlName: 'assetName', type: 'input' },
       { controlName: 'assetCondition', type: 'input' }];

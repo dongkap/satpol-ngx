@@ -41,6 +41,9 @@ export class AppsListPageComponent extends BaseFilterComponent<any> implements O
     });
     this.apiPath = this.api['security']['datatable-apps'];
     this.apiPathDelete = this.api['security']['delete-apps'];
+    this.sort = {
+      asc: ['appCode']
+    };
     this.filters = [
       { controlName: 'appCode', type: 'input' },
       { controlName: 'appName', type: 'input' }];

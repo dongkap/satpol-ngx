@@ -43,6 +43,9 @@ export class CorporateListPageComponent extends BaseFilterComponent<any> impleme
     });
     this.apiPath = this.api['security']['datatable-corporate'];
     this.apiPathDelete = this.api['security']['delete-corporate'];
+    this.sort = {
+      asc: ['corporateCode']
+    };
     this.filters = [
       { controlName: 'corporateCode', type: 'input' },
       { controlName: 'corporateName', type: 'input' }];

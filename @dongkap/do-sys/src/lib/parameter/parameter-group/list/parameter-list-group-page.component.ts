@@ -6,7 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { HttpBaseModel, ApiBaseResponse } from '@dongkap/do-core';
-import { BaseFilterComponent } from '@dongkap/do-shared';
+import { BaseFilterComponent, Sort } from '@dongkap/do-shared';
 import { ParameterService } from '../../services/parameter.service';
 
 @Component({
@@ -35,6 +35,9 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
       parameterGroupCode: [],
       parameterGroupName: [],
     });
+    this.sort = {
+      asc: ['parameterGroupName']
+    };
     this.filters = [
       { controlName: 'parameterGroupCode', type: 'input' },
       { controlName: 'parameterGroupName', type: 'input' }];

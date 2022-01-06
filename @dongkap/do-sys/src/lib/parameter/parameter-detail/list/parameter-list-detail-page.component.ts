@@ -33,6 +33,9 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
       parameterGroupCode: [],
       parameterGroupName: [],
     });
+    this.sort = {
+      asc: ['parameterCode']
+    };
     if (this.parameterService.getParameterGroup()) {
       this.apiPath = this.api['master']['datatable-parameter'];
       this.filters = [{ controlName: 'parameterCode', type: 'input' }];

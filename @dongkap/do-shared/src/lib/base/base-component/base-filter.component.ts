@@ -1,6 +1,6 @@
 import { Injector } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { DatatableFilter, Keyword } from '../../datatable/models/datatable.model';
+import { DatatableFilter, Keyword, Sort } from '../../datatable/models/datatable.model';
 import { BaseFormComponent } from './base-form.component';
 
 export abstract class BaseFilterComponent<T> extends BaseFormComponent<T> {
@@ -9,6 +9,7 @@ export abstract class BaseFilterComponent<T> extends BaseFormComponent<T> {
     public filters: DatatableFilter[];
     public keyword: Keyword;
     public rows: any[] = [];
+    public sort: Sort;
 
     constructor(
         public injector: Injector,

@@ -39,6 +39,9 @@ export class OccupationListPageComponent extends BaseFilterComponent<any> implem
     });
     this.apiPath = this.api['security']['datatable-occupation'];
     this.apiPathDelete = this.api['security']['delete-occupation'];
+    this.sort = {
+      asc: ['code']
+    };
     this.filters = [
       { controlName: 'code', type: 'input' },
       { controlName: 'name', type: 'input' }];
