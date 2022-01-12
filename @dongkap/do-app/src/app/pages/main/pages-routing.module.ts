@@ -20,7 +20,12 @@ const routes: Routes = [{
     {
       path: 'mgmt/corporate',
       loadChildren: () => import('../sys/sys-mgmt-corporate-wrapper.module')
-        .then(m => m.SysMgmtCoporateWrapperModule),
+        .then(m => m.SysMgmtCorporateWrapperModule),
+    },
+    {
+      path: 'mgmt/employee',
+      loadChildren: () => import('../sys/sys-mgmt-employee-wrapper.module')
+        .then(m => m.SysMgmtEmployeeWrapperModule),
     },
     {
       path: 'mgmt/business-partner',

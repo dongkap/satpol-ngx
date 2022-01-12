@@ -1,0 +1,31 @@
+<do-page-outlet [header]="'header.'+action+'-employee'" [url]="'/app/mgmt/employee'">
+  <div class="row" pagecontent>
+    <div class="col-md-12 col-lg-12">
+      <form [formGroup]="formGroup">
+        <do-input-text
+          [name]="'employeeName'"
+          [label]="'Employee Name'"
+          [required]="true"
+          [skeleton]="loadingForm"
+          formControlName="employeeName">
+        </do-input-text>
+        <do-input-text
+          [name]="'idEmployee'"
+          [label]="'NIK'"
+          [required]="true"
+          [skeleton]="loadingForm"
+          formControlName="idEmployee">
+        </do-input-text>
+      </form>
+    </div>
+  </div>
+  <do-button-submit
+    [submitTitle]="action"
+    [resetTitle]="'Cancel'"
+    [formGroupButton]="formGroup"
+    [disabledButton]="disabled"
+    (onReset)="onReset()"
+    (onSubmit)="onSubmit()"
+    pagefooter>
+  </do-button-submit>
+</do-page-outlet>

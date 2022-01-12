@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { API, ENVIRONMENT, HttpCommonService, HTTP_SERVICE, OAUTH_INFO } from '@dongkap/do-core';
 import {
   DoBaseModule,
   DoButtonModule,
@@ -15,10 +16,12 @@ import {
   DoInputModule,
   DoSelectModule,
   DoDatePickerModule,
-  DoRadioModule
+  DoRadioModule,
+  DoWizardModule
 } from '@dongkap/do-shared';
 import { ExerciseRoutingModule } from './exercise-routing.module';
 import { ExerciseComponent } from './exercise.component';
+import { ExercisePageComponent } from './exercise-page.component';
 import { ExerciseInputTextComponent } from './input-text/exercise-input-text.component';
 import { ExerciseInputCurrencyComponent } from './input-currency/exercise-input-currency.component';
 import { ExerciseInputFileComponent } from './input-file/exercise-input-file.component';
@@ -28,8 +31,11 @@ import { ExerciseCheckboxComponent } from './checkbox/exercise-checkbox.componen
 import { ExerciseDatePickerComponent } from './datepicker/exercise-datepicker.component';
 import { ExerciseEditorComponent } from './editor/exercise-editor.component';
 import { ExerciseRadioComponent } from './radio/exercise-radio.component';
+import { ExerciseWizardComponent } from './wizard/exercise-wizard.component';
+import { ExerciseWizardStep1Component } from './wizard/step1/exercise-wizard-step1.component';
+import { ExerciseWizardStep2Component } from './wizard/step2/exercise-wizard-step2.component';
+import { ExerciseWizardStep3Component } from './wizard/step3/exercise-wizard-step3.component';
 import { environment } from '../../../environments/environment';
-import { API, ENVIRONMENT, HttpCommonService, HTTP_SERVICE, OAUTH_INFO } from '@dongkap/do-core';
 import { apiPath } from '../../../configs/api.config';
 import { oauthResource } from '../../../configs/security.config';
 
@@ -43,6 +49,7 @@ export function createTranslateLoader(http: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     CollapseModule.forRoot(),
+    DoWizardModule.forRoot(),
     ExerciseRoutingModule,
     DoBaseModule,
     DoButtonModule,
@@ -63,6 +70,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   declarations: [
     ExerciseComponent,
+    ExercisePageComponent,
     ExerciseInputTextComponent,
     ExerciseInputCurrencyComponent,
     ExerciseInputFileComponent,
@@ -72,6 +80,10 @@ export function createTranslateLoader(http: HttpClient) {
     ExerciseDatePickerComponent,
     ExerciseEditorComponent,
     ExerciseRadioComponent,
+    ExerciseWizardComponent,
+    ExerciseWizardStep1Component,
+    ExerciseWizardStep2Component,
+    ExerciseWizardStep3Component,
   ],
   providers: [
     {

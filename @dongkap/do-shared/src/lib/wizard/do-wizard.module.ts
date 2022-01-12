@@ -1,0 +1,44 @@
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { DoWizardComponent } from './do-wizard.component';
+import { DoWizardErrorComponent } from './wizard-error/do-wizard-error.component';
+import { DoWizardButtonsComponent } from './wizard-buttons/do-wizard-buttons.component';
+import { DoWizardNavigationComponent } from './wizard-navigation/do-wizard-navigation.component';
+import { DoWizardService } from './services/do-wizard.service';
+
+export const WIZARD_COMPONENTS = [
+  DoWizardComponent,
+  DoWizardErrorComponent,
+  DoWizardNavigationComponent,
+  DoWizardButtonsComponent,
+];
+
+export const WIZARD_PROVIDERS = [
+  DoWizardService,
+];
+
+@NgModule({
+  declarations: [
+    ...WIZARD_COMPONENTS,
+  ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    TranslateModule,
+  ],
+  exports: [
+    ...WIZARD_COMPONENTS,
+  ],
+})
+export class DoWizardModule {
+  static forRoot(): ModuleWithProviders<DoWizardModule> {
+    return {
+      ngModule: DoWizardModule,
+      providers: [
+        ...WIZARD_PROVIDERS,
+      ],
+    };
+  }
+}

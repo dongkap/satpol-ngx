@@ -59,6 +59,7 @@ export class DoDatatableComponent implements OnInit, OnDestroy {
   @Input() filterEvent: boolean = false;
   @Input() formGroupFilter: FormGroup;
   @Input() sort: Sort;
+  @Input() sortsDefault: any[];
   @Output() onAdd: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onEdit: EventEmitter<any> = new EventEmitter<any>();
   @Output() onDelete: EventEmitter<any[]> = new EventEmitter<any[]>();
@@ -149,13 +150,13 @@ export class DoDatatableComponent implements OnInit, OnDestroy {
           case 'input':
           case 'datepicker':
           case 'radio':
-            this._keyword[filter.controlName] = search[filter.controlName];
+            this._keyword[filter.controlName] = search[filter.controlName] ? search[filter.controlName] : null;
             break;
           case 'select':
-            this._keyword[filter.controlName] = search[filter.controlName].label;
+            this._keyword[filter.controlName] = search[filter.controlName].label ? search[filter.controlName] : null;
             break;
           case 'checkbox':
-            this._keyword[filter.controlName] = search[filter.controlName].name;
+            this._keyword[filter.controlName] = search[filter.controlName].name ? search[filter.controlName].name : null;
             break;
           default:
             break;

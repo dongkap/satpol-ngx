@@ -30,6 +30,7 @@ export class DoDatatableBaseComponent {
   @Input() scrollbarV: boolean = false;
   @Input() reorderable: boolean = true;
   @Input() sortType: SortType = SortType.single;
+  @Input() sortsDefault: any[];
   @Input() messages: any;
   @Input() selectionType: SelectionType = SelectionType.checkbox;
   @Input() columnMode: ColumnMode = ColumnMode.force;

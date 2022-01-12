@@ -1,0 +1,24 @@
+<do-wizard [extra]="true">
+    <div buttonextra>
+        <button
+            (click)="onSaveDraft()"
+            [ngClass]="{
+                'btn-primary': formIsValid(),
+                'btn-secondary': !formIsValid()
+            }"
+            [disabled]="!formIsValid()"
+            class="btn mr-1">
+            {{'Save Draft' | translate}}
+        </button>
+        <button
+            (click)="onSend()"
+            [ngClass]="{
+                'btn-success': formIsValid(),
+                'btn-secondary': !formIsValid()
+            }"
+            [disabled]="!formIsValid()"
+            class="btn mr-1">
+            {{'Send' | translate}}
+        </button>
+    </div>
+</do-wizard>

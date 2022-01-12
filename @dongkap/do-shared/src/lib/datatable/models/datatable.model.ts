@@ -11,6 +11,11 @@ export interface Sort {
     [name: string]: string[];
 }
 
+export interface SortProperties {
+    prop: string;
+    dir: string;
+}
+
 export interface Keyword {
     [name: string]: string;
 }

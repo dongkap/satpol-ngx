@@ -19,7 +19,17 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Exercise',
     icon: 'home-outline',
-    link: '/pages/exercise',
+    children: [
+      {
+        title: 'Common Component',
+        link: '/pages/exercise/common',
+      },
+      {
+        title: 'Wizard',
+        pathMatch: 'prefix',
+        link: '/pages/exercise/wizard',
+      },
+    ],
   },
   {
     title: 'FEATURES',

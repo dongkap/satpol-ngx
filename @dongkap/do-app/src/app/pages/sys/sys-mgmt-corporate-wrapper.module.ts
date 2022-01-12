@@ -4,4 +4,4 @@ import { DoMgmtCorporateModule } from '@dongkap/do-sys';
 @NgModule({
   imports: [ DoMgmtCorporateModule ],
 })
-export class SysMgmtCoporateWrapperModule {}
+export class SysMgmtCorporateWrapperModule {}

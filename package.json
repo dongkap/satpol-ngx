@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "start:do-app": "ng serve @dongkap/do-app --port 4200",
-    "start:do-mock": "ng serve @dongkap/do-mock --port 4300",
+    "start:do-mock": "ng serve @dongkap/do-mock --port 4201",
     "build:do-core": "ng build @dongkap/do-core",
     "build:do-theme": "ng build @dongkap/do-theme",
     "build:do-shared": "ng build @dongkap/do-shared",

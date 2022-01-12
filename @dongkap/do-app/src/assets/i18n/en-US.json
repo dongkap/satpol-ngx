@@ -102,6 +102,7 @@
 	"Quantity": "Quantity",
 	"At Office": "At Office",
 	"Location": "Location",
+	"Employee Name": "Employee Name",
 	"placeholder": {
 		"image-upload": "Click or drag it here."
 	},
@@ -234,6 +235,9 @@
 		"role-management": "Management Role",
 		"Edit-role": "Edit Role",
 		"Add-role": "Add Role",
+		"employee-management": "Employee Management",
+		"Edit-employee": "Edit Employee",
+		"Add-employee": "Add Employee",
 		"corporate-management": "Corporate Management",
 		"Edit-corporate": "Edit Corporate",
 		"Add-corporate": "Add Corporate",

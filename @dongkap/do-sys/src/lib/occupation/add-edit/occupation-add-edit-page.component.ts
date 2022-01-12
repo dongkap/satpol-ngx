@@ -3,7 +3,7 @@ import { OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ApiBaseResponse, ResponseCode, Pattern } from '@dongkap/do-core';
+import { ApiBaseResponse, ResponseCode } from '@dongkap/do-core';
 import { BaseFormComponent, CheckboxModel } from '@dongkap/do-shared';
 import { OccupationService } from '../services/occupation.service';
 import { OccupationModel } from '../models/occupation.model';
@@ -16,8 +16,6 @@ import { OccupationModel } from '../models/occupation.model';
 export class OccupationAddEditPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public action: 'Add' | 'Edit' = 'Add';
-  public patternEmail: string = Pattern.EMAIL;
-  public patternPhoneNumber: string = Pattern.PHONE_NUMBER;
   public dataDefault: CheckboxModel[] = [
     {
       selected: true,

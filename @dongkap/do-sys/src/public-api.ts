@@ -11,3 +11,4 @@ export { DoMgmtAppsModule } from './lib/apps/do-mgmt-apps.module';
 export { DoMgmtOccupationModule } from './lib/occupation/do-mgmt-occupation.module';
 export { DoMgmtBusinessPartnerModule } from './lib/business-partner/do-mgmt-business-partner.module';
 export { DoMgmtInventoryModule } from './lib/inventory/do-mgmt-inventory.module';
+export { DoMgmtEmployeeModule } from './lib/employee/do-mgmt-employee.module';

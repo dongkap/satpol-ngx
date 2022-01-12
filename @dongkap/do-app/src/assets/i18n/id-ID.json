@@ -102,6 +102,7 @@
 	"Quantity": "Jumlah",
 	"At Office": "Ada di Kantor",
 	"Location": "Lokasi",
+	"Employee Name": "Nama Karyawan",
 	"placeholder": {
 		"image-upload": "Klik atau seret kesini."
 	},
@@ -234,6 +235,9 @@
 		"role-management": "Kelola Peran",
 		"Edit-role": "Ubah Peran",
 		"Add-role": "Tambah Peran",
+		"employee-management": "Kelola Karyawan",
+		"Edit-employee": "Ubah Karyawan",
+		"Add-employee": "Tambah Karyawan",
 		"corporate-management": "Kelola Perusahaan",
 		"Edit-corporate": "Ubah Perusahaan",
 		"Add-corporate": "Tambah Perusahaan",

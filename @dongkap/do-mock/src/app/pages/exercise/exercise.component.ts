@@ -3,8 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'ngx-exercise',
-  templateUrl: 'exercise.component.html',
-  styleUrls: ['./exercise.component.scss'],
+  template: `<router-outlet></router-outlet>`,
 })
 export class ExerciseComponent implements OnInit {
 

@@ -14,6 +14,7 @@ export { DoCheckBoxModule } from './lib/checkbox/do-checkbox.module';
 export { DoRadioModule } from './lib/radio/do-radio.module';
 export { DoDatePickerModule } from './lib/datepicker/do-datepicker.module';
 export { DoImageModule } from './lib/image/do-image.module';
+export { DoWizardModule } from './lib/wizard/do-wizard.module';
 
 export * from './lib/base/animations';
 export { BaseFilterComponent } from './lib/base/base-component/base-filter.component';
@@ -67,3 +68,10 @@ export { DoDatePickerComponent } from './lib/datepicker/single/do-datepicker.com
 export { DoDatePickerRangeComponent } from './lib/datepicker/range/do-datepicker-range.component';
 
 export { ImageUploadComponent } from './lib/image/upload/image-upload.component';
+
+export { DoWizardService } from './lib/wizard/services/do-wizard.service';
+export { DoWizardComponent } from './lib/wizard/do-wizard.component';
+export { DoWizardErrorComponent } from './lib/wizard/wizard-error/do-wizard-error.component';
+export { DoWizardButtonsComponent } from './lib/wizard/wizard-buttons/do-wizard-buttons.component';
+export { DoWizardNavigationComponent } from './lib/wizard/wizard-navigation/do-wizard-navigation.component';
+export { DoWizardStep } from './lib/wizard/wizard-step/do-wizard-step';
