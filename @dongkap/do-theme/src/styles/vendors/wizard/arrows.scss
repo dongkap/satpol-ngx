@@ -1,3 +1,6 @@
+/*
+dongkap wizard arrow theme
+*/
 @import '~bootstrap/scss/mixins/breakpoints';
 @import './common';
 
@@ -12,92 +15,95 @@ $grid-breakpoints: (
   xxxl: 1600px
 );
 
-nav.do-wizard-navigation {
-  margin-bottom: 0;
-  background-color: #f0f3f5;
-  border-bottom: 1px solid #c8ced3;
+@include nb-install() {
+  nav.do-wizard-navigation {
+    margin-bottom: 0;
+    background-color: nb-theme(background-basic-color-1);
+    border-bottom: 1px solid nb-theme(border-basic-color-3);
 
-  ul.do-wizard-navigation-list {
-    background: #f0f3f5;
-    overflow: hidden;
+    ul.do-wizard-navigation-list {
+      background: nb-theme(background-basic-color-1);
+      overflow: hidden;
 
-    li.do-wizard-navigation-list-item-first {
-      div {
-        padding-left: 1.25rem !important;
-      }
-    }
-
-    li.do-wizard-navigation-list-item {
-      
-      @include media-breakpoint-down(sm) {
+      li.do-wizard-navigation-list-item-first {
         div {
           padding-left: 1.25rem !important;
         }
       }
-      div {
-        padding: 0.844rem 0 0.844rem 3rem;
-        position: relative;
-        display: block;
-        border: 0;
-        border-radius: 0;
-        outline-style: none;
-        color: #fff;
-        background: #4dbd74;
 
-        &:after {
-          content: "";
+      li.do-wizard-navigation-list-item {
+        
+        @include media-breakpoint-down(sm) {
+          div {
+            padding-left: 1.25rem !important;
+          }
+        }
+        div {
+          padding: 0.844rem 0 0.844rem 3rem;
+          position: relative;
           display: block;
-          width: 0;
-          height: 0;
-          border-top: 50px solid transparent;
-          border-bottom: 50px solid transparent;
-          border-left: 30px solid #4dbd74;
-          position: absolute;
-          top: 50%;
-          margin-top: -50px;
-          left: 100%;
-          z-index: 2;
+          border: 0;
+          border-radius: 0;
+          outline-style: none;
+          color: #fff;
+          background: #4dbd74;
+
+          &:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+            border-left: 30px solid #4dbd74;
+            position: absolute;
+            top: 50%;
+            margin-top: -50px;
+            left: 100%;
+            z-index: 2;
+          }
+
+          &:before {
+            content: " ";
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+            border-left: 30px solid nb-theme(background-basic-color-1);
+            position: absolute;
+            top: 50%;
+            margin-top: -50px;
+            margin-left: 1px;
+            left: 100%;
+            z-index: 1;
+          }
         }
 
-        &:before {
-          content: " ";
-          display: block;
-          width: 0;
-          height: 0;
-          border-top: 50px solid transparent;
-          border-bottom: 50px solid transparent;
-          border-left: 30px solid #fff;
-          position: absolute;
-          top: 50%;
-          margin-top: -50px;
-          margin-left: 1px;
-          left: 100%;
-          z-index: 1;
+        &:first-child div {
+          padding-left: 15px;
         }
-      }
 
-      &:first-child div {
-        padding-left: 15px;
-      }
+        div.do-wizard-navigation-link {
 
-      div.do-wizard-navigation-link {
-
-      }
-
-      div.do-wizard-navigation-active {
-        background: #20a8d8 !important;
-
-        &:after {
-          border-left: 30px solid #20a8d8 !important;
         }
-      }
 
-      div.do-wizard-navigation-disabled {
-        background: #c8ced3 !important;
-        cursor: not-allowed;
+        div.do-wizard-navigation-active {
+          background: #598bff !important;
 
-        &:after {
-          border-left: 30px solid #c8ced3 !important;
+          &:after {
+            border-left: 30px solid #598bff !important;
+          }
+        }
+
+        div.do-wizard-navigation-disabled {
+          background: nb-theme(color-basic-400) !important;
+          cursor: not-allowed;
+          color: nb-theme(color-basic-600);
+
+          &:after {
+            border-left: 30px solid nb-theme(color-basic-400) !important;
+          }
         }
       }
     }

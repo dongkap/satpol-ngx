@@ -2,6 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { NbButtonModule } from '@nebular/theme';
 import { DoWizardComponent } from './do-wizard.component';
 import { DoWizardErrorComponent } from './wizard-error/do-wizard-error.component';
 import { DoWizardButtonsComponent } from './wizard-buttons/do-wizard-buttons.component';
@@ -27,6 +28,7 @@ export const WIZARD_PROVIDERS = [
     CommonModule,
     RouterModule,
     TranslateModule,
+    NbButtonModule,
   ],
   exports: [
     ...WIZARD_COMPONENTS,

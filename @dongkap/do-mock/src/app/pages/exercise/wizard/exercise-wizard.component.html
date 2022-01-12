@@ -2,22 +2,18 @@
     <div buttonextra>
         <button
             (click)="onSaveDraft()"
-            [ngClass]="{
-                'btn-primary': formIsValid(),
-                'btn-secondary': !formIsValid()
-            }"
             [disabled]="!formIsValid()"
-            class="btn mr-1">
+            class="reset-left"
+            status="primary"
+            nbButton>
             {{'Save Draft' | translate}}
         </button>
         <button
             (click)="onSend()"
-            [ngClass]="{
-                'btn-success': formIsValid(),
-                'btn-secondary': !formIsValid()
-            }"
             [disabled]="!formIsValid()"
-            class="btn mr-1">
+            class="submit-right"
+            status="success"
+            nbButton>
             {{'Send' | translate}}
         </button>
     </div>

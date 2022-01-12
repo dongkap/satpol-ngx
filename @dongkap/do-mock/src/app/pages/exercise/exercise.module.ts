@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NbButtonModule } from '@nebular/theme';
 import { API, ENVIRONMENT, HttpCommonService, HTTP_SERVICE, OAUTH_INFO } from '@dongkap/do-core';
 import {
   DoBaseModule,
@@ -51,6 +52,7 @@ export function createTranslateLoader(http: HttpClient) {
     CollapseModule.forRoot(),
     DoWizardModule.forRoot(),
     ExerciseRoutingModule,
+    NbButtonModule,
     DoBaseModule,
     DoButtonModule,
     DoDatatableModule,
