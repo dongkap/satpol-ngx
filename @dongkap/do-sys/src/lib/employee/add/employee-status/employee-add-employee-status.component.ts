@@ -1,59 +1,41 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { DoWizardStep } from '@dongkap/do-shared';
+import { HttpBaseModel } from '@dongkap/do-core';
+import { DoWizardStep, SelectParamModel } from '@dongkap/do-shared';
 
 @Component({
   selector: 'do-employee-add-employee-status',
   templateUrl: 'employee-add-employee-status.component.html',
   styleUrls: ['./employee-add-employee-status.component.scss'],
 })
-export class EmployeeAddEmployeeStatusComponent extends DoWizardStep {
+export class EmployeeAddEmployeeStatusComponent extends DoWizardStep implements OnInit, OnDestroy {
 
-  public skillData = [
-    {
-      name: 'Java',
-      id: 'java',
-      selected: false,
-      disabled: false,
-    },
-    {
-      name: 'PHP',
-      id: 'php',
-      selected: false,
-      disabled: false,
-    },
-    {
-      name: 'Angular',
-      id: 'angular',
-      selected: false,
-      disabled: false,
-    },
-    {
-      name: 'C++',
-      id: 'c++',
-      selected: false,
-      disabled: false,
-    },
-    {
-      name: 'C#',
-      id: 'C#',
-      selected: false,
-      disabled: false,
-    },
-  ];
+  public apiSelectOccupation: HttpBaseModel;
+  public apiSelectRole: HttpBaseModel;
 
   constructor(
     public injector: Injector) {
     super(injector, 'employee-status', {
-      skill: [{
+      occupation: [{
         value: null,
         disabled: false,
       }, Validators.required],
-      others: [{
+      role: [{
         value: null,
         disabled: false,
-      }],
+      }, Validators.required],
     });
+    this.apiSelectOccupation = this.api['security']['select-occupation'];
+    this.apiSelectRole = this.api['security']['select-role'];
+  }
+
+  ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+    this.destroy$.unsubscribe();
   }
 
   validateRoute() {

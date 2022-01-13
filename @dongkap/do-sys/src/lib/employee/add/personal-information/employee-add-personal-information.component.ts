@@ -1,6 +1,6 @@
 import { Component, Injector, OnDestroy, OnInit, } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { DoWizardStep } from '@dongkap/do-shared';
+import { DoWizardStep, SelectResponseModel } from '@dongkap/do-shared';
 import { Pattern } from '@dongkap/do-core';
 import { catchError, map, takeUntil } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -17,6 +17,23 @@ export class EmployeeAddPersonalInformationComponent extends DoWizardStep implem
   public patternPhoneNumber: string = Pattern.PHONE_NUMBER;
   public patternFullname: string = Pattern.FULLNAME;
   public genderData = [];
+  public bloodTypeData: SelectResponseModel[] = [{
+      label: 'A',
+      value: 'A',
+      disabled: false,
+    }, {
+      label: 'B',
+      value: 'B',
+      disabled: false,
+    }, {
+      label: 'AB',
+      value: 'AB',
+      disabled: false,
+    }, {
+      label: 'O',
+      value: 'O',
+      disabled: false,
+    }];
 
   constructor(
     public injector: Injector) {

@@ -8,6 +8,7 @@ import {
   NbButtonModule,
   NbTabsetModule,
   NbSpinnerModule,
+  NbAccordionModule,
 } from '@nebular/theme';
 import { TranslateModule } from '@ngx-translate/core';
 import { DoThemeModule } from '@dongkap/do-theme';
@@ -51,6 +52,7 @@ const modules = [
   NbAlertModule,
   NbIconModule,
   NbButtonModule,
+  NbAccordionModule,
   NbDialogModule.forChild(),
   NbTabsetModule,
   NbSpinnerModule,

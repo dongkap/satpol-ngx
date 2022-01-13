@@ -1,42 +1,66 @@
-<div class="row">
-  <div class="col-md-6">
-    <form class="form-horizontal" autocomplete="on" [formGroup]="formGroup">
-      <div [formGroupName]="formGroupName">
-        <do-input-text
-          [name]="'username'"
-          [label]="'Username'"
-          [placeholder]="'Username'"
-          [required]="true"
-          [pattern]="patternUsername"
-          [paramError]="{value:5}"
-          minlength="5"
-          maxlength="20"
-          formControlName="username">
-        </do-input-text>
-        <do-input-file
-          [name]="'photo'"
-          [label]="'Photo'"
-          [placeholder]="'Photo'"
-          formControlName="photo">
-        </do-input-file>
-        <do-input-currency
-          [name]="'salary'"
-          [label]="'Salary'"
-          [placeholder]="'Salary'"
-          [required]="true"
-          formControlName="salary">
-        </do-input-currency>
-      </div>
-    </form>
-  </div>
-  <div class="col-md-6">
-    <div class="card bg-secondary">
-      <div class="card-body">
-        <pre>Value: <code>{{ formGroup.value | json }}</code></pre>
-        <p>
-          Status: {{ formGroup.status }}
-        </p>
-      </div>
+<do-wizard-page-outlet>
+  <form class="form-horizontal" autocomplete="on" [formGroup]="formGroup" wizardcontent>
+    <div class="accordion-container" [formGroupName]="formGroupName">
+      <nb-accordion multi>
+        <nb-accordion-item [expanded]="true">
+          <nb-accordion-item-header>
+            {{'Formal Education' | translate}}
+          </nb-accordion-item-header>
+          <nb-accordion-item-body>
+            <do-select
+              [name]="'educationalLevel'"
+              [label]="'Educational Level'"
+              [placeholder]="'Educational Level'"
+              [required]="true"
+              [api]="apiSelectEducationalLevel"
+              [queryParam]="paramSelectEducationalLevel"
+              [searchable]="false"
+              [skeleton]="loadingForm"
+              formControlName="educationalLevel">
+            </do-select>
+            <do-input-text
+              [name]="'school'"
+              [label]="'School'"
+              [placeholder]="'School'"
+              formControlName="school">
+            </do-input-text>
+            <do-input-text
+              [name]="'startYear'"
+              [label]="'Start Year'"
+              [placeholder]="'Start Year'"
+              [type]="'number'"
+              formControlName="startYear">
+            </do-input-text>
+            <do-input-text
+              [name]="'endYear'"
+              [label]="'End Year'"
+              [placeholder]="'End Year'"
+              [type]="'number'"
+              formControlName="endYear">
+            </do-input-text>
+          </nb-accordion-item-body>
+        </nb-accordion-item>
+        <nb-accordion-item [expanded]="true">
+          <nb-accordion-item-header>
+            {{'Non Formal Education' | translate}}
+          </nb-accordion-item-header>
+          <nb-accordion-item-body>
+            <do-input-text
+              [name]="'trainingName'"
+              [label]="'Training Name'"
+              [placeholder]="'Training Name'"
+              formControlName="trainingName">
+            </do-input-text>
+            <do-datepicker-range
+              [name]="'trainingDate'"
+              [label]="'Training Date'"
+              [placeholder]="'Training Date'"
+              [skeleton]="loadingForm"
+              formControlName="trainingDate">
+            </do-datepicker-range>
+          </nb-accordion-item-body>
+        </nb-accordion-item>
+      </nb-accordion>
     </div>
-  </div>
-</div>
+  </form>
+</do-wizard-page-outlet>

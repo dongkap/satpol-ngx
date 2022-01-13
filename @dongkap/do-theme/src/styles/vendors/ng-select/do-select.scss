@@ -18,7 +18,7 @@ dongkap select theme
     $ng-select-marked-text: nb-theme(text-basic-color) !default;
     
     $ng-select-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(0, 126, 255, 0.1) !default;
-    $ng-select-placeholder: lighten($ng-select-primary-text, 40) !default;
+    $ng-select-placeholder: nb-theme(text-hint-color) !default;
     $ng-select-height: 40px !default;
     $ng-select-value-padding-left: 10px !default;
     $ng-select-value-font-size: 0.9em !default;
@@ -107,7 +107,10 @@ dongkap select theme
                     padding-left: 0;
                 }
                 .ng-placeholder {
+                    font-size: 0.9375rem;
+                    font-weight: 400;
                     color: $ng-select-placeholder;
+                    padding-left: 0.3rem;
                 }
             }
         }

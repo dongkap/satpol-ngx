@@ -89,14 +89,15 @@
         [skeleton]="loadingForm"
         formControlName="weight">
       </do-input-text>
-      <do-input-text
+      <do-select
         [name]="'bloodType'"
         [label]="'Blood Type'"
         [placeholder]="'Blood Type'"
-        [maxLength]="2"
+        [items]="bloodTypeData"
+        [searchable]="false"
         [skeleton]="loadingForm"
         formControlName="bloodType">
-      </do-input-text>
+      </do-select>
     </div>
   </form>
 </do-wizard-page-outlet>

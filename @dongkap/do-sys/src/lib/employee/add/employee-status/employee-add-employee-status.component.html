@@ -2,18 +2,26 @@
   <div class="col-md-12">
     <form class="form-horizontal" autocomplete="on" [formGroup]="formGroup">
       <div [formGroupName]="formGroupName">
-        <do-checkbox
-          [name]="'skill'"
-          [label]="'Skill'"
-          [data]="skillData"
+        <do-select
+          [name]="'occupation'"
+          [label]="'Occupation'"
+          [placeholder]="'Occupation'"
           [required]="true"
-          formControlName="skill">
-        </do-checkbox>
-        <do-text-editor
-          [name]="'others'"
-          [label]="'Others'"
-          formControlName="others">
-        </do-text-editor>
+          [api]="apiSelectOccupation"
+          [searchable]="false"
+          [skeleton]="loadingForm"
+          formControlName="occupation">
+        </do-select>
+        <do-select
+          [name]="'role'"
+          [label]="'Role'"
+          [placeholder]="'Role'"
+          [required]="true"
+          [api]="apiSelectRole"
+          [searchable]="false"
+          [skeleton]="loadingForm"
+          formControlName="role">
+        </do-select>
       </div>
     </form>
   </div>

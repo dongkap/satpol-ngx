@@ -117,6 +117,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/security/001/vw/auth/datatable/role/v.1',
         },
+        'select-role': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/vw/auth/select/role/v.2',
+        },
         'post-role': {
             server: environment.host.security,
             method: HttpMethod.POST,
