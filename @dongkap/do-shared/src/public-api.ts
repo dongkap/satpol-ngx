@@ -62,7 +62,7 @@ export { DoCheckboxComponent } from './lib/checkbox/checkbox/do-checkbox.compone
 export { CheckboxModel } from './lib/checkbox/models/checkbox.model';
 
 export { DoRadioComponent } from './lib/radio/radio/do-radio.component';
-export { RadioModel } from './lib/radio/models/radio.model';
+export { RadioModel, RadioParamModel } from './lib/radio/models/radio.model';
 
 export { DoDatePickerComponent } from './lib/datepicker/single/do-datepicker.component';
 export { DoDatePickerRangeComponent } from './lib/datepicker/range/do-datepicker-range.component';
@@ -74,4 +74,5 @@ export { DoWizardComponent } from './lib/wizard/do-wizard.component';
 export { DoWizardErrorComponent } from './lib/wizard/wizard-error/do-wizard-error.component';
 export { DoWizardButtonsComponent } from './lib/wizard/wizard-buttons/do-wizard-buttons.component';
 export { DoWizardNavigationComponent } from './lib/wizard/wizard-navigation/do-wizard-navigation.component';
+export { DoWizardPageOutletComponent } from './lib/wizard/wizard-page-outlet/do-wizard-page-outlet.component';
 export { DoWizardStep } from './lib/wizard/wizard-step/do-wizard-step';

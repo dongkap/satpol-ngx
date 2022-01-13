@@ -286,6 +286,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/master/003/vw/post/select/parameter-i18n/v.1',
         },
+        'radio-parameter': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/api/master/003/vw/post/radio/parameter-i18n/v.1',
+        },
         'datatable-parameter-group': {
             server: environment.host.master,
             method: HttpMethod.POST,

@@ -19,17 +19,28 @@ import {
   DoSelectModule,
   DoDatatableModule,
   DoEditorModule,
+  DoWizardModule,
+  DoDatePickerModule,
+  DoRadioModule,
 } from '@dongkap/do-shared';
 import { MgmtEmployeeComponent } from './do-mgmt-employee.component';
 import { DoMgmtEmployeeRoutingModule } from './do-mgmt-employee-routing.module';
 import { EmployeeService } from './services/employee.service';
 import { EmployeeListPageComponent } from './list/employee-list-page.component';
-import { EmployeeAddEditPageComponent } from './add-edit/employee-add-edit-page.component';
+import { EmployeeEditPageComponent } from './edit/employee-edit-page.component';
+import { EmployeeAddPageComponent } from './add/employee-add-page.component';
+import { EmployeeAddPersonalInformationComponent } from './add/personal-information/employee-add-personal-information.component';
+import { EmployeeAddEducationComponent } from './add/education/employee-add-education.component';
+import { EmployeeAddEmployeeStatusComponent } from './add/employee-status/employee-add-employee-status.component';
 
 const components = [
   MgmtEmployeeComponent,
   EmployeeListPageComponent,
-  EmployeeAddEditPageComponent,
+  EmployeeEditPageComponent,
+  EmployeeAddPageComponent,
+  EmployeeAddPersonalInformationComponent,
+  EmployeeAddEducationComponent,
+  EmployeeAddEmployeeStatusComponent,
 ];
 
 const modules = [
@@ -44,13 +55,16 @@ const modules = [
   NbTabsetModule,
   NbSpinnerModule,
   DoThemeModule,
+  DoBaseModule,
   DoInputModule,
   DoCheckBoxModule,
   DoButtonModule,
-  DoBaseModule,
   DoSelectModule,
   DoDatatableModule,
   DoEditorModule,
+  DoDatePickerModule,
+  DoRadioModule,
+  DoWizardModule.forRoot(),
   DoMgmtEmployeeRoutingModule,
 ];
 

@@ -3,7 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardChildService } from '@dongkap/do-auth';
 import { MgmtEmployeeComponent } from './do-mgmt-employee.component';
 import { EmployeeListPageComponent } from './list/employee-list-page.component';
-import { EmployeeAddEditPageComponent } from './add-edit/employee-add-edit-page.component';
+import { EmployeeAddPageComponent } from './add/employee-add-page.component';
+import { EmployeeEditPageComponent } from './edit/employee-edit-page.component';
+import { EmployeeAddPersonalInformationComponent } from './add/personal-information/employee-add-personal-information.component';
+import { EmployeeAddEducationComponent } from './add/education/employee-add-education.component';
+import { EmployeeAddEmployeeStatusComponent } from './add/employee-status/employee-add-employee-status.component';
 
 const routes: Routes = [{
   path: '',
@@ -18,11 +22,54 @@ const routes: Routes = [{
       },
     },
     {
-      path: ':action',
-      component: EmployeeAddEditPageComponent,
+      path: 'add',
+      component: EmployeeAddPageComponent,
+      data: {
+        name: 'Manage Employee',
+        code: '#MANAGEMENT-OCCUPATION-PAGE',
+      },
+      children: [
+        {
+          path: 'personal-information',
+          component: EmployeeAddPersonalInformationComponent,
+          data: {
+            title: 'Personal Information',
+            code: '#MANAGEMENT-OCCUPATION-PAGE',
+          },
+        },
+        {
+          path: 'education',
+          component: EmployeeAddEducationComponent,
+          data: {
+            title: 'Education',
+            code: '#MANAGEMENT-OCCUPATION-PAGE',
+          },
+        },
+        {
+          path: 'employee-status',
+          component: EmployeeAddEmployeeStatusComponent,
+          data: {
+            title: 'Employee Status',
+            code: '#MANAGEMENT-OCCUPATION-PAGE',
+          },
+        },
+        {
+          path: '**',
+          redirectTo: 'personal-information',
+        },
+      ],
+    },
+    {
+      path: 'edit',
+      component: EmployeeEditPageComponent,
       data: {
         code: '#MANAGEMENT-OCCUPATION-PAGE',
       },
+    },
+    {
+      path: '',
+      redirectTo: '',
+      pathMatch: 'full',
     },
   ],
 }];

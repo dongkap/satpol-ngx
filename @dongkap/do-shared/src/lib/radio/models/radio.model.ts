@@ -4,3 +4,8 @@ export interface RadioModel {
     selected?: boolean;
     disabled?: boolean;
 }
+
+export class RadioParamModel {
+    key: string;
+    value: any;
+}

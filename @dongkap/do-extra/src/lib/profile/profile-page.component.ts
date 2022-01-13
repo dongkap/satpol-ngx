@@ -133,8 +133,8 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
             this.formGroup.controls['idNumber'].setValue(success?.personalInfo?.idNumber);
             if (success?.personalInfo?.genderCode) {
               this.formGroup.controls['gender'].setValue({
-                label: success?.personalInfo.genderCode,
-                value: success?.personalInfo.genderValue
+                label: success?.personalInfo.genderValue,
+                value: success?.personalInfo.genderCode
               });
             }
             this.formGroup.controls['placeOfBirth'].setValue(success?.personalInfo?.placeOfBirth);
@@ -350,8 +350,8 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
       idNumber: this.formGroup.get('idNumber').value,
       placeOfBirth: this.formGroup.get('placeOfBirth').value,
       dateOfBirth: this.formGroup.get('dateOfBirth').value,
-      genderCode: this.valueSelect('gender'),
-      genderValue: this.valueSelectNonLabel('gender'),
+      genderCode: this.valueSelectNonLabel('gender'),
+      genderValue: this.valueSelect('gender'),
     };
     const data: any = {
       name: this.formGroup.get('name').value,

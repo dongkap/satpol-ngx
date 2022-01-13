@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'do-404',
@@ -8,11 +8,11 @@ import { Location } from '@angular/common';
 })
 export class PageNotFoundComponent {
 
-  constructor(private location: Location) {
+  constructor(private router: Router) {
   }
 
   goToHome() {
-    this.location.back();
+    this.router.navigate(['/app/home']);
     return;
   }
 }

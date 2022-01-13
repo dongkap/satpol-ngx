@@ -9,11 +9,11 @@ import { EmployeeService } from '../services/employee.service';
 import { EmployeeHeaderModel } from '../models/employee.model';
 
 @Component({
-  selector: 'do-employee-add-edit-page',
-  styleUrls: ['./employee-add-edit-page.component.scss'],
-  templateUrl: './employee-add-edit-page.component.html',
+  selector: 'do-employee-edit-page',
+  styleUrls: ['./employee-edit-page.component.scss'],
+  templateUrl: './employee-edit-page.component.html',
 })
-export class EmployeeAddEditPageComponent extends BaseFormComponent<any> implements OnInit {
+export class EmployeeEditPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public action: 'Add' | 'Edit' = 'Add';
   public patternEmail: string = Pattern.EMAIL;

@@ -7,6 +7,7 @@ import { DoWizardComponent } from './do-wizard.component';
 import { DoWizardErrorComponent } from './wizard-error/do-wizard-error.component';
 import { DoWizardButtonsComponent } from './wizard-buttons/do-wizard-buttons.component';
 import { DoWizardNavigationComponent } from './wizard-navigation/do-wizard-navigation.component';
+import { DoWizardPageOutletComponent } from './wizard-page-outlet/do-wizard-page-outlet.component';
 import { DoWizardService } from './services/do-wizard.service';
 
 export const WIZARD_COMPONENTS = [
@@ -14,6 +15,7 @@ export const WIZARD_COMPONENTS = [
   DoWizardErrorComponent,
   DoWizardNavigationComponent,
   DoWizardButtonsComponent,
+  DoWizardPageOutletComponent,
 ];
 
 export const WIZARD_PROVIDERS = [

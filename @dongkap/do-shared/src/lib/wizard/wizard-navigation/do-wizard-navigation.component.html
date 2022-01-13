@@ -12,7 +12,7 @@
              }">
           <span class="do-wizard-navigation-label">
             <span [innerHTML]="stepData.options.icon || wizardOptions.navBar.icons.previous" class="do-wizard-navigation-icon"></span>
-            {{ stepData.options.title }}
+            {{ stepData.options.title | translate }}
           </span>
         </div>
 
@@ -21,7 +21,7 @@
           class="do-wizard-navigation-active">
           <span class="do-wizard-navigation-label">
             <span [innerHTML]="stepData.options.icon || wizardOptions.navBar.icons.current" class="do-wizard-navigation-icon"></span>
-            {{ stepData.options.title }}
+            {{ stepData.options.title | translate }}
           </span>
         </div>
 
@@ -29,7 +29,7 @@
              class="do-wizard-navigation-disabled">
           <span class="do-wizard-navigation-label">
             <span [innerHTML]="stepData.options.icon || wizardOptions.navBar.icons.next" class="do-wizard-navigation-icon"></span>
-            {{ stepData.options.title }}
+            {{ stepData.options.title | translate }}
           </span>
         </div>
       </li>

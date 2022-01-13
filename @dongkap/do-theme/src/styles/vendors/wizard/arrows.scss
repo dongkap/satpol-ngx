@@ -46,7 +46,7 @@ $grid-breakpoints: (
           border-radius: 0;
           outline-style: none;
           color: #fff;
-          background: #4dbd74;
+          background: nb-theme(color-success-500);
 
           &:after {
             content: "";
@@ -55,7 +55,7 @@ $grid-breakpoints: (
             height: 0;
             border-top: 50px solid transparent;
             border-bottom: 50px solid transparent;
-            border-left: 30px solid #4dbd74;
+            border-left: 30px solid nb-theme(color-success-500);
             position: absolute;
             top: 50%;
             margin-top: -50px;
@@ -70,7 +70,7 @@ $grid-breakpoints: (
             height: 0;
             border-top: 50px solid transparent;
             border-bottom: 50px solid transparent;
-            border-left: 30px solid nb-theme(background-basic-color-1);
+            border-left: 30px solid nb-theme(border-basic-color-4);
             position: absolute;
             top: 50%;
             margin-top: -50px;
@@ -89,20 +89,20 @@ $grid-breakpoints: (
         }
 
         div.do-wizard-navigation-active {
-          background: #598bff !important;
+          background: nb-theme(color-primary-500) !important;
 
           &:after {
-            border-left: 30px solid #598bff !important;
+            border-left: 30px solid nb-theme(color-primary-500) !important;
           }
         }
 
         div.do-wizard-navigation-disabled {
-          background: nb-theme(color-basic-400) !important;
+          background: nb-theme(background-basic-color-2) !important;
           cursor: not-allowed;
-          color: nb-theme(color-basic-600);
+          color: nb-theme(text-disabled-color);
 
           &:after {
-            border-left: 30px solid nb-theme(color-basic-400) !important;
+            border-left: 30px solid nb-theme(background-basic-color-2) !important;
           }
         }
       }
