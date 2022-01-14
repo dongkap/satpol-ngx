@@ -119,6 +119,15 @@
 	"Blood Type": "Blood Type",
 	"Centimeter": "Centimeter",
 	"Kilogram": "Kilogram",
+	"Formal Education": "Formal Education",
+	"Non Formal Education": "Non Formal Education",
+	"School": "School",
+	"Educational Level": "Educational Level",
+	"Start Year": "Start Year",
+	"End Year": "End Year",
+	"Training": "Training",
+	"Training Name": "Training Name",
+	"Training Date": "Training Date",
 	"placeholder": {
 		"image-upload": "Click or drag it here."
 	},

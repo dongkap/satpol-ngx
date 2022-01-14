@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { DoWizardService } from '../services/do-wizard.service';
 import { DoWizardStepData } from '../wizard-step/do-wizard-step-data.interface';
 import { DoWizardOptions } from '../wizard-options/do-wizard-options.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'do-wizard-buttons',
@@ -11,6 +12,7 @@ import { DoWizardOptions } from '../wizard-options/do-wizard-options.interface';
 })
 export class DoWizardButtonsComponent implements OnInit {
   @Input() extra: boolean = false;
+  @Input() clearFormOnSubmit: boolean = false;
   @Output() onNext: EventEmitter<any> = new EventEmitter<any>();
   @Output() onPrevious: EventEmitter<any> = new EventEmitter<any>();
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
@@ -18,7 +20,7 @@ export class DoWizardButtonsComponent implements OnInit {
 
   public wizardOptions: DoWizardOptions;
 
-  constructor(private service: DoWizardService) { }
+  constructor(private service: DoWizardService, private router: Router) { }
 
   ngOnInit() {
     this.currentStepData$ = this.service.getCurrentStepDataAsObservable();
@@ -30,7 +32,10 @@ export class DoWizardButtonsComponent implements OnInit {
   }
 
   goToSubmit() {
-    this.onSubmit.emit(this.service.getFormGroup());
+    if (this.clearFormOnSubmit) {
+      this.service.getFormGroup().reset();
+    }
+    this.onSubmit.emit(this.service.getFormGroup().value);
   }
 
   goToNextStep() {
@@ -41,6 +46,11 @@ export class DoWizardButtonsComponent implements OnInit {
   goToPreviousStep() {
     this.onPrevious.emit(this.service.getFormGroup());
     this.service.navigateToPreviousStep();
+  }
+
+  goToCancel(url: string) {
+    this.service.getFormGroup().reset();
+    this.router.navigate([url]);
   }
 
   goToPath(path: string) {

@@ -14,12 +14,8 @@ export class EmployeeAddPageComponent {
     return this.service.formIsValid();
   }
 
-  onSaveDraft(){
-    console.log(this.service.getFormGroup().value);
-  }
-
-  onSend(){
-    console.log(this.service.getFormGroup().value);
+  onSubmit(data: any){
+    console.log(data);
   }
 
 }

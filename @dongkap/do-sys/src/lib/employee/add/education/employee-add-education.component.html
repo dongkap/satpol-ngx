@@ -15,6 +15,7 @@
               [api]="apiSelectEducationalLevel"
               [queryParam]="paramSelectEducationalLevel"
               [searchable]="false"
+              (onSelect)="onSelectEducationalLevel($event)"
               [skeleton]="loadingForm"
               formControlName="educationalLevel">
             </do-select>
@@ -22,6 +23,7 @@
               [name]="'school'"
               [label]="'School'"
               [placeholder]="'School'"
+              [show]="!noSchool"
               formControlName="school">
             </do-input-text>
             <do-input-text
@@ -29,6 +31,7 @@
               [label]="'Start Year'"
               [placeholder]="'Start Year'"
               [type]="'number'"
+              [show]="!noSchool"
               formControlName="startYear">
             </do-input-text>
             <do-input-text
@@ -36,6 +39,7 @@
               [label]="'End Year'"
               [placeholder]="'End Year'"
               [type]="'number'"
+              [show]="!noSchool"
               formControlName="endYear">
             </do-input-text>
           </nb-accordion-item-body>

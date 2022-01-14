@@ -10,7 +10,7 @@
         [extra]="extra"
         (onNext)="goToNextStep()"
         (onPrevious)="goToPreviousStep()"
-        (onSubmit)="goToSubmit()">
+        (onSubmit)="goToSubmit($event)">
         <div buttonextra *ngIf="extra">
           <ng-content select="[buttonextra]"></ng-content>
         </div>

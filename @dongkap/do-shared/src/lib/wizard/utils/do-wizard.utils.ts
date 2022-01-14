@@ -43,6 +43,7 @@ export function getStepDataForUrl(stepData: DoWizardStepData[], url: string) {
 export function getDefaultWizardOptions(): DoWizardOptions {
   return {
     name: '',
+    baseUrl: '/',
     navBar: {
       icons: {
         previous: '<i class="cil-check-alt"></i>',
@@ -51,6 +52,9 @@ export function getDefaultWizardOptions(): DoWizardOptions {
       },
     },
     buttons: {
+      cancel: {
+        label: 'Cancel',
+      },
       previous: {
         label: 'Back',
       },

@@ -67,7 +67,7 @@ export class EmployeeAddPersonalInformationComponent extends DoWizardStep implem
         disabled: false,
       }, Validators.required],
       gender: [{
-        value: 'GENDER.MALE',
+        value: null,
         disabled: false,
       }],
       height: [{
@@ -86,6 +86,7 @@ export class EmployeeAddPersonalInformationComponent extends DoWizardStep implem
   }
 
   ngOnInit(): void {
+    this.formGroup.get('personal-information').get('gender').setValue('GENDER.MALE');
     this.loadingForm = true;
     this.http.HTTP_AUTH(this.api['master']['radio-parameter'], {
       keyword : {

@@ -27,6 +27,7 @@ const routes: Routes = [{
       data: {
         name: 'Manage Employee',
         code: '#MANAGEMENT-OCCUPATION-PAGE',
+        baseUrl: '/app/mgmt/employee',
       },
       children: [
         {

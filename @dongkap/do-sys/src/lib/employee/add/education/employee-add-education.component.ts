@@ -12,6 +12,7 @@ export class EmployeeAddEducationComponent extends DoWizardStep implements OnIni
 
   public apiSelectEducationalLevel: HttpBaseModel;
   public paramSelectEducationalLevel: SelectParamModel[];
+  public noSchool: boolean = false;
 
   constructor(
     public injector: Injector) {
@@ -49,12 +50,26 @@ export class EmployeeAddEducationComponent extends DoWizardStep implements OnIni
   }
 
   ngOnInit(): void {
+    const select: any = this.formGroup.get('education').get('educationalLevel').value;
+    if (select?.value === 'EDUCATIONAL_LEVEL.NO_EDUCATION') {
+      this.noSchool = true;
+    } else {
+      this.noSchool = false;
+    }
   }
 
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.complete();
     this.destroy$.unsubscribe();
+  }
+
+  onSelectEducationalLevel(select: any): void {
+    if (select?.value === 'EDUCATIONAL_LEVEL.NO_EDUCATION') {
+      this.noSchool = true;
+    } else {
+      this.noSchool = false;
+    }
   }
 
   validateRoute() {

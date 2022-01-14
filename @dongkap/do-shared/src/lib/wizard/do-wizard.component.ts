@@ -38,8 +38,8 @@ export class DoWizardComponent {
     }
   }
 
-  goToSubmit() {
-    this.onSubmit.emit(this.service.getFormGroup());
+  goToSubmit(data: any) {
+    this.onSubmit.emit(data);
   }
 
   goToNextStep() {

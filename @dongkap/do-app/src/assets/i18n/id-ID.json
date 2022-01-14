@@ -119,6 +119,15 @@
 	"Blood Type": "Golongan Darah",
 	"Centimeter": "Centimeter",
 	"Kilogram": "Kilogram",
+	"Formal Education": "Pendidikan Formal",
+	"Non Formal Education": "Pendidikan Non Formal",
+	"School": "Sekolah",
+	"Educational Level": "Jenjang Pendidikan",
+	"Start Year": "Tahun Mulai",
+	"End Year": "Tahun Akhir",
+	"Training": "Pelatihan",
+	"Training Name": "Nama Pelatihan",
+	"Training Date": "Tanggal Pelatihan",
 	"placeholder": {
 		"image-upload": "Klik atau seret kesini."
 	},

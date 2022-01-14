@@ -2,6 +2,10 @@ export interface DoWizardStepOptions {
   title: string;
   icon?: string;
   buttons?: {
+    cancel?: {
+      label?: string;
+      hidden?: boolean;
+    };
     previous?: {
       label?: string;
       hidden?: boolean;

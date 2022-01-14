@@ -1,5 +1,6 @@
 export interface DoWizardOptions {
   name: string;
+  baseUrl: string;
   navBar: {
     icons: {
       previous: string;
@@ -8,6 +9,9 @@ export interface DoWizardOptions {
     };
   };
   buttons: {
+    cancel: {
+      label: string;
+    };
     previous: {
       label: string;
     };
