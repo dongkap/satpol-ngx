@@ -58,6 +58,10 @@ export class EmployeeAddPersonalInformationComponent extends DoWizardStep implem
         value: null,
         disabled: false,
       }, Validators.required],
+      address: [{
+        value: null,
+        disabled: false,
+      }, Validators.required],
       placeOfBirth: [{
         value: null,
         disabled: false,

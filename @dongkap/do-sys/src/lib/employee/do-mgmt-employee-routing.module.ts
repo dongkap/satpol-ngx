@@ -42,7 +42,7 @@ const routes: Routes = [{
           path: 'education',
           component: EmployeeAddEducationComponent,
           data: {
-            title: 'Education',
+            title: 'Last Education',
             code: '#MANAGEMENT-OCCUPATION-PAGE',
           },
         },

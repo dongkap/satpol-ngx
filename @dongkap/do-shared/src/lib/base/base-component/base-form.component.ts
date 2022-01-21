@@ -36,9 +36,12 @@ export abstract class BaseFormComponent<T> extends BaseComponent<T> {
 
     onSubmit(body?: any, serviceName?: string, apiName?: string, disableToastr?: boolean): any {
         this.disabled = true;
+        this.initProgress();
+        this.setProgress(65);
         this.exec(serviceName, apiName, body ? body : this.formGroup.value)
             .subscribe(
                 (success: ApiBaseResponse) => {
+                    this.setProgress(95);
                     if (!body) {
                         this.formGroup.markAsPristine();
                     }
@@ -48,6 +51,7 @@ export abstract class BaseFormComponent<T> extends BaseComponent<T> {
                             this.toastr.showI18n(success.respStatusMessage[success.respStatusCode], true);
                         }
                     }
+                    this.doneProgress();
                     this.submitSubject$.next(success);
                 },
                 (error: any | ApiBaseResponse) => {
@@ -58,6 +62,7 @@ export abstract class BaseFormComponent<T> extends BaseComponent<T> {
                         }
                         this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
                     }
+                    this.doneProgress();
                     this.submitSubject$.next(error);
                 },
             );

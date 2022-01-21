@@ -8,6 +8,7 @@
     <div class="do-wizard-footer">
       <do-wizard-buttons
         [extra]="extra"
+        [disabled]="loading"
         (onNext)="goToNextStep()"
         (onPrevious)="goToPreviousStep()"
         (onSubmit)="goToSubmit($event)">

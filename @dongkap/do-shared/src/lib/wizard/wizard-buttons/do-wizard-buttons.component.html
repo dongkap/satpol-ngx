@@ -3,6 +3,7 @@
     <button *ngIf="!currentStepData.previousStep && !currentStepData.options.buttons?.cancel?.hidden"
             (click)="goToCancel(wizardOptions.baseUrl)"
             status="danger"
+            [disabled]="disabled"
             class="do-wizard-button-previous"
             nbButton>
             {{currentStepData.options.buttons?.cancel?.label || wizardOptions.buttons.cancel.label | translate}}
@@ -10,13 +11,14 @@
     <button *ngIf="currentStepData.previousStep && !currentStepData.options.buttons?.previous?.hidden"
             (click)="goToPreviousStep()"
             status="danger"
+            [disabled]="disabled"
             class="do-wizard-button-previous"
             nbButton>
             {{currentStepData.options.buttons?.previous?.label || wizardOptions.buttons.previous.label | translate}}
     </button>
     <button *ngIf="currentStepData.nextStep && !currentStepData.options.buttons?.next?.hidden"
             (click)="goToNextStep()"
-            [disabled]="!formIsValid()"
+            [disabled]="!formIsValid() || disabled"
             status="primary"
             class="do-wizard-button-next"
             nbButton>
@@ -24,7 +26,7 @@
     </button>
     <button *ngIf="!currentStepData.nextStep && !currentStepData.options.buttons?.finish?.hidden && !extra"
             (click)="goToSubmit()"
-            [disabled]="!formIsValid()"
+            [disabled]="!formIsValid() || disabled"
             status="success"
             class="do-wizard-button-finish"
             nbButton>

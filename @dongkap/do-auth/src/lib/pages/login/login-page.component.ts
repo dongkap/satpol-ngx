@@ -30,6 +30,7 @@ export class LoginPageComponent implements OnDestroy {
   public responseError: any;
   public buttonLogin: boolean = false;
   private progress: number = 25;
+  protected progressDOM: HTMLElement;
   protected destroy$: Subject<any> = new Subject<any>();
 
   public formGroup: FormGroup = new FormGroup({
@@ -71,16 +72,16 @@ export class LoginPageComponent implements OnDestroy {
 
   public login() {
     if (!this.formGroup.invalid) {
-      const progressDOM = this.initiateProgress();
+      this.initProgress();
       if (this.progress < 35) {
-        this.progressBar(progressDOM, this.progress = 35);
+        this.setProgress(this.progress = 35);
       }
       this.buttonLogin = true;
       this.authTokenService.login(
         this.formGroup.get('username').value,
         this.formGroup.get('password').value)
         .then(() => {
-          this.progressBar(progressDOM, this.progress = 95);
+          this.setProgress(this.progress = 95);
           this.progress = 0;
           this.responseError = null;
           this.router.navigate(['/app/home']);
@@ -95,12 +96,12 @@ export class LoginPageComponent implements OnDestroy {
           } catch (error) {
             this.responseError = 'error.500';
           }
-          this.progress = 0;
           this.buttonLogin = false;
-          this.reinitProgress();
+          this.progress = 0;
+          this.doneProgress();
         });
       if (this.progress >= 35 && this.progress < 65) {
-        this.progressBar(progressDOM, this.progress = 65);
+        this.setProgress(this.progress = 65);
       }
     }
   }
@@ -158,31 +159,31 @@ export class LoginPageComponent implements OnDestroy {
     });
   }
 
-  private initiateProgress(): HTMLElement {
+  protected initProgress(): void {
     document.querySelectorAll('.pace-done').forEach(pace => {
-      pace.className = pace.className.replace('pace-done pace-done', 'pace-running');
-      pace.className = pace.className.replace('pace-done', 'pace-running');
+    pace.className = pace.className.replace('pace-done pace-done', 'pace-running');
+    pace.className = pace.className.replace('pace-done', 'pace-running');
     });
     document.querySelectorAll('.pace-inactive').forEach(pace => {
-      pace.className = pace.className.replace('pace-inactive pace-inactive', 'pace-active');
-      pace.className = pace.className.replace('pace-inactive', 'pace-active');
+    pace.className = pace.className.replace('pace-inactive pace-inactive', 'pace-active');
+    pace.className = pace.className.replace('pace-inactive', 'pace-active');
     });
-    return document.getElementsByClassName('pace-progress').item(0) as HTMLElement;
+    this.progressDOM = document.getElementsByClassName('pace-progress').item(0) as HTMLElement;
   }
 
-  private reinitProgress() {
+  protected doneProgress() {
     document.querySelectorAll('.pace-running').forEach(pace => {
-      pace.className = pace.className.replace('pace-running', 'pace-done');
+    pace.className = pace.className.replace('pace-running', 'pace-done');
     });
     document.querySelectorAll('.pace-active').forEach(pace => {
-      pace.className = pace.className.replace('pace-active', 'pace-inactive');
+    pace.className = pace.className.replace('pace-active', 'pace-inactive');
     });
   }
 
-  private progressBar(progressDOM: HTMLElement, progress: number) {
-    progressDOM.style.transform = 'translate3d(' + progress + '%, 0px, 0px)';
-    progressDOM.getAttributeNode('data-progress-text').value = progress + '%';
-    progressDOM.getAttributeNode('data-progress').value = progress.toString();
+  protected setProgress(progress: number) {
+    this.progressDOM.style.transform = 'translate3d(' + progress + '%, 0px, 0px)';
+    this.progressDOM.getAttributeNode('data-progress-text').value = progress + '%';
+    this.progressDOM.getAttributeNode('data-progress').value = progress.toString();
   }
 
 }

@@ -32,7 +32,7 @@ export class RoleListPageComponent extends BaseFilterComponent<any> implements O
     });
     this.apiPath = this.api['security']['datatable-role'];
     this.sort = {
-      asc: ['authority']
+      asc: ['level']
     };
     this.filters = [
       { controlName: 'authority', type: 'input' },

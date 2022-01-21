@@ -30,6 +30,7 @@ export class ForgotPageComponent implements OnDestroy {
   public responseError: any;
   public buttonForgotPassword: boolean = false;
   private progressBar: number = 25;
+  protected progressDOM: HTMLElement;
 
   public patternPassword: string = Pattern.PASSWORD_MEDIUM;
   public errorMsgNewPassword: string;
@@ -70,20 +71,9 @@ export class ForgotPageComponent implements OnDestroy {
 
   public forgotPassword() {
     if (!this.form.invalid) {
-      document.querySelectorAll('.pace-done').forEach(pace => {
-        pace.className = pace.className.replace('pace-done pace-done', 'pace-running');
-        pace.className = pace.className.replace('pace-done', 'pace-running');
-      });
-      document.querySelectorAll('.pace-inactive').forEach(pace => {
-        pace.className = pace.className.replace('pace-inactive pace-inactive', 'pace-active');
-        pace.className = pace.className.replace('pace-inactive', 'pace-active');
-      });
-      const progressDOM = document.getElementsByClassName('pace-progress').item(0) as HTMLElement;
+      this.initProgress();
       if (this.progressBar < 35) {
-        this.progressBar = 35;
-        progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-        progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-        progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
+        this.setProgress(this.progressBar = 35);
       }
 
       this.responseError = null;
@@ -108,10 +98,7 @@ export class ForgotPageComponent implements OnDestroy {
         (response: ApiBaseResponse) => {
           if (response) {
             this.toastr.showI18n(response.respStatusMessage[response.respStatusCode]);
-            this.progressBar = 90;
-            progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-            progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-            progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
+            this.setProgress(this.progressBar = 95);
             this.progressBar = 0;
             if (response.respStatusCode === ResponseCode.OK_FORGOT_PASSWORD) {
               this.router.navigate(['/auth/login']);
@@ -126,17 +113,8 @@ export class ForgotPageComponent implements OnDestroy {
         },
         (error: any) => {
           this.buttonForgotPassword = false;
-          this.progressBar = 85;
-          progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-          progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-          progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-          document.querySelectorAll('.pace-running').forEach(pace => {
-            pace.className = pace.className.replace('pace-running', 'pace-done');
-          });
-          document.querySelectorAll('.pace-active').forEach(pace => {
-            pace.className = pace.className.replace('pace-active', 'pace-inactive');
-          });
           this.progressBar = 0;
+          this.doneProgress();
 
           if (!(error instanceof HttpErrorResponse)) {
             if (error['respStatusCode']) {
@@ -198,6 +176,33 @@ export class ForgotPageComponent implements OnDestroy {
       this.form.controls['confirmPassword'].valid &&
       this.form.controls['confirmPassword'].touched
     );
+  }
+
+  protected initProgress(): void {
+    document.querySelectorAll('.pace-done').forEach(pace => {
+    pace.className = pace.className.replace('pace-done pace-done', 'pace-running');
+    pace.className = pace.className.replace('pace-done', 'pace-running');
+    });
+    document.querySelectorAll('.pace-inactive').forEach(pace => {
+    pace.className = pace.className.replace('pace-inactive pace-inactive', 'pace-active');
+    pace.className = pace.className.replace('pace-inactive', 'pace-active');
+    });
+    this.progressDOM = document.getElementsByClassName('pace-progress').item(0) as HTMLElement;
+  }
+
+  protected doneProgress() {
+    document.querySelectorAll('.pace-running').forEach(pace => {
+    pace.className = pace.className.replace('pace-running', 'pace-done');
+    });
+    document.querySelectorAll('.pace-active').forEach(pace => {
+    pace.className = pace.className.replace('pace-active', 'pace-inactive');
+    });
+  }
+
+  protected setProgress(progress: number) {
+    this.progressDOM.style.transform = 'translate3d(' + progress + '%, 0px, 0px)';
+    this.progressDOM.getAttributeNode('data-progress-text').value = progress + '%';
+    this.progressDOM.getAttributeNode('data-progress').value = progress.toString();
   }
 
 }

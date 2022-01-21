@@ -102,12 +102,15 @@ export class SettingsPageComponent extends BaseFormComponent<any> implements OnI
       theme,
     };
     this.disabled = true;
+    this.initProgress();
+    this.setProgress(65);
     Promise.all([
       this.settingsIndexedDB.get('locale'),
       this.settingsIndexedDB.get('theme'),
     ]).then((current: any[]) => {
       this.exec('security', 'change-settings', data).subscribe(
         (success: ApiBaseResponse) => {
+          this.setProgress(95);
           this.disabled = false;
           this.formGroup.markAsPristine();
           this.formGroup.markAsUntouched();
@@ -137,10 +140,12 @@ export class SettingsPageComponent extends BaseFormComponent<any> implements OnI
               }
             }
           }
+          this.doneProgress();
         },
         (error: ApiBaseResponse) => {
             this.disabled = false;
             this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
+            this.doneProgress();
         },
       );
     });

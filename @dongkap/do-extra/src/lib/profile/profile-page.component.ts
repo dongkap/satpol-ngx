@@ -293,16 +293,21 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
     const data: FormData = new FormData();
     data.append('photo', file);
     this.formGroupImage.get('image').disable();
+    this.initProgress();
+    this.setProgress(65);
     this.exec('profile', 'upload-photo-profile', data).subscribe(
         (success: ApiBaseResponse) => {
+          this.setProgress(95);
           this.userService.updatePhoto(success.respStatusMessage['checksum']);
           this.uploadFinished = true;
           this.formGroupImage.markAsPristine();
           this.toastr.showI18n(success.respStatusMessage[success.respStatusCode], true, null, 'success');
+          this.doneProgress();
         },
         (error: ApiBaseResponse) => {
           this.formGroupImage.get('image').enable();
           this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
+          this.doneProgress();
         },
     );
   }

@@ -10,6 +10,7 @@ import { DoWizardService } from './services/do-wizard.service';
 })
 export class DoWizardComponent {
   @Input() extra: boolean = false;
+  @Input() loading: boolean = false;
   @Output() onNext: EventEmitter<any> = new EventEmitter<any>();
   @Output() onPrevious: EventEmitter<any> = new EventEmitter<any>();
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();

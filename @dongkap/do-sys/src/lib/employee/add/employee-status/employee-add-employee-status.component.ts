@@ -1,7 +1,7 @@
 import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { HttpBaseModel } from '@dongkap/do-core';
-import { DoWizardStep, SelectParamModel } from '@dongkap/do-shared';
+import { DoWizardStep } from '@dongkap/do-shared';
 
 @Component({
   selector: 'do-employee-add-employee-status',
@@ -12,6 +12,7 @@ export class EmployeeAddEmployeeStatusComponent extends DoWizardStep implements 
 
   public apiSelectOccupation: HttpBaseModel;
   public apiSelectRole: HttpBaseModel;
+  public apiSelectEmployeeParent: HttpBaseModel;
 
   constructor(
     public injector: Injector) {
@@ -24,9 +25,14 @@ export class EmployeeAddEmployeeStatusComponent extends DoWizardStep implements 
         value: null,
         disabled: false,
       }, Validators.required],
+      employeeParent: [{
+        value: null,
+        disabled: false,
+      }],
     });
     this.apiSelectOccupation = this.api['security']['select-occupation'];
     this.apiSelectRole = this.api['security']['select-role'];
+    this.apiSelectEmployeeParent = this.api['security']['select-employee'];
   }
 
   ngOnInit(): void {

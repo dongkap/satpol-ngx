@@ -26,6 +26,30 @@
         [skeleton]="loadingForm"
         formControlName="idNumber">
       </do-input-text>
+      <do-radio
+        [name]="'gender'"
+        [label]="'Gender'"
+        [placeholder]="'Gender'"
+        [data]="genderData"
+        [skeleton]="loadingForm"
+        formControlName="gender">
+      </do-radio>
+      <do-input-text
+        [name]="'placeOfBirth'"
+        [label]="'Place of Birth'"
+        [placeholder]="'Place of Birth'"
+        [required]="true"
+        [skeleton]="loadingForm"
+        formControlName="placeOfBirth">
+      </do-input-text>
+      <do-datepicker
+        [name]="'dateOfBirth'"
+        [label]="'Date of Birth'"
+        [placeholder]="'Date of Birth'"
+        [required]="true"
+        [skeleton]="loadingForm"
+        formControlName="dateOfBirth">
+      </do-datepicker>
       <do-input-text
         [name]="'phoneNumber'"
         [label]="'Phone Number'"
@@ -47,30 +71,14 @@
         maxlength="50"
         formControlName="email">
       </do-input-text>
-      <do-input-text
-        [name]="'placeOfBirth'"
-        [label]="'Place of Birth'"
-        [placeholder]="'Place of Birth'"
+      <do-textarea
+        [name]="'address'"
+        [label]="'Address'"
+        [placeholder]="'Address'"
         [required]="true"
         [skeleton]="loadingForm"
-        formControlName="placeOfBirth">
-      </do-input-text>
-      <do-datepicker
-        [name]="'dateOfBirth'"
-        [label]="'Date of Birth'"
-        [placeholder]="'Date of Birth'"
-        [required]="true"
-        [skeleton]="loadingForm"
-        formControlName="dateOfBirth">
-      </do-datepicker>
-      <do-radio
-        [name]="'gender'"
-        [label]="'Gender'"
-        [placeholder]="'Gender'"
-        [data]="genderData"
-        [skeleton]="loadingForm"
-        formControlName="gender">
-      </do-radio>
+        formControlName="address">
+      </do-textarea>
       <do-input-text
         [name]="'height'"
         [label]="'height.body'"

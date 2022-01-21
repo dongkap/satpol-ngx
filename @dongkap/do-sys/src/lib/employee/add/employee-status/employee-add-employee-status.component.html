@@ -22,6 +22,14 @@
         [skeleton]="loadingForm"
         formControlName="role">
       </do-select>
+      <do-select
+        [name]="'employeeParent'"
+        [label]="'Supervisor'"
+        [placeholder]="'Supervisor'"
+        [api]="apiSelectEmployeeParent"
+        [skeleton]="loadingForm"
+        formControlName="employeeParent">
+      </do-select>
     </div>
   </form>
 </do-wizard-page-outlet>

@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class DoWizardButtonsComponent implements OnInit {
   @Input() extra: boolean = false;
   @Input() clearFormOnSubmit: boolean = false;
+  @Input() disabled: boolean = false;
   @Output() onNext: EventEmitter<any> = new EventEmitter<any>();
   @Output() onPrevious: EventEmitter<any> = new EventEmitter<any>();
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();

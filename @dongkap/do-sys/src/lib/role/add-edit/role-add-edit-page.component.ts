@@ -39,6 +39,7 @@ export class RoleAddEditPageComponent extends BaseFormComponent<any> implements 
     super(injector,
       {
         authority: [],
+        level: [],
         description: [],
         group: [],
         mainMenus: [],
@@ -55,6 +56,7 @@ export class RoleAddEditPageComponent extends BaseFormComponent<any> implements 
       this.title = this.roleService.getRole().description;
       this.formGroup.get('authority').setValue(this.roleService.getRole().authority);
       this.formGroup.get('authority').disable();
+      this.formGroup.get('level').setValue(this.roleService.getRole().level);
       this.formGroup.get('description').setValue(this.roleService.getRole().description);
       this.formGroup.get('group').setValue({
         value: this.roleService.getRole().group?.code,
@@ -77,6 +79,7 @@ export class RoleAddEditPageComponent extends BaseFormComponent<any> implements 
     }
     const role: RoleModel = {
       authority: this.formGroup.get('authority').value,
+      level: this.formGroup.get('level').value,
       description: this.formGroup.get('description').value,
       group,
     };
