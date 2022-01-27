@@ -12,6 +12,7 @@ export class EmployeeHeaderModel {
 
 export class EmployeePersonalInfoModel extends EmployeeHeaderModel {
     image: string;
+    gender: string;
     height: any;
     weight: any;
     bloodType: string;

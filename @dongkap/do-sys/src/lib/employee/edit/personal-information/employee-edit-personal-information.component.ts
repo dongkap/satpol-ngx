@@ -16,16 +16,10 @@ import { EmployeePersonalInfoModel } from '../../models/employee.model';
 })
 export class EmployeeEditPersonalInformationComponent extends BaseFormComponent<any> implements OnInit {
 
-  private loadingSubject$: Subject<boolean> = new Subject<boolean>();
-  public action: 'Add' | 'Edit' = 'Add';
   public patternEmail: string = Pattern.EMAIL;
   public patternPhoneNumber: string = Pattern.PHONE_NUMBER;
   public patternFullname: string = Pattern.FULLNAME;
-  public dataDefault: CheckboxModel[] = [
-    {
-      selected: true,
-    },
-  ];
+  public personalInfo: EmployeePersonalInfoModel;
 
   constructor(
     public injector: Injector,
@@ -54,6 +48,7 @@ export class EmployeeEditPersonalInformationComponent extends BaseFormComponent<
     }).pipe(map(
       (success: EmployeePersonalInfoModel) => {
         this.loadingForm = false;
+        this.personalInfo = success;
         this.formGroup.controls['employeeName'].setValue(success.fullname);
         this.formGroup.controls['nik'].setValue(success.idEmployee);
         this.formGroup.controls['idNumber'].setValue(success.idNumber);
