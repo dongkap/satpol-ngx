@@ -60,12 +60,14 @@ export class DoDatatableComponent implements OnInit, OnDestroy {
   @Input() formGroupFilter: FormGroup;
   @Input() sort: Sort;
   @Input() sortsDefault: any[];
+  @Input() autoLoad: boolean = true;
   @Output() onAdd: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onEdit: EventEmitter<any> = new EventEmitter<any>();
   @Output() onDelete: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Output() onSearch: EventEmitter<any> = new EventEmitter<any>();
   @Output() onFilter: EventEmitter<any> = new EventEmitter<any>();
   @Output() onButtonCell: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
 //  @ViewChild('datatable', {static: false}) datatable: DatatableComponent;
   @Input() set filterFn(keyword: Keyword) {
     this.keywordParam = keyword;
@@ -83,7 +85,7 @@ export class DoDatatableComponent implements OnInit, OnDestroy {
     this.fetch();
   }
   @Input() set reloadFn(reload: boolean) {
-    if (reload) {
+    if (reload && !this.loadingIndicator) {
       this.selected = [];
       this.count = 0;
       this.offset = 0;
@@ -242,16 +244,19 @@ export class DoDatatableComponent implements OnInit, OnDestroy {
       order: this.sort,
     };
     this.loadingIndicator = true;
+    this.onLoading.emit(this.loadingIndicator);
     return this.http.HTTP_AUTH(this.api, body)
       .pipe(
         map((response: any) => {
           this.count = Number(response.totalRecord);
           this.loadingIndicator = false;
+          this.onLoading.emit(this.loadingIndicator);
           return (response['data'] as any[]);
         }),
         catchError(() => {
           this.loadingIndicator = false;
           this.count = 0;
+          this.onLoading.emit(this.loadingIndicator);
           return of([]);
         }));
   }

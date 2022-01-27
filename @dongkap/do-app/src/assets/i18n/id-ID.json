@@ -292,7 +292,10 @@
 	},
 	"tab": {
 		"main-menu": "Menu Utama",
-		"extra-menu": "Menu Tambahan"
+		"extra-menu": "Menu Tambahan",
+		"personal-info": "Informasi Pribadi",
+		"education": "Pendidikan",
+		"employee-status": "Status Karyawan"
 	},
 	"notification": {
 		"default": "Permintaan berhasil dilakukan"

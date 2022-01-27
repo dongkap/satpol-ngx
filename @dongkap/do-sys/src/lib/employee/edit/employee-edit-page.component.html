@@ -1,31 +1,13 @@
-<do-page-outlet [header]="'header.'+action+'-employee'" [url]="'/app/mgmt/employee'">
-  <div class="row" pagecontent>
-    <div class="col-md-12 col-lg-12">
-      <form [formGroup]="formGroup">
-        <do-input-text
-          [name]="'employeeName'"
-          [label]="'Employee Name'"
-          [required]="true"
-          [skeleton]="loadingForm"
-          formControlName="employeeName">
-        </do-input-text>
-        <do-input-text
-          [name]="'idEmployee'"
-          [label]="'NIK'"
-          [required]="true"
-          [skeleton]="loadingForm"
-          formControlName="idEmployee">
-        </do-input-text>
-      </form>
-    </div>
-  </div>
-  <do-button-submit
-    [submitTitle]="action"
-    [resetTitle]="'Cancel'"
-    [formGroupButton]="formGroup"
-    [disabledButton]="disabled"
-    (onReset)="onReset()"
-    (onSubmit)="onSubmit()"
-    pagefooter>
-  </do-button-submit>
+<do-page-outlet [header]="'header.employee-management'" [url]="'/app/mgmt/employee'" [hidefooter]="true">
+  <nb-tabset fullWidth (changeTab)="toggleLoadingAnimation($event)" pagecontent>
+    <nb-tab tabId="personalInfo" tabTitle="{{'tab.personal-info' | translate}}" [lazyLoad]="true">
+      <do-employee-edit-personal-information #personalInfo></do-employee-edit-personal-information>
+    </nb-tab>
+    <nb-tab tabId="education" tabTitle="{{'tab.education' | translate}}">
+      <do-employee-edit-education #education></do-employee-edit-education>
+    </nb-tab>
+    <nb-tab tabId="employeeStatus" tabTitle="{{'tab.employee-status' | translate}}">
+      <do-employee-edit-employee-status #employeeStatus></do-employee-edit-employee-status>
+    </nb-tab>
+  </nb-tabset>
 </do-page-outlet>

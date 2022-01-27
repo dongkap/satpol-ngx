@@ -293,7 +293,10 @@
 	},
 	"tab": {
 		"main-menu": "Main Menu",
-		"extra-menu": "Extra Menu"
+		"extra-menu": "Extra Menu",
+		"personal-info": "Personal Info",
+		"education": "Education",
+		"employee-status": "Employee Status"
 	},
 	"notification": {
 		"default": "Request was successful"

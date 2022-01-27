@@ -51,15 +51,6 @@
         formControlName="dateOfBirth">
       </do-datepicker>
       <do-input-text
-        [name]="'phoneNumber'"
-        [label]="'Phone Number'"
-        [placeholder]="'Phone Number'"
-        [pattern]="patternPhoneNumber"
-        [required]="true"
-        [skeleton]="loadingForm"
-        formControlName="phoneNumber">
-      </do-input-text>
-      <do-input-text
         [name]="'email'"
         [label]="'Email'"
         [placeholder]="'Email'"
@@ -70,6 +61,15 @@
         minlength="5"
         maxlength="50"
         formControlName="email">
+      </do-input-text>
+      <do-input-text
+        [name]="'phoneNumber'"
+        [label]="'Phone Number'"
+        [placeholder]="'Phone Number'"
+        [pattern]="patternPhoneNumber"
+        [required]="true"
+        [skeleton]="loadingForm"
+        formControlName="phoneNumber">
       </do-input-text>
       <do-textarea
         [name]="'address'"

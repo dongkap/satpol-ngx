@@ -23,25 +23,32 @@ import {
   DoWizardModule,
   DoDatePickerModule,
   DoRadioModule,
+  DoLabelModule,
 } from '@dongkap/do-shared';
 import { MgmtEmployeeComponent } from './do-mgmt-employee.component';
 import { DoMgmtEmployeeRoutingModule } from './do-mgmt-employee-routing.module';
 import { EmployeeService } from './services/employee.service';
 import { EmployeeListPageComponent } from './list/employee-list-page.component';
-import { EmployeeEditPageComponent } from './edit/employee-edit-page.component';
 import { EmployeeAddPageComponent } from './add/employee-add-page.component';
 import { EmployeeAddPersonalInformationComponent } from './add/personal-information/employee-add-personal-information.component';
 import { EmployeeAddEducationComponent } from './add/education/employee-add-education.component';
 import { EmployeeAddEmployeeStatusComponent } from './add/employee-status/employee-add-employee-status.component';
+import { EmployeeEditPageComponent } from './edit/employee-edit-page.component';
+import { EmployeeEditPersonalInformationComponent } from './edit/personal-information/employee-edit-personal-information.component';
+import { EmployeeEditEducationComponent } from './edit/education/employee-edit-education.component';
+import { EmployeeEditEmployeeStatusComponent } from './edit/employee-status/employee-edit-employee-status.component';
 
 const components = [
   MgmtEmployeeComponent,
   EmployeeListPageComponent,
-  EmployeeEditPageComponent,
   EmployeeAddPageComponent,
   EmployeeAddPersonalInformationComponent,
   EmployeeAddEducationComponent,
   EmployeeAddEmployeeStatusComponent,
+  EmployeeEditPageComponent,
+  EmployeeEditPersonalInformationComponent,
+  EmployeeEditEducationComponent,
+  EmployeeEditEmployeeStatusComponent,
 ];
 
 const modules = [
@@ -66,6 +73,7 @@ const modules = [
   DoEditorModule,
   DoDatePickerModule,
   DoRadioModule,
+  DoLabelModule,
   DoWizardModule.forRoot(),
   DoMgmtEmployeeRoutingModule,
 ];
