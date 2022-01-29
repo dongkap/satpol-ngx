@@ -1,13 +1,12 @@
 import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { ApiBaseResponse, ResponseCode, Pattern } from '@dongkap/do-core';
-import { BaseFormComponent, CheckboxModel } from '@dongkap/do-shared';
+import { BaseFormComponent } from '@dongkap/do-shared';
 import { EmployeeService } from '../../services/employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { EmployeePersonalInfoModel } from '../../models/employee.model';
 
 @Component({
   selector: 'do-employee-edit-personal-information',
@@ -19,7 +18,7 @@ export class EmployeeEditPersonalInformationComponent extends BaseFormComponent<
   public patternEmail: string = Pattern.EMAIL;
   public patternPhoneNumber: string = Pattern.PHONE_NUMBER;
   public patternFullname: string = Pattern.FULLNAME;
-  public personalInfo: EmployeePersonalInfoModel;
+  public personalInfo: any;
 
   constructor(
     public injector: Injector,
@@ -46,15 +45,15 @@ export class EmployeeEditPersonalInformationComponent extends BaseFormComponent<
     return this.exec('security', 'get-employee-personal-info', {
       employeeId: this.employeeService.getEmployeeHeader()?.id
     }).pipe(map(
-      (success: EmployeePersonalInfoModel) => {
+      (success: any) => {
         this.loadingForm = false;
         this.personalInfo = success;
         this.formGroup.controls['employeeName'].setValue(success.fullname);
         this.formGroup.controls['nik'].setValue(success.idEmployee);
-        this.formGroup.controls['idNumber'].setValue(success.idNumber);
+        this.formGroup.controls['idNumber'].setValue(success.personalInfo?.idNumber);
         this.formGroup.controls['email'].setValue(success.email);
-        this.formGroup.controls['phoneNumber'].setValue(success.phoneNumber);
-        this.formGroup.controls['address'].setValue(success.address);
+        this.formGroup.controls['phoneNumber'].setValue(success.contact?.phoneNumber);
+        this.formGroup.controls['address'].setValue(success.contact?.address);
         this.formGroup.markAsPristine();
       },
       (error: HttpErrorResponse) => {
@@ -74,6 +73,26 @@ export class EmployeeEditPersonalInformationComponent extends BaseFormComponent<
   }
 
   onSubmit(): void {
+    const data: any = {
+      id: this.employeeService.getEmployeeHeader()?.id,
+      idEmployee: this.formGroup.controls['nik'].value,
+      fullname: this.formGroup.controls['employeeName'].value,
+      email: this.formGroup.controls['email'].value,
+      contact: {
+        phoneNumber: this.formGroup.controls['phoneNumber'].value,
+        address: this.formGroup.controls['address'].value,
+      },
+      personalInfo: {
+        idNumber: this.formGroup.controls['idNumber'].value,
+      },
+    };
+    (super.onSubmit(data, 'security', 'put-employee-personal-info')  as Observable<ApiBaseResponse>)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(response => {
+        if (response.respStatusCode === ResponseCode.OK_DEFAULT.toString()) {
+          this.router.navigate(['/app/mgmt/employee']);
+        }
+      });
   }
 
 }

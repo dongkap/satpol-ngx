@@ -217,6 +217,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/security/001/trx/auth/add/employee/v.1',
         },
+        'put-employee-personal-info': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/trx/auth/put/employee-personal-info/v.1',
+        },
         'get-employee-personal-info': {
             server: environment.host.security,
             method: HttpMethod.POST,

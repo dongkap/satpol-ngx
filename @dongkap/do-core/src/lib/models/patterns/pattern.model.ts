@@ -1,5 +1,5 @@
 export enum Pattern {
-    FULLNAME = '(^[a-zA-Z]{1}([.])(?: [a-zA-Z]+)*)?([a-zA-Z ][a-zA-Z]+)*$',
+    FULLNAME = '[a-zA-Z .,]+$',
     EMAIL = '.+@.+\..+',
     USERNAME = '[a-z0-9.]*$',
     PHONE_NUMBER = '^(([+]([0-9]{1,2}))|([0-9]{1}))([0-9]{2}-?)([0-9]{4}-?)([0-9]{1,6}-?)$',

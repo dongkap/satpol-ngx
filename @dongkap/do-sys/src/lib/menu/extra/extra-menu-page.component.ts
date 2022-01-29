@@ -39,18 +39,18 @@ export class ExtraMenuPageComponent extends BaseFormComponent<any> implements On
   constructor(public injector: Injector, private dialogService: NbDialogService) {
     super(injector,
       {
-        'id': [],
+        id: [],
         'en-US': [],
         'id-ID': [],
-        'code': [{
+        code: [{
           value: 'N/A',
           disabled: false,
         }],
-        'link': [{
+        link: [{
           value: '#',
           disabled: false,
         }],
-        'order': [],
+        order: [],
       });
   }
 
@@ -71,7 +71,7 @@ export class ExtraMenuPageComponent extends BaseFormComponent<any> implements On
         this.nodeItems = [];
         this.nodeItems = [...this.nodeItems, ...response];
         this.onReset();
-        if (this.loadLocale) this.loadingForm = false;
+        if (this.loadLocale) { this.loadingForm = false; }
       }));
   }
 
@@ -132,26 +132,26 @@ export class ExtraMenuPageComponent extends BaseFormComponent<any> implements On
     const leaf: boolean = false;
     const i18n: any = {};
     const parentMenu: any = null;
-    if (this.formGroup.get('id').value) id = this.formGroup.get('id').value;
-    if (this.formGroup.get('code').value) code = this.formGroup.get('code').value;
-    if (this.formGroup.get('link').value) link = this.formGroup.get('link').value;
-    if (this.formGroup.get('order').value) ordering = +this.formGroup.get('order').value;
+    if (this.formGroup.get('id').value) { id = this.formGroup.get('id').value; }
+    if (this.formGroup.get('code').value) { code = this.formGroup.get('code').value; }
+    if (this.formGroup.get('link').value) { link = this.formGroup.get('link').value; }
+    if (this.formGroup.get('order').value) { ordering = +this.formGroup.get('order').value; }
     this.allLocales.forEach(locale => {
       i18n[locale.localeCode] = this.formGroup.get(locale.localeCode).value;
     });
     this.data = {
-      'id': id,
-      'code': code,
-      'icon': icon,
-      'link': link,
-      'type': type,
-      'level': level,
-      'ordering': ordering,
-      'home': home,
-      'group': group,
-      'leaf': leaf,
-      'i18n': i18n,
-      'parentMenu': parentMenu,
+      id,
+      code,
+      icon,
+      link,
+      type,
+      level,
+      ordering,
+      home,
+      group,
+      leaf,
+      i18n,
+      parentMenu,
     };
     if (this.action === 'Edit') {
       this.dialogService.open(
@@ -212,7 +212,7 @@ export class ExtraMenuPageComponent extends BaseFormComponent<any> implements On
             this.loadingForm = false;
           });
         }
-        if (this.action === 'Edit') ref.close();
+        if (this.action === 'Edit') { ref.close(); }
       });
   }
 
