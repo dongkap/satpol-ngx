@@ -56,10 +56,19 @@
         formControlName="address">
       </do-textarea>
       <do-label-text
+        [name]="'pobdob'"
+        [label]="'label.pobdob'"
+        [skeleton]="loadingForm"
+        [content]="personalInfo?.placeOfBirth + ', ' +personalInfo?.dateOfBirth"
+        [colLabel]="3"
+        [colContent]="9"
+        [dividerlabel]="false">
+      </do-label-text>
+      <do-label-text
         [name]="'gender'"
         [label]="'Gender'"
         [skeleton]="loadingForm"
-        [content]="personalInfo?.gender"
+        [content]="personalInfo?.genderValue"
         [colLabel]="3"
         [colContent]="9"
         [dividerlabel]="false">

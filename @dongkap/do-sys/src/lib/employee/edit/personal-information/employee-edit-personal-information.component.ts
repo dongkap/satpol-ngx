@@ -47,7 +47,7 @@ export class EmployeeEditPersonalInformationComponent extends BaseFormComponent<
     }).pipe(map(
       (success: any) => {
         this.loadingForm = false;
-        this.personalInfo = success;
+        this.personalInfo = success?.personalInfo;
         this.formGroup.controls['employeeName'].setValue(success.fullname);
         this.formGroup.controls['nik'].setValue(success.idEmployee);
         this.formGroup.controls['idNumber'].setValue(success.personalInfo?.idNumber);

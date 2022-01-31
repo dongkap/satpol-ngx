@@ -84,6 +84,7 @@ export class DoDatatableBaseComponent {
 
   onActivate(event: any): void {
     if (event.type === 'click') {
+      event.cellElement.blur();
       if (this.selectionType === 'checkbox') {
         if (event.cellIndex > 0) {
           this.activate.emit(event.row);

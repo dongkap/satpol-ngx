@@ -14,7 +14,8 @@
               [startWithOpenData]="false"
               [reloadFn]="reloadEducation"
               (onLoading)="onLoadEducation()"
-              (onEdit)="onEditEducation($event)">
+              (onEdit)="onEditEducation($event)"
+              (onAdd)="onAddEducation()">
             </do-datatable>              
           </nb-accordion-item-body>
         </nb-accordion-item>
@@ -30,7 +31,8 @@
               [startWithOpenData]="false"
               [reloadFn]="reloadTraining"
               (onLoading)="onLoadTraining()"
-              (onEdit)="onEditTraining($event)">
+              (onEdit)="onEditTraining($event)"
+              (onAdd)="onAddTraining()">
             </do-datatable>            
           </nb-accordion-item-body>
         </nb-accordion-item>

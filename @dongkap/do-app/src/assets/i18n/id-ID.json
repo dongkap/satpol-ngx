@@ -281,14 +281,19 @@
 		"menu-management": "Kelola Menu",
 		"menu-role": "Pilih Menu",
 		"Edit-i18n": "Ubah i18n",
-		"Add-i18n": "Tambah i18n"
+		"Add-i18n": "Tambah i18n",
+		"Edit-education-formal": "Ubah Pendidikan Formal",
+		"Add-education-formal": "Tambah Pendidikan Formal",
+		"Edit-education-nonformal": "Ubah Pendidikan Non Formal",
+		"Add-education-nonformal": "Tambah Pendidikan Non Formal"
 	},
 	"label": {
 		"language": "Bahasa",
 		"dark-mode": "Mode Gelap",
 		"contact-person": "Narahubung",
 		"personal-info": "Informasi Pribadi",
-		"account": "Akun"
+		"account": "Akun",
+		"pobdob": "Tempat, Tanggal Lahir"
 	},
 	"tab": {
 		"main-menu": "Menu Utama",

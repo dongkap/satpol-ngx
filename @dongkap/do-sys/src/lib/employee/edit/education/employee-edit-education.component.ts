@@ -1,17 +1,20 @@
-import { Component, Inject, OnDestroy } from '@angular/core';
+import { Component, Injector, OnDestroy } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { API, APIModel, HttpBaseModel } from '@dongkap/do-core';
-import { DatatableColumn, Keyword } from '@dongkap/do-shared';
+import { ApiBaseResponse, HttpBaseModel, ResponseCode } from '@dongkap/do-core';
+import { BaseFormComponent, DatatableColumn, Keyword } from '@dongkap/do-shared';
 import { EmployeeService } from '../../services/employee.service';
+import { NbDialogService } from '@nebular/theme';
+import { EmployeeEducationFormalPromptComponent } from './prompt-formal/education-formal-prompt.component';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'do-employee-edit-education',
   styleUrls: ['./employee-edit-education.component.scss'],
   templateUrl: './employee-edit-education.component.html',
 })
-export class EmployeeEditEducationComponent implements OnInit, OnDestroy {
+export class EmployeeEditEducationComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
 
   public reloadEducation: boolean = false;
   public reloadTraining: boolean = false;
@@ -31,9 +34,11 @@ export class EmployeeEditEducationComponent implements OnInit, OnDestroy {
   private loadingSubject$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
-    @Inject(API) private api: APIModel,
+    injector: Injector,
     private router: Router,
-    private employeeService: EmployeeService) {
+    private employeeService: EmployeeService,
+    private dialogService: NbDialogService) {
+      super(injector)
       if (!this.employeeService.getEmployeeHeader()) {
         this.router.navigate(['/app/mgmt/employee']);
       }
@@ -55,7 +60,44 @@ export class EmployeeEditEducationComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {}
 
+  onAddEducation(): void {
+    this.dialogService.open(EmployeeEducationFormalPromptComponent)
+      .onClose.subscribe((data: any) => {
+        if (data) {
+          data['id'] = this.employeeService.getEmployeeHeader().id;
+          (super.onSubmit(data, 'security', 'post-employee-education')  as Observable<ApiBaseResponse>)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(response => {
+              if (response.respStatusCode === ResponseCode.OK_DEFAULT.toString()) {
+                this.reloadEducation = true;
+              }
+            });
+        }
+      });
+  }
+
+  onAddTraining(): void {
+  }
+
   onEditEducation(data): void {
+    this.reloadEducation = false;
+    this.dialogService.open(EmployeeEducationFormalPromptComponent, {
+        context: {
+          data: data,
+        },
+      })
+      .onClose.subscribe((data: any) => {
+        if (data) {
+          data['id'] = this.employeeService.getEmployeeHeader().id;
+          (super.onSubmit(data, 'security', 'post-employee-education')  as Observable<ApiBaseResponse>)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(response => {
+              if (response.respStatusCode === ResponseCode.OK_DEFAULT.toString()) {
+                this.reloadEducation = true;
+              }
+            });
+        }
+      });
   }
 
   onEditTraining(data): void {

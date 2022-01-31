@@ -38,7 +38,7 @@ export abstract class BaseFormComponent<T> extends BaseComponent<T> {
         this.disabled = true;
         this.initProgress();
         this.setProgress(65);
-        this.exec(serviceName, apiName, body ? body : this.formGroup.value)
+        this.exec(serviceName, apiName, body ? body : this.formGroup?.value)
             .subscribe(
                 (success: ApiBaseResponse) => {
                     this.setProgress(95);
