@@ -11,11 +11,13 @@
               [api]="apiPathEducation"
               [columns]="columnsEducation"
               [filterFn]="keyword"
+              [sort]="sortEducation"
               [startWithOpenData]="false"
               [reloadFn]="reloadEducation"
               (onLoading)="onLoadEducation()"
               (onEdit)="onEditEducation($event)"
-              (onAdd)="onAddEducation()">
+              (onAdd)="onAddEducation()"
+              (onDelete)="onDeleteEducationDialog($event, dialogdeleteeducation)">
             </do-datatable>              
           </nb-accordion-item-body>
         </nb-accordion-item>
@@ -28,11 +30,13 @@
               [api]="apiPathTraining"
               [columns]="columnsTraining"
               [filterFn]="keyword"
+              [sort]="sortTraining"
               [startWithOpenData]="false"
               [reloadFn]="reloadTraining"
               (onLoading)="onLoadTraining()"
               (onEdit)="onEditTraining($event)"
-              (onAdd)="onAddTraining()">
+              (onAdd)="onAddTraining()"
+              (onDelete)="onDeleteTrainingDialog($event, dialogdeletetraining)">
             </do-datatable>            
           </nb-accordion-item-body>
         </nb-accordion-item>
@@ -40,3 +44,39 @@
     </div>
   </div>
 </div>
+
+<ng-template #dialogdeleteeducation let-data let-ref="dialogRef">
+  <nb-card accent="danger">
+    <nb-card-header>{{ 'Warning' | translate}}</nb-card-header>
+    <nb-card-body>{{ data | translate}}</nb-card-body>
+    <nb-card-footer>
+      <do-button-submit
+        [colLabel]="0"
+        [colButton]="12"
+        [submitTitle]="'Delete'"
+        [resetTitle]="'Cancel'"
+        [disabledButton]="disabled"
+        (onReset)="ref.close()"
+        (onSubmit)="onDeleteEducation(ref)">
+      </do-button-submit>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>
+
+<ng-template #dialogdeletetraining let-data let-ref="dialogRef">
+  <nb-card accent="danger">
+    <nb-card-header>{{ 'Warning' | translate}}</nb-card-header>
+    <nb-card-body>{{ data | translate}}</nb-card-body>
+    <nb-card-footer>
+      <do-button-submit
+        [colLabel]="0"
+        [colButton]="12"
+        [submitTitle]="'Delete'"
+        [resetTitle]="'Cancel'"
+        [disabledButton]="disabled"
+        (onReset)="ref.close()"
+        (onSubmit)="onDeleteTraining(ref)">
+      </do-button-submit>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

@@ -247,6 +247,16 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/security/001/trx/auth/post/training/employee/v.1',
         },
+        'delete-employee-education': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/trx/auth/delete/education/employee/v.1',
+        },
+        'delete-employee-training': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/trx/auth/delete/training/employee/v.1',
+        },
     },
     profile: {
         'change-profile': {

@@ -38,6 +38,7 @@ import { EmployeeEditPersonalInformationComponent } from './edit/personal-inform
 import { EmployeeEditEducationComponent } from './edit/education/employee-edit-education.component';
 import { EmployeeEditEmployeeStatusComponent } from './edit/employee-status/employee-edit-employee-status.component';
 import { EmployeeEducationFormalPromptComponent } from './edit/education/prompt-formal/education-formal-prompt.component';
+import { EmployeeEducationNonFormalPromptComponent } from './edit/education/prompt-nonformal/education-nonformal-prompt.component';
 
 const components = [
   MgmtEmployeeComponent,
@@ -51,6 +52,7 @@ const components = [
   EmployeeEditEducationComponent,
   EmployeeEditEmployeeStatusComponent,
   EmployeeEducationFormalPromptComponent,
+  EmployeeEducationNonFormalPromptComponent,
 ];
 
 const modules = [

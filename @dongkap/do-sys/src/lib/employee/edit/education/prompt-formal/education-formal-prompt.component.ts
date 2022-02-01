@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NbDialogRef } from '@nebular/theme';
 import { API, APIModel, HttpBaseModel } from '@dongkap/do-core';
@@ -9,10 +9,11 @@ import { SelectParamModel } from '@dongkap/do-shared';
   templateUrl: 'education-formal-prompt.component.html',
   styleUrls: ['education-formal-prompt.component.scss'],
 })
-export class EmployeeEducationFormalPromptComponent {
+export class EmployeeEducationFormalPromptComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() public education: any;
   public action: 'Add' | 'Edit' = 'Add';
+  public isEdit: boolean = false;
   public formGroup: FormGroup;
   public apiSelectEducationalLevel: HttpBaseModel;
   public paramSelectEducationalLevel: SelectParamModel[];
@@ -27,31 +28,43 @@ export class EmployeeEducationFormalPromptComponent {
         startYear: [],
         endYear: [],
       });
-      if(this.data) {
-        this.action = 'Edit';
-      } else {
-        this.action = 'Add';
-      }
-    this.apiSelectEducationalLevel = api['master']['select-parameter'];
-    this.paramSelectEducationalLevel = [{
-      key: 'parameterGroupCode',
-      value: 'EDUCATIONAL_LEVEL',
-    },{
-      key: 'parameterCodeNotIn',
-      value: 'EDUCATIONAL_LEVEL.NO_EDUCATION',
-    }];
+      this.apiSelectEducationalLevel = api['master']['select-parameter'];
+      this.paramSelectEducationalLevel = [{
+        key: 'parameterGroupCode',
+        value: 'EDUCATIONAL_LEVEL',
+      }, {
+        key: 'parameterCodeNotIn',
+        value: 'EDUCATIONAL_LEVEL.NO_EDUCATION',
+      }];
+  }
+
+  ngOnInit(): void {
+    if (this.education) {
+      this.action = 'Edit';
+      this.isEdit = true;
+      this.formGroup.get('educationalLevel').setValue({
+        label: this.education.educationalLevel,
+        value: this.education.educationalLevelCode
+      });
+      this.formGroup.get('school').setValue(this.education.schoolName);
+      this.formGroup.get('startYear').setValue(this.education.startYear);
+      this.formGroup.get('endYear').setValue(this.education.endYear);
+    } else {
+      this.action = 'Add';
+      this.isEdit = false;
+    }
   }
 
   onSubmit() {
     const data: any = {
       education: {
-        id: this.data?.id,
+        id: this.education?.id,
         educationalLevel: this.formGroup.get('educationalLevel').value?.value,
         schoolName: this.formGroup.get('school').value,
         startYear: this.formGroup.get('startYear').value,
         endYear: this.formGroup.get('endYear').value,
       }
-    }
+    };
     this.ref.close(data);
   }
 
