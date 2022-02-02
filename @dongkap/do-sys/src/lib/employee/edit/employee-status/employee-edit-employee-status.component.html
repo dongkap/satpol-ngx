@@ -6,7 +6,8 @@
         [colLabel]="3"
         [colContent]="9"
         [dividerlabel]="false"
-        [content]="profile.username">
+        [skeleton]="loadingForm"
+        [content]="username">
       </do-label-text>
       <do-select
         [name]="'occupation'"
@@ -41,6 +42,7 @@
         [name]="'permissions'"
         [label]="'Permissions'"
         [data]="permissionsData"
+        [skeleton]="loadingForm"
         formControlName="permissions">
       </do-checkbox>
       <do-button-submit
@@ -48,6 +50,7 @@
         [resetTitle]="'Cancel'"
         [formGroupButton]="formGroup"
         [disabledButton]="disabled"
+        [skeleton]="loadingForm"
         (onReset)="onReset()"
         (onSubmit)="onSubmit()">
       </do-button-submit>

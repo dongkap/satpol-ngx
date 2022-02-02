@@ -222,10 +222,20 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/security/001/trx/auth/put/personal-info/employee/v.1',
         },
+        'put-employee-status': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/trx/auth/put/status/employee/v.1',
+        },
         'get-employee-personal-info': {
             server: environment.host.security,
             method: HttpMethod.POST,
             path: '/api/security/001/vw/auth/personal-info/employee/v.1',
+        },
+        'get-employee-status': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/vw/auth/status/employee/v.1',
         },
         'datatable-education-employee': {
             server: environment.host.security,
@@ -345,6 +355,11 @@ export const apiPath: APIModel = {
             server: environment.host.master,
             method: HttpMethod.POST,
             path: '/api/master/003/vw/post/radio/parameter-i18n/v.1',
+        },
+        'checkbox-parameter': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/api/master/003/vw/post/checkbox/parameter-i18n/v.1',
         },
         'datatable-parameter-group': {
             server: environment.host.master,

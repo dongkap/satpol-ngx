@@ -1,11 +1,12 @@
 import { Component, Injector, OnDestroy } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { ApiBaseResponse, ResponseCode, HttpBaseModel, UserModel, RoleModel } from '@dongkap/do-core';
+import { Observable, of } from 'rxjs';
+import { catchError, map, takeUntil } from 'rxjs/operators';
+import { ApiBaseResponse, ResponseCode, HttpBaseModel, RoleModel } from '@dongkap/do-core';
 import { BaseFormComponent, CheckboxModel, SelectResponseModel } from '@dongkap/do-shared';
 import { EmployeeService } from '../../services/employee.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'do-employee-edit-employee-status',
@@ -14,28 +15,12 @@ import { EmployeeService } from '../../services/employee.service';
 })
 export class EmployeeEditEmployeeStatusComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
 
-  private loadingSubject$: Subject<boolean> = new Subject<boolean>();
   public apiSelectOccupation: HttpBaseModel;
   public apiSelectRole: HttpBaseModel;
   public apiSelectEmployeeParent: HttpBaseModel;
-  public profile: UserModel = new UserModel();
-  public permissionsData: CheckboxModel[] = [{
-      id: 'disabled',
-      name: 'Disabled',
-      selected: false,
-      disabled: false,
-  }, {
-      id: 'locked',
-      name: 'Locked',
-      selected: false,
-      disabled: false,
-  }, {
-      id: 'accountexpired',
-      name: 'Account Expired',
-      selected: false,
-      disabled: false,
-  }];
-  
+  public username: string;
+  public permissionsData: CheckboxModel[] = [];
+
   constructor(
     public injector: Injector,
     private router: Router,
@@ -44,10 +29,7 @@ export class EmployeeEditEmployeeStatusComponent extends BaseFormComponent<any> 
       occupation: [],
       role: [],
       employeeParent: [],
-      permissions: [{
-        value: null,
-        disabled: false,
-      }],
+      permissions: [],
     });
     this.apiSelectOccupation = this.api['security']['select-occupation'];
     this.apiSelectRole = this.api['security']['select-role'];
@@ -59,9 +41,13 @@ export class EmployeeEditEmployeeStatusComponent extends BaseFormComponent<any> 
       this.router.navigate(['/app/mgmt/employee']);
       return;
     }
-
-    const selectRoles: SelectResponseModel[] = [];
-    const permissions: CheckboxModel[] = [];
+    this.http.HTTP_AUTH(this.api['master']['checkbox-parameter'], {
+      keyword : {
+        parameterGroupCode: 'PERMISSION',
+      },
+    }).pipe(takeUntil(this.destroy$), map((response: any) => {
+        this.permissionsData = response;
+      }), catchError(() => of([]))).subscribe(() => {});
   }
 
   ngOnDestroy(): void {
@@ -71,7 +57,56 @@ export class EmployeeEditEmployeeStatusComponent extends BaseFormComponent<any> 
   }
 
   loadDataMenu(): Observable<any> {
-    return this.loadingSubject$.asObservable();
+    this.loadingForm = true;
+    return this.exec('security', 'get-employee-status', {
+      employeeId: this.employeeService.getEmployeeHeader()?.id
+    }).pipe(map(
+      (success: any) => {
+        this.loadingForm = false;
+        this.username = success.username;
+        const roles: any[] = success.roles;
+        const selectRoles: SelectResponseModel[] = [];
+        roles.forEach(role => {
+          selectRoles.push({
+            label: role.description,
+            value: role.authority,
+            disabled: false,
+          });
+        });
+        this.formGroup.controls['role'].setValue(selectRoles);
+        this.formGroup.controls['occupation'].setValue({
+          label: success.occupation?.name,
+          value: success.occupation?.code
+        });
+        this.formGroup.controls['employeeParent'].setValue({
+          label: success.parentLabel,
+          value: success.parentValue
+        });
+        const permissions: any[] = this.permissionsData;
+        permissions.forEach((permission) => {
+          if (permission.id === 'PERMISSION.DISABLED') {
+            permission['selected'] = success.disabled;
+          }
+          if (permission.id === 'PERMISSION.LOCKED') {
+            permission['selected'] = success.locked;
+          }
+          if (permission.id === 'PERMISSION.ACCOUNT_EXPIRED') {
+            permission['selected'] = success.accountExpired;
+          }
+        });
+        this.formGroup.controls['permissions'].setValue(permissions);
+        this.formGroup.markAsPristine();
+      },
+      (error: HttpErrorResponse) => {
+        this.loadingForm = true;
+        const err: ApiBaseResponse = error['error'];
+        if (err) {
+          this.toastr.showI18n(err.respStatusMessage[err.respStatusCode], true, null, 'danger');
+        } else {
+          this.toastr.showI18n(err as any, true, null, 'danger');
+        }
+      },
+    ));
   }
 
   onReset(): void {
@@ -80,25 +115,43 @@ export class EmployeeEditEmployeeStatusComponent extends BaseFormComponent<any> 
 
   onSubmit(): void {
     const roles: RoleModel[] = [];
-    if (this.formGroup.get('role').dirty) {
-      const tmpRoles: SelectResponseModel[] = (this.formGroup.get('role').value as SelectResponseModel[]);
-      tmpRoles.forEach(role => {
-        roles.push({
-          authority: role.value
-        });
+    const tmpRoles: SelectResponseModel[] = (this.formGroup.get('role').value as SelectResponseModel[]);
+    tmpRoles.forEach(role => {
+      roles.push({
+        authority: role.value
       });
-    }
+    });
+    let disabled: boolean = false;
+    let locked: boolean = false;
+    let accountExpired: boolean = false;
     const permissions: CheckboxModel[] =
       this.formGroup.get('permissions').value ? this.formGroup.get('permissions').value : this.permissionsData;
+    permissions.forEach((permission) => {
+      if (permission.id === 'PERMISSION.DISABLED') {
+        disabled = permission['selected'];
+      }
+      if (permission.id === 'PERMISSION.LOCKED') {
+        locked = permission['selected'];
+      }
+      if (permission.id === 'PERMISSION.ACCOUNT_EXPIRED') {
+        accountExpired = permission['selected'];
+      }
+    });
     const data: any = {
-      username: this.profile.username,
-      permissions,
+      id: this.employeeService.getEmployeeHeader().id,
+      disabled,
+      locked,
+      accountExpired,
+      parentId: this.formGroup.get('employeeParent').value?.value,
       roles,
+      occupation: {
+        code: this.formGroup.get('occupation').value?.value
+      },
     };
-    (super.onSubmit(data, 'security', 'update-user')  as Observable<ApiBaseResponse>)
+    (super.onSubmit(data, 'security', 'put-employee-status')  as Observable<ApiBaseResponse>)
       .pipe(takeUntil(this.destroy$))
       .subscribe(response => {
-        if (response.respStatusCode === ResponseCode.OK_UPDATED.toString()) {
+        if (response.respStatusCode === ResponseCode.OK_DEFAULT.toString()) {
           this.router.navigate(['/app/mgmt/employee']);
         }
       });

@@ -45,7 +45,7 @@ export class EmployeeEditEducationComponent extends BaseFormComponent<any> imple
     private router: Router,
     private employeeService: EmployeeService,
     private dialogService: NbDialogService) {
-      super(injector)
+      super(injector);
       if (!this.employeeService.getEmployeeHeader()) {
         this.router.navigate(['/app/mgmt/employee']);
       }

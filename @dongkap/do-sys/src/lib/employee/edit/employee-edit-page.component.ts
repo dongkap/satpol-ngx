@@ -1,6 +1,6 @@
 import { Component, Injector, OnDestroy, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { BaseComponent } from '@dongkap/do-shared';
 import { EmployeeService } from '../services/employee.service';
@@ -27,7 +27,6 @@ export class EmployeeEditPageComponent extends BaseComponent<any> implements OnI
   constructor(
     public injector: Injector,
     private router: Router,
-    private route: ActivatedRoute,
     private employeeService: EmployeeService) {
     super(injector);
     if (this.employeeService.getEmployeeHeader()) {

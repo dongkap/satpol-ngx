@@ -1,8 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NbDialogRef } from '@nebular/theme';
-import { API, APIModel, HttpBaseModel } from '@dongkap/do-core';
-import { SelectParamModel } from '@dongkap/do-shared';
+import { API, APIModel } from '@dongkap/do-core';
 
 @Component({
   selector: 'do-education-nonformal-prompt',
