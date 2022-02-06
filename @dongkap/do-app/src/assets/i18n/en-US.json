@@ -198,6 +198,9 @@
 			"invalid": "Please enter valid email address!",
 			"not-available": "Email {{value}} not available"
 		},
+		"not-available": {
+			"email":  "Email has been registered"
+		},
 		"username-login": "Email Address is required!",
 		"password": "Password is required!",
 		"required": "This field is required!",

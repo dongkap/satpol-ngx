@@ -1,9 +1,10 @@
-import { Component, Injector, OnDestroy, OnInit, } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Component, Inject, Injector, OnDestroy, OnInit, } from '@angular/core';
+import { AbstractControl, AsyncValidatorFn, Validators } from '@angular/forms';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { catchError, debounceTime, distinctUntilChanged, first, map, switchMap, takeUntil } from 'rxjs/operators';
+import { of, Subject } from 'rxjs';
 import { DoWizardStep, SelectResponseModel } from '@dongkap/do-shared';
-import { Pattern } from '@dongkap/do-core';
-import { catchError, map, takeUntil } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { API, ApiBaseResponse, APIModel, HttpFactoryService, HTTP_SERVICE, OAUTH_INFO, Pattern, ResponseCode, SecurityResourceModel } from '@dongkap/do-core';
 
 @Component({
   selector: 'do-employee-add-personal-information',
@@ -34,9 +35,13 @@ export class EmployeeAddPersonalInformationComponent extends DoWizardStep implem
       value: 'O',
       disabled: false,
     }];
+    private isCheckEmail: boolean = true;
 
   constructor(
-    public injector: Injector) {
+    public injector: Injector,
+    @Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService,
+    @Inject(OAUTH_INFO)private oauthResource: SecurityResourceModel,
+    @Inject(API)private apiPath: APIModel) {
     super(injector, 'personal-information', {
       name: [{
         value: null,
@@ -87,6 +92,8 @@ export class EmployeeAddPersonalInformationComponent extends DoWizardStep implem
         disabled: false,
       }],
     });
+    this.formGroup.get('personal-information').get('email')
+    .setAsyncValidators([userValidator(this.oauthResource, this.httpBaseService, this.apiPath)]);
   }
 
   ngOnInit(): void {
@@ -109,6 +116,86 @@ export class EmployeeAddPersonalInformationComponent extends DoWizardStep implem
     this.destroy$.unsubscribe();
   }
 
+  onKeyDownEmail(event: KeyboardEvent){
+    if (event.key) {
+      if (!event.key.match(/[!#$%^&*()?":{}|<>\[\];\\=~`]/g)) {
+        if (([
+          'TAB',
+          'ESCAPE',
+          'ENTER',
+          'HOME',
+          'END',
+          'ARROWLEFT',
+          'ARROWRIGHT',
+          'ARROWUP',
+          'ARROWDOWN',
+          'PAGEUP',
+          'PAGEDOWN'].indexOf(event.key.toUpperCase()) === -1) &&
+        !event.ctrlKey && !event.metaKey && !event.altKey) {
+          this.isCheckEmail = true;
+        }
+      }
+    }
+  }
+
   validateRoute() {}
 
+}
+
+export function userValidator(
+  oauthResource: SecurityResourceModel,
+  httpBaseService: HttpFactoryService,
+  apiPath: APIModel): AsyncValidatorFn {
+  return (control: AbstractControl) => {
+    if (!control.valueChanges) {
+      return of(null);
+    } else {
+      return control.valueChanges.pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        switchMap(() => {
+          const validatorSubject$: Subject<any> = new Subject<ApiBaseResponse>();
+          const httpHeaders: HttpHeaders = new HttpHeaders({
+            Authorization: 'Basic ' + btoa(oauthResource['client_id'] + ':' + oauthResource['client_secret']),
+            'Content-Type': 'application/json',
+          });
+          const data: any = {
+            user: control.value,
+          };
+          let dataValidator: any;
+          if (control.value){
+            httpBaseService.HTTP_BASE(apiPath['auth']['check-user'], data, httpHeaders).subscribe(
+              (response: any) => {
+                if (response['respStatusCode'] === ResponseCode.OK_SCR012.toString()) {
+                  validatorSubject$.next(null);
+                } else {
+                  dataValidator = {
+                    error: true,
+                  };
+                  validatorSubject$.next(dataValidator);
+                }
+              },
+              (error: any) => {
+                if (!(error instanceof HttpErrorResponse)) {
+                  dataValidator = {
+                    error: true,
+                  };
+                } else {
+                  if (error.status === 302) {
+                    dataValidator = {
+                      'not-available': true,
+                    };
+                  } else {
+                    dataValidator = {
+                      timeout: true,
+                    };
+                  }
+                }
+                validatorSubject$.next(dataValidator);
+              });
+          }
+          return validatorSubject$.asObservable();
+        })).pipe(first());
+    }
+  };
 }

@@ -62,10 +62,9 @@ export class RequestForgotPageComponent implements OnDestroy {
 
       this.responseError = null;
 
-      const urlForgotPassword: string = `${document.getElementsByTagName('base')[0].href}auth/forgot-password`;
+      // const urlForgotPassword: string = `${document.getElementsByTagName('base')[0].href}auth/forgot-password`;
       const data: any = {
         email: this.form.controls['email'].value,
-        urlForgotPassword,
       };
       const httpHeaders: HttpHeaders = new HttpHeaders({
         Authorization: 'Basic ' + btoa(this.oauthResource['client_id'] + ':' + this.oauthResource['client_secret']),

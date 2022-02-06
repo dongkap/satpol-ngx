@@ -32,4 +32,5 @@ export class PersonalInfoModel {
     dateOfBirth: string;
     height?: number;
     weight?: number;
+    bloodType?: string;
 }

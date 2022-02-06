@@ -46,7 +46,7 @@ export class EmployeeAddPageComponent extends BaseFormComponent<any> {
         dateOfBirth: data['personal-information']['dateOfBirth'],
         height: data['personal-information']['height'],
         weight: data['personal-information']['weight'],
-        bloodType: data['personal-information']['bloodType'],
+        bloodType: data['personal-information']['bloodType']?.value,
       },
       education: {
         educationalLevel: data['education']['educationalLevel']?.value,

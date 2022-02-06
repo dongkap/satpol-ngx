@@ -88,6 +88,33 @@
                 [skeleton]="loadingForm"
                 formControlName="dateOfBirth">
               </do-datepicker>
+              <do-input-text
+                [name]="'height'"
+                [label]="'height.body'"
+                [placeholder]="'Centimeter'"
+                [type]="'number'"
+                [step]="'any'"
+                [skeleton]="loadingForm"
+                formControlName="height">
+              </do-input-text>
+              <do-input-text
+                [name]="'weight'"
+                [label]="'weight.body'"
+                [placeholder]="'Kilogram'"
+                [type]="'number'"
+                [step]="'any'"
+                [skeleton]="loadingForm"
+                formControlName="weight">
+              </do-input-text>
+              <do-select
+                [name]="'bloodType'"
+                [label]="'Blood Type'"
+                [placeholder]="'Blood Type'"
+                [items]="bloodTypeData"
+                [searchable]="false"
+                [skeleton]="loadingForm"
+                formControlName="bloodType">
+              </do-select>
             </nb-accordion-item-body>
           </nb-accordion-item>
           <nb-accordion-item [expanded]="true">

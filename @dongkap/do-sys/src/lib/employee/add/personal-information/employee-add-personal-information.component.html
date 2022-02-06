@@ -51,13 +51,13 @@
         formControlName="dateOfBirth">
       </do-datepicker>
       <do-input-text
+        #email
         [name]="'email'"
         [label]="'Email'"
         [placeholder]="'Email'"
         [required]="true"
         [skeleton]="loadingForm"
         [pattern]="patternEmail"
-        [paramError]="{value:5}"
         minlength="5"
         maxlength="50"
         formControlName="email">

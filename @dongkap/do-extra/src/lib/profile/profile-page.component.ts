@@ -14,7 +14,7 @@ import {
 import { HttpBaseModel } from '@dongkap/do-core';
 import { ApiBaseResponse } from '@dongkap/do-core';
 import { IndexedDBFactoryService } from '@dongkap/do-core';
-import { BaseFormComponent, SelectParamModel } from '@dongkap/do-shared';
+import { BaseFormComponent, SelectParamModel, SelectResponseModel } from '@dongkap/do-shared';
 import { AuthIndexedDBService } from '@dongkap/do-auth';
 import { ContactUserModel, PersonalInfoModel, ProfileModel } from './profile.model';
 
@@ -50,6 +50,24 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
   public apiSelectSubDistrict: HttpBaseModel;
   public paramSelectSubDistrict: SelectParamModel[];
 
+  public bloodTypeData: SelectResponseModel[] = [{
+    label: 'A',
+    value: 'A',
+    disabled: false,
+  }, {
+    label: 'B',
+    value: 'B',
+    disabled: false,
+  }, {
+    label: 'AB',
+    value: 'AB',
+    disabled: false,
+  }, {
+    label: 'O',
+    value: 'O',
+    disabled: false,
+  }];
+
   constructor(
     public injector: Injector,
     @Inject(USER_SERVICE) private userService: UserService,
@@ -66,6 +84,9 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
         placeOfBirth: [],
         dateOfBirth: [],
         gender: [],
+        height: [],
+        weight: [],
+        bloodType: [],
         email: [],
         phoneNumber: [],
         address: [null, [Validators.minLength(5)]],
@@ -141,6 +162,12 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
             if (success?.personalInfo?.dateOfBirth) {
               this.formGroup.controls['dateOfBirth'].setValue(success?.personalInfo?.dateOfBirth);
             }
+            this.formGroup.controls['height'].setValue(success?.personalInfo?.height);
+            this.formGroup.controls['weight'].setValue(success?.personalInfo?.weight);
+            this.formGroup.controls['bloodType'].setValue({
+              value: success?.personalInfo?.bloodType,
+              label: success?.personalInfo?.bloodType,
+            });
           }
           if (success?.contact) {
             if (success?.contact?.address) {
@@ -357,6 +384,9 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
       dateOfBirth: this.formGroup.get('dateOfBirth').value,
       genderCode: this.valueSelectNonLabel('gender'),
       genderValue: this.valueSelect('gender'),
+      height: this.formGroup.get('height').value,
+      weight: this.formGroup.get('weight').value,
+      bloodType: this.formGroup.get('bloodType').value?.value,
     };
     const data: any = {
       name: this.formGroup.get('name').value,

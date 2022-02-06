@@ -1,12 +1,15 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Inject, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
-import { ApiBaseResponse, ResponseCode, Pattern } from '@dongkap/do-core';
+import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, of, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, first, map, switchMap, takeUntil } from 'rxjs/operators';
+import { ApiBaseResponse, ResponseCode, Pattern, SecurityResourceModel, HttpFactoryService, APIModel, HTTP_SERVICE, OAUTH_INFO, API } from '@dongkap/do-core';
 import { BaseFormComponent } from '@dongkap/do-shared';
 import { EmployeeService } from '../../services/employee.service';
-import { HttpErrorResponse } from '@angular/common/http';
+
+let emailExist: any;
 
 @Component({
   selector: 'do-employee-edit-personal-information',
@@ -23,7 +26,10 @@ export class EmployeeEditPersonalInformationComponent extends BaseFormComponent<
   constructor(
     public injector: Injector,
     private router: Router,
-    private employeeService: EmployeeService) {
+    private employeeService: EmployeeService,
+    @Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService,
+    @Inject(OAUTH_INFO)private oauthResource: SecurityResourceModel,
+    @Inject(API)private apiPath: APIModel) {
     super(injector,
       {
         employeeName: [],
@@ -33,6 +39,10 @@ export class EmployeeEditPersonalInformationComponent extends BaseFormComponent<
         phoneNumber: [],
         address: [],
       });
+    this.formGroup.get('email')
+    .setAsyncValidators([
+      userValidator(this.oauthResource, this.httpBaseService, this.apiPath)
+    ]);
     if (!this.employeeService.getEmployeeHeader()) {
       this.router.navigate(['/app/mgmt/employee']);
     }
@@ -47,6 +57,7 @@ export class EmployeeEditPersonalInformationComponent extends BaseFormComponent<
     }).pipe(map(
       (success: any) => {
         this.loadingForm = false;
+        emailExist = success.email;
         this.personalInfo = success?.personalInfo;
         this.formGroup.controls['employeeName'].setValue(success.fullname);
         this.formGroup.controls['nik'].setValue(success.idEmployee);
@@ -95,4 +106,63 @@ export class EmployeeEditPersonalInformationComponent extends BaseFormComponent<
       });
   }
 
+}
+
+export function userValidator(
+  oauthResource: SecurityResourceModel,
+  httpBaseService: HttpFactoryService,
+  apiPath: APIModel): AsyncValidatorFn {
+  return (control: AbstractControl) => {
+    if (!control.valueChanges) {
+      return of(null);
+    } else {
+      return control.valueChanges.pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        switchMap(() => {
+          const validatorSubject$: Subject<any> = new Subject<ApiBaseResponse>();
+          const httpHeaders: HttpHeaders = new HttpHeaders({
+            Authorization: 'Basic ' + btoa(oauthResource['client_id'] + ':' + oauthResource['client_secret']),
+            'Content-Type': 'application/json',
+          });
+          const data: any = {
+            user: control.value,
+            exist: emailExist,
+          };
+          let dataValidator: any;
+          if (control.value){
+            httpBaseService.HTTP_BASE(apiPath['auth']['check-user'], data, httpHeaders).subscribe(
+              (response: any) => {
+                if (response['respStatusCode'] === ResponseCode.OK_SCR012.toString()) {
+                  validatorSubject$.next(null);
+                } else {
+                  dataValidator = {
+                    error: true,
+                  };
+                  validatorSubject$.next(dataValidator);
+                }
+              },
+              (error: any) => {
+                if (!(error instanceof HttpErrorResponse)) {
+                  dataValidator = {
+                    error: true,
+                  };
+                } else {
+                  if (error.status === 302) {
+                    dataValidator = {
+                      'not-available': true,
+                    };
+                  } else {
+                    dataValidator = {
+                      timeout: true,
+                    };
+                  }
+                }
+                validatorSubject$.next(dataValidator);
+              });
+          }
+          return validatorSubject$.asObservable();
+        })).pipe(first());
+    }
+  };
 }

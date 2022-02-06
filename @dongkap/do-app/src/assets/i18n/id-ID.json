@@ -108,6 +108,7 @@
 	"Location": "Lokasi",
 	"Employee Name": "Nama Karyawan",
 	"Employee Status": "Status Karyawan",
+	"Education": "Pendidikan",
 	"Last Education": "Pendidikan Terakhir",
 	"Personal Information": "Informasi Pribadi",
 	"NIK": "NIK",
@@ -196,6 +197,9 @@
 			"required": "Email wajib diisi!",
 			"invalid": "Silakan masukkan alamat email yang valid!",
 			"not-available": "Email {{value}} tidak tersedia"
+		},
+		"not-available": {
+			"email":  "Email sudah terdaftar"
 		},
 		"username-login": "Alamat Email wajib diisi!",
 		"password": "Kata Sandi wajib diisi!",
