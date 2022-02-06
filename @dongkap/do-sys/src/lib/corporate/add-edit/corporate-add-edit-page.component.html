@@ -27,6 +27,7 @@
           [label]="'Email'"
           [required]="true"
           [pattern]="patternEmail"
+          [paramError]="{value:5}"
           [skeleton]="loadingForm"
           formControlName="email">
         </do-input-text>

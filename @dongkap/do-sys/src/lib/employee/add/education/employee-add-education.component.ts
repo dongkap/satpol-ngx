@@ -73,7 +73,7 @@ export class EmployeeAddEducationComponent extends DoWizardStep implements OnIni
   }
 
   validateRoute() {
-    if (!this.formGroup.controls['personal-information']?.valid) {
+    if(!this.formGroup.get('personal-information') || this.formGroup.get('personal-information')?.invalid) {
       this.router.navigate(['/app/mgmt/employee/add/personal-information']);
     }
   }

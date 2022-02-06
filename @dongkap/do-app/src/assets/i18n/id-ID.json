@@ -129,6 +129,7 @@
 	"Training": "Pelatihan",
 	"Training Name": "Nama Pelatihan",
 	"Training Date": "Tanggal Pelatihan",
+	"Set Password": "Atur Kata Sandi",
 	"placeholder": {
 		"image-upload": "Klik atau seret kesini."
 	},
@@ -144,6 +145,7 @@
 		"register-footer": "Sudah memiliki akun?",
 		"forgot-password-link": "Kembali untuk masuk",
 		"reset-password-footer": "Apakah sudah ingat password anda?",
+		"set-password-footer": "Kembali",
 		"danger-zone": "Zona Bahaya",
 		"deactivated-account": "Setelah Anda menonaktifkan akun, tidak ada jalan untuk kembali. Harap pastikan.",
 		"deactivate-form": "Tindakan ini tidak bisa dibatalkan. Ini secara permanen akan menonaktifkan akun anda.",
@@ -237,19 +239,22 @@
 		"force" : "Your account is being used",
 		"force-footer" : "Masuk sebagai orang lain?",
 		"forgot-password" : "Masukkan email Anda, kami akan mengirimkan tautan untuk menyetel ulang kata sandi Anda",
-		"reset-password" : "Masukan kata sandi baru Anda"
+		"reset-password" : "Masukan kata sandi baru Anda",
+		"set-password" : "Atur Kata Sandi Anda"
 	},
 	"alert": {
 		"title": {
 			"login" : "Gagal Masuk!",
 			"register" : "Gagal Register!",
 			"forgot" : "Gagal Lupa Kata Sandi!",
-			"reset-password" : "Gagal Setel Ulang Kata Sandi!"
+			"reset-password" : "Gagal Setel Ulang Kata Sandi!",
+			"set-password" : "Gagal Setel Kata Sandi!"
 		},
 		"delete": "Apakah anda ingin menghapus data ini?",
 		"edit": "Apakah Anda ingin memperbarui data ini?"
 	},
 	"header": {
+		"set-password": "Atur Kata Sandi",
 		"cdc-monitoring": "Monitoring CDC",
 		"area-management": "Kelola Area",
 		"parameter" : "Parameter {{value}}",

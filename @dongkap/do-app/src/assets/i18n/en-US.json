@@ -129,6 +129,7 @@
 	"Training": "Training",
 	"Training Name": "Training Name",
 	"Training Date": "Training Date",
+	"Set Password": "Set Password",
 	"placeholder": {
 		"image-upload": "Click or drag it here."
 	},
@@ -144,6 +145,7 @@
 		"register-footer": "Already have an account?",
 		"forgot-password-link": "Back to Login",
 		"reset-password-footer": "Do you remember the password?",
+		"set-password-footer": "Back to",
 		"danger-zone": "Danger Zone",
 		"deactivated-account": "Once you deactivated account, there is no going back. Please be certain.",
 		"deactivate-form": "This action cannot be undone. This will permanently disable your account.",
@@ -237,19 +239,22 @@
 		"force" : "Your account is being used",
 		"force-footer" : "Logged in as someone else?",
 		"forgot-password" : "Enter your email address and we will send a link to reset your password",
-		"reset-password" : "Enter your new password"
+		"reset-password" : "Enter your new password",
+		"set-password" : "Set your account password"
 	},
 	"alert": {
 		"title": {
 			"login" : "Login Failed!",
 			"register" : "Register Failed!",
 			"forgot" : "Forgot Password Failed!",
-			"reset-password" : "Reset Password Failed!"
+			"reset-password" : "Reset Password Failed!",
+			"set-password" : "Set Password Failed!"
 		},
 		"delete": "Do you want to delete this data?",
 		"edit": "Do you want to update this data?"
 	},
 	"header": {
+		"set-password": "Set Password",
 		"cdc-monitoring": "CDC Monitoring",
 		"area-management": "Area Management",
 		"parameter" : "Parameter {{value}}",

@@ -7,28 +7,6 @@ import { ExerciseWizardStep1Component } from './wizard/step1/exercise-wizard-ste
 import { ExerciseWizardStep2Component } from './wizard/step2/exercise-wizard-step2.component';
 import { ExerciseWizardStep3Component } from './wizard/step3/exercise-wizard-step3.component';
 
-const wizardConfig = {
-  name: 'Exercise Wizard',
-  navBar: {
-    icons: {
-      previous: '<i class="cil-check-alt"></i>',
-      current: '<i class="cil-pencil"></i>',
-      next: '<i class="cil-lock-locked"></i>',
-    },
-  },
-  buttons: {
-    previous: {
-      label: 'Back',
-    },
-    next: {
-      label: 'Next',
-    },
-    finish: {
-      label: 'Submit',
-    },
-  },
-};
-
 const routes: Routes = [
   {
     path: '',
@@ -44,6 +22,9 @@ const routes: Routes = [
       {
         path: 'wizard',
         component: ExerciseWizardComponent,
+        data: {
+          name: 'Exercise Wizard',
+        },
         children: [
           {
             path: 'step-1',
@@ -71,7 +52,6 @@ const routes: Routes = [
             redirectTo: 'step-1',
           },
         ],
-        data: wizardConfig,
       },
       {
         path: '',

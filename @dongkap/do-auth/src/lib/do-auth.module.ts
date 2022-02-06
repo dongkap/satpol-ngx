@@ -45,8 +45,9 @@ import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditi
 import { LogoutComponent } from './pages/logout/logout.component';
 import { ForgotPageComponent } from './pages/forgot/forgot-page.component';
 import { RequestForgotPageComponent } from './pages/forgot/request-forgot-page.component';
-import { OAuth2CallbackComponent } from './pages/oauth2/oauth2-callback.component';
 import { RegisterPageComponent } from './pages/register/register-page.component';
+import { ActivateAccountPageComponent } from './pages/activate-account/activate-account-page.component';
+import { OAuth2CallbackComponent } from './pages/oauth2/oauth2-callback.component';
 
 export const AUTH_PROVIDERS = [
   { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorTokenService, multi: true},
@@ -72,6 +73,7 @@ export const AUTH_COMPONENTS = [
   ForgotPageComponent,
   RequestForgotPageComponent,
   RegisterPageComponent,
+  ActivateAccountPageComponent,
   TermsConditionsComponent,
   OAuth2CallbackComponent,
 ];

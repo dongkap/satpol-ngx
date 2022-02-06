@@ -40,6 +40,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/security/oauth/forgot-password',
         },
+        'activate-account': {
+            server: environment.host.auth,
+            method: HttpMethod.POST,
+            path: '/api/security/oauth/activate',
+        },
         'check-user': {
             server: environment.host.auth,
             method: HttpMethod.POST,

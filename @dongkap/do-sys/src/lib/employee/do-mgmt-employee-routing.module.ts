@@ -26,7 +26,7 @@ const routes: Routes = [{
       component: EmployeeAddPageComponent,
       data: {
         name: 'Manage Employee',
-        code: '#MANAGEMENT-OCCUPATION-PAGE',
+        code: '#MANAGEMENT-EMPLOYEE-PAGE',
         baseUrl: '/app/mgmt/employee',
       },
       children: [
@@ -35,7 +35,7 @@ const routes: Routes = [{
           component: EmployeeAddPersonalInformationComponent,
           data: {
             title: 'Personal Information',
-            code: '#MANAGEMENT-OCCUPATION-PAGE',
+            code: '#MANAGEMENT-EMPLOYEE-PAGE',
           },
         },
         {
@@ -43,7 +43,7 @@ const routes: Routes = [{
           component: EmployeeAddEducationComponent,
           data: {
             title: 'Last Education',
-            code: '#MANAGEMENT-OCCUPATION-PAGE',
+            code: '#MANAGEMENT-EMPLOYEE-PAGE',
           },
         },
         {
@@ -51,7 +51,7 @@ const routes: Routes = [{
           component: EmployeeAddEmployeeStatusComponent,
           data: {
             title: 'Employee Status',
-            code: '#MANAGEMENT-OCCUPATION-PAGE',
+            code: '#MANAGEMENT-EMPLOYEE-PAGE',
           },
         },
         {
@@ -64,7 +64,7 @@ const routes: Routes = [{
       path: 'edit',
       component: EmployeeEditPageComponent,
       data: {
-        code: '#MANAGEMENT-OCCUPATION-PAGE',
+        code: '#MANAGEMENT-EMPLOYEE-PAGE',
       },
     },
     {

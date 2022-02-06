@@ -16,9 +16,10 @@ export { AuthUserService } from './lib/services/auth-user.service';
 
 export { LoginPageComponent } from './lib/pages/login/login-page.component';
 export { TermsConditionsComponent } from './lib/pages/terms-conditions/terms-conditions.component';
-export { ForgotPageComponent } from './lib/pages/forgot/forgot-page.component';
 export { RequestForgotPageComponent } from './lib/pages/forgot/request-forgot-page.component';
+export { ForgotPageComponent } from './lib/pages/forgot/forgot-page.component';
+export { ActivateAccountPageComponent } from './lib/pages/activate-account/activate-account-page.component';
+export { RegisterPageComponent } from './lib/pages/register/register-page.component';
 export { LogoutComponent } from './lib/pages/logout/logout.component';
 export { OAuth2CallbackComponent } from './lib/pages/oauth2/oauth2-callback.component';
-export { RegisterPageComponent } from './lib/pages/register/register-page.component';
 export { PageNotFoundComponent } from './lib/pages/404/404.component';
