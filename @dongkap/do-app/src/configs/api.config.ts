@@ -142,6 +142,21 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/security/001/trx/auth/function-role/v.1',
         },
+        'get-user-role': {
+            server: environment.host.security,
+            method: HttpMethod.GET,
+            path: '/api/security/001/vw/get/user/role/v.1',
+        },
+        'select-user-role': {
+            server: environment.host.security,
+            method: HttpMethod.GET,
+            path: '/api/security/001/vw/get/select/user/role/v.1',
+        },
+        'switch-role': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/api/security/001/trx/post/switch/role/v.1',
+        },
         'datatable-corporate': {
             server: environment.host.security,
             method: HttpMethod.POST,

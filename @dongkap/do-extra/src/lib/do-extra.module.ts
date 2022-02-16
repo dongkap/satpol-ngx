@@ -24,6 +24,7 @@ import { HomePageComponent } from './home/home-page.component';
 import { TermsConditionsPageComponent } from './terms/terms-conditions-page.component';
 import { PrivacyPolicyPageComponent } from './privacy-policy/privacy-policy-page.component';
 import { DeactivatedProviderPromptComponent } from './security/prompt/deactivated-provider-prompt.component';
+import { SwitchRolePageComponent } from './switch-role/switch-role-page.component';
 
 const EXTRA_COMPONENTS = [
   ExtraComponent,
@@ -36,6 +37,7 @@ const EXTRA_COMPONENTS = [
   HomePageComponent,
   TermsConditionsPageComponent,
   PrivacyPolicyPageComponent,
+  SwitchRolePageComponent,
 ];
 
 @NgModule({
