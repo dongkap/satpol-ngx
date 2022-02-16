@@ -1,0 +1,160 @@
+import { Component, Injector, OnDestroy, TemplateRef } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { takeUntil } from 'rxjs/operators';
+import { NbDialogRef, NbDialogService } from '@nebular/theme';
+import { ApiBaseResponse, HttpBaseModel } from '@dongkap/do-core';
+import { BaseComponent, DatatableColumn, DoToastrService, Keyword, Sort, SortProperties } from '@dongkap/do-shared';
+import { EmployementPlacementService } from '../services/employement-placement.service';
+import { AssignmentGroupModel } from '../models/employement-placement.model';
+import { EmployeePromptComponent } from './prompt-employee/employee-prompt.component';
+
+@Component({
+  selector: 'do-employement-placement-edit-page',
+  styleUrls: ['./employement-placement-edit-page.component.scss'],
+  templateUrl: './employement-placement-edit-page.component.html',
+})
+export class EmployementPlacementEditPageComponent extends BaseComponent<any> implements OnInit, OnDestroy {
+
+  public loading: boolean = false;
+  public disabled: boolean = false;
+  protected destroy$: Subject<any> = new Subject<any>();
+  public assignmentGroup: AssignmentGroupModel;
+  public businessPartner: any;
+  public reload: boolean = false;
+  public apiPath: HttpBaseModel;
+  public apiPathAdd: HttpBaseModel;
+  public apiPathDelete: HttpBaseModel;
+  public columns: DatatableColumn[] = [
+    { name: 'Employee Name', prop: 'employee.fullname', frozenLeft: true, sortable: true },
+    { name: 'NIK', prop: 'employee.idEmployee', frozenLeft: true },
+    { name: 'Occupation', prop: 'employee.occupation.name', frozenLeft: true },
+  ];
+  public sort: Sort;
+  public sortsDefault: SortProperties[];
+  public keyword: Keyword;
+  public assignmentIds: any[] = [];
+
+  constructor(
+    public injector: Injector,
+    private router: Router,
+    private toastr: DoToastrService,
+    private dialogService: NbDialogService,
+    private employementPlacementService: EmployementPlacementService) {
+    super(injector);
+  }
+
+  ngOnInit(): void {
+    if (this.employementPlacementService.getAssignmentGroup()) {
+      this.apiPath = this.api['activity']['datatable-assignment'];
+      this.apiPathAdd = this.api['activity']['post-assignment'];
+      this.apiPathDelete = this.api['activity']['delete-assignment'];
+      this.sort = {
+        asc: ['employee.fullname']
+      };
+      this.sortsDefault = [
+        { prop: 'employee.fullname', dir: 'asc' }
+      ];
+      this.assignmentGroup = this.employementPlacementService.getAssignmentGroup();
+      this.loading = true;
+      this.keyword = {
+        assignmentGroupId: this.assignmentGroup.id,
+      };
+      this.exec('master', 'get-business-partner', {
+        id: this.employementPlacementService.getAssignmentGroup()?.bpId
+      }).
+      pipe(takeUntil(this.destroy$)).subscribe(
+        (success: any) => {
+          this.loading = false;
+          this.businessPartner = success;
+        },
+        (error: HttpErrorResponse) => {
+          this.loading = true;
+          const err: ApiBaseResponse = error['error'];
+          if (err) {
+            this.toastr.showI18n(err.respStatusMessage[err.respStatusCode], true, null, 'danger');
+          } else {
+            this.toastr.showI18n(err as any, true, null, 'danger');
+          }
+        },
+      );
+    } else {
+      this.router.navigate(['/app/mgmt/employement-placement']);
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  onAddAssignment(): void {
+    this.dialogService.open(EmployeePromptComponent)
+      .onClose.subscribe((data: any[]) => {
+        if (data) {
+          if (data.length) {
+            const employeeIds: any[] = [];
+            data.forEach(employee => {
+              employeeIds.push(employee.id);
+            });
+            const dataRequest: any = {
+              id: this.assignmentGroup.id,
+              bpId: this.assignmentGroup.bpId,
+              employeeIds,
+            };
+            this.disabled = true;
+            this.http.HTTP_AUTH(this.apiPathAdd, dataRequest)
+              .pipe(takeUntil(this.destroy$))
+              .subscribe(
+                (success: ApiBaseResponse) => {
+                  this.disabled = false;
+                  this.reload = true;
+                  this.toastr.showI18n(success.respStatusMessage[success.respStatusCode], true);
+                },
+                (error: ApiBaseResponse) => {
+                  this.disabled = false;
+                  this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
+                },
+            );
+          }
+        }
+      });
+  }
+
+  onDeleteAssignmentDialog(data, dialog: TemplateRef<any>): void {
+    this.reload = false;
+    this.assignmentIds = [];
+    data.forEach(value => {
+      this.assignmentIds.push(value.id);
+    });
+    this.dialogService.open(
+      dialog,
+      { context: 'alert.delete' });
+  }
+
+  onDeleteAssignment(ref: NbDialogRef<any>): void {
+    this.disabled = true;
+    const data: any = {
+      id: this.assignmentGroup.id,
+      assignmentIds: this.assignmentIds,
+    };
+    this.http.HTTP_AUTH(this.apiPathDelete, data)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(
+        (success: ApiBaseResponse) => {
+          this.disabled = false;
+          ref.close();
+          this.reload = true;
+          this.toastr.showI18n(success.respStatusMessage[success.respStatusCode], true);
+        },
+        (error: ApiBaseResponse) => {
+          this.disabled = false;
+          this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
+        },
+    );
+  }
+
+}

@@ -13,14 +13,14 @@ const routes: Routes = [{
       component: HomePageComponent,
     },
     {
-      path: 'mgmt/apps',
-      loadChildren: () => import('../sys/sys-mgmt-apps-wrapper.module')
-        .then(m => m.SysMgmtAppsWrapperModule),
-    },
-    {
       path: 'mgmt/corporate',
       loadChildren: () => import('../sys/sys-mgmt-corporate-wrapper.module')
         .then(m => m.SysMgmtCorporateWrapperModule),
+    },
+    {
+      path: 'mgmt/occupation',
+      loadChildren: () => import('../sys/sys-mgmt-occupation-wrapper.module')
+        .then(m => m.SysMgmtOccupationWrapperModule),
     },
     {
       path: 'mgmt/employee',
@@ -28,9 +28,9 @@ const routes: Routes = [{
         .then(m => m.SysMgmtEmployeeWrapperModule),
     },
     {
-      path: 'mgmt/business-partner',
-      loadChildren: () => import('../sys/sys-mgmt-business-partner-wrapper.module')
-        .then(m => m.SysMgmtBusinessPartnerWrapperModule),
+      path: 'mgmt/employement-placement',
+      loadChildren: () => import('../sys/sys-mgmt-employement-placement-wrapper.module')
+        .then(m => m.SysMgmtEmployementPlacementWrapperModule),
     },
     {
       path: 'mgmt/inventory',
@@ -38,9 +38,14 @@ const routes: Routes = [{
         .then(m => m.SysMgmtInventoryWrapperModule),
     },
     {
-      path: 'mgmt/occupation',
-      loadChildren: () => import('../sys/sys-mgmt-occupation-wrapper.module')
-        .then(m => m.SysMgmtOccupationWrapperModule),
+      path: 'mgmt/business-partner',
+      loadChildren: () => import('../sys/sys-mgmt-business-partner-wrapper.module')
+        .then(m => m.SysMgmtBusinessPartnerWrapperModule),
+    },
+    {
+      path: 'mgmt/apps',
+      loadChildren: () => import('../sys/sys-mgmt-apps-wrapper.module')
+        .then(m => m.SysMgmtAppsWrapperModule),
     },
     {
       path: 'mgmt/role',

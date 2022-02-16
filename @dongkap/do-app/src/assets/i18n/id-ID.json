@@ -130,6 +130,8 @@
 	"Training Name": "Nama Pelatihan",
 	"Training Date": "Tanggal Pelatihan",
 	"Set Password": "Atur Kata Sandi",
+	"Total Assignment": "Total Penugasan",
+	"Choose": "Pilih",
 	"placeholder": {
 		"image-upload": "Klik atau seret kesini."
 	},
@@ -294,7 +296,9 @@
 		"Edit-education-formal": "Ubah Pendidikan Formal",
 		"Add-education-formal": "Tambah Pendidikan Formal",
 		"Edit-education-nonformal": "Ubah Pendidikan Non Formal",
-		"Add-education-nonformal": "Tambah Pendidikan Non Formal"
+		"Add-education-nonformal": "Tambah Pendidikan Non Formal",
+		"employement-placement-management": "Kelola Penempatan Kerja",
+		"employee-selection": "Pilih Karyawan"
 	},
 	"label": {
 		"language": "Bahasa",

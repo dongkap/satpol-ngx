@@ -33,6 +33,11 @@ export const environment = {
       host: 'localhost',
       port: 8082,
     },
+    activity: {
+      protocol: 'http',
+      host: 'localhost',
+      port: 8083,
+    },
     notification: {
       protocol: 'http',
       host: 'localhost',

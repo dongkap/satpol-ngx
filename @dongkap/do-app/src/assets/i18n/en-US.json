@@ -130,6 +130,8 @@
 	"Training Name": "Training Name",
 	"Training Date": "Training Date",
 	"Set Password": "Set Password",
+	"Total Assignment": "Total Assignment",
+	"Choose": "Choose",
 	"placeholder": {
 		"image-upload": "Click or drag it here."
 	},
@@ -294,7 +296,9 @@
 		"Edit-education-formal": "Edit Education Formal",
 		"Add-education-formal": "Add Education Formal",
 		"Edit-education-nonformal": "Edit Education Non Formal",
-		"Add-education-nonformal": "Add Education Non Formal"
+		"Add-education-nonformal": "Add Education Non Formal",
+		"employement-placement-management": "Employement Placement Management",
+		"employee-selection": "Select Employee"
 	},
 	"label": {
 		"language": "Language",

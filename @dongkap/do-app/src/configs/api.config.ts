@@ -416,6 +416,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/master/003/vw/auth/select/business-partner/v.1',
         },
+        'get-business-partner': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/api/master/003/vw/auth/get/business-partner/v.1',
+        },
         'datatable-inventory': {
             server: environment.host.master,
             method: HttpMethod.POST,
@@ -435,6 +440,28 @@ export const apiPath: APIModel = {
             server: environment.host.master,
             method: HttpMethod.POST,
             path: '/api/master/003/trx/auth/delete/asset/v.1',
+        },
+    },
+    activity: {
+        'datatable-assignment-group': {
+            server: environment.host.activity,
+            method: HttpMethod.POST,
+            path: '/api/activity/004/vw/auth/datatable/assignment-group/v.1',
+        },
+        'datatable-assignment': {
+            server: environment.host.activity,
+            method: HttpMethod.POST,
+            path: '/api/activity/004/vw/auth/datatable/assignment/v.1',
+        },
+        'post-assignment': {
+            server: environment.host.activity,
+            method: HttpMethod.POST,
+            path: '/api/activity/004/trx/auth/add/assignment/v.1',
+        },
+        'delete-assignment': {
+            server: environment.host.activity,
+            method: HttpMethod.POST,
+            path: '/api/activity/004/trx/auth/delete/assignment/v.1',
         },
     },
     notification: {

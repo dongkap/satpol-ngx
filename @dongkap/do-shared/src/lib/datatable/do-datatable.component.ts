@@ -68,6 +68,7 @@ export class DoDatatableComponent implements OnInit, OnDestroy {
   @Output() onFilter: EventEmitter<any> = new EventEmitter<any>();
   @Output() onButtonCell: EventEmitter<any> = new EventEmitter<any>();
   @Output() onLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onSelected: EventEmitter<any> = new EventEmitter<any>();
 //  @ViewChild('datatable', {static: false}) datatable: DatatableComponent;
   @Input() set filterFn(keyword: Keyword) {
     this.keywordParam = keyword;
@@ -227,6 +228,7 @@ export class DoDatatableComponent implements OnInit, OnDestroy {
         this.isDelete = false;
       }
       this.selected = selected;
+      this.onSelected.emit(this.selected);
     } else {
       this.isDelete = false;
     }
