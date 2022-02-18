@@ -35,17 +35,7 @@ export class EmployeeProfileEmployeeStatusComponent extends BaseFormComponent<an
       (success: any) => {
         this.loadingForm = false;
         this.dataEmployeeStatus = success;
-      },
-      (error: HttpErrorResponse) => {
-        this.loadingForm = true;
-        const err: ApiBaseResponse = error['error'];
-        if (err) {
-          this.toastr.showI18n(err.respStatusMessage[err.respStatusCode], true, null, 'danger');
-        } else {
-          this.toastr.showI18n(err as any, true, null, 'danger');
-        }
-      },
-    ));
+      }));
   }
 
 }

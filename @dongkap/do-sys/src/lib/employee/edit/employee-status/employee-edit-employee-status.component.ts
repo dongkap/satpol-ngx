@@ -6,7 +6,6 @@ import { catchError, map, takeUntil } from 'rxjs/operators';
 import { ApiBaseResponse, ResponseCode, HttpBaseModel, RoleModel } from '@dongkap/do-core';
 import { BaseFormComponent, CheckboxModel, SelectResponseModel } from '@dongkap/do-shared';
 import { EmployeeService } from '../../services/employee.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'do-employee-edit-employee-status',
@@ -96,17 +95,7 @@ export class EmployeeEditEmployeeStatusComponent extends BaseFormComponent<any> 
         });
         this.formGroup.controls['permissions'].setValue(permissions);
         this.formGroup.markAsPristine();
-      },
-      (error: HttpErrorResponse) => {
-        this.loadingForm = true;
-        const err: ApiBaseResponse = error['error'];
-        if (err) {
-          this.toastr.showI18n(err.respStatusMessage[err.respStatusCode], true, null, 'danger');
-        } else {
-          this.toastr.showI18n(err as any, true, null, 'danger');
-        }
-      },
-    ));
+      }));
   }
 
   onReset(): void {

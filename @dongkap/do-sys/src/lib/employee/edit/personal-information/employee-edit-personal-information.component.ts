@@ -66,17 +66,7 @@ export class EmployeeEditPersonalInformationComponent extends BaseFormComponent<
         this.formGroup.controls['phoneNumber'].setValue(success.contact?.phoneNumber);
         this.formGroup.controls['address'].setValue(success.contact?.address);
         this.formGroup.markAsPristine();
-      },
-      (error: HttpErrorResponse) => {
-        this.loadingForm = true;
-        const err: ApiBaseResponse = error['error'];
-        if (err) {
-          this.toastr.showI18n(err.respStatusMessage[err.respStatusCode], true, null, 'danger');
-        } else {
-          this.toastr.showI18n(err as any, true, null, 'danger');
-        }
-      },
-    ));
+      }));
   }
 
   onReset(): void {

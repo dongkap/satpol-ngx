@@ -238,17 +238,7 @@ export class EmployeeProfilePersonalInformationComponent extends BaseFormCompone
             }
           });
           this.formGroup.markAsPristine();
-        },
-        (error: HttpErrorResponse) => {
-          this.loadingForm = true;
-          const err: ApiBaseResponse = error['error'];
-          if (err) {
-            this.toastr.showI18n(err.respStatusMessage[err.respStatusCode], true, null, 'danger');
-          } else {
-            this.toastr.showI18n(err as any, true, null, 'danger');
-          }
-        },
-      ));
+        },));
   }
 
   onSelectCountry(select: any): void {

@@ -1,8 +1,10 @@
 import { Component, Injector, OnDestroy, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { BaseComponent } from '@dongkap/do-shared';
+import { ApiBaseResponse } from '@dongkap/do-core';
+import { BaseComponent, DoToastrService } from '@dongkap/do-shared';
 import { EmployeeProfilePersonalInformationComponent } from './personal-information/employee-profile-personal-information.component';
 import { EmployeeProfileEducationComponent } from './education/employee-profile-education.component';
 import { EmployeeProfileEmployeeStatusComponent } from './employee-status/employee-profile-employee-status.component';
@@ -22,7 +24,7 @@ export class EmployeeProfilePageComponent extends BaseComponent<any> implements 
   @ViewChild('education', { static: true }) education: EmployeeProfileEducationComponent;
   @ViewChild('employeeStatus', { static: true }) employeeStatus: EmployeeProfileEmployeeStatusComponent;
 
-  constructor(public injector: Injector) {
+  constructor(public injector: Injector, private toastr: DoToastrService) {
     super(injector);
   }
 
@@ -43,18 +45,33 @@ export class EmployeeProfilePageComponent extends BaseComponent<any> implements 
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
           this.loading = false;
+      }, (error: any | ApiBaseResponse) => {
+        if (error instanceof HttpErrorResponse) {
+            error = error['error'] as ApiBaseResponse;
+        }
+        this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
       });
     } else if (this.tab === 'education') {
       this.education.loadDataMenu()
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
           this.loading = false;
+      }, (error: any | ApiBaseResponse) => {
+        if (error instanceof HttpErrorResponse) {
+            error = error['error'] as ApiBaseResponse;
+        }
+        this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
       });
     } else {
       this.employeeStatus.loadDataMenu()
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
           this.loading = false;
+      }, (error: any | ApiBaseResponse) => {
+        if (error instanceof HttpErrorResponse) {
+            error = error['error'] as ApiBaseResponse;
+        }
+        this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
       });
     }
   }

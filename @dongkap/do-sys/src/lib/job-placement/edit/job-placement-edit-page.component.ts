@@ -70,14 +70,12 @@ export class JobPlacementEditPageComponent extends BaseComponent<any> implements
           this.loading = false;
           this.businessPartner = success;
         },
-        (error: HttpErrorResponse) => {
+        (error: any | ApiBaseResponse) => {
           this.loading = true;
-          const err: ApiBaseResponse = error['error'];
-          if (err) {
-            this.toastr.showI18n(err.respStatusMessage[err.respStatusCode], true, null, 'danger');
-          } else {
-            this.toastr.showI18n(err as any, true, null, 'danger');
+          if (error instanceof HttpErrorResponse) {
+              error = error['error'] as ApiBaseResponse;
           }
+          this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
         },
       );
     } else {
