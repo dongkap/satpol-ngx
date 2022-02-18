@@ -110,6 +110,12 @@ export class JobPlacementEditPageComponent extends BaseComponent<any> implements
                 (success: ApiBaseResponse) => {
                   this.disabled = false;
                   this.reload = true;
+                  if (this.assignmentGroup) {
+                    this.assignmentGroup['id'] = success.respStatusMessage['assignmentGroupId'];
+                  }
+                  this.keyword = {
+                    assignmentGroupId: success.respStatusMessage['assignmentGroupId'],
+                  };
                   this.toastr.showI18n(success.respStatusMessage[success.respStatusCode], true);
                 },
                 (error: ApiBaseResponse) => {
