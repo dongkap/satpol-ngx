@@ -7,16 +7,16 @@ import { takeUntil } from 'rxjs/operators';
 import { NbDialogRef, NbDialogService } from '@nebular/theme';
 import { ApiBaseResponse, HttpBaseModel } from '@dongkap/do-core';
 import { BaseComponent, DatatableColumn, DoToastrService, Keyword, Sort, SortProperties } from '@dongkap/do-shared';
-import { EmployementPlacementService } from '../services/employement-placement.service';
-import { AssignmentGroupModel } from '../models/employement-placement.model';
+import { JobPlacementService } from '../services/job-placement.service';
+import { AssignmentGroupModel } from '../models/job-placement.model';
 import { EmployeePromptComponent } from './prompt-employee/employee-prompt.component';
 
 @Component({
-  selector: 'do-employement-placement-edit-page',
-  styleUrls: ['./employement-placement-edit-page.component.scss'],
-  templateUrl: './employement-placement-edit-page.component.html',
+  selector: 'do-job-placement-edit-page',
+  styleUrls: ['./job-placement-edit-page.component.scss'],
+  templateUrl: './job-placement-edit-page.component.html',
 })
-export class EmployementPlacementEditPageComponent extends BaseComponent<any> implements OnInit, OnDestroy {
+export class JobPlacementEditPageComponent extends BaseComponent<any> implements OnInit, OnDestroy {
 
   public loading: boolean = false;
   public disabled: boolean = false;
@@ -42,12 +42,12 @@ export class EmployementPlacementEditPageComponent extends BaseComponent<any> im
     private router: Router,
     private toastr: DoToastrService,
     private dialogService: NbDialogService,
-    private employementPlacementService: EmployementPlacementService) {
+    private jobPlacementService: JobPlacementService) {
     super(injector);
   }
 
   ngOnInit(): void {
-    if (this.employementPlacementService.getAssignmentGroup()) {
+    if (this.jobPlacementService.getAssignmentGroup()) {
       this.apiPath = this.api['activity']['datatable-assignment'];
       this.apiPathAdd = this.api['activity']['post-assignment'];
       this.apiPathDelete = this.api['activity']['delete-assignment'];
@@ -57,13 +57,13 @@ export class EmployementPlacementEditPageComponent extends BaseComponent<any> im
       this.sortsDefault = [
         { prop: 'employee.fullname', dir: 'asc' }
       ];
-      this.assignmentGroup = this.employementPlacementService.getAssignmentGroup();
+      this.assignmentGroup = this.jobPlacementService.getAssignmentGroup();
       this.loading = true;
       this.keyword = {
         assignmentGroupId: this.assignmentGroup.id,
       };
       this.exec('master', 'get-business-partner', {
-        id: this.employementPlacementService.getAssignmentGroup()?.bpId
+        id: this.jobPlacementService.getAssignmentGroup()?.bpId
       }).
       pipe(takeUntil(this.destroy$)).subscribe(
         (success: any) => {

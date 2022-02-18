@@ -12,4 +12,5 @@ export { DoMgmtOccupationModule } from './lib/occupation/do-mgmt-occupation.modu
 export { DoMgmtBusinessPartnerModule } from './lib/business-partner/do-mgmt-business-partner.module';
 export { DoMgmtInventoryModule } from './lib/inventory/do-mgmt-inventory.module';
 export { DoMgmtEmployeeModule } from './lib/employee/do-mgmt-employee.module';
-export { DoMgmtEmployementPlacementModule } from './lib/employement-placement/do-mgmt-employement-placement.module';
+export { DoMgmtJobPlacementModule } from './lib/job-placement/do-mgmt-job-placement.module';
+export { DoEmployeeProfileModule } from './lib/profile/do-employee-profile.module';

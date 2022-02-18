@@ -2,12 +2,12 @@ import { Component, Injector, OnDestroy, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { BaseComponent } from '@dongkap/do-shared';
 import { EmployeeService } from '../services/employee.service';
 import { EmployeeEditPersonalInformationComponent } from './personal-information/employee-edit-personal-information.component';
 import { EmployeeEditEducationComponent } from './education/employee-edit-education.component';
 import { EmployeeEditEmployeeStatusComponent } from './employee-status/employee-edit-employee-status.component';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'do-employee-edit-page',
@@ -17,7 +17,7 @@ import { takeUntil } from 'rxjs/operators';
 export class EmployeeEditPageComponent extends BaseComponent<any> implements OnInit, OnDestroy {
 
   public loading: boolean = false;
-  public tab: string = 'resume';
+  public tab: string = 'personalInfo';
   protected destroy$: Subject<any> = new Subject<any>();
 
   @ViewChild('personalInfo', { static: true }) personalInfo: EmployeeEditPersonalInformationComponent;

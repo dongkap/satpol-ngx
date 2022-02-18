@@ -28,9 +28,9 @@ const routes: Routes = [{
         .then(m => m.SysMgmtEmployeeWrapperModule),
     },
     {
-      path: 'mgmt/employement-placement',
-      loadChildren: () => import('../sys/sys-mgmt-employement-placement-wrapper.module')
-        .then(m => m.SysMgmtEmployementPlacementWrapperModule),
+      path: 'mgmt/job-placement',
+      loadChildren: () => import('../sys/sys-mgmt-job-placement-wrapper.module')
+        .then(m => m.SysMgmtJobPlacementWrapperModule),
     },
     {
       path: 'mgmt/inventory',
@@ -56,6 +56,11 @@ const routes: Routes = [{
       path: 'mgmt/menu',
       loadChildren: () => import('../sys/sys-mgmt-menu-wrapper.module')
         .then(m => m.SysMgmtMenuWrapperModule),
+    },
+    {
+      path: 'employee/profile',
+      loadChildren: () => import('../sys/sys-employee-profile-wrapper.module')
+        .then(m => m.SysEmployeeProfileWrapperModule),
     },
     {
       path: 'sysconf/parameter',

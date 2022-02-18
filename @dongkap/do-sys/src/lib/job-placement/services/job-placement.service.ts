@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AssignmentGroupModel } from '../models/employement-placement.model';
+import { AssignmentGroupModel } from '../models/job-placement.model';
 
 @Injectable()
-export class EmployementPlacementService {
+export class JobPlacementService {
 
     private assignmentGroup: AssignmentGroupModel;
 

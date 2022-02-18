@@ -5,11 +5,11 @@ import { API, APIModel, HttpBaseModel } from '@dongkap/do-core';
 import { SelectParamModel } from '@dongkap/do-shared';
 
 @Component({
-  selector: 'do-education-formal-prompt',
-  templateUrl: 'education-formal-prompt.component.html',
-  styleUrls: ['education-formal-prompt.component.scss'],
+  selector: 'do-profile-education-formal-prompt',
+  templateUrl: 'profile-education-formal-prompt.component.html',
+  styleUrls: ['profile-education-formal-prompt.component.scss'],
 })
-export class EmployeeEducationFormalPromptComponent implements OnInit {
+export class EmployeeProfileEducationFormalPromptComponent implements OnInit {
 
   @Input() public education: any;
   public action: 'Add' | 'Edit' = 'Add';
@@ -20,7 +20,7 @@ export class EmployeeEducationFormalPromptComponent implements OnInit {
   constructor(
     @Inject(API) api: APIModel,
     formBuilder: FormBuilder,
-    protected ref: NbDialogRef<EmployeeEducationFormalPromptComponent>) {
+    protected ref: NbDialogRef<EmployeeProfileEducationFormalPromptComponent>) {
       this.formGroup = formBuilder.group({
         educationalLevel: [],
         school: [],

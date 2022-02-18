@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'do-mgmt-employement-placement',
+  selector: 'do-mgmt-job-placement',
   template: `
     <router-outlet></router-outlet>
   `,
 })
-export class MgmtEmployementPlacementComponent {
+export class MgmtJobPlacementComponent {
 }

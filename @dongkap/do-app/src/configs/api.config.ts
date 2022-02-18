@@ -299,6 +299,41 @@ export const apiPath: APIModel = {
             method: HttpMethod.GET,
             path: '/api/security/002/vw/get/profile/v.1',
         },
+        'get-profile-education-employee': {
+            server: environment.host.profile,
+            method: HttpMethod.POST,
+            path: '/api/security/002/vw/post/datatable/education-employee/v.1',
+        },
+        'get-profile-training-employee': {
+            server: environment.host.profile,
+            method: HttpMethod.POST,
+            path: '/api/security/002/vw/post/datatable/training-employee/v.1',
+        },
+        'post-profile-employee-education': {
+            server: environment.host.profile,
+            method: HttpMethod.POST,
+            path: '/api/security/002/trx/post/education/employee/v.1',
+        },
+        'post-profile-employee-training': {
+            server: environment.host.profile,
+            method: HttpMethod.POST,
+            path: '/api/security/002/trx/post/training/employee/v.1',
+        },
+        'delete-profile-employee-education': {
+            server: environment.host.profile,
+            method: HttpMethod.POST,
+            path: '/api/security/002/trx/delete/education/employee/v.1',
+        },
+        'delete-profile-employee-training': {
+            server: environment.host.profile,
+            method: HttpMethod.POST,
+            path: '/api/security/002/trx/delete/training/employee/v.1',
+        },
+        'get-profile-employee-status': {
+            server: environment.host.security,
+            method: HttpMethod.GET,
+            path: '/api/security/002/vw/get/status/employee/v.1',
+        },
         'upload-photo-profile': {
             server: environment.host.profile,
             method: HttpMethod.POST,

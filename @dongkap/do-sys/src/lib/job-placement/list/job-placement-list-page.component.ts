@@ -4,14 +4,14 @@ import { Router } from '@angular/router';
 import { HttpBaseModel } from '@dongkap/do-core';
 import { BaseFilterComponent, DatatableColumn } from '@dongkap/do-shared';
 import { SelectionType } from '@swimlane/ngx-datatable';
-import { EmployementPlacementService } from '../services/employement-placement.service';
+import { JobPlacementService } from '../services/job-placement.service';
 
 @Component({
-  selector: 'do-employement-placement-list-page',
-  styleUrls: ['./employement-placement-list-page.component.scss'],
-  templateUrl: './employement-placement-list-page.component.html',
+  selector: 'do-job-placement-list-page',
+  styleUrls: ['./job-placement-list-page.component.scss'],
+  templateUrl: './job-placement-list-page.component.html',
 })
-export class EmployementPlacementListPageComponent extends BaseFilterComponent<any> implements OnInit {
+export class JobPlacementListPageComponent extends BaseFilterComponent<any> implements OnInit {
 
   public apiPath: HttpBaseModel;
   public columns: DatatableColumn[] = [
@@ -23,7 +23,7 @@ export class EmployementPlacementListPageComponent extends BaseFilterComponent<a
   constructor(
     public injector: Injector,
     private router: Router,
-    private employementPlacementService: EmployementPlacementService) {
+    private jobPlacementService: JobPlacementService) {
     super(injector, {
       bpName: [],
     });
@@ -41,7 +41,7 @@ export class EmployementPlacementListPageComponent extends BaseFilterComponent<a
   }
 
   onViewDetail(data): void {
-    this.employementPlacementService.setAssignmentGroup(data);
+    this.jobPlacementService.setAssignmentGroup(data);
     this.router.navigate(['/app/mgmt/employement-placement', 'edit']);
   }
 

@@ -21,17 +21,17 @@ import {
   DoDatatableModule,
   DoLabelModule,
 } from '@dongkap/do-shared';
-import { MgmtEmployementPlacementComponent } from './do-mgmt-employement-placement.component';
-import { DoMgmtEmployementPlacementRoutingModule } from './do-mgmt-employement-placement-routing.module';
-import { EmployementPlacementService } from './services/employement-placement.service';
-import { EmployementPlacementListPageComponent } from './list/employement-placement-list-page.component';
-import { EmployementPlacementEditPageComponent } from './edit/employement-placement-edit-page.component';
+import { MgmtJobPlacementComponent } from './do-mgmt-job-placement.component';
+import { DoMgmtJobPlacementRoutingModule } from './do-mgmt-job-placement-routing.module';
+import { JobPlacementService } from './services/job-placement.service';
+import { JobPlacementListPageComponent } from './list/job-placement-list-page.component';
+import { JobPlacementEditPageComponent } from './edit/job-placement-edit-page.component';
 import { EmployeePromptComponent } from './edit/prompt-employee/employee-prompt.component';
 
 const components = [
-  MgmtEmployementPlacementComponent,
-  EmployementPlacementListPageComponent,
-  EmployementPlacementEditPageComponent,
+  MgmtJobPlacementComponent,
+  JobPlacementListPageComponent,
+  JobPlacementEditPageComponent,
   EmployeePromptComponent,
 ];
 
@@ -55,11 +55,11 @@ const modules = [
   DoSelectModule,
   DoDatatableModule,
   DoLabelModule,
-  DoMgmtEmployementPlacementRoutingModule,
+  DoMgmtJobPlacementRoutingModule,
 ];
 
 const providers = [
-  EmployementPlacementService,
+  JobPlacementService,
 ];
 
 @NgModule({
@@ -73,4 +73,4 @@ const providers = [
     ...providers,
   ],
 })
-export class DoMgmtEmployementPlacementModule { }
+export class DoMgmtJobPlacementModule { }
