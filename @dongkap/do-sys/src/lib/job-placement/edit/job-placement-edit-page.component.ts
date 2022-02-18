@@ -81,7 +81,7 @@ export class JobPlacementEditPageComponent extends BaseComponent<any> implements
         },
       );
     } else {
-      this.router.navigate(['/app/mgmt/employement-placement']);
+      this.router.navigate(['/app/mgmt/job-placement']);
     }
   }
 

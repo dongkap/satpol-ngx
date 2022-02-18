@@ -42,7 +42,7 @@ export class JobPlacementListPageComponent extends BaseFilterComponent<any> impl
 
   onViewDetail(data): void {
     this.jobPlacementService.setAssignmentGroup(data);
-    this.router.navigate(['/app/mgmt/employement-placement', 'edit']);
+    this.router.navigate(['/app/mgmt/job-placement', 'edit']);
   }
 
 }
