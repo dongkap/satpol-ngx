@@ -1,0 +1,55 @@
+name: Dongkap Webpack CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: NPM Install
+      run: |
+        npm install --no-progress
+
+    - name: Install do-core
+      run: |
+        npm run install:do-core --no-progress
+
+    - name: Install do-theme
+      run: |
+        npm run install:do-theme --no-progress
+
+    - name: Install do-shared
+      run: |
+        npm run install:do-shared --no-progress
+
+    - name: Install do-auth
+      run: |
+        npm run install:do-auth --no-progress
+
+    - name: Install do-extra
+      run: |
+        npm run install:do-extra --no-progress
+
+    - name: Install do-sys
+      run: |
+        npm run install:do-sys --no-progress
+
+    - name: Build & Deploy
+      uses: JamesIves/github-pages-deploy-action@v4.2.5
+      env:
+        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: demo
+        FOLDER: dist
+        BUILD_SCRIPT: npm run build:do-app:github --no-progress
