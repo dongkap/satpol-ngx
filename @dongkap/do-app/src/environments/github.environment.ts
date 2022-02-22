@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   locale: 'id-ID',
-  basePath: '/',
+  basePath: '/satpol-ngx/',
   host: {
     openapi: {
       protocol: 'https',
