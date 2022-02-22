@@ -134,6 +134,12 @@
 	"Total Assignment": "Total Penugasan",
 	"Choose": "Pilih",
 	"Switch Role": "Ganti Peran",
+	"Supervisor": "Atasan",
+	"Year": "Tahun",
+	"Start Date": "Tanggal Mulai",
+	"End Date": "Tanggal Akhir",
+	"Weight": "Berat Badan",
+	"Height": "Tinggi Badan",
 	"placeholder": {
 		"image-upload": "Klik atau seret kesini."
 	},

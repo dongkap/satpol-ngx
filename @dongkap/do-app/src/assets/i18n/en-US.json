@@ -134,6 +134,12 @@
 	"Total Assignment": "Total Assignment",
 	"Choose": "Choose",
 	"Switch Role": "Switch Role",
+	"Supervisor": "Supervisor",
+	"Year": "Year",
+	"Start Date": "Start Date",
+	"End Date": "End Date",
+	"Weight": "Weight",
+	"Height": "Height",
 	"placeholder": {
 		"image-upload": "Click or drag it here."
 	},
