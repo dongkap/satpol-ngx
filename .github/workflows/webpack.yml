@@ -46,10 +46,12 @@ jobs:
       run: |
         npm run install:do-sys --no-progress
 
-    - name: Build & Deploy
+    - name: Build do-app
+      run: |
+        npm run build:do-app:github --no-progress
+
+    - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4.2.5
       env:
-        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: apps
-        FOLDER: dist
-        BUILD_SCRIPT: npm run build:do-app:github --no-progress
+        branch: apps
+        folder: dist
