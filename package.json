@@ -17,7 +17,7 @@
     "build:do-extra": "ng build @dongkap/do-extra",
     "build:do-sys": "ng build @dongkap/do-sys",
     "build:do-app": "ng build @dongkap/do-app --prod",
-    "build:do-app:github": "ng build @dongkap/do-app --configuration=github --output-path docs --base-href=/satpol-ngx/ --deleteOutputPath=false",
+    "build:do-app:github": "ng build @dongkap/do-app --configuration=github --output-path dist/docs --base-href=/satpol-ngx/ --deleteOutputPath=false",
     "copy:do-theme": "node node_modules/cpx/bin \"./@dongkap/do-theme/src/styles/**/*\" \"./dist/@dongkap/do-theme/styles\"",
     "p:do-core": "npm run build:do-core && cd dist/@dongkap/do-core && npm pack",
     "p:do-theme": "npm run build:do-theme && npm run copy:do-theme && cd dist/@dongkap/do-theme && npm pack",
