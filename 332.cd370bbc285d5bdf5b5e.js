@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksatpol_ngx=self.webpackChunksatpol_ngx||[]).push([[332],{4332:(p,t,o)=>{o.r(t),o.d(t,{SysMgmtJobPlacementWrapperModule:()=>l});var n=o(7803),a=o(7716);let l=(()=>{class e{}return e.\u0275fac=function(r){return new(r||e)},e.\u0275mod=a.oAB({type:e}),e.\u0275inj=a.cJS({imports:[[n.Z_]]}),e})()}}]);

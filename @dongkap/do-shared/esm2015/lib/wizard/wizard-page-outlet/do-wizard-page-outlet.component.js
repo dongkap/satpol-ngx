@@ -1,0 +1,21 @@
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+import * as i0 from "@angular/core";
+export class DoWizardPageOutletComponent {
+    constructor() {
+        this.width = 12;
+    }
+}
+DoWizardPageOutletComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: DoWizardPageOutletComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
+DoWizardPageOutletComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.16", type: DoWizardPageOutletComponent, selector: "do-wizard-page-outlet", inputs: { width: "width" }, ngImport: i0, template: "<div class=\"row\">\n  <div class=\"col-lg-{{width}}\">\n      <ng-content select=\"[wizardcontent]\"></ng-content> \n  </div>\n</div>\n", styles: [".nb-theme-default .skeleton{animation:loading 1.7s infinite linear;border-radius:.25rem;background:#dedfe1;background-image:linear-gradient(to right,#dedfe1 0%,#f2f3f5 20%,#dedfe1 40%,#dedfe1 100%)}.nb-theme-dark .skeleton{animation:loading 1.7s infinite linear;border-radius:.25rem;background:#192038;background-image:linear-gradient(to right,#192038 0%,#222b45 20%,#192038 40%,#192038 100%)}.nb-theme-cosmic .skeleton{animation:loading 1.7s infinite linear;border-radius:.25rem;background:#1b1b38;background-image:linear-gradient(to right,#1b1b38 0%,#323259 20%,#1b1b38 40%,#1b1b38 100%)}.nb-theme-corporate .skeleton{animation:loading 1.7s infinite linear;border-radius:.25rem;background:#dedfe1;background-image:linear-gradient(to right,#dedfe1 0%,#f2f3f5 20%,#dedfe1 40%,#dedfe1 100%)}@keyframes loading{0%{background-position:-100px}to{background-position:380px}}.label-skeleton{width:100%;height:2.5rem;line-height:1.5rem;padding:.4375rem 1.125rem}.input-skeleton{width:100%;height:2.5rem;line-height:1.5rem;padding:.4375rem 1.125rem}.texteditor-skeleton{width:100%;height:10.5rem;line-height:1.5rem;padding:.4375rem 1.125rem}.button-skeleton{width:6rem;height:2.5rem;line-height:1rem;margin:0 .125rem}button[nbButton]{margin:0 .25rem}.reset-left{margin-right:.25rem}.submit-right{margin-left:.25rem}\n"], encapsulation: i0.ViewEncapsulation.None });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: DoWizardPageOutletComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'do-wizard-page-outlet',
+                    styleUrls: ['./do-wizard-page-outlet.component.scss'],
+                    templateUrl: './do-wizard-page-outlet.component.html',
+                    encapsulation: ViewEncapsulation.None,
+                }]
+        }], propDecorators: { width: [{
+                type: Input
+            }] } });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZG8td2l6YXJkLXBhZ2Utb3V0bGV0LmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL0Bkb25na2FwL2RvLXNoYXJlZC9zcmMvbGliL3dpemFyZC93aXphcmQtcGFnZS1vdXRsZXQvZG8td2l6YXJkLXBhZ2Utb3V0bGV0LmNvbXBvbmVudC50cyIsIi4uLy4uLy4uLy4uLy4uLy4uLy4uL0Bkb25na2FwL2RvLXNoYXJlZC9zcmMvbGliL3dpemFyZC93aXphcmQtcGFnZS1vdXRsZXQvZG8td2l6YXJkLXBhZ2Utb3V0bGV0LmNvbXBvbmVudC5odG1sIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxTQUFTLEVBQUUsS0FBSyxFQUFFLGlCQUFpQixFQUFFLE1BQU0sZUFBZSxDQUFDOztBQVFwRSxNQUFNLE9BQU8sMkJBQTJCO0lBTnhDO1FBUWtCLFVBQUssR0FBVyxFQUFFLENBQUM7S0FFcEM7O3lIQUpZLDJCQUEyQjs2R0FBM0IsMkJBQTJCLHlGQ1J4QywwSUFLQTs0RkRHYSwyQkFBMkI7a0JBTnZDLFNBQVM7bUJBQUM7b0JBQ1QsUUFBUSxFQUFFLHVCQUF1QjtvQkFDakMsU0FBUyxFQUFFLENBQUMsd0NBQXdDLENBQUM7b0JBQ3JELFdBQVcsRUFBRSx3Q0FBd0M7b0JBQ3JELGFBQWEsRUFBRSxpQkFBaUIsQ0FBQyxJQUFJO2lCQUN0Qzs4QkFHaUIsS0FBSztzQkFBcEIsS0FBSyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENvbXBvbmVudCwgSW5wdXQsIFZpZXdFbmNhcHN1bGF0aW9uIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5cbkBDb21wb25lbnQoe1xuICBzZWxlY3RvcjogJ2RvLXdpemFyZC1wYWdlLW91dGxldCcsXG4gIHN0eWxlVXJsczogWycuL2RvLXdpemFyZC1wYWdlLW91dGxldC5jb21wb25lbnQuc2NzcyddLFxuICB0ZW1wbGF0ZVVybDogJy4vZG8td2l6YXJkLXBhZ2Utb3V0bGV0LmNvbXBvbmVudC5odG1sJyxcbiAgZW5jYXBzdWxhdGlvbjogVmlld0VuY2Fwc3VsYXRpb24uTm9uZSxcbn0pXG5leHBvcnQgY2xhc3MgRG9XaXphcmRQYWdlT3V0bGV0Q29tcG9uZW50IHtcblxuICBASW5wdXQoKSBwdWJsaWMgd2lkdGg6IG51bWJlciA9IDEyO1xuXG59XG4iLCI8ZGl2IGNsYXNzPVwicm93XCI+XG4gIDxkaXYgY2xhc3M9XCJjb2wtbGcte3t3aWR0aH19XCI+XG4gICAgICA8bmctY29udGVudCBzZWxlY3Q9XCJbd2l6YXJkY29udGVudF1cIj48L25nLWNvbnRlbnQ+IFxuICA8L2Rpdj5cbjwvZGl2PlxuIl19

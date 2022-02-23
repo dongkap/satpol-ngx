@@ -1,0 +1,34 @@
+import { DoErrorMessageComponent } from './error-message/do-error-message.component';
+import { DoWarnMessageComponent } from './warn-message/do-warn-message.component';
+import { DoContainerOutletComponent } from './container-outlet/do-container-outlet.component';
+import { DoPageOutletComponent } from './page-outlet/do-page-outlet.component';
+import { DoCollapseComponent } from './collapse/do-collapse.component';
+import { EqualValidator } from './directive/equal-validator.directive';
+import { NotEqualValidator } from './directive/not-equal-validator.directive';
+import { DragDropDirective } from './directive/drag-drop.directive';
+import { DoCardCollapseComponent } from './card-collapse/do-card-collapse.component';
+import { MaskedInputDirective } from './directive/text-mask.directive';
+import * as i0 from "@angular/core";
+import * as i1 from "./warn-message/do-warn-message.component";
+import * as i2 from "./error-message/do-error-message.component";
+import * as i3 from "./container-outlet/do-container-outlet.component";
+import * as i4 from "./page-outlet/do-page-outlet.component";
+import * as i5 from "./collapse/do-collapse.component";
+import * as i6 from "./card-collapse/do-card-collapse.component";
+import * as i7 from "./directive/text-mask.directive";
+import * as i8 from "./directive/equal-validator.directive";
+import * as i9 from "./directive/not-equal-validator.directive";
+import * as i10 from "./directive/drag-drop.directive";
+import * as i11 from "@angular/common";
+import * as i12 from "@angular/forms";
+import * as i13 from "@ngx-translate/core";
+import * as i14 from "@nebular/theme";
+import * as i15 from "../toastr/do-toastr.module";
+import * as i16 from "ngx-bootstrap/collapse";
+export declare const BASE_COMPONENTS: (typeof DoErrorMessageComponent | typeof DoWarnMessageComponent | typeof DoContainerOutletComponent | typeof DoPageOutletComponent | typeof DoCollapseComponent | typeof DoCardCollapseComponent | typeof MaskedInputDirective)[];
+export declare const BASE_DIRECTIVES: (typeof EqualValidator | typeof NotEqualValidator | typeof DragDropDirective)[];
+export declare class DoBaseModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<DoBaseModule, never>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<DoBaseModule, [typeof i1.DoWarnMessageComponent, typeof i2.DoErrorMessageComponent, typeof i3.DoContainerOutletComponent, typeof i4.DoPageOutletComponent, typeof i5.DoCollapseComponent, typeof i6.DoCardCollapseComponent, typeof i7.MaskedInputDirective, typeof i8.EqualValidator, typeof i9.NotEqualValidator, typeof i10.DragDropDirective], [typeof i11.CommonModule, typeof i12.FormsModule, typeof i13.TranslateModule, typeof i14.NbCardModule, typeof i14.NbIconModule, typeof i14.NbSelectModule, typeof i15.DoToastrModule, typeof i16.CollapseModule], [typeof i1.DoWarnMessageComponent, typeof i2.DoErrorMessageComponent, typeof i3.DoContainerOutletComponent, typeof i4.DoPageOutletComponent, typeof i5.DoCollapseComponent, typeof i6.DoCardCollapseComponent, typeof i7.MaskedInputDirective, typeof i8.EqualValidator, typeof i9.NotEqualValidator, typeof i10.DragDropDirective]>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<DoBaseModule>;
+}

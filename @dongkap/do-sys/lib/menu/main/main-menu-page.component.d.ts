@@ -1,0 +1,60 @@
+import { Injector } from '@angular/core';
+import { TemplateRef } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { NbDialogRef, NbDialogService } from '@nebular/theme';
+import { HttpBaseModel, LocaleModel } from '@dongkap/do-core';
+import { BaseFormComponent } from '@dongkap/do-shared';
+import * as i0 from "@angular/core";
+export declare class MainMenuPageComponent extends BaseFormComponent<any> implements OnInit {
+    injector: Injector;
+    private dialogService;
+    nodeItems: any;
+    options: any;
+    allLocales: LocaleModel[];
+    locales: LocaleModel[];
+    localeDefault: LocaleModel;
+    action: 'Add' | 'Edit';
+    dialogAction: 'Edit' | 'Delete';
+    apiSelectParent: HttpBaseModel;
+    apiPathLocale: HttpBaseModel;
+    root: boolean;
+    group: boolean;
+    loadLocale: boolean;
+    title: string;
+    private data;
+    private context;
+    private node;
+    rootData: {
+        id: string;
+        disabled: boolean;
+    }[];
+    groupData: {
+        id: string;
+        disabled: boolean;
+    }[];
+    homeData: {
+        id: string;
+        disabled: boolean;
+    }[];
+    set isRoot(root: boolean);
+    get isRoot(): boolean;
+    set isGroup(group: boolean);
+    get isGroup(): boolean;
+    constructor(injector: Injector, dialogService: NbDialogService);
+    ngOnInit(): void;
+    onCheckedRoot(event: any): void;
+    onCheckedGroup(event: any): void;
+    loadDataMenu(): Observable<any>;
+    splitLocale(values: LocaleModel[]): void;
+    onSearchIcon(): void;
+    onSelectNode(node: any): void;
+    onDeleteTree(node: any, context: any, dialog: TemplateRef<any>): void;
+    onSubmit(dialog: TemplateRef<any>): void;
+    onSubmitDialog(ref: NbDialogRef<any>): void;
+    onReset(): void;
+    private deleteTreeMenu;
+    private postMenu;
+    static ɵfac: i0.ɵɵFactoryDeclaration<MainMenuPageComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MainMenuPageComponent, "do-main-menu-page", never, {}, {}, never, never>;
+}

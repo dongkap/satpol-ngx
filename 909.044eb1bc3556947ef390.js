@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksatpol_ngx=self.webpackChunksatpol_ngx||[]).push([[909],{4909:(r,a,t)=>{t.r(a),t.d(a,{SysMgmtOccupationWrapperModule:()=>s});var p=t(7803),n=t(7716);let s=(()=>{class o{}return o.\u0275fac=function(c){return new(c||o)},o.\u0275mod=n.oAB({type:o}),o.\u0275inj=n.cJS({imports:[[p.Sd]]}),o})()}}]);

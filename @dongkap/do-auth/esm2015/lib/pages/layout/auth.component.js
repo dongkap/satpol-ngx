@@ -1,0 +1,29 @@
+import { Component } from '@angular/core';
+import * as i0 from "@angular/core";
+import * as i1 from "@angular/common";
+import * as i2 from "@nebular/theme";
+import * as i3 from "./auth-block/auth-block.component";
+import * as i4 from "@angular/router";
+export class AuthComponent {
+    constructor(location) {
+        this.location = location;
+    }
+    back() {
+        this.location.back();
+        return false;
+    }
+    ngOnDestroy() {
+        this.alive = false;
+    }
+}
+AuthComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: AuthComponent, deps: [{ token: i1.Location }], target: i0.ɵɵFactoryTarget.Component });
+AuthComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.16", type: AuthComponent, selector: "do-auth", ngImport: i0, template: "<nb-layout>\n    <nb-layout-column>\n        <nb-card>\n            <nb-card-header>\n                <nav class=\"navigation\">\n                    <a href=\"#\" (click)=\"back()\" class=\"link back-link\" aria-label=\"Back\" tabindex=\"-1\">\n                        <nb-icon icon=\"arrow-back\"></nb-icon>\n                    </a>\n                </nav>\n            </nb-card-header>\n            <nb-card-body>\n                <do-auth-block>\n                    <router-outlet></router-outlet>\n                </do-auth-block>\n            </nb-card-body>\n        </nb-card>\n    </nb-layout-column>\n</nb-layout>", styles: [":host nb-card{margin:0;height:calc(100vh - 2 * 2.5rem)}:host .navigation .link{display:inline-block;text-decoration:none}:host .navigation .link nb-icon{font-size:2rem;vertical-align:middle}:host .links nb-icon{font-size:2.5rem}:host nb-card-body{display:flex;width:100%}:host do-auth-block{margin:auto}@media (max-width: 767.98px){:host nb-card{border-radius:0;height:100vh}}:host ::ng-deep nb-layout .layout .layout-container .content .columns nb-layout-column{padding:2.5rem}@media (max-width: 767.98px){:host ::ng-deep nb-layout .layout .layout-container .content .columns nb-layout-column{padding:0}}\n"], components: [{ type: i2.NbLayoutComponent, selector: "nb-layout", inputs: ["center", "windowMode", "withScroll", "restoreScrollTop"] }, { type: i2.NbLayoutColumnComponent, selector: "nb-layout-column", inputs: ["left", "start"] }, { type: i2.NbCardComponent, selector: "nb-card", inputs: ["status", "accent", "size"] }, { type: i2.NbCardHeaderComponent, selector: "nb-card-header" }, { type: i2.NbIconComponent, selector: "nb-icon", inputs: ["config", "icon", "pack", "status", "options"] }, { type: i2.NbCardBodyComponent, selector: "nb-card-body" }, { type: i3.AuthBlockComponent, selector: "do-auth-block" }], directives: [{ type: i4.RouterOutlet, selector: "router-outlet", outputs: ["activate", "deactivate"], exportAs: ["outlet"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: AuthComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'do-auth',
+                    styleUrls: ['auth.component.scss'],
+                    templateUrl: 'auth.component.html',
+                }]
+        }], ctorParameters: function () { return [{ type: i1.Location }]; } });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXV0aC5jb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi8uLi9AZG9uZ2thcC9kby1hdXRoL3NyYy9saWIvcGFnZXMvbGF5b3V0L2F1dGguY29tcG9uZW50LnRzIiwiLi4vLi4vLi4vLi4vLi4vLi4vLi4vQGRvbmdrYXAvZG8tYXV0aC9zcmMvbGliL3BhZ2VzL2xheW91dC9hdXRoLmNvbXBvbmVudC5odG1sIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxTQUFTLEVBQWEsTUFBTSxlQUFlLENBQUM7Ozs7OztBQVFyRCxNQUFNLE9BQU8sYUFBYTtJQU90QixZQUFvQixRQUFrQjtRQUFsQixhQUFRLEdBQVIsUUFBUSxDQUFVO0lBQUcsQ0FBQztJQUVuQyxJQUFJO1FBQ1AsSUFBSSxDQUFDLFFBQVEsQ0FBQyxJQUFJLEVBQUUsQ0FBQztRQUNyQixPQUFPLEtBQUssQ0FBQztJQUNqQixDQUFDO0lBRUQsV0FBVztRQUNQLElBQUksQ0FBQyxLQUFLLEdBQUcsS0FBSyxDQUFDO0lBQ3ZCLENBQUM7OzJHQWhCUSxhQUFhOytGQUFiLGFBQWEsK0NDUjFCLG9uQkFpQlk7NEZEVEMsYUFBYTtrQkFMekIsU0FBUzttQkFBQztvQkFDVCxRQUFRLEVBQUUsU0FBUztvQkFDbkIsU0FBUyxFQUFFLENBQUMscUJBQXFCLENBQUM7b0JBQ2xDLFdBQVcsRUFBRSxxQkFBcUI7aUJBQ25DIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ29tcG9uZW50LCBPbkRlc3Ryb3kgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IExvY2F0aW9uIH0gZnJvbSAnQGFuZ3VsYXIvY29tbW9uJztcblxuQENvbXBvbmVudCh7XG4gIHNlbGVjdG9yOiAnZG8tYXV0aCcsXG4gIHN0eWxlVXJsczogWydhdXRoLmNvbXBvbmVudC5zY3NzJ10sXG4gIHRlbXBsYXRlVXJsOiAnYXV0aC5jb21wb25lbnQuaHRtbCcsXG59KVxuZXhwb3J0IGNsYXNzIEF1dGhDb21wb25lbnQgaW1wbGVtZW50cyBPbkRlc3Ryb3kge1xuXG4gICAgYWxpdmU6IGJvb2xlYW47XG4gICAgc3Vic2NyaXB0aW9uOiBhbnk7XG4gICAgYXV0aGVudGljYXRlZDogYm9vbGVhbjtcbiAgICB0b2tlbjogc3RyaW5nO1xuXG4gICAgY29uc3RydWN0b3IocHJpdmF0ZSBsb2NhdGlvbjogTG9jYXRpb24pIHt9XG5cbiAgICBwdWJsaWMgYmFjaygpOiBib29sZWFuIHtcbiAgICAgICAgdGhpcy5sb2NhdGlvbi5iYWNrKCk7XG4gICAgICAgIHJldHVybiBmYWxzZTtcbiAgICB9XG5cbiAgICBuZ09uRGVzdHJveSgpOiB2b2lkIHtcbiAgICAgICAgdGhpcy5hbGl2ZSA9IGZhbHNlO1xuICAgIH1cblxufVxuIiwiPG5iLWxheW91dD5cbiAgICA8bmItbGF5b3V0LWNvbHVtbj5cbiAgICAgICAgPG5iLWNhcmQ+XG4gICAgICAgICAgICA8bmItY2FyZC1oZWFkZXI+XG4gICAgICAgICAgICAgICAgPG5hdiBjbGFzcz1cIm5hdmlnYXRpb25cIj5cbiAgICAgICAgICAgICAgICAgICAgPGEgaHJlZj1cIiNcIiAoY2xpY2spPVwiYmFjaygpXCIgY2xhc3M9XCJsaW5rIGJhY2stbGlua1wiIGFyaWEtbGFiZWw9XCJCYWNrXCIgdGFiaW5kZXg9XCItMVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPG5iLWljb24gaWNvbj1cImFycm93LWJhY2tcIj48L25iLWljb24+XG4gICAgICAgICAgICAgICAgICAgIDwvYT5cbiAgICAgICAgICAgICAgICA8L25hdj5cbiAgICAgICAgICAgIDwvbmItY2FyZC1oZWFkZXI+XG4gICAgICAgICAgICA8bmItY2FyZC1ib2R5PlxuICAgICAgICAgICAgICAgIDxkby1hdXRoLWJsb2NrPlxuICAgICAgICAgICAgICAgICAgICA8cm91dGVyLW91dGxldD48L3JvdXRlci1vdXRsZXQ+XG4gICAgICAgICAgICAgICAgPC9kby1hdXRoLWJsb2NrPlxuICAgICAgICAgICAgPC9uYi1jYXJkLWJvZHk+XG4gICAgICAgIDwvbmItY2FyZD5cbiAgICA8L25iLWxheW91dC1jb2x1bW4+XG48L25iLWxheW91dD4iXX0=

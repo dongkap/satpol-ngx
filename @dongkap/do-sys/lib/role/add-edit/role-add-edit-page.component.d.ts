@@ -1,0 +1,34 @@
+import { Injector } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpBaseModel } from '@dongkap/do-core';
+import { BaseFormComponent, CheckboxModel } from '@dongkap/do-shared';
+import { RoleService } from '../services/role.service';
+import { RoleMainPageComponent } from './main/role-main-page.component';
+import { RoleExtraPageComponent } from './extra/role-extra-page.component';
+import * as i0 from "@angular/core";
+export declare class RoleAddEditPageComponent extends BaseFormComponent<any> implements OnInit {
+    injector: Injector;
+    private router;
+    private route;
+    private roleService;
+    apiSelectGroup: HttpBaseModel;
+    action: 'Add' | 'Edit';
+    dataDefault: CheckboxModel[];
+    loading: boolean;
+    tab: string;
+    title: string;
+    private mainData;
+    private extraData;
+    mainMenu: RoleMainPageComponent;
+    extraMenu: RoleExtraPageComponent;
+    constructor(injector: Injector, router: Router, route: ActivatedRoute, roleService: RoleService);
+    ngOnInit(): void;
+    onReset(): void;
+    onSubmit(): void;
+    toggleLoadingAnimation(event: any): void;
+    onSelectMain(datas: any[]): void;
+    onSelectExtra(datas: any[]): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<RoleAddEditPageComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<RoleAddEditPageComponent, "do-language-add-edit-page", never, {}, {}, never, never>;
+}

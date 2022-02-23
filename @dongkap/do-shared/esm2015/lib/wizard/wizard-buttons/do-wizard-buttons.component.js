@@ -1,0 +1,70 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import * as i0 from "@angular/core";
+import * as i1 from "../services/do-wizard.service";
+import * as i2 from "@angular/router";
+import * as i3 from "@nebular/theme";
+import * as i4 from "@angular/common";
+import * as i5 from "@ngx-translate/core";
+export class DoWizardButtonsComponent {
+    constructor(service, router) {
+        this.service = service;
+        this.router = router;
+        this.extra = false;
+        this.clearFormOnSubmit = false;
+        this.disabled = false;
+        this.onNext = new EventEmitter();
+        this.onPrevious = new EventEmitter();
+        this.onSubmit = new EventEmitter();
+    }
+    ngOnInit() {
+        this.currentStepData$ = this.service.getCurrentStepDataAsObservable();
+        this.wizardOptions = this.service.wizardOptions;
+    }
+    formIsValid() {
+        return this.service.formIsValid();
+    }
+    goToSubmit() {
+        if (this.clearFormOnSubmit) {
+            this.service.getFormGroup().reset();
+        }
+        this.onSubmit.emit(this.service.getFormGroup().value);
+    }
+    goToNextStep() {
+        this.onNext.emit(this.service.getFormGroup());
+        this.service.navigateToNextStep();
+    }
+    goToPreviousStep() {
+        this.onPrevious.emit(this.service.getFormGroup());
+        this.service.navigateToPreviousStep();
+    }
+    goToCancel(url) {
+        this.service.getFormGroup().reset();
+        this.router.navigate([url]);
+    }
+    goToPath(path) {
+        this.service.navigateToPath(path);
+    }
+}
+DoWizardButtonsComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: DoWizardButtonsComponent, deps: [{ token: i1.DoWizardService }, { token: i2.Router }], target: i0.ɵɵFactoryTarget.Component });
+DoWizardButtonsComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.16", type: DoWizardButtonsComponent, selector: "do-wizard-buttons", inputs: { extra: "extra", clearFormOnSubmit: "clearFormOnSubmit", disabled: "disabled" }, outputs: { onNext: "onNext", onPrevious: "onPrevious", onSubmit: "onSubmit" }, ngImport: i0, template: "<div class=\"do-wizard-buttons-container\">\n  <div *ngIf=\"currentStepData$ | async as currentStepData\" class=\"do-wizard-buttons\">\n    <button *ngIf=\"!currentStepData.previousStep && !currentStepData.options.buttons?.cancel?.hidden\"\n            (click)=\"goToCancel(wizardOptions.baseUrl)\"\n            status=\"danger\"\n            [disabled]=\"disabled\"\n            class=\"do-wizard-button-previous\"\n            nbButton>\n            {{currentStepData.options.buttons?.cancel?.label || wizardOptions.buttons.cancel.label | translate}}\n    </button>\n    <button *ngIf=\"currentStepData.previousStep && !currentStepData.options.buttons?.previous?.hidden\"\n            (click)=\"goToPreviousStep()\"\n            status=\"danger\"\n            [disabled]=\"disabled\"\n            class=\"do-wizard-button-previous\"\n            nbButton>\n            {{currentStepData.options.buttons?.previous?.label || wizardOptions.buttons.previous.label | translate}}\n    </button>\n    <button *ngIf=\"currentStepData.nextStep && !currentStepData.options.buttons?.next?.hidden\"\n            (click)=\"goToNextStep()\"\n            [disabled]=\"!formIsValid() || disabled\"\n            status=\"primary\"\n            class=\"do-wizard-button-next\"\n            nbButton>\n            {{currentStepData.options.buttons?.next?.label || wizardOptions.buttons.next.label | translate}}\n    </button>\n    <button *ngIf=\"!currentStepData.nextStep && !currentStepData.options.buttons?.finish?.hidden && !extra\"\n            (click)=\"goToSubmit()\"\n            [disabled]=\"!formIsValid() || disabled\"\n            status=\"success\"\n            class=\"do-wizard-button-finish\"\n            nbButton>\n            {{currentStepData.options.buttons?.finish?.label || wizardOptions.buttons.finish.label | translate}}\n    </button>\n    <div class=\"do-wizard-button-right\"  *ngIf=\"!currentStepData.nextStep && extra\">\n      <ng-content select=\"[buttonextra]\"></ng-content>\n    </div>\n  </div>\n</div>\n", styles: [".nb-theme-default :host button[nbButton]{margin:0 .25rem}.nb-theme-default :host .reset-left{margin-right:.25rem}.nb-theme-default :host .submit-right{margin-left:.25rem}.nb-theme-dark :host button[nbButton]{margin:0 .25rem}.nb-theme-dark :host .reset-left{margin-right:.25rem}.nb-theme-dark :host .submit-right{margin-left:.25rem}.nb-theme-cosmic :host button[nbButton]{margin:0 .25rem}.nb-theme-cosmic :host .reset-left{margin-right:.25rem}.nb-theme-cosmic :host .submit-right{margin-left:.25rem}.nb-theme-corporate :host button[nbButton]{margin:0 .25rem}.nb-theme-corporate :host .reset-left{margin-right:.25rem}.nb-theme-corporate :host .submit-right{margin-left:.25rem}\n"], components: [{ type: i3.NbButtonComponent, selector: "button[nbButton],a[nbButton],input[type=\"button\"][nbButton],input[type=\"submit\"][nbButton]", inputs: ["hero"] }], directives: [{ type: i4.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }], pipes: { "async": i4.AsyncPipe, "translate": i5.TranslatePipe } });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: DoWizardButtonsComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'do-wizard-buttons',
+                    templateUrl: './do-wizard-buttons.component.html',
+                    styleUrls: ['./do-wizard-buttons.component.scss'],
+                }]
+        }], ctorParameters: function () { return [{ type: i1.DoWizardService }, { type: i2.Router }]; }, propDecorators: { extra: [{
+                type: Input
+            }], clearFormOnSubmit: [{
+                type: Input
+            }], disabled: [{
+                type: Input
+            }], onNext: [{
+                type: Output
+            }], onPrevious: [{
+                type: Output
+            }], onSubmit: [{
+                type: Output
+            }] } });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZG8td2l6YXJkLWJ1dHRvbnMuY29tcG9uZW50LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vLi4vLi4vQGRvbmdrYXAvZG8tc2hhcmVkL3NyYy9saWIvd2l6YXJkL3dpemFyZC1idXR0b25zL2RvLXdpemFyZC1idXR0b25zLmNvbXBvbmVudC50cyIsIi4uLy4uLy4uLy4uLy4uLy4uLy4uL0Bkb25na2FwL2RvLXNoYXJlZC9zcmMvbGliL3dpemFyZC93aXphcmQtYnV0dG9ucy9kby13aXphcmQtYnV0dG9ucy5jb21wb25lbnQuaHRtbCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsU0FBUyxFQUFFLFlBQVksRUFBRSxLQUFLLEVBQVUsTUFBTSxFQUFFLE1BQU0sZUFBZSxDQUFDOzs7Ozs7O0FBWS9FLE1BQU0sT0FBTyx3QkFBd0I7SUFXbkMsWUFBb0IsT0FBd0IsRUFBVSxNQUFjO1FBQWhELFlBQU8sR0FBUCxPQUFPLENBQWlCO1FBQVUsV0FBTSxHQUFOLE1BQU0sQ0FBUTtRQVYzRCxVQUFLLEdBQVksS0FBSyxDQUFDO1FBQ3ZCLHNCQUFpQixHQUFZLEtBQUssQ0FBQztRQUNuQyxhQUFRLEdBQVksS0FBSyxDQUFDO1FBQ3pCLFdBQU0sR0FBc0IsSUFBSSxZQUFZLEVBQU8sQ0FBQztRQUNwRCxlQUFVLEdBQXNCLElBQUksWUFBWSxFQUFPLENBQUM7UUFDeEQsYUFBUSxHQUFzQixJQUFJLFlBQVksRUFBTyxDQUFDO0lBS1EsQ0FBQztJQUV6RSxRQUFRO1FBQ04sSUFBSSxDQUFDLGdCQUFnQixHQUFHLElBQUksQ0FBQyxPQUFPLENBQUMsOEJBQThCLEVBQUUsQ0FBQztRQUN0RSxJQUFJLENBQUMsYUFBYSxHQUFHLElBQUksQ0FBQyxPQUFPLENBQUMsYUFBYSxDQUFDO0lBQ2xELENBQUM7SUFFRCxXQUFXO1FBQ1QsT0FBTyxJQUFJLENBQUMsT0FBTyxDQUFDLFdBQVcsRUFBRSxDQUFDO0lBQ3BDLENBQUM7SUFFRCxVQUFVO1FBQ1IsSUFBSSxJQUFJLENBQUMsaUJBQWlCLEVBQUU7WUFDMUIsSUFBSSxDQUFDLE9BQU8sQ0FBQyxZQUFZLEVBQUUsQ0FBQyxLQUFLLEVBQUUsQ0FBQztTQUNyQztRQUNELElBQUksQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxPQUFPLENBQUMsWUFBWSxFQUFFLENBQUMsS0FBSyxDQUFDLENBQUM7SUFDeEQsQ0FBQztJQUVELFlBQVk7UUFDVixJQUFJLENBQUMsTUFBTSxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLFlBQVksRUFBRSxDQUFDLENBQUM7UUFDOUMsSUFBSSxDQUFDLE9BQU8sQ0FBQyxrQkFBa0IsRUFBRSxDQUFDO0lBQ3BDLENBQUM7SUFFRCxnQkFBZ0I7UUFDZCxJQUFJLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLFlBQVksRUFBRSxDQUFDLENBQUM7UUFDbEQsSUFBSSxDQUFDLE9BQU8sQ0FBQyxzQkFBc0IsRUFBRSxDQUFDO0lBQ3hDLENBQUM7SUFFRCxVQUFVLENBQUMsR0FBVztRQUNwQixJQUFJLENBQUMsT0FBTyxDQUFDLFlBQVksRUFBRSxDQUFDLEtBQUssRUFBRSxDQUFDO1FBQ3BDLElBQUksQ0FBQyxNQUFNLENBQUMsUUFBUSxDQUFDLENBQUMsR0FBRyxDQUFDLENBQUMsQ0FBQztJQUM5QixDQUFDO0lBRUQsUUFBUSxDQUFDLElBQVk7UUFDbkIsSUFBSSxDQUFDLE9BQU8sQ0FBQyxjQUFjLENBQUMsSUFBSSxDQUFDLENBQUM7SUFDcEMsQ0FBQzs7c0hBOUNVLHdCQUF3QjswR0FBeEIsd0JBQXdCLGtPQ1pyQyx5K0RBdUNBOzRGRDNCYSx3QkFBd0I7a0JBTHBDLFNBQVM7bUJBQUM7b0JBQ1QsUUFBUSxFQUFFLG1CQUFtQjtvQkFDN0IsV0FBVyxFQUFFLG9DQUFvQztvQkFDakQsU0FBUyxFQUFFLENBQUMsb0NBQW9DLENBQUM7aUJBQ2xEOzJIQUVVLEtBQUs7c0JBQWIsS0FBSztnQkFDRyxpQkFBaUI7c0JBQXpCLEtBQUs7Z0JBQ0csUUFBUTtzQkFBaEIsS0FBSztnQkFDSSxNQUFNO3NCQUFmLE1BQU07Z0JBQ0csVUFBVTtzQkFBbkIsTUFBTTtnQkFDRyxRQUFRO3NCQUFqQixNQUFNIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ29tcG9uZW50LCBFdmVudEVtaXR0ZXIsIElucHV0LCBPbkluaXQsIE91dHB1dCB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgT2JzZXJ2YWJsZSB9IGZyb20gJ3J4anMnO1xuaW1wb3J0IHsgRG9XaXphcmRTZXJ2aWNlIH0gZnJvbSAnLi4vc2VydmljZXMvZG8td2l6YXJkLnNlcnZpY2UnO1xuaW1wb3J0IHsgRG9XaXphcmRTdGVwRGF0YSB9IGZyb20gJy4uL3dpemFyZC1zdGVwL2RvLXdpemFyZC1zdGVwLWRhdGEuaW50ZXJmYWNlJztcbmltcG9ydCB7IERvV2l6YXJkT3B0aW9ucyB9IGZyb20gJy4uL3dpemFyZC1vcHRpb25zL2RvLXdpemFyZC1vcHRpb25zLmludGVyZmFjZSc7XG5pbXBvcnQgeyBSb3V0ZXIgfSBmcm9tICdAYW5ndWxhci9yb3V0ZXInO1xuXG5AQ29tcG9uZW50KHtcbiAgc2VsZWN0b3I6ICdkby13aXphcmQtYnV0dG9ucycsXG4gIHRlbXBsYXRlVXJsOiAnLi9kby13aXphcmQtYnV0dG9ucy5jb21wb25lbnQuaHRtbCcsXG4gIHN0eWxlVXJsczogWycuL2RvLXdpemFyZC1idXR0b25zLmNvbXBvbmVudC5zY3NzJ10sXG59KVxuZXhwb3J0IGNsYXNzIERvV2l6YXJkQnV0dG9uc0NvbXBvbmVudCBpbXBsZW1lbnRzIE9uSW5pdCB7XG4gIEBJbnB1dCgpIGV4dHJhOiBib29sZWFuID0gZmFsc2U7XG4gIEBJbnB1dCgpIGNsZWFyRm9ybU9uU3VibWl0OiBib29sZWFuID0gZmFsc2U7XG4gIEBJbnB1dCgpIGRpc2FibGVkOiBib29sZWFuID0gZmFsc2U7XG4gIEBPdXRwdXQoKSBvbk5leHQ6IEV2ZW50RW1pdHRlcjxhbnk+ID0gbmV3IEV2ZW50RW1pdHRlcjxhbnk+KCk7XG4gIEBPdXRwdXQoKSBvblByZXZpb3VzOiBFdmVudEVtaXR0ZXI8YW55PiA9IG5ldyBFdmVudEVtaXR0ZXI8YW55PigpO1xuICBAT3V0cHV0KCkgb25TdWJtaXQ6IEV2ZW50RW1pdHRlcjxhbnk+ID0gbmV3IEV2ZW50RW1pdHRlcjxhbnk+KCk7XG4gIHB1YmxpYyBjdXJyZW50U3RlcERhdGEkOiBPYnNlcnZhYmxlPERvV2l6YXJkU3RlcERhdGE+O1xuXG4gIHB1YmxpYyB3aXphcmRPcHRpb25zOiBEb1dpemFyZE9wdGlvbnM7XG5cbiAgY29uc3RydWN0b3IocHJpdmF0ZSBzZXJ2aWNlOiBEb1dpemFyZFNlcnZpY2UsIHByaXZhdGUgcm91dGVyOiBSb3V0ZXIpIHsgfVxuXG4gIG5nT25Jbml0KCkge1xuICAgIHRoaXMuY3VycmVudFN0ZXBEYXRhJCA9IHRoaXMuc2VydmljZS5nZXRDdXJyZW50U3RlcERhdGFBc09ic2VydmFibGUoKTtcbiAgICB0aGlzLndpemFyZE9wdGlvbnMgPSB0aGlzLnNlcnZpY2Uud2l6YXJkT3B0aW9ucztcbiAgfVxuXG4gIGZvcm1Jc1ZhbGlkKCk6IGJvb2xlYW4ge1xuICAgIHJldHVybiB0aGlzLnNlcnZpY2UuZm9ybUlzVmFsaWQoKTtcbiAgfVxuXG4gIGdvVG9TdWJtaXQoKSB7XG4gICAgaWYgKHRoaXMuY2xlYXJGb3JtT25TdWJtaXQpIHtcbiAgICAgIHRoaXMuc2VydmljZS5nZXRGb3JtR3JvdXAoKS5yZXNldCgpO1xuICAgIH1cbiAgICB0aGlzLm9uU3VibWl0LmVtaXQodGhpcy5zZXJ2aWNlLmdldEZvcm1Hcm91cCgpLnZhbHVlKTtcbiAgfVxuXG4gIGdvVG9OZXh0U3RlcCgpIHtcbiAgICB0aGlzLm9uTmV4dC5lbWl0KHRoaXMuc2VydmljZS5nZXRGb3JtR3JvdXAoKSk7XG4gICAgdGhpcy5zZXJ2aWNlLm5hdmlnYXRlVG9OZXh0U3RlcCgpO1xuICB9XG5cbiAgZ29Ub1ByZXZpb3VzU3RlcCgpIHtcbiAgICB0aGlzLm9uUHJldmlvdXMuZW1pdCh0aGlzLnNlcnZpY2UuZ2V0Rm9ybUdyb3VwKCkpO1xuICAgIHRoaXMuc2VydmljZS5uYXZpZ2F0ZVRvUHJldmlvdXNTdGVwKCk7XG4gIH1cblxuICBnb1RvQ2FuY2VsKHVybDogc3RyaW5nKSB7XG4gICAgdGhpcy5zZXJ2aWNlLmdldEZvcm1Hcm91cCgpLnJlc2V0KCk7XG4gICAgdGhpcy5yb3V0ZXIubmF2aWdhdGUoW3VybF0pO1xuICB9XG5cbiAgZ29Ub1BhdGgocGF0aDogc3RyaW5nKSB7XG4gICAgdGhpcy5zZXJ2aWNlLm5hdmlnYXRlVG9QYXRoKHBhdGgpO1xuICB9XG5cbn1cbiIsIjxkaXYgY2xhc3M9XCJkby13aXphcmQtYnV0dG9ucy1jb250YWluZXJcIj5cbiAgPGRpdiAqbmdJZj1cImN1cnJlbnRTdGVwRGF0YSQgfCBhc3luYyBhcyBjdXJyZW50U3RlcERhdGFcIiBjbGFzcz1cImRvLXdpemFyZC1idXR0b25zXCI+XG4gICAgPGJ1dHRvbiAqbmdJZj1cIiFjdXJyZW50U3RlcERhdGEucHJldmlvdXNTdGVwICYmICFjdXJyZW50U3RlcERhdGEub3B0aW9ucy5idXR0b25zPy5jYW5jZWw/LmhpZGRlblwiXG4gICAgICAgICAgICAoY2xpY2spPVwiZ29Ub0NhbmNlbCh3aXphcmRPcHRpb25zLmJhc2VVcmwpXCJcbiAgICAgICAgICAgIHN0YXR1cz1cImRhbmdlclwiXG4gICAgICAgICAgICBbZGlzYWJsZWRdPVwiZGlzYWJsZWRcIlxuICAgICAgICAgICAgY2xhc3M9XCJkby13aXphcmQtYnV0dG9uLXByZXZpb3VzXCJcbiAgICAgICAgICAgIG5iQnV0dG9uPlxuICAgICAgICAgICAge3tjdXJyZW50U3RlcERhdGEub3B0aW9ucy5idXR0b25zPy5jYW5jZWw/LmxhYmVsIHx8IHdpemFyZE9wdGlvbnMuYnV0dG9ucy5jYW5jZWwubGFiZWwgfCB0cmFuc2xhdGV9fVxuICAgIDwvYnV0dG9uPlxuICAgIDxidXR0b24gKm5nSWY9XCJjdXJyZW50U3RlcERhdGEucHJldmlvdXNTdGVwICYmICFjdXJyZW50U3RlcERhdGEub3B0aW9ucy5idXR0b25zPy5wcmV2aW91cz8uaGlkZGVuXCJcbiAgICAgICAgICAgIChjbGljayk9XCJnb1RvUHJldmlvdXNTdGVwKClcIlxuICAgICAgICAgICAgc3RhdHVzPVwiZGFuZ2VyXCJcbiAgICAgICAgICAgIFtkaXNhYmxlZF09XCJkaXNhYmxlZFwiXG4gICAgICAgICAgICBjbGFzcz1cImRvLXdpemFyZC1idXR0b24tcHJldmlvdXNcIlxuICAgICAgICAgICAgbmJCdXR0b24+XG4gICAgICAgICAgICB7e2N1cnJlbnRTdGVwRGF0YS5vcHRpb25zLmJ1dHRvbnM/LnByZXZpb3VzPy5sYWJlbCB8fCB3aXphcmRPcHRpb25zLmJ1dHRvbnMucHJldmlvdXMubGFiZWwgfCB0cmFuc2xhdGV9fVxuICAgIDwvYnV0dG9uPlxuICAgIDxidXR0b24gKm5nSWY9XCJjdXJyZW50U3RlcERhdGEubmV4dFN0ZXAgJiYgIWN1cnJlbnRTdGVwRGF0YS5vcHRpb25zLmJ1dHRvbnM/Lm5leHQ/LmhpZGRlblwiXG4gICAgICAgICAgICAoY2xpY2spPVwiZ29Ub05leHRTdGVwKClcIlxuICAgICAgICAgICAgW2Rpc2FibGVkXT1cIiFmb3JtSXNWYWxpZCgpIHx8IGRpc2FibGVkXCJcbiAgICAgICAgICAgIHN0YXR1cz1cInByaW1hcnlcIlxuICAgICAgICAgICAgY2xhc3M9XCJkby13aXphcmQtYnV0dG9uLW5leHRcIlxuICAgICAgICAgICAgbmJCdXR0b24+XG4gICAgICAgICAgICB7e2N1cnJlbnRTdGVwRGF0YS5vcHRpb25zLmJ1dHRvbnM/Lm5leHQ/LmxhYmVsIHx8IHdpemFyZE9wdGlvbnMuYnV0dG9ucy5uZXh0LmxhYmVsIHwgdHJhbnNsYXRlfX1cbiAgICA8L2J1dHRvbj5cbiAgICA8YnV0dG9uICpuZ0lmPVwiIWN1cnJlbnRTdGVwRGF0YS5uZXh0U3RlcCAmJiAhY3VycmVudFN0ZXBEYXRhLm9wdGlvbnMuYnV0dG9ucz8uZmluaXNoPy5oaWRkZW4gJiYgIWV4dHJhXCJcbiAgICAgICAgICAgIChjbGljayk9XCJnb1RvU3VibWl0KClcIlxuICAgICAgICAgICAgW2Rpc2FibGVkXT1cIiFmb3JtSXNWYWxpZCgpIHx8IGRpc2FibGVkXCJcbiAgICAgICAgICAgIHN0YXR1cz1cInN1Y2Nlc3NcIlxuICAgICAgICAgICAgY2xhc3M9XCJkby13aXphcmQtYnV0dG9uLWZpbmlzaFwiXG4gICAgICAgICAgICBuYkJ1dHRvbj5cbiAgICAgICAgICAgIHt7Y3VycmVudFN0ZXBEYXRhLm9wdGlvbnMuYnV0dG9ucz8uZmluaXNoPy5sYWJlbCB8fCB3aXphcmRPcHRpb25zLmJ1dHRvbnMuZmluaXNoLmxhYmVsIHwgdHJhbnNsYXRlfX1cbiAgICA8L2J1dHRvbj5cbiAgICA8ZGl2IGNsYXNzPVwiZG8td2l6YXJkLWJ1dHRvbi1yaWdodFwiICAqbmdJZj1cIiFjdXJyZW50U3RlcERhdGEubmV4dFN0ZXAgJiYgZXh0cmFcIj5cbiAgICAgIDxuZy1jb250ZW50IHNlbGVjdD1cIltidXR0b25leHRyYV1cIj48L25nLWNvbnRlbnQ+XG4gICAgPC9kaXY+XG4gIDwvZGl2PlxuPC9kaXY+XG4iXX0=

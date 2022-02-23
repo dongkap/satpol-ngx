@@ -1,0 +1,37 @@
+import { Component } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { BaseFormComponent } from '@dongkap/do-shared';
+import * as i0 from "@angular/core";
+import * as i1 from "@dongkap/do-shared";
+export class EmployeeProfileEmployeeStatusComponent extends BaseFormComponent {
+    constructor(injector) {
+        super(injector);
+        this.injector = injector;
+        this.loadingForm = false;
+    }
+    ngOnInit() {
+    }
+    ngOnDestroy() {
+        this.destroy$.next(true);
+        this.destroy$.complete();
+        this.destroy$.unsubscribe();
+    }
+    loadDataMenu() {
+        this.loadingForm = true;
+        return this.exec('profile', 'get-profile-employee-status').pipe(map((success) => {
+            this.loadingForm = false;
+            this.dataEmployeeStatus = success;
+        }));
+    }
+}
+EmployeeProfileEmployeeStatusComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: EmployeeProfileEmployeeStatusComponent, deps: [{ token: i0.Injector }], target: i0.ɵɵFactoryTarget.Component });
+EmployeeProfileEmployeeStatusComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.16", type: EmployeeProfileEmployeeStatusComponent, selector: "do-employee-profile-employee-status", usesInheritance: true, ngImport: i0, template: "<div class=\"row\">\n  <div class=\"col-md-12 col-lg-12\">\n    <do-label-text\n      [label]=\"'NIK'\"\n      [colLabel]=\"3\"\n      [colContent]=\"9\"\n      [dividerlabel]=\"false\"\n      [skeleton]=\"loadingForm\"\n      [content]=\"dataEmployeeStatus?.idEmployee\">\n    </do-label-text>\n    <do-label-text\n      [label]=\"'Occupation'\"\n      [colLabel]=\"3\"\n      [colContent]=\"9\"\n      [dividerlabel]=\"false\"\n      [skeleton]=\"loadingForm\"\n      [content]=\"dataEmployeeStatus?.occupation?.name\">\n    </do-label-text>\n    <do-label-text\n      [label]=\"'Supervisor'\"\n      [colLabel]=\"3\"\n      [colContent]=\"9\"\n      [dividerlabel]=\"false\"\n      [skeleton]=\"loadingForm\"\n      [content]=\"dataEmployeeStatus?.parentLabel\">\n    </do-label-text>\n  </div>\n</div>", styles: [""], components: [{ type: i1.DoLabelTextComponent, selector: "do-label-text", inputs: ["colLabel", "colContent", "skeleton", "name", "content", "dividerlabel", "numeric", "label", "nolabel", "required", "showMoreMode", "maxShowMore", "paramError"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: EmployeeProfileEmployeeStatusComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'do-employee-profile-employee-status',
+                    styleUrls: ['./employee-profile-employee-status.component.scss'],
+                    templateUrl: './employee-profile-employee-status.component.html',
+                }]
+        }], ctorParameters: function () { return [{ type: i0.Injector }]; } });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZW1wbG95ZWUtcHJvZmlsZS1lbXBsb3llZS1zdGF0dXMuY29tcG9uZW50LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vQGRvbmdrYXAvZG8tc3lzL3NyYy9saWIvcHJvZmlsZS9wYWdlL2VtcGxveWVlLXN0YXR1cy9lbXBsb3llZS1wcm9maWxlLWVtcGxveWVlLXN0YXR1cy5jb21wb25lbnQudHMiLCIuLi8uLi8uLi8uLi8uLi8uLi8uLi8uLi9AZG9uZ2thcC9kby1zeXMvc3JjL2xpYi9wcm9maWxlL3BhZ2UvZW1wbG95ZWUtc3RhdHVzL2VtcGxveWVlLXByb2ZpbGUtZW1wbG95ZWUtc3RhdHVzLmNvbXBvbmVudC5odG1sIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxTQUFTLEVBQXVCLE1BQU0sZUFBZSxDQUFDO0FBRy9ELE9BQU8sRUFBRSxHQUFHLEVBQUUsTUFBTSxnQkFBZ0IsQ0FBQztBQUVyQyxPQUFPLEVBQUUsaUJBQWlCLEVBQUUsTUFBTSxvQkFBb0IsQ0FBQzs7O0FBUXZELE1BQU0sT0FBTyxzQ0FBdUMsU0FBUSxpQkFBc0I7SUFLaEYsWUFBbUIsUUFBa0I7UUFDbkMsS0FBSyxDQUFDLFFBQVEsQ0FBQyxDQUFDO1FBREMsYUFBUSxHQUFSLFFBQVEsQ0FBVTtRQUg5QixnQkFBVyxHQUFZLEtBQUssQ0FBQztJQUtwQyxDQUFDO0lBRUQsUUFBUTtJQUNSLENBQUM7SUFFRCxXQUFXO1FBQ1QsSUFBSSxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLENBQUM7UUFDekIsSUFBSSxDQUFDLFFBQVEsQ0FBQyxRQUFRLEVBQUUsQ0FBQztRQUN6QixJQUFJLENBQUMsUUFBUSxDQUFDLFdBQVcsRUFBRSxDQUFDO0lBQzlCLENBQUM7SUFFRCxZQUFZO1FBQ1YsSUFBSSxDQUFDLFdBQVcsR0FBRyxJQUFJLENBQUM7UUFDeEIsT0FBTyxJQUFJLENBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSw2QkFBNkIsQ0FBQyxDQUFDLElBQUksQ0FBQyxHQUFHLENBQ2pFLENBQUMsT0FBWSxFQUFFLEVBQUU7WUFDZixJQUFJLENBQUMsV0FBVyxHQUFHLEtBQUssQ0FBQztZQUN6QixJQUFJLENBQUMsa0JBQWtCLEdBQUcsT0FBTyxDQUFDO1FBQ3BDLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFDUixDQUFDOztvSUF6QlUsc0NBQXNDO3dIQUF0QyxzQ0FBc0Msa0dDYm5ELHV5QkEyQk07NEZEZE8sc0NBQXNDO2tCQUxsRCxTQUFTO21CQUFDO29CQUNULFFBQVEsRUFBRSxxQ0FBcUM7b0JBQy9DLFNBQVMsRUFBRSxDQUFDLG1EQUFtRCxDQUFDO29CQUNoRSxXQUFXLEVBQUUsbURBQW1EO2lCQUNqRSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENvbXBvbmVudCwgSW5qZWN0b3IsIE9uRGVzdHJveSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuaW1wb3J0IHsgT25Jbml0IH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBPYnNlcnZhYmxlIH0gZnJvbSAncnhqcyc7XG5pbXBvcnQgeyBtYXAgfSBmcm9tICdyeGpzL29wZXJhdG9ycyc7XG5pbXBvcnQgeyBBcGlCYXNlUmVzcG9uc2UgfSBmcm9tICdAZG9uZ2thcC9kby1jb3JlJztcbmltcG9ydCB7IEJhc2VGb3JtQ29tcG9uZW50IH0gZnJvbSAnQGRvbmdrYXAvZG8tc2hhcmVkJztcbmltcG9ydCB7IEh0dHBFcnJvclJlc3BvbnNlIH0gZnJvbSAnQGFuZ3VsYXIvY29tbW9uL2h0dHAnO1xuXG5AQ29tcG9uZW50KHtcbiAgc2VsZWN0b3I6ICdkby1lbXBsb3llZS1wcm9maWxlLWVtcGxveWVlLXN0YXR1cycsXG4gIHN0eWxlVXJsczogWycuL2VtcGxveWVlLXByb2ZpbGUtZW1wbG95ZWUtc3RhdHVzLmNvbXBvbmVudC5zY3NzJ10sXG4gIHRlbXBsYXRlVXJsOiAnLi9lbXBsb3llZS1wcm9maWxlLWVtcGxveWVlLXN0YXR1cy5jb21wb25lbnQuaHRtbCcsXG59KVxuZXhwb3J0IGNsYXNzIEVtcGxveWVlUHJvZmlsZUVtcGxveWVlU3RhdHVzQ29tcG9uZW50IGV4dGVuZHMgQmFzZUZvcm1Db21wb25lbnQ8YW55PiBpbXBsZW1lbnRzIE9uSW5pdCwgT25EZXN0cm95IHtcblxuICBwdWJsaWMgbG9hZGluZ0Zvcm06IGJvb2xlYW4gPSBmYWxzZTtcbiAgcHVibGljIGRhdGFFbXBsb3llZVN0YXR1czogYW55O1xuXG4gIGNvbnN0cnVjdG9yKHB1YmxpYyBpbmplY3RvcjogSW5qZWN0b3IpIHtcbiAgICBzdXBlcihpbmplY3Rvcik7XG4gIH1cblxuICBuZ09uSW5pdCgpOiB2b2lkIHtcbiAgfVxuXG4gIG5nT25EZXN0cm95KCk6IHZvaWQge1xuICAgIHRoaXMuZGVzdHJveSQubmV4dCh0cnVlKTtcbiAgICB0aGlzLmRlc3Ryb3kkLmNvbXBsZXRlKCk7XG4gICAgdGhpcy5kZXN0cm95JC51bnN1YnNjcmliZSgpO1xuICB9XG5cbiAgbG9hZERhdGFNZW51KCk6IE9ic2VydmFibGU8YW55PiB7XG4gICAgdGhpcy5sb2FkaW5nRm9ybSA9IHRydWU7XG4gICAgcmV0dXJuIHRoaXMuZXhlYygncHJvZmlsZScsICdnZXQtcHJvZmlsZS1lbXBsb3llZS1zdGF0dXMnKS5waXBlKG1hcChcbiAgICAgIChzdWNjZXNzOiBhbnkpID0+IHtcbiAgICAgICAgdGhpcy5sb2FkaW5nRm9ybSA9IGZhbHNlO1xuICAgICAgICB0aGlzLmRhdGFFbXBsb3llZVN0YXR1cyA9IHN1Y2Nlc3M7XG4gICAgICB9KSk7XG4gIH1cblxufVxuIiwiPGRpdiBjbGFzcz1cInJvd1wiPlxuICA8ZGl2IGNsYXNzPVwiY29sLW1kLTEyIGNvbC1sZy0xMlwiPlxuICAgIDxkby1sYWJlbC10ZXh0XG4gICAgICBbbGFiZWxdPVwiJ05JSydcIlxuICAgICAgW2NvbExhYmVsXT1cIjNcIlxuICAgICAgW2NvbENvbnRlbnRdPVwiOVwiXG4gICAgICBbZGl2aWRlcmxhYmVsXT1cImZhbHNlXCJcbiAgICAgIFtza2VsZXRvbl09XCJsb2FkaW5nRm9ybVwiXG4gICAgICBbY29udGVudF09XCJkYXRhRW1wbG95ZWVTdGF0dXM/LmlkRW1wbG95ZWVcIj5cbiAgICA8L2RvLWxhYmVsLXRleHQ+XG4gICAgPGRvLWxhYmVsLXRleHRcbiAgICAgIFtsYWJlbF09XCInT2NjdXBhdGlvbidcIlxuICAgICAgW2NvbExhYmVsXT1cIjNcIlxuICAgICAgW2NvbENvbnRlbnRdPVwiOVwiXG4gICAgICBbZGl2aWRlcmxhYmVsXT1cImZhbHNlXCJcbiAgICAgIFtza2VsZXRvbl09XCJsb2FkaW5nRm9ybVwiXG4gICAgICBbY29udGVudF09XCJkYXRhRW1wbG95ZWVTdGF0dXM/Lm9jY3VwYXRpb24/Lm5hbWVcIj5cbiAgICA8L2RvLWxhYmVsLXRleHQ+XG4gICAgPGRvLWxhYmVsLXRleHRcbiAgICAgIFtsYWJlbF09XCInU3VwZXJ2aXNvcidcIlxuICAgICAgW2NvbExhYmVsXT1cIjNcIlxuICAgICAgW2NvbENvbnRlbnRdPVwiOVwiXG4gICAgICBbZGl2aWRlcmxhYmVsXT1cImZhbHNlXCJcbiAgICAgIFtza2VsZXRvbl09XCJsb2FkaW5nRm9ybVwiXG4gICAgICBbY29udGVudF09XCJkYXRhRW1wbG95ZWVTdGF0dXM/LnBhcmVudExhYmVsXCI+XG4gICAgPC9kby1sYWJlbC10ZXh0PlxuICA8L2Rpdj5cbjwvZGl2PiJdfQ==

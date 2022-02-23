@@ -1,0 +1,30 @@
+import { OnInit } from '@angular/core';
+import { NgControl, AbstractControl, Validator, ValidationErrors, ControlValueAccessor } from '@angular/forms';
+import * as i0 from "@angular/core";
+export declare abstract class ValidatorAccessorDirective implements ControlValueAccessor, Validator, OnInit {
+    protected ngControl: NgControl;
+    name: string;
+    pattern: string;
+    label: string;
+    nolabel: boolean;
+    disabled: boolean;
+    required: boolean;
+    paramError: any;
+    warnMessage: string;
+    onChange: (_: any) => void;
+    onTouched: (_?: any) => void;
+    protected onInit(): void;
+    constructor(ngControl: NgControl);
+    ngOnInit(): void;
+    validate(c: AbstractControl): ValidationErrors;
+    get hasErrors(): boolean;
+    get hasSuccess(): boolean;
+    get errorMessages(): string[];
+    registerOnValidatorChange(fn: () => void): void;
+    abstract writeValue(obj: any): void;
+    abstract registerOnChange(fn: any): void;
+    abstract registerOnTouched(fn: any): void;
+    abstract setDisabledState?(isDisabled: boolean): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ValidatorAccessorDirective, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ValidatorAccessorDirective, never, never, { "name": "name"; "pattern": "pattern"; "label": "label"; "nolabel": "nolabel"; "disabled": "disabled"; "required": "required"; "paramError": "paramError"; "warnMessage": "warnMessage"; }, {}, never>;
+}

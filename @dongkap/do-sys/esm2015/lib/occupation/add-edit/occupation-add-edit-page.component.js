@@ -1,0 +1,66 @@
+import { Component } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
+import { ResponseCode } from '@dongkap/do-core';
+import { BaseFormComponent } from '@dongkap/do-shared';
+import * as i0 from "@angular/core";
+import * as i1 from "@angular/router";
+import * as i2 from "../services/occupation.service";
+import * as i3 from "@dongkap/do-shared";
+import * as i4 from "@angular/forms";
+export class OccupationAddEditPageComponent extends BaseFormComponent {
+    constructor(injector, router, route, occupationService) {
+        super(injector, {
+            code: [],
+            name: [],
+        });
+        this.injector = injector;
+        this.router = router;
+        this.route = route;
+        this.occupationService = occupationService;
+        this.action = 'Add';
+        this.dataDefault = [
+            {
+                selected: true,
+            },
+        ];
+        if (this.occupationService.getOccupation() || (this.route.snapshot.params['action'] === 'add')) {
+            if ((this.route.snapshot.params['action'] === 'edit')) {
+                this.action = 'Edit';
+                this.formGroup.get('code').setValue(this.occupationService.getOccupation().code);
+                this.formGroup.get('name').setValue(this.occupationService.getOccupation().name);
+                this.formGroup.get('code').disable();
+            }
+        }
+        else {
+            this.router.navigate(['/app/mgmt/occupation']);
+        }
+    }
+    ngOnInit() { }
+    onReset() {
+        this.router.navigate(['/app/mgmt/occupation']);
+    }
+    onSubmit() {
+        const data = {
+            code: this.formGroup.get('code').value,
+            name: this.formGroup.get('name').value,
+        };
+        super.onSubmit(data, 'security', 'post-occupation')
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(response => {
+            if (response.respStatusCode === ResponseCode.OK_DEFAULT.toString()) {
+                this.router.navigate(['/app/mgmt/occupation']);
+            }
+        });
+    }
+}
+OccupationAddEditPageComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: OccupationAddEditPageComponent, deps: [{ token: i0.Injector }, { token: i1.Router }, { token: i1.ActivatedRoute }, { token: i2.OccupationService }], target: i0.ɵɵFactoryTarget.Component });
+OccupationAddEditPageComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "12.0.0", version: "12.2.16", type: OccupationAddEditPageComponent, selector: "do-occupation-add-edit-page", usesInheritance: true, ngImport: i0, template: "<do-page-outlet [header]=\"'header.'+action+'-occupation'\" [url]=\"'/app/mgmt/occupation'\">\n  <div class=\"row\" pagecontent>\n    <div class=\"col-md-12 col-lg-12\">\n      <form [formGroup]=\"formGroup\">\n        <do-input-text\n          [name]=\"'code'\"\n          [label]=\"'Occupation Code'\"\n          [required]=\"true\"\n          [skeleton]=\"loadingForm\"\n          formControlName=\"code\">\n        </do-input-text>\n        <do-input-text\n          [name]=\"'name'\"\n          [label]=\"'Occupation Name'\"\n          [required]=\"true\"\n          [skeleton]=\"loadingForm\"\n          formControlName=\"name\">\n        </do-input-text>\n      </form>\n    </div>\n  </div>\n  <do-button-submit\n    [submitTitle]=\"action\"\n    [resetTitle]=\"'Cancel'\"\n    [formGroupButton]=\"formGroup\"\n    [disabledButton]=\"disabled\"\n    (onReset)=\"onReset()\"\n    (onSubmit)=\"onSubmit()\"\n    pagefooter>\n  </do-button-submit>\n</do-page-outlet>\n", styles: [""], components: [{ type: i3.DoPageOutletComponent, selector: "do-page-outlet", inputs: ["header", "url", "width", "dataSelect", "selected", "param", "hidefooter", "showToggle", "isCollapsed", "iconToggle"], outputs: ["selectChange", "onCollapsed", "onExpanded"] }, { type: i3.DoInputTextComponent, selector: "do-input-text", inputs: ["placeholder", "colLabel", "colInput", "minLength", "maxLength", "min", "max", "step", "capslock", "type"] }, { type: i3.DoButtonSubmitComponent, selector: "do-button-submit", inputs: ["colLabel", "colButton", "resetTitle", "submitTitle", "disabledButton", "disabledReset", "type", "status", "skeleton", "formGroupButton"], outputs: ["onSubmit", "onReset"] }], directives: [{ type: i4.ɵNgNoValidate, selector: "form:not([ngNoForm]):not([ngNativeValidate])" }, { type: i4.NgControlStatusGroup, selector: "[formGroupName],[formArrayName],[ngModelGroup],[formGroup],form:not([ngNoForm]),[ngForm]" }, { type: i4.FormGroupDirective, selector: "[formGroup]", inputs: ["formGroup"], outputs: ["ngSubmit"], exportAs: ["ngForm"] }, { type: i4.NgControlStatus, selector: "[formControlName],[ngModel],[formControl]" }, { type: i4.FormControlName, selector: "[formControlName]", inputs: ["disabled", "formControlName", "ngModel"], outputs: ["ngModelChange"] }, { type: i4.RequiredValidator, selector: ":not([type=checkbox])[required][formControlName],:not([type=checkbox])[required][formControl],:not([type=checkbox])[required][ngModel]", inputs: ["required"] }] });
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "12.2.16", ngImport: i0, type: OccupationAddEditPageComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'do-occupation-add-edit-page',
+                    styleUrls: ['./occupation-add-edit-page.component.scss'],
+                    templateUrl: './occupation-add-edit-page.component.html',
+                }]
+        }], ctorParameters: function () { return [{ type: i0.Injector }, { type: i1.Router }, { type: i1.ActivatedRoute }, { type: i2.OccupationService }]; } });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoib2NjdXBhdGlvbi1hZGQtZWRpdC1wYWdlLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL0Bkb25na2FwL2RvLXN5cy9zcmMvbGliL29jY3VwYXRpb24vYWRkLWVkaXQvb2NjdXBhdGlvbi1hZGQtZWRpdC1wYWdlLmNvbXBvbmVudC50cyIsIi4uLy4uLy4uLy4uLy4uLy4uLy4uL0Bkb25na2FwL2RvLXN5cy9zcmMvbGliL29jY3VwYXRpb24vYWRkLWVkaXQvb2NjdXBhdGlvbi1hZGQtZWRpdC1wYWdlLmNvbXBvbmVudC5odG1sIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxTQUFTLEVBQVksTUFBTSxlQUFlLENBQUM7QUFJcEQsT0FBTyxFQUFFLFNBQVMsRUFBRSxNQUFNLGdCQUFnQixDQUFDO0FBQzNDLE9BQU8sRUFBbUIsWUFBWSxFQUFFLE1BQU0sa0JBQWtCLENBQUM7QUFDakUsT0FBTyxFQUFFLGlCQUFpQixFQUFpQixNQUFNLG9CQUFvQixDQUFDOzs7Ozs7QUFTdEUsTUFBTSxPQUFPLDhCQUErQixTQUFRLGlCQUFzQjtJQVF4RSxZQUNTLFFBQWtCLEVBQ2pCLE1BQWMsRUFDZCxLQUFxQixFQUNyQixpQkFBb0M7UUFDNUMsS0FBSyxDQUFDLFFBQVEsRUFDWjtZQUNFLElBQUksRUFBRSxFQUFFO1lBQ1IsSUFBSSxFQUFFLEVBQUU7U0FDVCxDQUFDLENBQUM7UUFSRSxhQUFRLEdBQVIsUUFBUSxDQUFVO1FBQ2pCLFdBQU0sR0FBTixNQUFNLENBQVE7UUFDZCxVQUFLLEdBQUwsS0FBSyxDQUFnQjtRQUNyQixzQkFBaUIsR0FBakIsaUJBQWlCLENBQW1CO1FBVnZDLFdBQU0sR0FBbUIsS0FBSyxDQUFDO1FBQy9CLGdCQUFXLEdBQW9CO1lBQ3BDO2dCQUNFLFFBQVEsRUFBRSxJQUFJO2FBQ2Y7U0FDRixDQUFDO1FBV0EsSUFBSSxJQUFJLENBQUMsaUJBQWlCLENBQUMsYUFBYSxFQUFFLElBQUksQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLFFBQVEsQ0FBQyxNQUFNLENBQUMsUUFBUSxDQUFDLEtBQUssS0FBSyxDQUFDLEVBQUU7WUFDOUYsSUFBSSxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsUUFBUSxDQUFDLE1BQU0sQ0FBQyxRQUFRLENBQUMsS0FBSyxNQUFNLENBQUMsRUFBRTtnQkFDckQsSUFBSSxDQUFDLE1BQU0sR0FBRyxNQUFNLENBQUM7Z0JBQ3JCLElBQUksQ0FBQyxTQUFTLENBQUMsR0FBRyxDQUFDLE1BQU0sQ0FBQyxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsaUJBQWlCLENBQUMsYUFBYSxFQUFFLENBQUMsSUFBSSxDQUFDLENBQUM7Z0JBQ2pGLElBQUksQ0FBQyxTQUFTLENBQUMsR0FBRyxDQUFDLE1BQU0sQ0FBQyxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsaUJBQWlCLENBQUMsYUFBYSxFQUFFLENBQUMsSUFBSSxDQUFDLENBQUM7Z0JBQ2pGLElBQUksQ0FBQyxTQUFTLENBQUMsR0FBRyxDQUFDLE1BQU0sQ0FBQyxDQUFDLE9BQU8sRUFBRSxDQUFDO2FBQ3RDO1NBQ0Y7YUFBTTtZQUNMLElBQUksQ0FBQyxNQUFNLENBQUMsUUFBUSxDQUFDLENBQUMsc0JBQXNCLENBQUMsQ0FBQyxDQUFDO1NBQ2hEO0lBQ0gsQ0FBQztJQUVELFFBQVEsS0FBVSxDQUFDO0lBRW5CLE9BQU87UUFDTCxJQUFJLENBQUMsTUFBTSxDQUFDLFFBQVEsQ0FBQyxDQUFDLHNCQUFzQixDQUFDLENBQUMsQ0FBQztJQUNqRCxDQUFDO0lBRUQsUUFBUTtRQUNOLE1BQU0sSUFBSSxHQUFvQjtZQUM1QixJQUFJLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxHQUFHLENBQUMsTUFBTSxDQUFDLENBQUMsS0FBSztZQUN0QyxJQUFJLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxHQUFHLENBQUMsTUFBTSxDQUFDLENBQUMsS0FBSztTQUN2QyxDQUFDO1FBQ0QsS0FBSyxDQUFDLFFBQVEsQ0FBQyxJQUFJLEVBQUUsVUFBVSxFQUFFLGlCQUFpQixDQUFrQzthQUNsRixJQUFJLENBQUMsU0FBUyxDQUFDLElBQUksQ0FBQyxRQUFRLENBQUMsQ0FBQzthQUM5QixTQUFTLENBQUMsUUFBUSxDQUFDLEVBQUU7WUFDcEIsSUFBSSxRQUFRLENBQUMsY0FBYyxLQUFLLFlBQVksQ0FBQyxVQUFVLENBQUMsUUFBUSxFQUFFLEVBQUU7Z0JBQ2xFLElBQUksQ0FBQyxNQUFNLENBQUMsUUFBUSxDQUFDLENBQUMsc0JBQXNCLENBQUMsQ0FBQyxDQUFDO2FBQ2hEO1FBQ0gsQ0FBQyxDQUFDLENBQUM7SUFDUCxDQUFDOzs0SEFoRFUsOEJBQThCO2dIQUE5Qiw4QkFBOEIsMEZDZjNDLCs4QkErQkE7NEZEaEJhLDhCQUE4QjtrQkFMMUMsU0FBUzttQkFBQztvQkFDVCxRQUFRLEVBQUUsNkJBQTZCO29CQUN2QyxTQUFTLEVBQUUsQ0FBQywyQ0FBMkMsQ0FBQztvQkFDeEQsV0FBVyxFQUFFLDJDQUEyQztpQkFDekQiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBDb21wb25lbnQsIEluamVjdG9yIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBPbkluaXQgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IFJvdXRlciwgQWN0aXZhdGVkUm91dGUgfSBmcm9tICdAYW5ndWxhci9yb3V0ZXInO1xuaW1wb3J0IHsgT2JzZXJ2YWJsZSB9IGZyb20gJ3J4anMnO1xuaW1wb3J0IHsgdGFrZVVudGlsIH0gZnJvbSAncnhqcy9vcGVyYXRvcnMnO1xuaW1wb3J0IHsgQXBpQmFzZVJlc3BvbnNlLCBSZXNwb25zZUNvZGUgfSBmcm9tICdAZG9uZ2thcC9kby1jb3JlJztcbmltcG9ydCB7IEJhc2VGb3JtQ29tcG9uZW50LCBDaGVja2JveE1vZGVsIH0gZnJvbSAnQGRvbmdrYXAvZG8tc2hhcmVkJztcbmltcG9ydCB7IE9jY3VwYXRpb25TZXJ2aWNlIH0gZnJvbSAnLi4vc2VydmljZXMvb2NjdXBhdGlvbi5zZXJ2aWNlJztcbmltcG9ydCB7IE9jY3VwYXRpb25Nb2RlbCB9IGZyb20gJy4uL21vZGVscy9vY2N1cGF0aW9uLm1vZGVsJztcblxuQENvbXBvbmVudCh7XG4gIHNlbGVjdG9yOiAnZG8tb2NjdXBhdGlvbi1hZGQtZWRpdC1wYWdlJyxcbiAgc3R5bGVVcmxzOiBbJy4vb2NjdXBhdGlvbi1hZGQtZWRpdC1wYWdlLmNvbXBvbmVudC5zY3NzJ10sXG4gIHRlbXBsYXRlVXJsOiAnLi9vY2N1cGF0aW9uLWFkZC1lZGl0LXBhZ2UuY29tcG9uZW50Lmh0bWwnLFxufSlcbmV4cG9ydCBjbGFzcyBPY2N1cGF0aW9uQWRkRWRpdFBhZ2VDb21wb25lbnQgZXh0ZW5kcyBCYXNlRm9ybUNvbXBvbmVudDxhbnk+IGltcGxlbWVudHMgT25Jbml0IHtcblxuICBwdWJsaWMgYWN0aW9uOiAnQWRkJyB8ICdFZGl0JyA9ICdBZGQnO1xuICBwdWJsaWMgZGF0YURlZmF1bHQ6IENoZWNrYm94TW9kZWxbXSA9IFtcbiAgICB7XG4gICAgICBzZWxlY3RlZDogdHJ1ZSxcbiAgICB9LFxuICBdO1xuICBjb25zdHJ1Y3RvcihcbiAgICBwdWJsaWMgaW5qZWN0b3I6IEluamVjdG9yLFxuICAgIHByaXZhdGUgcm91dGVyOiBSb3V0ZXIsXG4gICAgcHJpdmF0ZSByb3V0ZTogQWN0aXZhdGVkUm91dGUsXG4gICAgcHJpdmF0ZSBvY2N1cGF0aW9uU2VydmljZTogT2NjdXBhdGlvblNlcnZpY2UpIHtcbiAgICBzdXBlcihpbmplY3RvcixcbiAgICAgIHtcbiAgICAgICAgY29kZTogW10sXG4gICAgICAgIG5hbWU6IFtdLFxuICAgICAgfSk7XG4gICAgaWYgKHRoaXMub2NjdXBhdGlvblNlcnZpY2UuZ2V0T2NjdXBhdGlvbigpIHx8ICh0aGlzLnJvdXRlLnNuYXBzaG90LnBhcmFtc1snYWN0aW9uJ10gPT09ICdhZGQnKSkge1xuICAgICAgaWYgKCh0aGlzLnJvdXRlLnNuYXBzaG90LnBhcmFtc1snYWN0aW9uJ10gPT09ICdlZGl0JykpIHtcbiAgICAgICAgdGhpcy5hY3Rpb24gPSAnRWRpdCc7XG4gICAgICAgIHRoaXMuZm9ybUdyb3VwLmdldCgnY29kZScpLnNldFZhbHVlKHRoaXMub2NjdXBhdGlvblNlcnZpY2UuZ2V0T2NjdXBhdGlvbigpLmNvZGUpO1xuICAgICAgICB0aGlzLmZvcm1Hcm91cC5nZXQoJ25hbWUnKS5zZXRWYWx1ZSh0aGlzLm9jY3VwYXRpb25TZXJ2aWNlLmdldE9jY3VwYXRpb24oKS5uYW1lKTtcbiAgICAgICAgdGhpcy5mb3JtR3JvdXAuZ2V0KCdjb2RlJykuZGlzYWJsZSgpO1xuICAgICAgfVxuICAgIH0gZWxzZSB7XG4gICAgICB0aGlzLnJvdXRlci5uYXZpZ2F0ZShbJy9hcHAvbWdtdC9vY2N1cGF0aW9uJ10pO1xuICAgIH1cbiAgfVxuXG4gIG5nT25Jbml0KCk6IHZvaWQge31cblxuICBvblJlc2V0KCk6IHZvaWQge1xuICAgIHRoaXMucm91dGVyLm5hdmlnYXRlKFsnL2FwcC9tZ210L29jY3VwYXRpb24nXSk7XG4gIH1cblxuICBvblN1Ym1pdCgpOiB2b2lkIHtcbiAgICBjb25zdCBkYXRhOiBPY2N1cGF0aW9uTW9kZWwgPSB7XG4gICAgICBjb2RlOiB0aGlzLmZvcm1Hcm91cC5nZXQoJ2NvZGUnKS52YWx1ZSxcbiAgICAgIG5hbWU6IHRoaXMuZm9ybUdyb3VwLmdldCgnbmFtZScpLnZhbHVlLFxuICAgIH07XG4gICAgKHN1cGVyLm9uU3VibWl0KGRhdGEsICdzZWN1cml0eScsICdwb3N0LW9jY3VwYXRpb24nKSAgYXMgT2JzZXJ2YWJsZTxBcGlCYXNlUmVzcG9uc2U+KVxuICAgICAgLnBpcGUodGFrZVVudGlsKHRoaXMuZGVzdHJveSQpKVxuICAgICAgLnN1YnNjcmliZShyZXNwb25zZSA9PiB7XG4gICAgICAgIGlmIChyZXNwb25zZS5yZXNwU3RhdHVzQ29kZSA9PT0gUmVzcG9uc2VDb2RlLk9LX0RFRkFVTFQudG9TdHJpbmcoKSkge1xuICAgICAgICAgIHRoaXMucm91dGVyLm5hdmlnYXRlKFsnL2FwcC9tZ210L29jY3VwYXRpb24nXSk7XG4gICAgICAgIH1cbiAgICAgIH0pO1xuICB9XG5cbn1cbiIsIjxkby1wYWdlLW91dGxldCBbaGVhZGVyXT1cIidoZWFkZXIuJythY3Rpb24rJy1vY2N1cGF0aW9uJ1wiIFt1cmxdPVwiJy9hcHAvbWdtdC9vY2N1cGF0aW9uJ1wiPlxuICA8ZGl2IGNsYXNzPVwicm93XCIgcGFnZWNvbnRlbnQ+XG4gICAgPGRpdiBjbGFzcz1cImNvbC1tZC0xMiBjb2wtbGctMTJcIj5cbiAgICAgIDxmb3JtIFtmb3JtR3JvdXBdPVwiZm9ybUdyb3VwXCI+XG4gICAgICAgIDxkby1pbnB1dC10ZXh0XG4gICAgICAgICAgW25hbWVdPVwiJ2NvZGUnXCJcbiAgICAgICAgICBbbGFiZWxdPVwiJ09jY3VwYXRpb24gQ29kZSdcIlxuICAgICAgICAgIFtyZXF1aXJlZF09XCJ0cnVlXCJcbiAgICAgICAgICBbc2tlbGV0b25dPVwibG9hZGluZ0Zvcm1cIlxuICAgICAgICAgIGZvcm1Db250cm9sTmFtZT1cImNvZGVcIj5cbiAgICAgICAgPC9kby1pbnB1dC10ZXh0PlxuICAgICAgICA8ZG8taW5wdXQtdGV4dFxuICAgICAgICAgIFtuYW1lXT1cIiduYW1lJ1wiXG4gICAgICAgICAgW2xhYmVsXT1cIidPY2N1cGF0aW9uIE5hbWUnXCJcbiAgICAgICAgICBbcmVxdWlyZWRdPVwidHJ1ZVwiXG4gICAgICAgICAgW3NrZWxldG9uXT1cImxvYWRpbmdGb3JtXCJcbiAgICAgICAgICBmb3JtQ29udHJvbE5hbWU9XCJuYW1lXCI+XG4gICAgICAgIDwvZG8taW5wdXQtdGV4dD5cbiAgICAgIDwvZm9ybT5cbiAgICA8L2Rpdj5cbiAgPC9kaXY+XG4gIDxkby1idXR0b24tc3VibWl0XG4gICAgW3N1Ym1pdFRpdGxlXT1cImFjdGlvblwiXG4gICAgW3Jlc2V0VGl0bGVdPVwiJ0NhbmNlbCdcIlxuICAgIFtmb3JtR3JvdXBCdXR0b25dPVwiZm9ybUdyb3VwXCJcbiAgICBbZGlzYWJsZWRCdXR0b25dPVwiZGlzYWJsZWRcIlxuICAgIChvblJlc2V0KT1cIm9uUmVzZXQoKVwiXG4gICAgKG9uU3VibWl0KT1cIm9uU3VibWl0KClcIlxuICAgIHBhZ2Vmb290ZXI+XG4gIDwvZG8tYnV0dG9uLXN1Ym1pdD5cbjwvZG8tcGFnZS1vdXRsZXQ+XG4iXX0=

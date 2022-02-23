@@ -1,0 +1,8 @@
+// TODO: evaluate if this is useful
+export var DoWizardErrorType;
+(function (DoWizardErrorType) {
+    DoWizardErrorType[DoWizardErrorType["NO_WIZARD_ROUTE"] = 0] = "NO_WIZARD_ROUTE";
+    DoWizardErrorType[DoWizardErrorType["NO_CHILD_ROUTES"] = 1] = "NO_CHILD_ROUTES";
+    DoWizardErrorType[DoWizardErrorType["NO_WS_INTERFACE"] = 2] = "NO_WS_INTERFACE";
+})(DoWizardErrorType || (DoWizardErrorType = {}));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZG8td2l6YXJkLWVycm9yLXR5cGUuZW51bS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL0Bkb25na2FwL2RvLXNoYXJlZC9zcmMvbGliL3dpemFyZC93aXphcmQtZXJyb3IvZG8td2l6YXJkLWVycm9yLXR5cGUuZW51bS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxtQ0FBbUM7QUFDbkMsTUFBTSxDQUFOLElBQVksaUJBSVg7QUFKRCxXQUFZLGlCQUFpQjtJQUMzQiwrRUFBZSxDQUFBO0lBQ2YsK0VBQWUsQ0FBQTtJQUNmLCtFQUFlLENBQUE7QUFDakIsQ0FBQyxFQUpXLGlCQUFpQixLQUFqQixpQkFBaUIsUUFJNUIiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBUT0RPOiBldmFsdWF0ZSBpZiB0aGlzIGlzIHVzZWZ1bFxuZXhwb3J0IGVudW0gRG9XaXphcmRFcnJvclR5cGUge1xuICBOT19XSVpBUkRfUk9VVEUsXG4gIE5PX0NISUxEX1JPVVRFUyxcbiAgTk9fV1NfSU5URVJGQUNFLFxufVxuIl19

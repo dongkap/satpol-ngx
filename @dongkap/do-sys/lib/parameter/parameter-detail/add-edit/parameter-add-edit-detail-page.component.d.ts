@@ -1,0 +1,30 @@
+import { Injector } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpBaseModel, LocaleModel } from '@dongkap/do-core';
+import { BaseFormComponent } from '@dongkap/do-shared';
+import { ParameterService } from '../../services/parameter.service';
+import { ParameterModel, ParameterGroupModel } from '../../models/parameter.model';
+import * as i0 from "@angular/core";
+export declare class ParameterAddEditDetailPageComponent extends BaseFormComponent<any> implements OnInit {
+    injector: Injector;
+    private router;
+    private parameterService;
+    private route;
+    action: 'Add' | 'Edit';
+    parameter: ParameterModel;
+    parameterGroup: ParameterGroupModel;
+    allLocales: LocaleModel[];
+    locales: LocaleModel[];
+    localeDefault: LocaleModel;
+    isEdit: boolean;
+    apiPathParameterI18n: HttpBaseModel;
+    apiPathLocale: HttpBaseModel;
+    constructor(injector: Injector, router: Router, parameterService: ParameterService, route: ActivatedRoute);
+    splitLocale(values: LocaleModel[]): void;
+    ngOnInit(): void;
+    onReset(): void;
+    onSubmit(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ParameterAddEditDetailPageComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ParameterAddEditDetailPageComponent, "do-parameter-add-edit-detail-page", never, {}, {}, never, never>;
+}

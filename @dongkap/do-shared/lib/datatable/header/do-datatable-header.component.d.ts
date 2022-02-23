@@ -1,0 +1,32 @@
+import { EventEmitter } from '@angular/core';
+import { OnDestroy } from '@angular/core';
+import { DoDatatableCollapseComponent } from './collapse/do-datatable-collapse.component';
+import { FormGroup } from '@angular/forms';
+import * as i0 from "@angular/core";
+export declare class DoDatatableHeaderComponent implements OnDestroy {
+    header: boolean;
+    footer: boolean;
+    add: boolean;
+    edit: boolean;
+    delete: boolean;
+    filter: boolean;
+    formGroupFilter: FormGroup;
+    onSearch: EventEmitter<string>;
+    onFilter: EventEmitter<any>;
+    onAdd: EventEmitter<boolean>;
+    onDelete: EventEmitter<boolean>;
+    collapse: DoDatatableCollapseComponent;
+    _search: string;
+    showFilter: boolean;
+    disabledButtonFilter: boolean;
+    ngOnDestroy(): void;
+    doSearch(search: string): void;
+    doFilterFunnel(): void;
+    doFilter(): void;
+    doAdd(): void;
+    doDelete(): void;
+    onKeyDown(event: KeyboardEvent): void;
+    onFocusSearch(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DoDatatableHeaderComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DoDatatableHeaderComponent, "do-datatable-header", never, { "header": "header"; "footer": "footer"; "add": "add"; "edit": "edit"; "delete": "delete"; "filter": "filter"; "formGroupFilter": "formGroupFilter"; }, { "onSearch": "onSearch"; "onFilter": "onFilter"; "onAdd": "onAdd"; "onDelete": "onDelete"; }, never, ["*"]>;
+}
