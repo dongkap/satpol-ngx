@@ -9,6 +9,7 @@ import {
   NbThemeService,
 } from '@nebular/theme';
 import { LayoutService } from '../../services/layout.service';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'do-header',
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @Input() public name: string;
   @Input() public image: string;
+  @Input() public logo: string = '/assets/images/logo.png';
   @Input() public extraMenu: NbMenuItem[] = [];
   public userPictureOnly: boolean = false;
   private destroy$: Subject<void> = new Subject<void>();
@@ -27,7 +29,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private breakpointService: NbMediaBreakpointsService,
               private layoutService: LayoutService,
+              private locationStrategy: LocationStrategy,
               private router: Router) {
+    this.logo = this.locationStrategy.getBaseHref().replace(/\/$/, '') + this.logo;
   }
 
   ngOnInit() {

@@ -4,7 +4,11 @@
       <nb-icon icon="menu-2-outline"></nb-icon>
     </a>
     <a class="logo" href="#" (click)="navigateHome()">
-      <div class="image-logo"></div>
+      <div class="image-logo"
+        [ngStyle]="{
+          'background-image': 'url('+logo+')'
+        }">
+      </div>
       <!--<nb-action class="icon-logo" icon="home-outline"></nb-action>-->
       <span class="title-logo">{{ 'SMART Tanggap' | translate }}</span>
     </a>
