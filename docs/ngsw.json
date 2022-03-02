@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1646195607074,
+  "timestamp": 1646196971470,
   "index": "/satpol-ngx/index.html",
   "assetGroups": [
     {
@@ -1314,7 +1314,7 @@
     "/satpol-ngx/ma.4d3a6f5c2bd6a436e6a1.svg": "bdf56c51e471877ec3627077c0161d9b7de0ee1f",
     "/satpol-ngx/ma.ab052b412792b9fadd8c.svg": "f0bdec701cfac27e1704304d5bb954559e4220a6",
     "/satpol-ngx/main.e8b7e49756509f2ba564.js": "b3bd8afbf899cea10c8fa66b2b3c3f8fcb183507",
-    "/satpol-ngx/manifest.webmanifest": "1ef9829063d25c493833114db62b35237dff7ee2",
+    "/satpol-ngx/manifest.webmanifest": "16836c914df50df6e302822c0dc78482ed4615f0",
     "/satpol-ngx/marker-icon.2b3e1faf89f94a483539.png": "60a90bcbb2b42b7ddb4556db94eb7c1084b0e5da",
     "/satpol-ngx/mc.21f385d1c90452e35d21.svg": "a1f5a5ce8e6a9ced0b5384e078638a6c4be56951",
     "/satpol-ngx/mc.b5edb75519037dcf483e.svg": "30153462e90b7ea0a5f9257be9fc455678305c41",
