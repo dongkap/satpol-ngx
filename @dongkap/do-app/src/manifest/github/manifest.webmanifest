@@ -1,6 +1,6 @@
 {
-  "name": "@dongkap/do-app",
-  "short_name": "@dongkap/do-app",
+  "name": "SMART Tanggap",
+  "short_name": "SMART",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
