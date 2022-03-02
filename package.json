@@ -10,7 +10,7 @@
   "scripts": {
     "start:do-app": "ng serve @dongkap/do-app --port 4200",
     "start:do-mock": "ng serve @dongkap/do-mock --port 4201",
-    "clean:manifest:github": "node node_modules/rimraf ./dist/docs/manifest.webmanifest",
+    "clean:manifest:github": "node node_modules/rimraf/bin ./dist/docs/manifest.webmanifest",
     "copy:manifest:github": "node node_modules/cpx2/bin \"./@dongkap/do-app/src/manifest/github/manifest.webmanifest\" \"./dist/docs/manifest.webmanifest\"",
     "build:do-core": "ng build @dongkap/do-core",
     "build:do-theme": "ng build @dongkap/do-theme",
