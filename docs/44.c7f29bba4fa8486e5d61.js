@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksatpol_ngx=self.webpackChunksatpol_ngx||[]).push([[44],{3044:(n,t,u)=>{u.r(t),u.d(t,{AuthWrapperModule:()=>_});var l=u(3821),a=u(7716);u(3263);let _=(()=>{class o{}return o.\u0275fac=function(d){return new(d||o)},o.\u0275mod=a.oAB({type:o}),o.\u0275inj=a.cJS({imports:[[l.lJ.forRoot()]]}),o})()}}]);

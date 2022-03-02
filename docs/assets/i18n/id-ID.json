@@ -154,6 +154,7 @@
 		"login-footer": "Belum memiliki akun?",
 		"register-footer": "Sudah memiliki akun?",
 		"forgot-password-link": "Kembali untuk masuk",
+		"force-login-link": "Kembali untuk masuk",
 		"reset-password-footer": "Apakah sudah ingat password anda?",
 		"set-password-footer": "Kembali",
 		"danger-zone": "Zona Bahaya",
@@ -237,6 +238,7 @@
 	"User credentials have expired": "Kredensial akun sudah kedaluwarsa",
 	"LDAP Server Error": "Terjadi Kesalahan di server LDAP",
 	"Invalid credentials.": "Username atau Kata Sandi salah",
+	"User is currently used": "User sedang digunakan",
 	"select": {
 		"notfound": "Data tidak ditemukan",
 		"typesearch": "Silakan masukkan {{value}} karakter atau lebih"
@@ -246,7 +248,7 @@
 	},
 	"subtitle": {
 		"login" : "Masuk ke akun Anda",
-		"force" : "Your account is being used",
+		"force" : "Akun Anda sedang digunakan",
 		"force-footer" : "Masuk sebagai orang lain?",
 		"forgot-password" : "Masukkan email Anda, kami akan mengirimkan tautan untuk menyetel ulang kata sandi Anda",
 		"reset-password" : "Masukan kata sandi baru Anda",

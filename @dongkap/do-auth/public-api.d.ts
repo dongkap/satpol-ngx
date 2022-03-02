@@ -10,6 +10,7 @@ export { UnauthorizeGuardService } from './lib/services/unauth-guard.service';
 export { AuthSignatureService } from './lib/services/auth-signature.service';
 export { AuthUserService } from './lib/services/auth-user.service';
 export { LoginPageComponent } from './lib/pages/login/login-page.component';
+export { ForceLoginPageComponent } from './lib/pages/force/force-login-page.component';
 export { TermsConditionsComponent } from './lib/pages/terms-conditions/terms-conditions.component';
 export { RequestForgotPageComponent } from './lib/pages/forgot/request-forgot-page.component';
 export { ForgotPageComponent } from './lib/pages/forgot/forgot-page.component';

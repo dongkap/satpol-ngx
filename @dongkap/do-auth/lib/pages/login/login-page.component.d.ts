@@ -9,16 +9,19 @@ import { APIModel } from '@dongkap/do-core';
 import { HttpFactoryService } from '@dongkap/do-core';
 import { SecurityResourceModel } from '@dongkap/do-core';
 import { AuthTokenService } from '../../services/auth-token.service';
+import { AuthForceService } from '../../services/auth-force.service';
 import * as i0 from "@angular/core";
 export declare class LoginPageComponent implements OnDestroy {
     private router;
     private dialogService;
     private translate;
     private authTokenService;
+    private authForceService;
     private apiPath;
     private httpBaseService;
     private oauthResource;
     responseError: any;
+    responseErrorCode: any;
     buttonLogin: boolean;
     private progress;
     protected progressDOM: HTMLElement;
@@ -26,7 +29,7 @@ export declare class LoginPageComponent implements OnDestroy {
     formGroup: FormGroup;
     private urlAuthorizeGoogle;
     socialLinks: NbAuthSocialLink[];
-    constructor(router: Router, dialogService: NbDialogService, translate: TranslateService, authTokenService: AuthTokenService, apiPath: APIModel, httpBaseService: HttpFactoryService, oauthResource: SecurityResourceModel, route: ActivatedRoute);
+    constructor(router: Router, dialogService: NbDialogService, translate: TranslateService, authTokenService: AuthTokenService, authForceService: AuthForceService, apiPath: APIModel, httpBaseService: HttpFactoryService, oauthResource: SecurityResourceModel, route: ActivatedRoute);
     ngOnDestroy(): void;
     login(): void;
     get hasErrorUsername(): boolean;
