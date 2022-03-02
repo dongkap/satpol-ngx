@@ -18,37 +18,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: NPM Install
+    - name: Copy index.html to 404 html
       run: |
-        npm install --no-progress
-
-    - name: Install do-core
-      run: |
-        npm run install:do-core --no-progress
-
-    - name: Install do-theme
-      run: |
-        npm run install:do-theme --no-progress
-
-    - name: Install do-shared
-      run: |
-        npm run install:do-shared --no-progress
-
-    - name: Install do-auth
-      run: |
-        npm run install:do-auth --no-progress
-
-    - name: Install do-extra
-      run: |
-        npm run install:do-extra --no-progress
-
-    - name: Install do-sys
-      run: |
-        npm run install:do-sys --no-progress
-
-    - name: Build do-app
-      run: |
-        npm run build:do-app:github --no-progress
+        cp ./dist/docs/index.html ./dist/docs/404.html
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4.2.5
