@@ -50,6 +50,10 @@ jobs:
       run: |
         npm run build:do-app:github --no-progress
 
+    - name: Copy index.html to 404 html
+      run: |
+        cp ./dist/docs/index.html ./dist/docs/404.html
+
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4.2.5
       with:
