@@ -154,6 +154,7 @@
 		"login-footer": "Don't have an account?",
 		"register-footer": "Already have an account?",
 		"forgot-password-link": "Back to Login",
+		"force-login-link": "Back to Login",
 		"reset-password-footer": "Do you remember the password?",
 		"set-password-footer": "Back to",
 		"danger-zone": "Danger Zone",
@@ -237,6 +238,7 @@
 	"User credentials have expired": "Account credentials has been expired",
 	"LDAP Server Error": "LDAP Server Error",
 	"Invalid credentials.": "Incorrect Username or Password",
+	"User is currently used": "User is currently used",
 	"select": {
 		"notfound": "No items found",
 		"typesearch": "Please enter {{value}} or more characters"

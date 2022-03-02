@@ -6,6 +6,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthComponent } from './pages/layout/auth.component';
 import { LoginPageComponent } from './pages/login/login-page.component';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { ForceLoginPageComponent } from './pages/force/force-login-page.component';
 import { RequestForgotPageComponent } from './pages/forgot/request-forgot-page.component';
 import { ForgotPageComponent } from './pages/forgot/forgot-page.component';
 import { RegisterPageComponent } from './pages/register/register-page.component';
@@ -24,6 +25,11 @@ const routes: Routes = [{
     {
       path: 'login',
       component: LoginPageComponent,
+      canActivate: [UnauthorizeGuardService],
+    },
+    {
+      path: 'force',
+      component: ForceLoginPageComponent,
       canActivate: [UnauthorizeGuardService],
     },
     {

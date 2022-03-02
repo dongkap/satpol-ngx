@@ -43,6 +43,7 @@ import { UnauthorizeGuardService } from './services/unauth-guard.service';
 import { LoginPageComponent } from './pages/login/login-page.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { ForceLoginPageComponent } from './pages/force/force-login-page.component';
 import { ForgotPageComponent } from './pages/forgot/forgot-page.component';
 import { RequestForgotPageComponent } from './pages/forgot/request-forgot-page.component';
 import { RegisterPageComponent } from './pages/register/register-page.component';
@@ -70,6 +71,7 @@ export const AUTH_PROVIDERS = [
 export const AUTH_COMPONENTS = [
   LoginPageComponent,
   LogoutComponent,
+  ForceLoginPageComponent,
   ForgotPageComponent,
   RequestForgotPageComponent,
   RegisterPageComponent,

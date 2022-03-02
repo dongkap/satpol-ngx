@@ -12,12 +12,14 @@ import {
   API,
   HTTP_SERVICE,
   OAUTH_INFO,
+  ResponseCode,
 } from '@dongkap/do-core';
 import { ApiBaseResponse } from '@dongkap/do-core';
 import { APIModel } from '@dongkap/do-core';
 import { HttpFactoryService } from '@dongkap/do-core';
 import { SecurityResourceModel } from '@dongkap/do-core';
 import { AuthTokenService } from '../../services/auth-token.service';
+import { AuthForceService } from '../../services/auth-force.service';
 import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component';
 
 @Component({
@@ -28,6 +30,7 @@ import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.c
 export class LoginPageComponent implements OnDestroy {
 
   public responseError: any;
+  public responseErrorCode: any;
   public buttonLogin: boolean = false;
   private progress: number = 25;
   protected progressDOM: HTMLElement;
@@ -55,6 +58,7 @@ export class LoginPageComponent implements OnDestroy {
     private dialogService: NbDialogService,
     private translate: TranslateService,
     private authTokenService: AuthTokenService,
+    private authForceService: AuthForceService,
     @Inject(API) private apiPath: APIModel,
     @Inject(HTTP_SERVICE) private httpBaseService: HttpFactoryService,
     @Inject(OAUTH_INFO)private oauthResource: SecurityResourceModel,
@@ -92,6 +96,7 @@ export class LoginPageComponent implements OnDestroy {
               error = error['error'] as ApiBaseResponse;
             }
             const response: ApiBaseResponse = (error as ApiBaseResponse);
+            this.responseErrorCode = response?.respStatusCode;
             this.responseError = response?.respStatusMessage[response?.respStatusCode];
           } catch (error) {
             this.responseError = 'error.500';
@@ -99,6 +104,12 @@ export class LoginPageComponent implements OnDestroy {
           this.buttonLogin = false;
           this.progress = 0;
           this.doneProgress();
+          if (this.responseErrorCode === ResponseCode.ERR_SCR0000.toString()) {
+            this.authForceService.setData(
+              this.formGroup.get('username').value,
+              this.formGroup.get('password').value);
+            this.router.navigate(['/auth/force']);
+          }
         });
       if (this.progress >= 35 && this.progress < 65) {
         this.setProgress(this.progress = 65);

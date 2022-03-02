@@ -15,6 +15,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/api/security/oauth/token',
         },
+        force: {
+            server: environment.host.auth,
+            method: HttpMethod.POST,
+            path: '/api/security/oauth/force',
+        },
         'extract-token': {
             server: environment.host.auth,
             method: HttpMethod.POST,
