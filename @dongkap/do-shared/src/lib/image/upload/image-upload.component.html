@@ -10,14 +10,14 @@
     }"
     [ngStyle]="{ 
       'background-image': 'url(' + (image) + ')',
-      'height':  height + 'rem',
-      'width':  width + 'rem',
+      'height':  height ? height+'rem' : 'calc(80vw/5)',
+      'width':  width ? width+'rem' : 'calc(80vw/5)',
       'border-radius':  radius + '%'
     }">
     <label *ngIf="!image"
       class="label label-upload"
       [ngStyle]="{
-        'line-height': height+'rem'
+        'line-height':  height ? height+'rem' : 'calc(80vw/5)'
       }">
       {{ 'placeholder.image-upload' | translate }}
     </label>
@@ -34,8 +34,8 @@
         'skeleton': skeleton
       }"
       [ngStyle]="{ 
-        'height':  height + 'rem',
-        'width':  width + 'rem',
+        'height':  height ? height+'rem' : 'calc(80vw/5)',
+        'width':  width ? width+'rem' : 'calc(80vw/5)',
         'border-radius':  radius + '%',
         'margin': '0.5rem auto'
       }">

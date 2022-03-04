@@ -23,8 +23,8 @@ import { ValueAccessorDirective } from '../../base/value-accessor.component';
 export class ImageUploadComponent extends ValueAccessorDirective<any> implements OnDestroy {
   @Output() onPreview: EventEmitter<any> = new EventEmitter<any>();
   @Input() image: string;
-  @Input() height: number = 14;
-  @Input() width: number = 14;
+  @Input() height: number;
+  @Input() width: number;
   @Input() radius: number = 0;
   @Input() buttonUpload: boolean = true;
   @Input() skeleton: boolean = false;

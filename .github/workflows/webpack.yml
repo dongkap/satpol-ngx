@@ -50,7 +50,7 @@ jobs:
       run: |
         npm run build:do-app:github --no-progress
 
-    - name: Copy index.html to 404 html
+    - name: Copy index.html to 404.html
       run: |
         cp ./dist/docs/index.html ./dist/docs/404.html
 
