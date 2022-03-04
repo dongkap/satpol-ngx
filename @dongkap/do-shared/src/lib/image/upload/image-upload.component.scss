@@ -40,9 +40,15 @@
         .upload-container {
             height: 10rem !important;
             width: 10rem !important;
+            border-radius: 50%;
         }
         .label-upload {
             line-height: 10rem !important;
+        }
+        .skeleton {
+            height: 10rem !important;
+            width: 10rem !important;
+            border-radius: 50%;
         }
     }
 }
