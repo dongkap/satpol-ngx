@@ -37,4 +37,18 @@
         align-items: center;
     }
 
+    @include media-breakpoint-down(xs) {
+        .upload-container {
+            height: 10rem !important;
+            width: 10rem !important;
+            border-radius: 50% !important;
+        }
+        .label-upload {
+            line-height: 10rem !important;
+        }
+        .body-upload .skeleton {
+            height: 10rem !important;
+            width: 10rem !important;
+        }
+    }
 }
