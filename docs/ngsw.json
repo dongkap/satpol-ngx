@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1646395487861,
+  "timestamp": 1646396414559,
   "index": "/satpol-ngx/index.html",
   "assetGroups": [
     {
@@ -31,7 +31,7 @@
         "/satpol-ngx/992.f18d285e8272610ffc15.js",
         "/satpol-ngx/favicon.ico",
         "/satpol-ngx/index.html",
-        "/satpol-ngx/main.8c6f23ffee38b84ef550.js",
+        "/satpol-ngx/main.16b3a17b8ae97f458332.js",
         "/satpol-ngx/manifest.webmanifest",
         "/satpol-ngx/ngdo-sw.js",
         "/satpol-ngx/polyfills.bc311aa320681e2dbba9.js",
@@ -1242,7 +1242,7 @@
     "/satpol-ngx/im.3b9ec59891d962581ef8.svg": "e01d04b65001fddf7af85ed08efbc69f57086a46",
     "/satpol-ngx/in.1434165acf97a8c1a31a.svg": "6fccfd7735304364c368e98bf4b9ae9e37d3c3f1",
     "/satpol-ngx/in.a8b035d61b54fec572a0.svg": "d0cc051ff28462e2da7cf86e829954c0a96a39e8",
-    "/satpol-ngx/index.html": "37a23ca25a970949883e72ad68e2962550685463",
+    "/satpol-ngx/index.html": "ef602cc0197f7175da9b0fd143df7c353f080e83",
     "/satpol-ngx/io.77f4eddb484b8f32d38a.svg": "7e7751ab666ee4ff034f40b0470389bf66b658f0",
     "/satpol-ngx/io.a7c201eabf62f13fe1d8.svg": "63c384c3abc8b5e6f22ac5f711eff0d791943021",
     "/satpol-ngx/ionicons.3e10c450f96bf28a6407.eot": "78ed07ad0fdefd18688cf30646a6649908d8d2b5",
@@ -1313,7 +1313,7 @@
     "/satpol-ngx/ly.8d6871917dd571682b3c.svg": "84bf0dae988fc475317efddfa7176a649d7d8af9",
     "/satpol-ngx/ma.4d3a6f5c2bd6a436e6a1.svg": "bdf56c51e471877ec3627077c0161d9b7de0ee1f",
     "/satpol-ngx/ma.ab052b412792b9fadd8c.svg": "f0bdec701cfac27e1704304d5bb954559e4220a6",
-    "/satpol-ngx/main.8c6f23ffee38b84ef550.js": "94e08a43c79d884886a5f5b979e813bda48ae236",
+    "/satpol-ngx/main.16b3a17b8ae97f458332.js": "13dd02f3da576af1b88ae4ea17996fbb5605991e",
     "/satpol-ngx/manifest.webmanifest": "16836c914df50df6e302822c0dc78482ed4615f0",
     "/satpol-ngx/marker-icon.2b3e1faf89f94a483539.png": "60a90bcbb2b42b7ddb4556db94eb7c1084b0e5da",
     "/satpol-ngx/mc.21f385d1c90452e35d21.svg": "a1f5a5ce8e6a9ced0b5384e078638a6c4be56951",
