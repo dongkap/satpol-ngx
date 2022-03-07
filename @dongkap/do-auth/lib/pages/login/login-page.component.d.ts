@@ -23,6 +23,8 @@ export declare class LoginPageComponent implements OnDestroy {
     responseError: any;
     responseErrorCode: any;
     buttonLogin: boolean;
+    showPassword: boolean;
+    icon: string;
     private progress;
     protected progressDOM: HTMLElement;
     protected destroy$: Subject<any>;
@@ -32,6 +34,7 @@ export declare class LoginPageComponent implements OnDestroy {
     constructor(router: Router, dialogService: NbDialogService, translate: TranslateService, authTokenService: AuthTokenService, authForceService: AuthForceService, apiPath: APIModel, httpBaseService: HttpFactoryService, oauthResource: SecurityResourceModel, route: ActivatedRoute);
     ngOnDestroy(): void;
     login(): void;
+    onShowPassword(): void;
     get hasErrorUsername(): boolean;
     get hasSuccessUsername(): boolean;
     get hasErrorPassword(): boolean;
