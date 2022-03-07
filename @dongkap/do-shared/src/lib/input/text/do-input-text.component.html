@@ -5,7 +5,7 @@
   [errorMessages]="errorMessages" [paramError]="paramError"
   [warnMessage]="warnMessage"
   [skeleton]="skeleton" [show]="show">
-  <div class="col-sm-{{colInput}}" *ngIf="!skeleton; else contentskeleton">
+  <div class="col-sm-{{colInput}} input-group" *ngIf="!skeleton; else contentskeleton">
     <input
       type="{{type}}"
       id="{{name}}"
@@ -31,6 +31,9 @@
       (keypress)="onKeyUp($event)"
       [(ngModel)]="value"
       #input nbInput fullWidth>
+      <div class="input-icon" *ngIf="togglePassword">
+        <nb-icon [options]="{ animation: { type: 'zoom' } }" class="input-icon-hover" icon="{{icon}}" (click)="onShowPassword()"></nb-icon>
+      </div>
   </div>
   <ng-template #contentskeleton>
     <div class="col-sm-{{colInput}}">

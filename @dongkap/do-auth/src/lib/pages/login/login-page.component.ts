@@ -32,6 +32,8 @@ export class LoginPageComponent implements OnDestroy {
   public responseError: any;
   public responseErrorCode: any;
   public buttonLogin: boolean = false;
+  public showPassword: boolean = false;
+  public icon: string = 'eye-outline';
   private progress: number = 25;
   protected progressDOM: HTMLElement;
   protected destroy$: Subject<any> = new Subject<any>();
@@ -115,6 +117,11 @@ export class LoginPageComponent implements OnDestroy {
         this.setProgress(this.progress = 65);
       }
     }
+  }
+
+  onShowPassword(): void {
+    this.showPassword = !this.showPassword;
+    this.icon = this.showPassword ? 'eye-off-outline' :  'eye-outline';
   }
 
   get hasErrorUsername(): boolean {

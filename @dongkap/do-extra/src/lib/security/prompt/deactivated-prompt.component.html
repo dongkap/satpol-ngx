@@ -11,12 +11,17 @@
     <p>
       {{ 'message.input-password' | translate }}
     </p>
-    <input
-      [(ngModel)]="password"
-      type="password"
-      nbInput
-      class="deactivated-password"
-      placeholder="{{ 'Password' | translate }}">
+    <div class="input-group">
+      <input
+        [(ngModel)]="password"
+        [type]="!showPassword ? 'password' : 'text'"
+        nbInput
+        class="deactivated-password"
+        placeholder="{{ 'Password' | translate }}">
+      <div class="input-icon">
+        <nb-icon [options]="{ animation: { type: 'zoom' } }" class="input-icon-hover" icon="{{icon}}" (click)="onShowPassword()"></nb-icon>
+      </div>
+    </div>
   </nb-card-body>
   <nb-card-footer>
     <button

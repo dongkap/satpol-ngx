@@ -19,11 +19,26 @@ export class DoInputTextComponent extends ValueAccessorDirective<string> {
   @Input() step: number = 1;
   @Input() capslock: boolean = false;
   @Input() type: 'text' | 'password' | 'number' = 'text';
+  @Input() togglePassword: boolean = false;
+  @Input() showPassword: boolean = false;
+  public icon: string = 'eye-outline';
 
   constructor(
     @Optional() @Self() ngControl: NgControl,
     @Inject(LOCALE_ID) public locale: string) {
     super(ngControl, locale);
+  }
+
+  onInit() {
+    if (this.type === 'password') {
+      this.togglePassword = true;
+    }
+  }
+
+  onShowPassword(): void {
+    this.showPassword = !this.showPassword;
+    this.icon = this.showPassword ? 'eye-off-outline' :  'eye-outline';
+    this.type = this.showPassword ? 'text' :  'password';
   }
 
   onKeyUp(event: KeyboardEvent) {
